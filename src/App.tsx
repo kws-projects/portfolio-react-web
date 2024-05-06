@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import './utils/i18n'
 
 import './App.css'
 import Layout from './layout'
