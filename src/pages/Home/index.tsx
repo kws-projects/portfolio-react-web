@@ -1,12 +1,12 @@
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 
 const Home = () => {
-    const { t } = useTranslation();
+    // const { t } = useTranslation();
 
     return (
         <main>
             Home
-            {t('title')}
+            {/* {t('title')} */}
         </main>
     )
 }
