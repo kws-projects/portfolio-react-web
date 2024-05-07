@@ -35,11 +35,11 @@ const Navbar = () => {
                     {navItems.map(item => (
                         <li key={item.id} className="group/nav-2-lv relative float-left w-full md:w-fit" >
                             {item.link 
-                                ? <Link to={item.link} className="block pt-5 px-5 pb-3.5 w-full border-b border-transparent hover:bg-gray-100 md:hover:border-b-gray-800 md:hover:bg-white" >{item.title}</Link> 
-                                : <div className="block pt-5 px-5 pb-3.5 w-full cursor-pointer border-b border-transparent hover:bg-gray-100 md:hover:border-b-gray-800 md:hover:bg-white" >{item.title}</div>
+                                ? <Link to={item.link} className="block pt-5 px-5 pb-3.5 w-full border-b border-transparent hover:bg-gray-100 md:hover:border-b-gray-800 md:hover:bg-transparent" >{item.title}</Link> 
+                                : <div className="block pt-5 px-5 pb-3.5 w-full cursor-pointer border-b border-transparent hover:bg-gray-100 md:hover:border-b-gray-800 md:hover:bg-transparent" >{item.title}</div>
                             }
 
-                            {item.subItems && <ul className="hidden relative left-0 group-hover/nav-2-lv:block w-full bg-white border border-gray-200 md:absolute md:w-44 md:rounded-b-lg">
+                            {item.subItems && <ul className="hidden relative left-0 group-hover/nav-2-lv:block w-full bg-gray-50 border border-gray-200 md:absolute md:w-44 md:rounded-b-lg">
                                 {item.subItems.map((item, i, arr) => (
                                     <li key={item.id} className="group/nav-3-lv relative" >
                                         {item.link 
@@ -47,7 +47,7 @@ const Navbar = () => {
                                             : <div className={`block pt-4 pr-5 pl-10 pb-3.5 cursor-pointer hover:bg-gray-100 ${i===arr.length-1&&'md:rounded-b-lg'} md:pl-5`} >{item.title}</div>
                                         }
 
-                                        {item.subItems && <ul className="hidden relative top-0 left-0 group-hover/nav-3-lv:block w-full bg-white border border-gray-200 md:absolute md:left-44 md:w-44 md:rounded-b-lg md:rounded-tr-lg">
+                                        {item.subItems && <ul className="hidden relative top-0 left-0 group-hover/nav-3-lv:block w-full bg-gray-50 border border-gray-200 md:absolute md:left-44 md:w-44 md:rounded-b-lg md:rounded-tr-lg">
                                             {item.subItems.map((item, i, arr) => (
                                                 <li key={item.id} className='relative w-full' >
                                                     {item.link 
