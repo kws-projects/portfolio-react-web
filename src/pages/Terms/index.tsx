@@ -1,15 +1,15 @@
 import { useTranslation } from 'react-i18next'
 import usePageTitle from "../../hooks/usePageTitle"
 
-const Home = () => {
+const Terms = () => {
     const { t } = useTranslation()
-    usePageTitle(t('home_document_title'))
+    usePageTitle(t('terms_document_title'))
 
     return (
         <main>
-            
+            Terms and Conditions
         </main>
     )
 }
 
-export default Home
+export default Terms

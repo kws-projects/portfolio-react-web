@@ -8,6 +8,8 @@ import Works from './pages/Works'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import Contact from './pages/Contact'
+import Terms from './pages/Terms'
+import Privacy from './pages/Privacy'
 import NotFound from './pages/NotFound'
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
           <Route path=':postId' element={<BlogPost />} />
         </Route>
         <Route path='contact' element={<Contact />} />
+        <Route path='terms-and-conditions' element={<Terms />} />
+        <Route path='privacy-policy' element={<Privacy />} />
         <Route path='/*' element={<NotFound />} />
       </Route>
     </Routes>

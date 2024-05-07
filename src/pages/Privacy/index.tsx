@@ -1,15 +1,15 @@
 import { useTranslation } from 'react-i18next'
 import usePageTitle from "../../hooks/usePageTitle"
 
-const Home = () => {
+const Privacy = () => {
     const { t } = useTranslation()
-    usePageTitle(t('home_document_title'))
+    usePageTitle(t('privacy_document_title'))
 
     return (
         <main>
-            
+            Privacy Policy
         </main>
     )
 }
 
-export default Home
+export default Privacy
