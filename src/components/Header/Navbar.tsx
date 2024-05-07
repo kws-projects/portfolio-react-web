@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { navItems } from '../../data/navItems';
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"
+import { headerNavItems } from '../../data/navItems'
 
 const useNavbarToggle = () => {
     const [ isNavbarExpended, setIsNavbarExpended ] = useState(false)
@@ -32,11 +32,11 @@ const Navbar = () => {
 
             <div className={`${isNavbarExpended ? 'flex' : 'hidden'} absolute top-14 w-full md:relative md:top-0 md:flex md:w-fit`}>
                 <ul className="w-full md:w-fit">
-                    {navItems.map(item => (
+                    {headerNavItems.map(item => (
                         <li key={item.id} className="group/nav-2-lv relative float-left w-full md:w-fit" >
                             {item.link 
-                                ? <Link to={item.link} className="block pt-5 px-5 pb-3.5 w-full border-b border-transparent hover:bg-gray-100 md:hover:border-b-gray-800 md:hover:bg-transparent" >{item.title}</Link> 
-                                : <div className="block pt-5 px-5 pb-3.5 w-full cursor-pointer border-b border-transparent hover:bg-gray-100 md:hover:border-b-gray-800 md:hover:bg-transparent" >{item.title}</div>
+                                ? <Link to={item.link} className="block pt-5 px-5 pb-3.5 w-full border-b border-transparent hover:bg-gray-100 bg-gray-50 md:bg-transparent md:hover:border-b-gray-800 md:hover:bg-transparent" >{item.title}</Link> 
+                                : <div className="block pt-5 px-5 pb-3.5 w-full cursor-pointer border-b border-transparent hover:bg-gray-100 bg-gray-50 md:bg-transparent md:hover:border-b-gray-800 md:hover:bg-transparent" >{item.title}</div>
                             }
 
                             {item.subItems && <ul className="hidden relative left-0 group-hover/nav-2-lv:block w-full bg-gray-50 border border-gray-200 md:absolute md:w-44 md:rounded-b-lg">
