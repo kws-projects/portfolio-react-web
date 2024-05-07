@@ -1,7 +1,7 @@
 const labelList = {
     // Website Info
     'website_name': `Kenneth Wong`,
-    'website_attribution': `Website designed and created by Kenneth Wong.\n© 2022 Kenneth Wong. All Right Reserved.`,
+    'website_attribution': `Website designed and created by Kenneth Wong.\n© 2024 Kenneth Wong. All Right Reserved.`,
 
     // Home
     'home_document_title': `Home | Kenneth Wong`,
