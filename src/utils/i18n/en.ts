@@ -4,7 +4,6 @@ const labelList = {
     'website_attribution': `Website designed and created by Kenneth Wong.\n© 2022 Kenneth Wong. All Right Reserved.`,
 
     // Home
-    'home_title': `Home`,
     'home_banner_greetings': `Hello, I'm Kenneth Wong\nWeb Front-end Developer`,
     'home_banner_about_title': `About`,
     'home_banner_about_introduction': `Kenneth is dedicated to his pursuits in front-end development and has learned various mainstream frameworks implemented them into projects during his studies.\n\nKenneth has also actively contributed to the development of enterprise companies, leveraging his expertise to enhance the app's functionality and user experience.`,
@@ -46,9 +45,6 @@ const labelList = {
     'about_cv_links_title': `Links`,
     'about_cv_skills_title': `Skills`,
     'about_cv_languages_title': `Languages`,
-
-    // Works
-    'works_title': `Works`,
 
     // Blog
     'blog_title': `Blog`,
