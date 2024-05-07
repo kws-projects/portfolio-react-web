@@ -4,6 +4,7 @@ const labelList = {
     'website_attribution': `Website designed and created by Kenneth Wong.\n© 2022 Kenneth Wong. All Right Reserved.`,
 
     // Home
+    'home_document_title': `Home | Kenneth Wong`,
     'home_banner_greetings': `Hello, I'm Kenneth Wong\nWeb Front-end Developer`,
     'home_banner_about_title': `About`,
     'home_banner_about_introduction': `Kenneth is dedicated to his pursuits in front-end development and has learned various mainstream frameworks implemented them into projects during his studies.\n\nKenneth has also actively contributed to the development of enterprise companies, leveraging his expertise to enhance the app's functionality and user experience.`,
@@ -16,6 +17,7 @@ const labelList = {
 
     // About
     'about_title': `About`,
+    'about_document_title': `About | Kenneth Wong`,
     'about_banner_description': `Background, Skills, Education`,
     'about_self_intro_heading': `Hello! I am Kenneth Wong`,
     'about_self_intro_content': `Kenneth is dedicated to his pursuits in front-end development and has learned various mainstream frameworks implemented them into projects during his studies.\n\nKenneth has also actively contributed to the development of enterprise companies, leveraging his expertise to enhance the app's functionality and user experience.`,
@@ -46,22 +48,32 @@ const labelList = {
     'about_cv_skills_title': `Skills`,
     'about_cv_languages_title': `Languages`,
 
+    // Works
+    'works_document_title': `Works | Kenneth Wong`,
+
     // Blog
     'blog_title': `Blog`,
+    'blog_document_title': `Blog | Kenneth Wong`,
     'blog_popular_posts': `Popular Posts`,
     'blog_recent_posts': `Recent Posts`,
 
     // Contact
     'contact_title': `Contact`,
+    'contact_document_title': `Contact | Kenneth Wong`,
     'contact_tel': `Tel: (+852) 9347 8968`,
     'contact_email': `Email: kaifwong1022@gmail.com`,
 
     // Terms
     'terms_title_short': `Terms`,
     'terms_title_full': `Terms and Conditions`,
+    'terms_document_title': `Terms and Conditions | Kenneth Wong`,
 
     // Privacy Policy
     'privacy_title': `Privacy Policy`,
+    'privacy_document_title': `Privacy Policy | Kenneth Wong`,
+
+    // Error
+    'error_not_found_document_title': `Page Not Found | Kenneth Wong`
 }
 
 export default labelList
