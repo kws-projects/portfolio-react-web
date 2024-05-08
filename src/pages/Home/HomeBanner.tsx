@@ -1,4 +1,4 @@
-const Banner = () => {
+const HomeBanner = () => {
     return (
         <section>
             Testing Banner
@@ -6,4 +6,4 @@ const Banner = () => {
     )
 }
 
-export default Banner
+export default HomeBanner

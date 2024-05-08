@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import usePageTitle from "../../hooks/usePageTitle"
 import HomeBackgroundSketch from '../../components/sketches/HomeBackgroundSketch'
-import Banner from './Banner/'
+import HomeBanner from './HomeBanner'
 import WorkShowcase from '../../components/WorkShowcase'
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
     return (
         <main>
             <HomeBackgroundSketch />
-            <Banner />
+            <HomeBanner />
             <WorkShowcase />
         </main>
     )
