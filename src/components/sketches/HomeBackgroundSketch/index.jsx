@@ -7,12 +7,15 @@ const HomeBackgroundSketch = () => {
         const p5 = require("p5")
         let requireInit = true
 
+        let sRef
         let center, start, end
         let pms, ts
         let cPos, cPath, cOffset, lsPos, lsPath, rsPos, rsPath
         let amt = 0.03
 
         new p5(s => {
+            sRef = s
+
             s.setup = () => {
                 s.createCanvas(0, 0).parent(renderRef.current)
                 s.noStroke()
@@ -192,6 +195,10 @@ const HomeBackgroundSketch = () => {
                 s.endShape();
             }
         })
+
+        return () => {
+            sRef.remove()
+        }
     }, [])
 
     return(
