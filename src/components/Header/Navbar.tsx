@@ -21,7 +21,7 @@ const Navbar = () => {
 
     return (
         <nav className="flex items-center justify-between w-full h-14 max-w-screen-lg mx-0 border-b border-gray-200 text-sm md:mx-14 lg:mx-28">
-            <Link to="/" className="text-lg ml-4 pt-1" >{t('website_name')}</Link>
+            <Link to="/" className="text-lg ml-4 pt-1" style={{"fontFamily": 'Jost'}} >{t('website_name')}</Link>
 
             <div className="flex pt-1 md:hidden" onClick={handleNavbarToggle}>
                 {isNavbarExpended

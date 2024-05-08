@@ -7,11 +7,11 @@ const Footer = () => {
     const { t } = useTranslation()
 
     return (
-        <footer className="flex justify-center mt-auto">
+        <footer className="flex justify-center mt-auto bg-gray-50">
             <div className="flex justify-center items-start w-full max-w-screen-lg border-t mx-0 px-4 pt-6 pb-7 md:mx-14 lg:mx-28 border-t-gray-200 md:justify-between">
                 <section className="flex flex-col text-sm max-w-auto items-center md:items-start md:max-w-sm">
                     <div className="flex justify-start items-center space-x-4">
-                        <Link to="/" className="text-lg pt-1" >{t('website_name')}</Link>
+                        <Link to="/" className="text-lg pt-1" style={{"fontFamily": 'Jost'}}>{t('website_name')}</Link>
                         <div className="flex mt-1 md:hidden"><ContactPortal /></div>
                     </div>
                     

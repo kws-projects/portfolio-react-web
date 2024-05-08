@@ -33,6 +33,13 @@
         font-weight: 700;
         src: url(/public/assets/fonts/quicksand/Quicksand-Bold.ttf), format('truetype')
     }
+
+    @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 400;
+        src: url(/public/assets/fonts/jost/Jost-Light.ttf), format('truetype')
+    }
 }
 
 * {
