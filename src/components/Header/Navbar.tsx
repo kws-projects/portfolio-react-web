@@ -35,7 +35,7 @@ const Navbar = () => {
                     {headerNavItems.map(item => (
                         <li key={item.id} className="group/nav-2-lv relative float-left w-full md:w-fit" >
                             {item.link 
-                                ? <Link to={item.link} className="block pt-5 px-5 pb-3.5 w-full border-b border-transparent hover:bg-gray-100 bg-gray-50 md:bg-transparent md:hover:border-b-gray-800 md:hover:bg-transparent" >{item.title}</Link> 
+                                ? <Link to={item.link} className="block pt-5 px-5 pb-3.5 w-full border-b border-transparent hover:bg-gray-100 bg-gray-50 md:bg-transparent md:hover:border-b-gray-800 md:hover:bg-transparent" onClick={handleNavbarToggle} >{item.title}</Link> 
                                 : <div className="block pt-5 px-5 pb-3.5 w-full cursor-pointer border-b border-transparent hover:bg-gray-100 bg-gray-50 md:bg-transparent md:hover:border-b-gray-800 md:hover:bg-transparent" >{item.title}</div>
                             }
 
@@ -43,7 +43,7 @@ const Navbar = () => {
                                 {item.subItems.map((item, i, arr) => (
                                     <li key={item.id} className="group/nav-3-lv relative" >
                                         {item.link 
-                                            ? <Link to={item.link} className={`block pt-4 pr-5 pl-10 pb-3.5 hover:bg-gray-100 ${i===arr.length-1&&'md:rounded-b-lg'} md:pl-5`} >{item.title}</Link>
+                                            ? <Link to={item.link} className={`block pt-4 pr-5 pl-10 pb-3.5 hover:bg-gray-100 ${i===arr.length-1&&'md:rounded-b-lg'} md:pl-5`} onClick={handleNavbarToggle} >{item.title}</Link>
                                             : <div className={`block pt-4 pr-5 pl-10 pb-3.5 cursor-pointer hover:bg-gray-100 ${i===arr.length-1&&'md:rounded-b-lg'} md:pl-5`} >{item.title}</div>
                                         }
 
@@ -51,7 +51,7 @@ const Navbar = () => {
                                             {item.subItems.map((item, i, arr) => (
                                                 <li key={item.id} className='relative w-full' >
                                                     {item.link 
-                                                        ? <Link to={item.link} className={`block pt-4 pr-5 pl-16 pb-3.5 hover:bg-gray-100 ${i===0&&'md:rounded-tr-lg'} ${i===arr.length-1&&'md:rounded-b-lg'} md:pl-5`} >{item.title}</Link> 
+                                                        ? <Link to={item.link} className={`block pt-4 pr-5 pl-16 pb-3.5 hover:bg-gray-100 ${i===0&&'md:rounded-tr-lg'} ${i===arr.length-1&&'md:rounded-b-lg'} md:pl-5`} onClick={handleNavbarToggle} >{item.title}</Link> 
                                                         : <div className={`block pt-4 pr-5 pl-16 pb-3.5 cursor-pointer hover:bg-gray-100 ${i===0&&'md:rounded-tr-lg'} ${i===arr.length-1&&'md:rounded-b-lg'} md:pl-5`} >{item.title}</div>
                                                     }
                                                 </li>
