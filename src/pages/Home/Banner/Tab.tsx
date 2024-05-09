@@ -9,7 +9,9 @@ type TabProps = {
 const Tab = ({ tab, currentTab, children }:TabProps) => {
     return (
         <>
-            {tab === currentTab ? children : null}
+            {tab === currentTab
+                ? <div className="pt-10 px-20 pb-16">{children}</div>
+                : null}
         </>
     )
 }

@@ -25,7 +25,7 @@ const Card = () => {
 
             {/* About */}
             <Tab tab={tabOptions[0]} currentTab={currentTab} >
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
             </Tab>
 
             {/* Skills */}
