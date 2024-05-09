@@ -5,7 +5,7 @@ const labelList = {
 
     // Home
     'home_document_title': `Home | Kenneth Wong`,
-    'home_banner_greetings': `Hello, I'm Kenneth Wong\nWeb Front-end Developer`,
+    'home_banner_greetings': `Hello, I'm Kenneth Wong\nFullstack Software Engineer`,
     'home_banner_about_title': `About`,
     'home_banner_about_introduction': `Kenneth is dedicated to his pursuits in front-end development and has learned various mainstream frameworks implemented them into projects during his studies.\n\nKenneth has also actively contributed to the development of enterprise companies, leveraging his expertise to enhance the app's functionality and user experience.`,
     'home_banner_skills_title': `Skills`,

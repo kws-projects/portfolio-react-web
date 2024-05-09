@@ -15,7 +15,7 @@ const Footer = () => {
                         <div className="flex mt-1 md:hidden"><ContactPortal /></div>
                     </div>
                     
-                    <p className="mt-2 text-center whitespace-pre-line md:text-left">{t('website_attribution')}</p>
+                    <p className="mt-2 text-center md:text-left">{t('website_attribution')}</p>
 
                     <div className="flex mt-2 space-x-2">
                         <Link to="/contact">Contact</Link><span>|</span>
