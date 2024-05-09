@@ -1,9 +1,13 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import Tab from './Tab'
+import ContactPortal from '../../../components/ContactPortal'
 
 const tabOptions = ['About', 'Skills', 'Featured Works', 'Experience']
 
 const Card = () => {
+    const { t } = useTranslation()
+
     const [ currentTab, setCurrentTab ] = useState(tabOptions[0])
 
     const handleTabSwitch = (tab:string) => {
@@ -24,8 +28,13 @@ const Card = () => {
             </nav>
 
             {/* About */}
-            <Tab tab={tabOptions[0]} currentTab={currentTab} >
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            <Tab tab={tabOptions[0]} currentTab={currentTab} className="flex items-center" >
+                <div className="flex flex-col justify-start items-start ml-6 space-y-7">
+                    <p className="">{t('home_banner_about_introduction')}</p>
+                    <ContactPortal /> 
+                </div>
+                
+                <img src="/assets/images/profile-image.jpeg" alt="Profile" className="bg-cover w-44 h-44 ml-16 mr-4 rounded-full" />
             </Tab>
 
             {/* Skills */}
