@@ -2,13 +2,14 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Tab from './Tab'
 import ContactPortal from '../../../components/ContactPortal'
+import HomeBannerSkillsSketch from '../../../components/sketches/HomeBannerSkillsSketch'
 
 const tabOptions = ['About', 'Skills', 'Featured Works', 'Experience']
 
 const Card = () => {
     const { t } = useTranslation()
 
-    const [ currentTab, setCurrentTab ] = useState(tabOptions[0])
+    const [ currentTab, setCurrentTab ] = useState(tabOptions[1])
 
     const handleTabSwitch = (tab:string) => {
         setCurrentTab(tab)
@@ -38,8 +39,8 @@ const Card = () => {
             </Tab>
 
             {/* Skills */}
-            <Tab tab={tabOptions[1]} currentTab={currentTab} >
-                Skills
+            <Tab tab={tabOptions[1]} currentTab={currentTab} className="w-full p-0" >
+                <HomeBannerSkillsSketch />
             </Tab>
                 
             {/* Featured Works */}

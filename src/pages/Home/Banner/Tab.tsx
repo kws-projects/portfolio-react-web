@@ -4,14 +4,15 @@ type TabProps = {
     tab: string,
     currentTab: string,
     className?: string,
+    style?: Object,
     children?: ReactNode,
 }
 
-const Tab = ({ tab, currentTab, className, children }:TabProps) => {
+const Tab = ({ tab, currentTab, className, style, children }:TabProps) => {
     return (
         <>
             {tab === currentTab
-                ? <div className={`pt-10 px-20 pb-16 ${className}`}>{children}</div>
+                ? <div className={`pt-10 px-20 pb-16 ${className}`} style={style}>{children}</div>
                 : null}
         </>
     )

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-const Playground = () => {
+const HomeBannerSkillsSketch = () => {
     const renderRef = useRef()
 
     useEffect(() => {
@@ -18,6 +18,9 @@ const Playground = () => {
 
             s.draw = () => {
                 init()
+
+                s.clear()
+                s.rect(s.millis(), 40, 20, 20)
             }
 
             s.windowResized = () => {
@@ -38,8 +41,8 @@ const Playground = () => {
     }, [])
 
     return(
-        <div className="" ref={renderRef} />
+        <div ref={renderRef} style={{width: '100%', height: '223px'}} />
     )
 }
 
-export default Playground
+export default HomeBannerSkillsSketch

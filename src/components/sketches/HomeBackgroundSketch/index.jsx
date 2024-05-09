@@ -206,4 +206,4 @@ const HomeBackgroundSketch = () => {
     )
 }
 
-export default HomeBackgroundSketch;
+export default HomeBackgroundSketch
