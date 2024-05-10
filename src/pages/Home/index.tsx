@@ -15,14 +15,7 @@ const Home = () => {
             <Section 
                 title={t('home_featured_works_title')} 
                 description={t('home_featured_works_introduction')} 
-                className="mt-64"
-            >
-                <WorkShowcase />
-            </Section>
-
-            <Section 
-                title={t('home_featured_works_title')} 
-                description={t('home_featured_works_introduction')} 
+                className="mt-32 md:mt-64"
             >
                 <WorkShowcase />
             </Section>
