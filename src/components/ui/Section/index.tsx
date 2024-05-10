@@ -10,9 +10,9 @@ type SectionProps = {
 
 const Section = ({ title, description, className, style, children }:SectionProps) => {
     return (
-        <div className={`w-full ${className}`} style={style}>
-            <span>{title}</span>
-            <p>{description}</p>
+        <div className={`self-center flex flex-col justify-start items-center w-full border-t pt-12 pb-24 border-gray-200 max-w-screen-lg ${className}`} style={style}>
+            <p className="text-2xl">{title}</p>
+            <p className="pt-2 pb-10">{description}</p>
             {children}
         </div>
     )

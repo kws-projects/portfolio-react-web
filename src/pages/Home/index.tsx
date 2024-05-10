@@ -19,6 +19,13 @@ const Home = () => {
             >
                 <WorkShowcase />
             </Section>
+
+            <Section 
+                title={t('home_featured_works_title')} 
+                description={t('home_featured_works_introduction')} 
+            >
+                <WorkShowcase />
+            </Section>
         </main>
     )
 }
