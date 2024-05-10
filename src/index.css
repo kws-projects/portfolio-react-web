@@ -87,6 +87,12 @@ body {
     flex-direction: column;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 p {
     white-space: pre-line;
 }
