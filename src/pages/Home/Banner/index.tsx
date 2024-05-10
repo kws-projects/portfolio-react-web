@@ -11,7 +11,7 @@ const Banner = () => {
 
             <section className="flex flex-col justify-start" >
                 <p 
-                    className="self-center max-w-screen-lg pt-28 pl-36 text-4xl font-medium leading-snug" 
+                    className="self-center max-w-screen-lg pt-14 md:pt-28 pl-0 md:pl-36 text-2xl md:text-4xl font-medium leading-snug text-center md:text-left" 
                     style={{width: '-webkit-fill-available'}} 
                 >{t('home_banner_greetings')}</p>
 

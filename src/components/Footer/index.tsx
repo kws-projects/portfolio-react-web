@@ -18,9 +18,9 @@ const Footer = () => {
                     <p className="mt-2 text-center md:text-left">{t('website_attribution')}</p>
 
                     <div className="flex mt-2 space-x-2">
-                        <Link to="/contact">Contact</Link><span>|</span>
-                        <Link to="/terms-and-conditions">Terms</Link><span>|</span>
-                        <Link to="/privacy-policy">Privacy Policy</Link>
+                        <Link to="/contact">{t('contact_title')}</Link><span>|</span>
+                        <Link to="/terms-and-conditions">{t('terms_title_short')}</Link><span>|</span>
+                        <Link to="/privacy-policy">{t('privacy_title')}</Link>
                     </div>
 
                     <div className="hidden mt-4 md:flex"><ContactPortal /></div>
