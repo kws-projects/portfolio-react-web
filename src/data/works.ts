@@ -16,7 +16,7 @@ interface IWork {
     description: string,
     image: string[],
     category: WorkCategory[],
-    url?: string,
+    url: string,
     date: {
         year: number,
         month: number

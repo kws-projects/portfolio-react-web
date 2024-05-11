@@ -1,11 +1,13 @@
 import { useTranslation } from 'react-i18next'
 import usePageTitle from "../../hooks/usePageTitle"
+import useScrollToTop from '../../hooks/useScrollToTop'
 import Banner from './Banner'
 import Section from '../../components/ui/Section'
 import WorkShowcase from '../../components/WorkShowcase'
 
 const Home = () => {
     const { t } = useTranslation()
+    useScrollToTop()
     usePageTitle(t('home_document_title'))
 
     return (
