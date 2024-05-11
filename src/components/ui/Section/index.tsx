@@ -16,7 +16,7 @@ const Section = ({ title, description, className, style, showBreakline=true, chi
             style={{...style, width: '-webkit-fill-available'}}
         >
             {title 
-                ? <p className="text-2xl">{title}</p>
+                ? <p className={`text-2xl ${!description&&'pb-10'}`}>{title}</p>
                 : null
             }
 
