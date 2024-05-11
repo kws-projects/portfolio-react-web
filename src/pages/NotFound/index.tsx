@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import usePageTitle from "../../hooks/usePageTitle"
+import usePageTitle from '../../hooks/usePageTitle'
 
 const NotFound = () => {
     const { t } = useTranslation()

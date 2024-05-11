@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import usePageTitle from "../../hooks/usePageTitle"
+import usePageTitle from '../../hooks/usePageTitle'
 import useScrollToTop from '../../hooks/useScrollToTop'
 import Banner from './Banner'
 import Section from '../../components/ui/Section'

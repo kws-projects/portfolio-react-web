@@ -1,11 +1,13 @@
 import { useTranslation } from 'react-i18next'
-import usePageTitle from "../../hooks/usePageTitle"
+import usePageTitle from '../../hooks/usePageTitle'
+import useScrollToTop from '../../hooks/useScrollToTop'
 import WalkerBackgroundSketch from '../../components/sketches/WalkerBackgroundSketch'
 import Section from '../../components/ui/Section'
 import ContactPortal from '../../components/ContactPortal'
 
 const Contact = () => {
     const { t } = useTranslation()
+    useScrollToTop()
     usePageTitle(t('contact_document_title'))
 
     return (
