@@ -4,6 +4,7 @@ import useScrollToTop from '../../hooks/useScrollToTop'
 import PageTitleSketch from '../../components/sketches/PageTitleSketch'
 import Section from '../../components/ui/Section'
 import SelfIntro from './SelfIntro'
+import CV from './CV'
 
 const About = () => {
     const { t } = useTranslation()
@@ -12,6 +13,8 @@ const About = () => {
 
     return (
         <main>
+            {/* <CV /> */}
+
             <PageTitleSketch title={t('about_title')} />
 
             <Section showBreakline={false} >
@@ -34,7 +37,7 @@ const About = () => {
             </Section>
 
             <Section title={t('about_cv_education_title')} >   
-            
+
             </Section>
         </main>
     )
