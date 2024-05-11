@@ -15,7 +15,7 @@ const useNavbarToggle = () => {
 }
 
 const Navbar = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation()
 
     const { isNavbarExpended, handleNavbarToggle } = useNavbarToggle()
 

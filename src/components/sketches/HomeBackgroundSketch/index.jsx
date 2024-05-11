@@ -57,7 +57,7 @@ const HomeBackgroundSketch = () => {
                     if (s.mouseIsPressed) {
                         //if (mouseX<270 || mouseX>1210 || mouseY<320 || mouseY>710) {
                             if (s.dist(s.mouseX, s.mouseY, cPos[i][0], cPos[i][1]) < cPos[i][2]/2) {
-                                isSelected = true;
+                                isSelected = true
                             }
                         //}
                     }
@@ -77,7 +77,7 @@ const HomeBackgroundSketch = () => {
                     rsPos[i][0] = s.lerp(rsPos[i][0], rsPath[i][0], amt)
                 }
 
-                drawBackground();
+                drawBackground()
             }
 
             s.windowResized = () => {
@@ -112,7 +112,7 @@ const HomeBackgroundSketch = () => {
                     [start-390, s.height*0.66, 60],
                     [center-100, s.height*0.5, 130],
                     [end+20, s.height*0.35, 60]
-                ];
+                ]
                 lsPath = [
                     [start-190-80, s.height*0.11],
                     [start-185-80, s.height*0.11],
@@ -124,7 +124,7 @@ const HomeBackgroundSketch = () => {
                     [start-400-50, s.height*0.88-60],
                     [start-405-50, s.height*0.876-60],
                     [start-800, s.height*0.35-70]
-                ];
+                ]
                 rsPath = [
                     [end+450, s.height*0.4],
                     [end+750, s.height*0.52],
@@ -132,7 +132,7 @@ const HomeBackgroundSketch = () => {
                     [end-40, s.height*0.574+50],
                     [end-42, s.height*0.57+50],
                     [end-40, s.height*0.566+50]
-                ];
+                ]
             }
 
             function initPos() {
@@ -144,12 +144,12 @@ const HomeBackgroundSketch = () => {
                     [0, 0, 0],
                     [0, 0, 0],
                     [0, 0, 0]
-                ];
+                ]
                 cPos.forEach(e => {
-                    e[0] = s.random(-500, s.width+500);
-                    e[1] = s.random(-500, -100);
-                    e[2] = s.random(30, 200);
-                });
+                    e[0] = s.random(-500, s.width+500)
+                    e[1] = s.random(-500, -100)
+                    e[2] = s.random(30, 200)
+                })
                 cOffset = [
                     [0, 0],
                     [0, 0],
@@ -157,7 +157,7 @@ const HomeBackgroundSketch = () => {
                     [0, 0],
                     [0, 0],
                     [0, 0],
-                ];
+                ]
                 // left shape
                 lsPos = [
                     [lsPath[0][0]-500, s.height*0.11],
@@ -170,7 +170,7 @@ const HomeBackgroundSketch = () => {
                     [lsPath[7][0]-500, s.height*0.88-60],
                     [lsPath[8][0]-500, s.height*0.876-60],
                     [lsPath[9][0]-500, s.height*0.35-70]
-                ];
+                ]
                 // right shape
                 rsPos = [
                     [rsPath[0][0]+500, s.height*0.4],
@@ -179,20 +179,20 @@ const HomeBackgroundSketch = () => {
                     [rsPath[3][0]+500, s.height*0.574+50],
                     [rsPath[4][0]+500, s.height*0.57+50],
                     [rsPath[5][0]+500, s.height*0.566+50]
-                ];
+                ]
             }
 
             function drawBackground() {
-                s.noStroke();
-                s.fill('rgba(0, 0, 0, 0.68)');
+                s.noStroke()
+                s.fill('rgba(0, 0, 0, 0.68)')
                 // left <>
-                s.beginShape();
-                lsPos.forEach(e => s.vertex(e[0], e[1]));
-                s.endShape();
+                s.beginShape()
+                lsPos.forEach(e => s.vertex(e[0], e[1]))
+                s.endShape()
                 // right <>
-                s.beginShape();
-                rsPos.forEach(e => s.vertex(e[0], e[1]));
-                s.endShape();
+                s.beginShape()
+                rsPos.forEach(e => s.vertex(e[0], e[1]))
+                s.endShape()
             }
         })
 
