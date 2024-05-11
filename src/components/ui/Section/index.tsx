@@ -1,21 +1,30 @@
 import { ReactNode } from "react"
 
 type SectionProps = {
-    title: string,
+    title?: string,
     description?: string,
     className?: string,
     style?: Object,
+    showBreakline?: boolean,
     children?: ReactNode
 }
 
-const Section = ({ title, description, className, style, children }:SectionProps) => {
+const Section = ({ title, description, className, style, showBreakline=true, children }:SectionProps) => {
     return (
         <div 
-            className={`self-center flex flex-col justify-start items-center border-t pt-12 pb-24 mx-0 md:mx-14 lg:mx-28 border-gray-200 max-w-screen-lg ${className}`} 
+            className={`self-center flex flex-col justify-start items-center ${showBreakline&&'border-t border-gray-200'} pt-12 pb-24 mx-0 md:mx-14 lg:mx-28 max-w-screen-lg ${className}`} 
             style={{...style, width: '-webkit-fill-available'}}
         >
-            <p className="text-2xl">{title}</p>
-            <p className="pt-2 pb-10">{description}</p>
+            {title 
+                ? <p className="text-2xl">{title}</p>
+                : null
+            }
+
+            {description 
+                ? <p className="pt-2 pb-10">{description}</p>
+                : null
+            }
+
             {children}
         </div>
     )
