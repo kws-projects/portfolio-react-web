@@ -4,6 +4,7 @@ import useScrollToTop from '../../hooks/useScrollToTop'
 import PageTitleSketch from '../../components/sketches/PageTitleSketch'
 import Section from '../../components/ui/Section'
 import SelfIntro from './SelfIntro'
+import { TimelineList, TimelineItem } from '../../components/ui/Timeline'
 import CV from './CV'
 
 const About = () => {
@@ -25,7 +26,9 @@ const About = () => {
                 title={t('about_skills_title')} 
                 description={t('about_skills_description')} 
             >
-
+                <TimelineList >
+                    <TimelineItem />
+                </TimelineList>
             </Section>
 
             <Section title={t('about_cv_work_experience_title')} >

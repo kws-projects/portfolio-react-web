@@ -1,10 +1,13 @@
+import { ReactNode } from "react"
+
 type Month = 'Jan' | 'Feb' | 'March' | 'Apr' | 'May' | 'June' | 'July' | 'Aug' | 'Sept' | 'Oct' | 'Nov' | 'Dec'
 
-export type TimelineItemType = {
+export interface ITimelineItem {
     id: number,
-    image: string,
+    image?: string,
     title: string,
     description?: string,
+    subItems?: ITimelineItem[],
     fromDate?: {
         month: Month,
         year: number,
@@ -16,9 +19,15 @@ export type TimelineItemType = {
     customDate?: string,
 }
 
-export const TimelineList = () => {
+type TimelineListProps = {
+    children: ReactNode
+}
+
+export const TimelineList = ({ children }: TimelineListProps) => {
     return (
-        <div>Timeline List</div>
+        <div>
+            {children}
+        </div>
     )
 }
 
