@@ -11,7 +11,10 @@ const Terms = () => {
         <main>
             <PageTitleSketch title={t('terms_title_full')} />
 
-            <Section className="" showBreakline={false} >
+            <Section 
+                className="px-8 md:px-0 pt-4 md:pt-12" 
+                showBreakline={false} 
+            >
                 <div>
                     <h2><strong>Welcome to Kenneth Wong!</strong></h2>
                     <p>These terms and conditions outline the rules and regulations for the use of Kenneth Wong's Website, located at https://kwwdev.com/.</p>
