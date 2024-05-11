@@ -1,3 +1,5 @@
+import { WorkCategory } from "./works"
+
 interface IHeaderNavItem {
     id: number
     title: string,
@@ -21,15 +23,15 @@ export const headerNavItems: IHeaderNavItem[] = [
             {
                 id: 3,
                 title: 'Mobile App',
-                link: '/works?work=mobile',
+                link: `/works?work=${WorkCategory.MOBILE}`,
             }, {
                 id: 4,
                 title: 'Website',
-                link: '/works?work=website',
+                link: `/works?work=${WorkCategory.WEBSITE}`,
             }, {
                 id: 5,
                 title: 'Graphic',
-                link: '/works?work=graphic',
+                link: `/works?work=${WorkCategory.GRAPHIC}`,
             }, {
                 id: 6,
                 title: 'Artwork',
@@ -37,29 +39,29 @@ export const headerNavItems: IHeaderNavItem[] = [
                     {
                         id: 7,
                         title: 'Creative Coding',
-                        link: '/works?work=creative-coding',
+                        link: `/works?work=${WorkCategory.CREATIVE_CODING}`,
                     }, {
                         id: 8,
                         title: '3D Modeling',
-                        link: '/works?work=3d-modeling',
+                        link: `/works?work=${WorkCategory.MODELLING}`,
                     }, {
                         id: 9,
                         title: 'Drawing',
-                        link: '/works?work=drawing',
+                        link: `/works?work=${WorkCategory.DRAWING}`,
                     }, {
                         id: 10,
                         title: 'Arduino',
-                        link: 'works?work=arduino',
+                        link: `/works?work=${WorkCategory.ARDUINO}`,
                     },
                 ],
             }, {
                 id: 11,
                 title: 'Tool',
-                link: '/works?work=tool',
+                link: `/works?work=${WorkCategory.TOOL}`,
             }, {
                 id: 12,
                 title: 'All',
-                link: '/works',
+                link: `/works?work=${WorkCategory.ALL}`,
             },
         ]
     }, {

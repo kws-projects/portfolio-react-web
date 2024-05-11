@@ -1,16 +1,20 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from 'react-router-dom'
 import useWorkCategory from "../../hooks/useWorkCategory"
 import { WorkCategory, works } from "../../data/works"
 
 type WorkShowcaseProps = {
-    defaultCategory?: WorkCategory[]
+    defaultCategory?: WorkCategory
 }
 
-const WorkShowcase = ({ defaultCategory = [WorkCategory.ALL] }: WorkShowcaseProps) => {
+const WorkShowcase = ({ defaultCategory = WorkCategory.ALL }: WorkShowcaseProps) => {
     const workCategories = useWorkCategory()
 
-    const [ selectedCategories, setSelectedCategories ] = useState<WorkCategory[] | null>(defaultCategory)
+    const [ selectedCategories, setSelectedCategories ] = useState<WorkCategory[] | null>([defaultCategory])
+
+    useEffect(() => {
+        setSelectedCategories([defaultCategory])
+    }, [defaultCategory])
 
     const handleSelectCategory = (category:WorkCategory) => {
         const numOfSelectedCategories = selectedCategories ? selectedCategories.length+1 : null
