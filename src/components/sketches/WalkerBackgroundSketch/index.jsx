@@ -57,7 +57,7 @@ const WalkerBackgroundSketch = () => {
             s.draw = () => {
                 init()
 
-                s.background(249, 250, 252)
+                s.clear()
                 walkers.forEach(walker => {
                     walker.show();
                     walker.update();
