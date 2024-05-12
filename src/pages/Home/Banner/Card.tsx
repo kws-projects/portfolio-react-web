@@ -1,15 +1,14 @@
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import Tab from './Tab'
-import ContactPortal from '../../../components/ContactPortal'
 import { TimelineList } from '../../../components/ui/Timeline'
 import { workExperiences } from '../../../data/workExperience'
+import AboutSelf from './tabs/AboutSelf'
+import SkillShowcase from './tabs/SkillShowcase'
+import FeaturedWorks from './tabs/FeaturedWorks'
 
 const tabOptions = ['About', 'Skills', 'Featured Works', 'Experience']
 
 const Card = () => {
-    const { t } = useTranslation()
-
     const [ currentTab, setCurrentTab ] = useState(tabOptions[0])
 
     const handleTabSwitch = (tab:string) => {
@@ -31,22 +30,17 @@ const Card = () => {
 
             {/* Tab - about */}
             <Tab tab={tabOptions[0]} currentTab={currentTab} className="flex flex-col-reverse items-center md:flex-row" >
-                <div className="flex flex-col justify-start md:items-start ml:-2 md:ml-6 md:mr-16 space-y-7">
-                    <p className="text-center md:text-left">{t('home_banner_about_introduction')}</p>
-                    <ContactPortal /> 
-                </div>
-                
-                <img src="/assets/images/profile-image.jpeg" alt="Profile" className="my-auto bg-cover w-32 h-32 mb-8 md:mb-auto md:w-44 md:h-44 md:mr-6 rounded-full" />
+                <AboutSelf />
             </Tab>
 
             {/* Tab - skills */}
             <Tab tab={tabOptions[1]} currentTab={currentTab} className="w-full p-0" >
-                Skills
+                <SkillShowcase />
             </Tab>
                 
             {/* Tab - featured Works */}
             <Tab tab={tabOptions[2]} currentTab={currentTab} >
-                Featured Works
+                <FeaturedWorks />
             </Tab>
 
             {/* Tab - experience */}
