@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next'
 import Tab from './Tab'
 import ContactPortal from '../../../components/ContactPortal'
 import HomeBannerSkillsSketch from '../../../components/sketches/HomeBannerSkillsSketch'
+import { TimelineList } from '../../../components/ui/Timeline'
+import { workExperiences } from '../../../data/workExperience'
 
 const tabOptions = ['About', 'Skills', 'Featured Works', 'Experience']
 
@@ -50,7 +52,7 @@ const Card = () => {
 
             {/* Experience */}
             <Tab tab={tabOptions[3]} currentTab={currentTab} >
-                Experience
+                <TimelineList items={workExperiences} />
             </Tab>
         </div>
     )

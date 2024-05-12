@@ -4,10 +4,10 @@ import useScrollToTop from '../../hooks/useScrollToTop'
 import PageTitleSketch from '../../components/sketches/PageTitleSketch'
 import Section from '../../components/ui/Section'
 import SelfIntro from './SelfIntro'
-import { TimelineList, TimelineItem } from '../../components/ui/Timeline'
-import CV from './CV'
+import { TimelineList } from '../../components/ui/Timeline'
 import { workExperiences } from '../../data/workExperience'
-import { compareDate } from '../../utils/common'
+import { certifications } from '../../data/certifications'
+import { education } from '../../data/education'
 
 const About = () => {
     const { t } = useTranslation()
@@ -16,8 +16,6 @@ const About = () => {
 
     return (
         <main>
-            {/* <CV /> */}
-
             <PageTitleSketch title={t('about_title')} />
 
             <Section showBreakline={false} >
@@ -28,34 +26,18 @@ const About = () => {
                 title={t('about_skills_title')} 
                 description={t('about_skills_description')} 
             >
-                <TimelineList >
-                    {workExperiences.sort((a, b) => {
-                        // if from date exists
-                        if (a.fromDate && b.fromDate) return compareDate(a.fromDate, b.fromDate)
-                        // is custom date is used
-                        if (a.customDate && b.customDate) return compareDate(a.customDate, b.customDate)
-                        // if from date not exists
-                        return 0
-                    }).map(experience => (
-                        <TimelineItem 
-                            key={experience.id} 
-                            item={experience}
-                        />  
-                    ))}
-                    
-                </TimelineList>
             </Section>
 
             <Section title={t('about_cv_work_experience_title')} >
-
+                <TimelineList items={workExperiences} className="px-24" />
             </Section>
 
             <Section title={t('about_cv_certifications_title')} >
-
+                <TimelineList items={certifications} className="px-24" />
             </Section>
 
             <Section title={t('about_cv_education_title')} >   
-
+                <TimelineList items={education} className="px-24" />
             </Section>
         </main>
     )
