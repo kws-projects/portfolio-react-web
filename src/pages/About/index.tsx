@@ -4,6 +4,7 @@ import useScrollToTop from '../../hooks/useScrollToTop'
 import PageTitleSketch from '../../components/sketches/PageTitleSketch'
 import Section from '../../components/ui/Section'
 import SelfIntro from './SelfIntro'
+import SkillShowcase from '../../components/SkillShowcase'
 import { TimelineList } from '../../components/ui/Timeline'
 import { workExperiences } from '../../data/workExperience'
 import { certifications } from '../../data/certifications'
@@ -26,6 +27,7 @@ const About = () => {
                 title={t('about_skills_title')} 
                 description={t('about_skills_description')} 
             >
+                <SkillShowcase />
             </Section>
 
             <Section title={t('about_cv_work_experience_title')} >
