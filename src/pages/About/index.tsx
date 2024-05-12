@@ -6,6 +6,8 @@ import Section from '../../components/ui/Section'
 import SelfIntro from './SelfIntro'
 import { TimelineList, TimelineItem } from '../../components/ui/Timeline'
 import CV from './CV'
+import { workExperiences } from '../../data/workExperience'
+import { compareDate } from '../../utils/common'
 
 const About = () => {
     const { t } = useTranslation()
@@ -27,7 +29,20 @@ const About = () => {
                 description={t('about_skills_description')} 
             >
                 <TimelineList >
-                    <TimelineItem />
+                    {workExperiences.sort((a, b) => {
+                        // if from date exists
+                        if (a.fromDate && b.fromDate) return compareDate(a.fromDate, b.fromDate)
+                        // is custom date is used
+                        if (a.customDate && b.customDate) return compareDate(a.customDate, b.customDate)
+                        // if from date not exists
+                        return 0
+                    }).map(experience => (
+                        <TimelineItem 
+                            key={experience.id} 
+                            item={experience}
+                        />  
+                    ))}
+                    
                 </TimelineList>
             </Section>
 
