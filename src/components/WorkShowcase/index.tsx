@@ -76,7 +76,7 @@ const WorkShowcase = ({ defaultCategory = WorkCategory.ALL }: WorkShowcaseProps)
                         <Link 
                             key={work.id}
                             to={work.url}
-                            className={'aspect-square rounded-lg shadow-custom bg-cover bg-no-repeat bg-center'}
+                            className={'aspect-square rounded-lg shadow-custom-neu bg-cover bg-no-repeat bg-center'}
                             style={{ backgroundImage: `url(${work.image[0]})`}}
                         >
                             <div className="group/card-mask flex flex-col justify-center items-center relative top-0 left-0 w-full h-full space-y-4 rounded-lg p-4 hover:bg-black hover:bg-opacity-50">
