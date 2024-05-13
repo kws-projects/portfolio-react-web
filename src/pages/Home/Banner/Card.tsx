@@ -9,7 +9,7 @@ import FeaturedWorks from './tabs/FeaturedWorks'
 const tabOptions = ['About', 'Skills', 'Featured Works', 'Experience']
 
 const Card = () => {
-    const [ currentTab, setCurrentTab ] = useState(tabOptions[0])
+    const [ currentTab, setCurrentTab ] = useState(tabOptions[2])
 
     const handleTabSwitch = (tab:string) => {
         setCurrentTab(tab)
@@ -40,7 +40,7 @@ const Card = () => {
             </Tab>
                 
             {/* Tab - featured Works */}
-            <Tab tab={tabOptions[2]} currentTab={currentTab} >
+            <Tab tab={tabOptions[2]} currentTab={currentTab} className="w-full" style={{ height: '-webkit-fill-available' }} >
                 <FeaturedWorks />
             </Tab>
 
