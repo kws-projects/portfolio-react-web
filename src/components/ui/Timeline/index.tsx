@@ -79,6 +79,10 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
                     {item.customDate &&
                         <p className="text-gray-500">{item.customDate}</p>
                     }
+
+                    {item.description &&
+                        <p className="text-gray-500 pt-2">{item.description}</p>
+                    }
                 </div>
             </div>
 
