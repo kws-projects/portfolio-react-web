@@ -64,11 +64,13 @@ export const headerNavItems: IHeaderNavItem[] = [
                 link: `/works?work=${WorkCategory.ALL}`,
             },
         ]
-    }, {
-        id: 13,
-        title: 'Blog',
-        link: '/blog',
-    }, {
+    }, 
+    // {
+    //     id: 13,
+    //     title: 'Blog',
+    //     link: '/blog',
+    // }, 
+    {
         id: 14,
         title: 'Contact',
         link: '/contact',
