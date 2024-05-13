@@ -10,7 +10,7 @@ const SelfIntro = () => {
             src="/assets/images/profile-image.jpeg" alt="Profile" />
 
             <div className="flex flex-col justify-start items-center md:items-start space-y-6 px-6 md:px-0">
-                <span className="text-2xl">{t('about_self_intro_heading')}</span>
+                <span className="text-2xl text-center md:text-left">{t('about_self_intro_heading')}</span>
                 <p className="text-center md:text-left">{t('about_self_intro_content')}</p>
                 <ContactPortal />
             </div>
