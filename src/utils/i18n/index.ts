@@ -14,7 +14,7 @@ i18n
     resources,
     lng: 'en',
     fallbackLng: 'en',
-    debug: true,
+    debug: false,
   })
 
 export default i18n
