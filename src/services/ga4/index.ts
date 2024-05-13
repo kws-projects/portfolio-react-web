@@ -7,7 +7,7 @@ export const trackPageview = (page: string) => {
     })
 }
 
-export const trackEvent = (category: string = 'User', action: string) => {
+export const trackEvent = (category: string, action: string) => {
     ReactGA.event({
         category: category,
         action: action
