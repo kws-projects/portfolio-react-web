@@ -31,15 +31,15 @@ const About = () => {
             </Section>
 
             <Section title={t('about_cv_work_experience_title')} >
-                <TimelineList items={workExperiences} className="px-4 sm:px-24" />
+                <TimelineList items={workExperiences} className="px-8 sm:px-24" />
             </Section>
 
             <Section title={t('about_cv_certifications_title')} >
-                <TimelineList items={certifications} className="px-4 sm:px-24" />
+                <TimelineList items={certifications} className="px-8 sm:px-24" />
             </Section>
 
             <Section title={t('about_cv_education_title')} >   
-                <TimelineList items={education} className="px-4 sm:px-24" />
+                <TimelineList items={education} className="px-8 sm:px-24" />
             </Section>
         </main>
     )
