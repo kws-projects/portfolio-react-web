@@ -58,7 +58,7 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
         <>
             <div className="flex items-center w-full space-x-8">
                 {item.image && 
-                    <img className="w-14 sm:w-20" src={item.image} alt="Company" />
+                    <img className="w-12 sm:w-20" src={item.image} alt="Company" />
                 }
 
                 <div>
@@ -96,7 +96,7 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
                         return 0
                     }).map(experience => (
                         <div className="flex items-center w-full space-x-8 mt-4 mb-4 pl-0 sm:pl-28" key={experience.id}>
-                            <div className="flex flex-col justify-start items-center w-14 sm:w-20 sm:w-6 h-full pt-2" >
+                            <div className="flex flex-col justify-start items-center w-12 sm:w-6 h-full pt-2" >
                                 <div className="flex rounded-full bg-gray-300" style={{ width: '5px', height: '5px' }} />
                                 <div className="bg-gray-300 h-full min-h-12" style={{ width: '1px' }} />
                             </div>
