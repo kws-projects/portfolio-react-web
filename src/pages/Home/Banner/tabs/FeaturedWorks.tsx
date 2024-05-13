@@ -18,7 +18,7 @@ const FeaturedWorks = () => {
                         />
                         
                         <div className="p-4">
-                            <p className="text-xl">{work.title}</p>
+                            <p className="text-lg font-medium">{work.title}</p>
                             <p className="pt-2">
                                 {work.stacks?.map((stack, i) => (
                                     <span 
