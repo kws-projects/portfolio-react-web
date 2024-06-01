@@ -13,7 +13,6 @@ export const education:ITimelineItem[] = [
         id: 1,
         title: 'UOW College',
         subTitle: 'Associate of Science in Creative and Interactive Media Production, Intermedia/Multimedia',
-        description: 'Associate of Science in Creative and Interactive Media Production, Intermedia/Multimedia',
         image: '/assets/images/education/uow.png', 
         fromDate: '2018-09-01T00:00:00+08:00',
         toDate: '2020-06-01T00:00:00+08:00'

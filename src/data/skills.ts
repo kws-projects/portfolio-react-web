@@ -22,6 +22,11 @@ export const skills: Skill[] = [
         category: 'Backend',
         image: '/assets/images/skills/js.png'
     }, {
+        id: 18,
+        title: 'TypeScript',
+        category: 'Backend',
+        image: '/assets/images/skills/typescript.png'
+    }, {
         id: 3,
         title: 'React',
         category: 'Frontend',
