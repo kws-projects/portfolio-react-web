@@ -23,9 +23,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "dev:start": "cp .env.development.local .env && react-scripts start",
+    "dev:test": "cp .env.development.local .env && react-scripts test",
+    "dev:build": "cp .env.development.local .env && eact-scripts build",
+    "dev:create-container": "cp .env.development.local .env && docker-compose --project-name portfolio up -d",
+    "prod:start": "cp .env.production.local .env && react-scripts start",
+    "prod:test": "cp .env.production.local .env && react-scripts test",
+    "prod:build": "cp .env.production.local .env && eact-scripts build",
+    "prod:create-container": "cp .env.production.local .env && docker-compose --project-name portfolio up -d",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
