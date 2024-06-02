@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  portfolio-react-web:
+  react-web:
     build: .
     container_name: portfolio-react-web-c
     ports:
