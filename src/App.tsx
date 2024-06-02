@@ -15,18 +15,18 @@ import NotFound from './pages/NotFound'
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Layout />} >
+      <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path='about' element={<About />} />
-        <Route path='works' element={<Works />} />
-        <Route path='blog'>
+        <Route path="about" element={<About />} />
+        <Route path="works" element={<Works />} />
+        <Route path="blog">
           <Route index element={<Blog />} />
-          <Route path=':postId' element={<BlogPost />} />
+          <Route path=":postId" element={<BlogPost />} />
         </Route>
-        <Route path='contact' element={<Contact />} />
-        <Route path='terms-and-conditions' element={<Terms />} />
-        <Route path='privacy-policy' element={<Privacy />} />
-        <Route path='/*' element={<NotFound />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="terms-and-conditions" element={<Terms />} />
+        <Route path="privacy-policy" element={<Privacy />} />
+        <Route path="/*" element={<NotFound />} />
       </Route>
     </Routes>
   )

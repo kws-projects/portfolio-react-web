@@ -3,18 +3,16 @@ import { initReactI18next } from 'react-i18next'
 import english from './en'
 
 const resources = {
-    en: {
-        translation: english,
-    },
+  en: {
+    translation: english,
+  },
 }
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources,
-    lng: 'en',
-    fallbackLng: 'en',
-    debug: false,
-  })
+i18n.use(initReactI18next).init({
+  resources,
+  lng: 'en',
+  fallbackLng: 'en',
+  debug: false,
+})
 
 export default i18n
