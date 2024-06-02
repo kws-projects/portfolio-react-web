@@ -1,9 +1,9 @@
 version: "3.8"
 services:
   react-web:
-    build: .
-    container_name: portfolio-react-web-c
+    image: ${DOCKER_REACT_WEB_REGISTRY}:${BUILD_VERSION_NO}
+    container_name: ${DOCKER_REACT_WEB_CONTAINER_NAME}
     ports:
-      - '80:3000'
+      - ${DOCKER_REACT_WEB_PORT_BINDING}
     stdin_open: true
     tty: true
