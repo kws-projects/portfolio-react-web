@@ -7,15 +7,13 @@ import ReactGA from 'react-ga4'
 
 ReactGA.initialize(process.env.REACT_APP_GA_MEASUREMENT_ID!)
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-)
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <React.StrictMode>
     <Router>
       <Routes>
-        <Route path='/*' element={<App />} />
+        <Route path="/*" element={<App />} />
       </Routes>
     </Router>
   </React.StrictMode>

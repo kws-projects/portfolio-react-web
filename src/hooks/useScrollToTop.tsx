@@ -1,15 +1,15 @@
-import { useEffect } from "react"
+import { useEffect } from 'react'
 
 const useScrollToTop = () => {
-    const scrollToTop = () => {
-        window.scrollTo(0, 0)
-    }
+  const scrollToTop = () => {
+    window.scrollTo(0, 0)
+  }
 
-    useEffect(() => {
-        scrollToTop()
-    })
+  useEffect(() => {
+    scrollToTop()
+  })
 
-    return scrollToTop
+  return scrollToTop
 }
 
 export default useScrollToTop

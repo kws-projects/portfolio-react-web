@@ -1,0 +1,6 @@
+# Ignore artifacts:
+build
+coverage
+docker-compose.yaml
+README.md
+public/index.html

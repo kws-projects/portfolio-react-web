@@ -1,36 +1,38 @@
-import { ITimelineItem } from "../components/ui/Timeline"
+import { ITimelineItem } from '../components/ui/Timeline'
 
-export const workExperiences:ITimelineItem[] = [
-    {
-        id: 0,
-        title: 'Deloitte Digital - Customer & Marketing - Consulting',
-        image: '/assets/images/workExperience/deloitte.png', 
+export const workExperiences: ITimelineItem[] = [
+  {
+    id: 0,
+    title: 'Deloitte Digital - Customer & Marketing - Consulting',
+    image: '/assets/images/workExperience/deloitte.png',
+    fromDate: '2022-06-01T00:00:00+08:00',
+    toDate: '2024-02-01T00:00:00+08:00',
+    subItems: [
+      {
+        id: 1,
+        title: 'Intern',
         fromDate: '2022-06-01T00:00:00+08:00',
+        toDate: '2022-12-01T00:00:00+08:00',
+      },
+      {
+        id: 2,
+        title: 'Analyst',
+        fromDate: '2023-01-01T00:00:00+08:00',
         toDate: '2024-02-01T00:00:00+08:00',
-        subItems: [
-            {
-                id: 1,
-                title: 'Intern',
-                fromDate: '2022-06-01T00:00:00+08:00',
-                toDate: '2022-12-01T00:00:00+08:00',
-            }, {
-                id: 2,
-                title: 'Analyst',
-                fromDate: '2023-01-01T00:00:00+08:00',
-                toDate: '2024-02-01T00:00:00+08:00',
-            }
-        ]
-    }, {
-        id: 3,
-        title: 'Lalamove',
-        image: '/assets/images/workExperience/lalamove.png',
-        fromDate: '2024-05-01T00:00:00+08:00',
-        subItems: [
-            {
-                id: 4,
-                title: 'Fullstack Software Engineer',
-                fromDate: '2024-05-16T00:00:00+08:00',
-            },
-        ]
-    },
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: 'Lalamove',
+    image: '/assets/images/workExperience/lalamove.png',
+    fromDate: '2024-05-01T00:00:00+08:00',
+    subItems: [
+      {
+        id: 4,
+        title: 'Fullstack Software Engineer',
+        fromDate: '2024-05-16T00:00:00+08:00',
+      },
+    ],
+  },
 ]

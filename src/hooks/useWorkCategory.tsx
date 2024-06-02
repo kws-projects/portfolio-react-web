@@ -1,27 +1,26 @@
-import { useEffect, useState } from "react"
-import { WorkCategory, works } from "../data/works"
+import { useEffect, useState } from 'react'
+import { WorkCategory, works } from '../data/works'
 
 const useWorkCategory = () => {
-    const [ workCategories, setWorkCategories ] = useState<WorkCategory[] | null>(null)
-    
-    useEffect(() => {
-        const filterUniqueCategories = () => {
-            const uniqueCategories = works.map(work => work.category)
-                .flat()
-                .sort()
-                .filter((currVal, i, arr) => (
-                        i === 0 
-                        ? true
-                        : currVal !== arr[i-1]
-                    ))
+  const [workCategories, setWorkCategories] = useState<WorkCategory[] | null>(
+    null
+  )
 
-            setWorkCategories([WorkCategory.ALL, ...uniqueCategories])
-        }
+  useEffect(() => {
+    const filterUniqueCategories = () => {
+      const uniqueCategories = works
+        .map(work => work.category)
+        .flat()
+        .sort()
+        .filter((currVal, i, arr) => (i === 0 ? true : currVal !== arr[i - 1]))
 
-        filterUniqueCategories()
-    }, [])
+      setWorkCategories([WorkCategory.ALL, ...uniqueCategories])
+    }
 
-    return workCategories
+    filterUniqueCategories()
+  }, [])
+
+  return workCategories
 }
 
 export default useWorkCategory
