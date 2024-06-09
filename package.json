@@ -23,14 +23,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev:start": "cp .env.development.local .env && react-scripts start",
-    "dev:test": "cp .env.development.local .env && react-scripts test",
-    "dev:build": "cp .env.development.local .env && eact-scripts build",
-    "dev:create-container": "cp .env.development.local .env && docker-compose --project-name portfolio up -d",
-    "prod:start": "cp .env.production.local .env && react-scripts start",
-    "prod:test": "cp .env.production.local .env && react-scripts test",
-    "prod:build": "cp .env.production.local .env && eact-scripts build",
-    "prod:create-container": "cp .env.production.local .env && docker-compose --project-name portfolio up -d",
+    "start:dev": "cp .env.development.local .env && react-scripts start",
+    "start:prod": "cp .env.production.local .env && react-scripts start",
+    "test:dev": "cp .env.development.local .env && react-scripts test",
+    "test:prod": "cp .env.production.local .env && react-scripts test",
+    "build:dev": "cp .env.development.local .env && eact-scripts build",
+    "build:prod": "cp .env.production.local .env && eact-scripts build",
+    "create-container:dev": "cp .env.development.local .env && docker-compose --project-name portfolio up -d",
+    "create-container:prod": "cp .env.production.local .env && docker-compose --project-name portfolio up -d",
     "prettier": "npx prettier . --write",
     "eject": "react-scripts eject"
   },
