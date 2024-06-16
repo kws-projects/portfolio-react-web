@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@sentry/cli": "^2.32.1",
     "@sentry/react": "^8.9.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -29,12 +30,13 @@
     "test:dev": "cp .env.development.local .env && react-scripts test",
     "test:prod": "cp .env.production.local .env && react-scripts test",
     "build:dev": "cp .env.development.local .env && react-scripts build",
-    "build:prod": "cp .env.production.local .env && react-scripts build",
+    "build:prod": "cp .env.production.local .env && react-scripts build && npm run sentry:sourcemaps",
     "create-container:dev": "cp .env.development.local .env && docker-compose --project-name portfolio up -d",
     "create-container:prod": "cp .env.production.local .env && docker-compose --project-name portfolio up -d",
     "upload-source-maps": "npx @sentry/wizard@latest -i sourcemaps",
     "prettier": "npx prettier . --write",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org kenneth-wong --project portfolio-react-web ./build && sentry-cli sourcemaps upload --org kenneth-wong --project portfolio-react-web ./build"
   },
   "eslintConfig": {
     "extends": [

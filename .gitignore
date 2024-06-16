@@ -153,3 +153,5 @@ yarn-debug.log*
 yarn-error.log*
 
 public/googlebb811f3a05618172.html
+# Sentry Config File
+.sentryclirc
