@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   react-web:
     image: ${DOCKER_REACT_WEB_REGISTRY}:${BUILD_VERSION_NO}
@@ -6,4 +5,5 @@ services:
     ports:
       - ${DOCKER_REACT_WEB_PORT_BINDING}
     stdin_open: true
+    restart: always
     tty: true
