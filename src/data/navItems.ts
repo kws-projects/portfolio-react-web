@@ -144,7 +144,7 @@ export const footerNavItems: IFooterNavItems[] = [
       {
         id: 8,
         title: 'Email',
-        link: '/works?work=mobile',
+        link: '/contact',
       },
     ],
   },
