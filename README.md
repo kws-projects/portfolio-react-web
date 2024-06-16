@@ -11,13 +11,14 @@ In case if you want to run this project on your local machine, follow the instru
 
 1. Make sure you have **node.js** installed on your machine, with **version >= 20.11.1**.
 
-2. Clone this repository using git clone command:
+2. Clone this repository using git clone command:<br>
    ```git clone https://github.com/kwwong1022/portfolio-react-web.git```
    
-4. Open the project repository using any code editor you like. From the project root directory, create environment variable files - **i) .env.development.local** **ii) .env.production.local**
+4. Open the project repository using any code editor you like.
+   From the project root directory, create environment variable files - **i) .env.development.local** **ii) .env.production.local**<br>
    ```touch .env.development.local && touch .env.production.local```
    
-6. Add content below to the .env.development.local & touch .env.production.local files:
+5. Add content below to the .env.development.local & touch .env.production.local files:
     ```
     # .env.development.local
     ENV="DEV"
@@ -40,13 +41,13 @@ In case if you want to run this project on your local machine, follow the instru
     DOCKER_REACT_WEB_PORT_BINDING="80:3000"                   # replace with your own
     ```
 
-7. Create .env file from the existing **.env.development.local** or **.env.production.local**
+6. Create .env file from the existing **.env.development.local** or **.env.production.local**<br>
    ```cp .env.development.local .env```
 
-8. Install the required packages from **package.json**:
+7. Install the required packages from **package.json**:<br>
    ```npm install```
 
-9. After installing all required packages, run command below to host website locally:
+8. After installing all required packages, run command below to host website locally:<br>
    ```npm run start:dev```
    
    If you don't have **REACT_APP_GA_MEADUREMENT_ID** or **REACT_APP_SENTRY_DSN** included, you may encounter error while running this command.
