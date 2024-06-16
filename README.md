@@ -1,51 +1,62 @@
 # Getting Started with Create React App
 
 This is a web revamp project of my [Previous Portfolio](https://github.com/kwwong1022/kw-portfolio-web) created using ejs. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-<br>
-<br>
 
-## Available Scripts
+Website available on: [https://www.kwwdev.com/](https://www.kwwdev.com/)
 
-In the project directory, you can run:
 
-### `npm start`
+## Project Setup
+In case if you want to run this project on your local machine, follow the instructions below:
 
-Runs the app in the development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Make sure you have node.js installed on your machine, with version >= 20.11.1.
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+2. Clone this repository using git clone command:
+   ``git clone https://github.com/kwwong1022/portfolio-react-web.git``
 
-### `npm test`
+3. Open the project repository using any code editor you like. From the project root directory, create environment variable files - i) .env.development.local ii) .env.production.local
+   ``touch .env.development.local && touch .env.production.local``
 
-Launches the test runner in the interactive watch mode.
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. Add content below to the .env.development.local & touch .env.production.local files:
+   1. .env.development.local
+   ``
+   # Project
+   ENV="DEV"
+   BUILD_VERSION_NO="x.x.x"                                  # for pulling docker image
+  
+   # React App
+   REACT_APP_GA_MEASUREMENT_ID="G-XXXXXXXXXX"                # for GA tracker, remove it if you don't have it
+   REACT_APP_SENTRY_DSN="https://xxxxxxxxxx"                 # for sentry monitoring, remove it if you don't have it
+  
+   # Docker
+   DOCKER_REACT_WEB_REGISTRY="My React Web Registry"         # replace with your own
+   DOCKER_REACT_WEB_CONTAINER_NAME="my-react-web-container"  # replace with your own
+   DOCKER_REACT_WEB_PORT_BINDING="80:3000"                   # replace with your own
+   ``
 
-### `npm run build`
+   2. .env.production.local
+   ``
+   # Project
+   ENV="PROD"
+   BUILD_VERSION_NO="x.x.x"                                  # for pulling docker image
+  
+   # React App
+   REACT_APP_GA_MEASUREMENT_ID="G-XXXXXXXXXX"                # for GA tracker, remove it if you don't have it
+   REACT_APP_SENTRY_DSN="https://xxxxxxxxxx"                 # for sentry monitoring, remove it if you don't have it
+  
+   # Docker
+   DOCKER_REACT_WEB_REGISTRY="My React Web Registry"         # replace with your own
+   DOCKER_REACT_WEB_CONTAINER_NAME="my-react-web-container"  # replace with your own
+   DOCKER_REACT_WEB_PORT_BINDING="80:3000"                   # replace with your own
+   ``
+  
+7. Create .env file from the existing .env.development.local or .env.production.local
+   ``cp .env.development.local .env``
 
-Builds the app for production to the `build` folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
+8. Install the required packages from package.json:
+   ``npm install``
 
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
+9. After installing all required packages, run command below to host website locally:
+   ``npm run start:dev``
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-<br>
-<br>
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
+   If you don't have REACT_APP_GA_MEADUREMENT_ID or REACT_APP_SENTRY_DSN included, you may encounter error while running this command.
+   If this happened, open src/index.tsx then comment out both ReactGA.initialize() and Sentry.init() functions.
