@@ -117,22 +117,22 @@ export const footerNavItems: IFooterNavItems[] = [
       {
         id: 3,
         title: 'Mobile',
-        link: '/works?work=mobile',
+        link: `/works?work=${WorkCategory.MOBILE}`,
       },
       {
         id: 4,
         title: 'Website',
-        link: '/works?work=website',
+        link: `/works?work=${WorkCategory.WEBSITE}`,
       },
-      {
-        id: 5,
-        title: 'Artwork',
-        link: '/works?work=graphic,creative-coding,3d-modelling,drawing',
-      },
+      // {
+      //   id: 5,
+      //   title: 'Artwork',
+      //   link: '/works?work=graphic,creative-coding,3d-modelling,drawing',
+      // },
       {
         id: 6,
         title: 'All',
-        link: '/works',
+        link: `/works?work=${WorkCategory.ALL}`,
       },
     ],
   },
