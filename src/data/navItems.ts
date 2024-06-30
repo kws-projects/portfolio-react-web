@@ -75,11 +75,11 @@ export const headerNavItems: IHeaderNavItem[] = [
       },
     ],
   },
-  // {
-  //     id: 13,
-  //     title: 'Blog',
-  //     link: '/blog',
-  // },
+  {
+      id: 13,
+      title: 'Blog',
+      link: '/blog',
+  },
   {
     id: 14,
     title: 'Contact',
@@ -124,11 +124,6 @@ export const footerNavItems: IFooterNavItems[] = [
         title: 'Website',
         link: `/works?work=${WorkCategory.WEBSITE}`,
       },
-      // {
-      //   id: 5,
-      //   title: 'Artwork',
-      //   link: '/works?work=graphic,creative-coding,3d-modelling,drawing',
-      // },
       {
         id: 6,
         title: 'All',
