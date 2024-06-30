@@ -77,8 +77,8 @@ export const headerNavItems: IHeaderNavItem[] = [
   },
   {
       id: 13,
-      title: 'Blog',
-      link: '/blog',
+      title: 'Blogs',
+      link: '/blogs',
   },
   {
     id: 14,
