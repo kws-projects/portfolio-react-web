@@ -52,8 +52,8 @@ const labelList = {
   works_document_title: `Works | Kenneth Wong`,
 
   // Blog
-  blog_title: `Blog`,
-  blog_document_title: `Blog | Kenneth Wong`,
+  blog_title: `Blogs`,
+  blog_document_title: `Blogs | Kenneth Wong`,
   blog_popular_posts: `Popular Posts`,
   blog_recent_posts: `Recent Posts`,
 
