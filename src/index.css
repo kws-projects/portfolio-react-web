@@ -114,3 +114,51 @@ main {
 p {
   white-space: pre-line;
 }
+
+.md {
+  line-height: initial;
+  white-space: pre-wrap;
+}
+
+.md h1 {
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.md h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.md h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.md h4 {
+  display: block;
+  font-size: 1em;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.md pre {
+  padding: 1.5rem;
+  border-radius: .5rem;
+  overflow-x: scroll;
+  background-color: rgb(227, 227, 227);
+}
