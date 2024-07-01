@@ -21,7 +21,7 @@ function App() {
         <Route path="works" element={<Works />} />
         <Route path="blogs">
           <Route index element={<Blogs />} />
-          <Route path=":postId" element={<BlogPost />} />
+          <Route path=":blogId" element={<BlogPost />} />
         </Route>
         <Route path="contact" element={<Contact />} />
         <Route path="terms-and-conditions" element={<Terms />} />

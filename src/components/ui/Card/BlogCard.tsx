@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import { BlogType } from '../../../types/blog'
+import { Blog } from '../../../types/blog'
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 
 type BlogCardProps = {
-    data: BlogType,
+    data: Blog,
 }
 
 const BlogCard = ({ data }: BlogCardProps) => {
