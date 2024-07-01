@@ -3,6 +3,7 @@ import { BlogNode, BlogNodeType } from "../../../types/blog"
 import { blogsAPI } from "../../../services/portfolioSvc/blogsAPI"
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import DOMPurify from 'dompurify'
 
 type BlogNodeBlockProps = {
     data: BlogNode
@@ -25,7 +26,7 @@ const BlogNodeBlock = ({ data }: BlogNodeBlockProps) => {
                     : null}
 
                     {data.type === BlogNodeType.HTML ?
-                        <div dangerouslySetInnerHTML={{  __html: node }} />
+                        <div dangerouslySetInnerHTML={{  __html: DOMPurify.sanitize(node) }} />
                     : null}
 
                     {data.type === BlogNodeType.Image ?
