@@ -21,7 +21,7 @@ const BlogPost = () => {
       {isErrorBlog ? <></> : null}
       
       {!isLoadingBlog && !isErrorBlog && blog?.nodes.length >= 1 ?
-        <div className="self-center w-full max-w-screen-lg mb-24 px-12 xl:px-0">
+        <div className="self-center w-full max-w-screen-lg mb-24 px-6 md:px-12 xl:px-0">
           {blog.nodes.map((node: BlogNode) => (
             <BlogNodeBlock
               key={node.id}
