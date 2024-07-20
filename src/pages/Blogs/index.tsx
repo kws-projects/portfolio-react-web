@@ -17,7 +17,7 @@ const Blogs = () => {
   })
 
   return (
-    <main>
+    <main className='pb-12'>
       <PageTitleSketch title={t('blog_title')} />
 
       <BlogGrid

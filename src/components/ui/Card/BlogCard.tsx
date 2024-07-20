@@ -22,13 +22,13 @@ const BlogCard = ({ data }: BlogCardProps) => {
                     className='h-1/2 bg-cover bg-center rounded-t-lg bg-gray-200'
                     style={{ backgroundImage: `url(${process.env.REACT_APP_PORTFOLIO_API_URL}/v1/blogs/${data.id}/thumbnail)` }}
                 />
-                <div className='flex flex-col justify-between h-1/2 p-6'>
+                <div className='flex flex-col justify-between h-1/2 p-4 md:p-6'>
                     <div>
-                        <h1 className='text-xl pb-1' >{data.titleEn}</h1>
+                        <h1 className='text-base md:text-xl pb-1' >{data.titleEn}</h1>
                         <p className='hidden md:flex text-sm text-gray-500'>{data.descriptionEn}</p>
                     </div>
                     
-                    <span className='text-gray-500 text-sm'>{dayjs(data.createdAt).format('LL')}</span>
+                    <span className='text-gray-500 hidden md:flex text-sm'>{dayjs(data.createdAt).format('LL')}</span>
                 </div>
             </div>
         </Link>
