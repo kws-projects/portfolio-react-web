@@ -11,18 +11,19 @@ const Blogs = () => {
   useScrollToTop()
   usePageTitle(t('blog_document_title'))
 
-  const { data: blogs, isLoading: isLoadingBlogs } = useQuery({
+  const { data: blogs, isLoading: isLoadingBlogs, isError: isErrorBlogs } = useQuery({
     queryKey: ['blogs'],
     queryFn: blogsAPI.getBlogs,
   })
 
   return (
-    <main>
+    <main className='pb-12'>
       <PageTitleSketch title={t('blog_title')} />
 
-      <BlogGrid 
-        data={blogs} 
-        isLoading={isLoadingBlogs} 
+      <BlogGrid
+        data={blogs}
+        isLoading={isLoadingBlogs}
+        isError={isErrorBlogs}
       />
     </main>
   )
