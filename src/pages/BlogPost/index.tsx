@@ -2,6 +2,8 @@ import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@tanstack/react-query'
+import usePageTitle from '../../hooks/usePageTitle'
+import useScrollToTop from '../../hooks/useScrollToTop'
 import PageTitleSketch from '../../components/sketches/PageTitleSketch'
 import BlogNodeBlock from '../../components/ui/Block/BlogNodeBlock'
 import { blogsAPI } from '../../services/portfolioSvc/blogsAPI'
@@ -9,6 +11,9 @@ import { BlogNode } from '../../types/blog'
 
 const BlogPost = () => {
   const { t } = useTranslation()
+
+  useScrollToTop()
+  usePageTitle(t('blog_post_document_title'))
 
   const { blogId } = useParams()
 
@@ -24,16 +29,26 @@ const BlogPost = () => {
   return (
     <main>
       <Helmet>
-        <title>{blog?.blog?.titleEn || t('blog_post_not_found_title')}</title>
+        <title>
+          {isLoadingBlog
+            ? 'Loading...'
+            : blog?.blog?.titleEn || t('blog_post_not_found_title')}
+        </title>
         <meta
           name="description"
           content={
-            blog?.blog?.titleEn || t('error_not_found_document_description')
+            isLoadingBlog
+              ? 'Loading...'
+              : blog?.blog?.titleEn || t('error_not_found_document_description')
           }
         />
       </Helmet>
       <PageTitleSketch
-        title={blog?.blog?.titleEn || t('error_not_found_document_description')}
+        title={
+          isLoadingBlog
+            ? 'Loading...'
+            : blog?.blog?.titleEn || t('error_not_found_document_description')
+        }
       />
 
       {isLoadingBlog ? <></> : null}

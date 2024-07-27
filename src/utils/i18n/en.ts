@@ -63,6 +63,7 @@ const labelList = {
   blog_recent_posts: `Recent Posts`,
 
   // Blog Post
+  blog_post_document_title: `Blog Post | Kenneth Wong`,
   blog_post_not_found_title: `Blog Post Not Found | Kenneth Wong`,
 
   // Contact
