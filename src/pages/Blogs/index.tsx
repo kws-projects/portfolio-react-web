@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
 import usePageTitle from '../../hooks/usePageTitle'
 import useScrollToTop from '../../hooks/useScrollToTop'
@@ -8,6 +9,7 @@ import { blogsAPI } from '../../services/portfolioSvc/blogsAPI'
 
 const Blogs = () => {
   const { t } = useTranslation()
+
   useScrollToTop()
   usePageTitle(t('blog_document_title'))
 
@@ -18,8 +20,11 @@ const Blogs = () => {
 
   return (
     <main className='pb-12'>
+      <Helmet>
+        <title>{t('blog_document_title')}</title>
+        <meta name="description" content={t('blog_document_description')} />
+      </Helmet>
       <PageTitleSketch title={t('blog_title')} />
-
       <BlogGrid
         data={blogs}
         isLoading={isLoadingBlogs}

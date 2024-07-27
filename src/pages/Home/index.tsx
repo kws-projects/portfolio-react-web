@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
 import usePageTitle from '../../hooks/usePageTitle'
 import useScrollToTop from '../../hooks/useScrollToTop'
@@ -7,13 +8,17 @@ import WorkShowcase from '../../components/WorkShowcase'
 
 const Home = () => {
   const { t } = useTranslation()
+
   useScrollToTop()
   usePageTitle(t('home_document_title'))
 
   return (
     <main>
+      <Helmet>
+        <title>{t('home_document_title')}</title>
+        <meta name="description" content={t('home_document_description')} />
+      </Helmet>
       <Banner />
-
       <Section
         title={t('home_featured_works_title')}
         description={t('home_featured_works_introduction')}
