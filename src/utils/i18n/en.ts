@@ -1,10 +1,12 @@
 const labelList = {
   // Website Info
   website_name: `Kenneth Wong`,
+  website_description: `Portfolio website designed and created by Kenneth Wong. © 2024 Kenneth Wong. All Right Reserved.`,
   website_attribution: `Website designed and created by Kenneth Wong.\n© 2024 Kenneth Wong. All Right Reserved.`,
 
   // Home
   home_document_title: `Home | Kenneth Wong`,
+  home_document_description: `Welcome to Kenneth's personal portfolio website, highlighting his dedication to full-stack development and expertise in mainstream frameworks.`,
   home_banner_greetings: `Hello, I'm Kenneth Wong\nFullstack Software Engineer`,
   home_banner_about_title: `About`,
   home_banner_about_introduction: `Kenneth is dedicated to his pursuits in front-end development and has learned various mainstream frameworks implemented them into projects during his studies.\n\nKenneth has also actively contributed to the development of enterprise companies, leveraging his expertise to enhance the app's functionality and user experience.`,
@@ -18,6 +20,7 @@ const labelList = {
   // About
   about_title: `About`,
   about_document_title: `About | Kenneth Wong`,
+  about_document_description: `Learn more about Kenneth, his journey in development, experience and educations.`,
   about_banner_description: `Background, Skills, Education`,
   about_self_intro_heading: `Hello! I am Kenneth Wong`,
   about_self_intro_content: `Kenneth is dedicated to his pursuits in front-end development and has learned various mainstream frameworks implemented them into projects during his studies.\n\nKenneth has also actively contributed to the development of enterprise companies, leveraging his expertise to enhance the app's functionality and user experience.`,
@@ -50,16 +53,23 @@ const labelList = {
 
   // Works
   works_document_title: `Works | Kenneth Wong`,
+  works_document_description: `Explore Kenneth's projects showcasing his skills and expertise.`,
 
   // Blog
   blog_title: `Blogs`,
   blog_document_title: `Blogs | Kenneth Wong`,
+  blog_document_description: `Read Kenneth's insights and experiences in development and his contributions to projects.`,
   blog_popular_posts: `Popular Posts`,
   blog_recent_posts: `Recent Posts`,
+
+  // Blog Post
+  blog_post_document_title: `Blog Post | Kenneth Wong`,
+  blog_post_not_found_title: `Blog Post Not Found | Kenneth Wong`,
 
   // Contact
   contact_title: `Contact`,
   contact_document_title: `Contact | Kenneth Wong`,
+  contact_document_description: `Get in touch with Kenneth for collaborations, inquiries, or to discuss enhancing your project's functionality and user experience.`,
   contact_tel: `Tel: (+852) 9347 8968`,
   contact_email: `Email: kaifwong1022@gmail.com`,
 
@@ -67,13 +77,17 @@ const labelList = {
   terms_title_short: `Terms`,
   terms_title_full: `Terms and Conditions`,
   terms_document_title: `Terms and Conditions | Kenneth Wong`,
+  terms_document_description: `Terms and conditions outline the rules and regulations for the use of Kenneth Wong's Website, located at https://www.kwwdev.com/.`,
 
   // Privacy Policy
   privacy_title: `Privacy Policy`,
   privacy_document_title: `Privacy Policy | Kenneth Wong`,
+  privacy_document_description: `Privacy Policy document contains types of information that is collected and recorded by Kenneth Wong and how we use it.`,
 
   // Error
   error_not_found_document_title: `Page Not Found | Kenneth Wong`,
+  error_not_found_document_description: `404 Page Not Found`,
+  
 }
 
 export default labelList

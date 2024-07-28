@@ -7,7 +7,7 @@ export const education: ITimelineItem[] = [
     subTitle:
       'Bechelor of Arts and Science in New Media (BAS), Intermedia/Multimedia',
     description: `GPA 3.7, First class honours\nWith awards dean's list (semester B 2020 - 2021, semester A 2021 - 2022)`,
-    image: '/assets/images/education/cityu.png',
+    image: '/assets/images/education/cityu.webp',
     fromDate: '2020-09-01T00:00:00+08:00',
     toDate: '2022-10-01T00:00:00+08:00',
   },
@@ -16,7 +16,7 @@ export const education: ITimelineItem[] = [
     title: 'UOW College',
     subTitle:
       'Associate of Science in Creative and Interactive Media Production, Intermedia/Multimedia',
-    image: '/assets/images/education/uow.png',
+    image: '/assets/images/education/uow.webp',
     fromDate: '2018-09-01T00:00:00+08:00',
     toDate: '2020-06-01T00:00:00+08:00',
   },

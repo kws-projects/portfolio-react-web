@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
 import usePageTitle from '../../hooks/usePageTitle'
 import useScrollToTop from '../../hooks/useScrollToTop'
@@ -6,13 +7,18 @@ import Section from '../../components/ui/Section'
 
 const Terms = () => {
   const { t } = useTranslation()
+
   useScrollToTop()
   usePageTitle(t('terms_document_title'))
 
   return (
     <main>
+      <Helmet>
+        <title>{t('terms_document_title')}</title>
+        <meta name="description" content={t('terms_document_description')} />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <PageTitleSketch title={t('terms_title_full')} />
-
       <Section className="px-8 md:px-0 pt-4 md:pt-12" showBreakline={false}>
         <div>
           <h2>
@@ -20,7 +26,7 @@ const Terms = () => {
           </h2>
           <p>
             These terms and conditions outline the rules and regulations for the
-            use of Kenneth Wong's Website, located at https://kwwdev.com/.
+            use of Kenneth Wong's Website, located at https://www.kwwdev.com/.
           </p>
           <p>
             By accessing this website we assume you accept these terms and
