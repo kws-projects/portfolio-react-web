@@ -74,14 +74,14 @@ const WorkShowcase = ({
       <nav className="w-full">
         <ul className="flex overflow-x-scroll no-scrollbar space-x-4 px-6 md:px-1 py-1">
           {workCategories?.map(workCategory => (
-            <span
+            <li
               key={workCategory}
               className={`px-4 py-1 rounded-md bg-gray-100 shadow-custom-sm text-sm cursor-pointer whitespace-nowrap 
                                 ${selectedCategories?.includes(workCategory) ? 'bg-gray-800 text-gray-100' : 'hover:bg-gray-200'}`}
               onClick={() => handleSelectCategory(workCategory)}
             >
               {workCategory}
-            </span>
+            </li>
           ))}
         </ul>
       </nav>
