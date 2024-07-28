@@ -14,7 +14,7 @@ const AboutSelf = () => {
       </div>
 
       <img
-        src="/assets/images/profile-image.webp"
+        src="https://static.kwwdev.com/images/profile-image.webp"
         alt="Profile"
         className="my-auto bg-cover w-32 h-32 mb-8 md:mb-auto md:w-44 md:h-44 md:mr-6 rounded-full"
       />
