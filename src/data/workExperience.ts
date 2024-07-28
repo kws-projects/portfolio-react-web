@@ -4,7 +4,7 @@ export const workExperiences: ITimelineItem[] = [
   {
     id: 0,
     title: 'Deloitte Digital - Customer & Marketing - Consulting',
-    image: '/assets/images/workExperience/deloitte.png',
+    image: '/assets/images/workExperience/deloitte.webp',
     fromDate: '2022-06-01T00:00:00+08:00',
     toDate: '2024-02-01T00:00:00+08:00',
     subItems: [
@@ -25,7 +25,7 @@ export const workExperiences: ITimelineItem[] = [
   {
     id: 3,
     title: 'Lalamove',
-    image: '/assets/images/workExperience/lalamove.png',
+    image: '/assets/images/workExperience/lalamove.webp',
     fromDate: '2024-05-01T00:00:00+08:00',
     subItems: [
       {
