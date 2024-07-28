@@ -23,6 +23,7 @@ const Blogs = () => {
       <Helmet>
         <title>{t('blog_document_title')}</title>
         <meta name="description" content={t('blog_document_description')} />
+        <meta name="robots" content="index, follow" />
       </Helmet>
       <PageTitleSketch title={t('blog_title')} />
       <BlogGrid

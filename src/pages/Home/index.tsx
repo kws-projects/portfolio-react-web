@@ -17,6 +17,7 @@ const Home = () => {
       <Helmet>
         <title>{t('home_document_title')}</title>
         <meta name="description" content={t('home_document_description')} />
+        <meta name="robots" content="index, follow" />
       </Helmet>
       <Banner />
       <Section

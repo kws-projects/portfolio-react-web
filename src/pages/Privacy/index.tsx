@@ -16,6 +16,7 @@ const Privacy = () => {
       <Helmet>
         <title>{t('privacy_document_title')}</title>
         <meta name="description" content={t('privacy_document_description')} />
+        <meta name="robots" content="index, follow" />
       </Helmet>
       <PageTitleSketch title={t('privacy_title')} />
       <Section className="px-8 md:px-0 pt-4 md:pt-12" showBreakline={false}>

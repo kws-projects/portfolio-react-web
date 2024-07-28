@@ -17,6 +17,7 @@ const Contact = () => {
       <Helmet>
         <title>{t('contact_document_title')}</title>
         <meta name="description" content={t('contact_document_description')} />
+        <meta name="robots" content="index, follow" />
       </Helmet>
       <WalkerBackgroundSketch />
       <Section

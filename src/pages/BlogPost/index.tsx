@@ -42,6 +42,7 @@ const BlogPost = () => {
               : blog?.blog?.titleEn || t('error_not_found_document_description')
           }
         />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <PageTitleSketch
         title={
