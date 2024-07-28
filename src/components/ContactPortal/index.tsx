@@ -7,6 +7,7 @@ const ContactPortal = () => {
     <div className="flex justify-center items-center space-x-2">
       <a
         href="https://www.linkedin.com/in/kai-fung-wong-50b7691b4/"
+        aria-label="Direct to LinkedIn page"
         rel="noreferrer"
         target="_blank"
         onClick={() => {
@@ -17,6 +18,7 @@ const ContactPortal = () => {
       </a>
       <a
         href="https://github.com/kwwong1022"
+        aria-label="Direct to GitHub profile"
         rel="noreferrer"
         target="_blank"
         onClick={() => {
@@ -27,6 +29,7 @@ const ContactPortal = () => {
       </a>
       <a
         href="/contact"
+        aria-label="Contact me"
         target="_blank"
         onClick={() => {
           trackEvent(category.navigation, 'Navigate to contact')
