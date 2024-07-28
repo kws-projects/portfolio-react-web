@@ -16,6 +16,7 @@ const Terms = () => {
       <Helmet>
         <title>{t('terms_document_title')}</title>
         <meta name="description" content={t('terms_document_description')} />
+        <meta name="robots" content="index, follow" />
       </Helmet>
       <PageTitleSketch title={t('terms_title_full')} />
       <Section className="px-8 md:px-0 pt-4 md:pt-12" showBreakline={false}>
