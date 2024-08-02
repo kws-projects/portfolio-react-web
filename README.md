@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Kenneth's Portfolio
 
 This is a web revamp project of my [Previous Portfolio](https://github.com/kwwong1022/kw-portfolio-web) created using ejs. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -21,8 +21,8 @@ In case if you want to run this project on your local machine, follow the instru
 5. Add content below to the .env.development.local & touch .env.production.local files:
     ```
     # .env.development.local
-    ENV="DEV"
-    BUILD_VERSION_NO="x.x.x"                                  # for pulling docker image
+    REACT_APP_ENV="DEV"
+    REACT_APP_BUILD_VERSION_NO="x.x.x"                        # for pulling docker image
     REACT_APP_GA_MEASUREMENT_ID="G-XXXXXXXXXX"                # for GA tracker, remove it if you don't have it
     REACT_APP_SENTRY_DSN="https://xxxxxxxxxx"                 # for sentry monitoring, remove it if you don't have it
     DOCKER_REACT_WEB_REGISTRY="My React Web Registry"         # replace with your own
@@ -32,8 +32,8 @@ In case if you want to run this project on your local machine, follow the instru
 
     ```
     # .env.production.local
-    ENV="PROD"
-    BUILD_VERSION_NO="x.x.x"                                  # for pulling docker image
+    REACT_APP_ENV="PROD"
+    REACT_APP_BUILD_VERSION_NO="x.x.x"                        # for pulling docker image
     REACT_APP_GA_MEASUREMENT_ID="G-XXXXXXXXXX"                # for GA tracker, remove it if you don't have it
     REACT_APP_SENTRY_DSN="https://xxxxxxxxxx"                 # for sentry monitoring, remove it if you don't have it
     DOCKER_REACT_WEB_REGISTRY="My React Web Registry"         # replace with your own
