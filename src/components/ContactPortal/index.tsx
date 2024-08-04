@@ -14,7 +14,7 @@ const ContactPortal = () => {
           trackEvent(category.navigation, 'Navigate to LinkedIn')
         }}
       >
-        <FaLinkedin size={18} />
+        <FaLinkedin className="fill-gray-800" size={18} />
       </a>
       <a
         href="https://github.com/kwwong1022"
@@ -25,7 +25,7 @@ const ContactPortal = () => {
           trackEvent(category.navigation, 'Navigate to GitHub')
         }}
       >
-        <FaSquareGithub size={18} />
+        <FaSquareGithub className="fill-gray-800" size={18} />
       </a>
       <a
         href="/contact"
@@ -35,7 +35,7 @@ const ContactPortal = () => {
           trackEvent(category.navigation, 'Navigate to contact')
         }}
       >
-        <FaSquareEnvelope size={18} />
+        <FaSquareEnvelope className="fill-gray-800" size={18} />
       </a>
     </div>
   )
