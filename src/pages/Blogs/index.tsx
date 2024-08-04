@@ -13,23 +13,29 @@ const Blogs = () => {
   useScrollToTop()
   usePageTitle(t('blog_document_title'))
 
-  const { data: blogs, isLoading: isLoadingBlogs, isError: isErrorBlogs } = useQuery({
+  const {
+    data: blogs,
+    isLoading: isLoadingBlogs,
+    isError: isErrorBlogs,
+    refetch: refetchBlogs,
+  } = useQuery({
     queryKey: ['blogs'],
     queryFn: blogsAPI.getBlogs,
   })
 
   return (
-    <main className='pb-12'>
+    <main className="pb-32">
       <Helmet>
         <title>{t('blog_document_title')}</title>
         <meta name="description" content={t('blog_document_description')} />
         <meta name="robots" content="index, follow" />
       </Helmet>
-      <PageTitleSketch title={t('blog_title')} />
+      {!isErrorBlogs ? <PageTitleSketch title={t('blog_title')} /> : null}
       <BlogGrid
         data={blogs}
         isLoading={isLoadingBlogs}
         isError={isErrorBlogs}
+        refetch={refetchBlogs}
       />
     </main>
   )

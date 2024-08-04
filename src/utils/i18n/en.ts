@@ -87,7 +87,11 @@ const labelList = {
   // Error
   error_not_found_document_title: `Page Not Found | Kenneth Wong`,
   error_not_found_document_description: `404 Page Not Found`,
-  
+  error_blogs_not_found_message: `Blogs not found`,
+  error_blog_not_found_message: `Blog not found`,
+
+  // Component
+  button_reload: `Reload`,
 }
 
 export default labelList
