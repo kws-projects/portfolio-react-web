@@ -17,9 +17,8 @@ export const Skeleton = () => (
       <div className="h-1/2 bg-cover bg-center rounded-t-lg bg-gray-200" />
       <div className="flex flex-col justify-between h-1/2 p-4 md:p-6">
         <div>
-          <div className="h-8 w-full bg-gray-200 rounded-sm text-base md:text-xl mb-1"></div>
-          <div className="hidden md:flex h-4 w-8/12 bg-gray-200 rounded-sm text-base md:text-xl pb-1"></div>
-          <p className="hidden md:flex text-sm text-gray-500"></p>
+          <div className="h-8 w-full bg-gray-200 rounded-sm mb-1"></div>
+          <div className="hidden md:flex h-4 w-8/12 bg-gray-200 rounded-sm"></div>
         </div>
         <div className="h-4 w-3/6 bg-gray-200 hidden md:flex"></div>
       </div>
