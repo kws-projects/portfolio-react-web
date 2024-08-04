@@ -8,7 +8,7 @@ const SelfIntro = () => {
     <div className="flex flex-col md:flex-row justify-between items-center space-x-0 md:space-x-20 space-y-12 md:space-y-0 px-4 md:px-12">
       <img
         className="w-44 h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 rounded-lg"
-        src="/assets/images/profile-image.webp"
+        src="https://static.kwwdev.com/images/profile-image.webp"
         alt="Profile"
       />
 

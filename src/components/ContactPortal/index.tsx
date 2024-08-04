@@ -7,32 +7,35 @@ const ContactPortal = () => {
     <div className="flex justify-center items-center space-x-2">
       <a
         href="https://www.linkedin.com/in/kai-fung-wong-50b7691b4/"
+        aria-label="Direct to LinkedIn page"
         rel="noreferrer"
         target="_blank"
         onClick={() => {
           trackEvent(category.navigation, 'Navigate to LinkedIn')
         }}
       >
-        <FaLinkedin size={18} />
+        <FaLinkedin className="fill-gray-800" size={18} />
       </a>
       <a
         href="https://github.com/kwwong1022"
+        aria-label="Direct to GitHub profile"
         rel="noreferrer"
         target="_blank"
         onClick={() => {
           trackEvent(category.navigation, 'Navigate to GitHub')
         }}
       >
-        <FaSquareGithub size={18} />
+        <FaSquareGithub className="fill-gray-800" size={18} />
       </a>
       <a
         href="/contact"
+        aria-label="Contact me"
         target="_blank"
         onClick={() => {
           trackEvent(category.navigation, 'Navigate to contact')
         }}
       >
-        <FaSquareEnvelope size={18} />
+        <FaSquareEnvelope className="fill-gray-800" size={18} />
       </a>
     </div>
   )
