@@ -76,9 +76,9 @@ export const headerNavItems: IHeaderNavItem[] = [
     ],
   },
   {
-      id: 13,
-      title: 'Blogs',
-      link: '/blogs',
+    id: 13,
+    title: 'Blogs',
+    link: '/blogs',
   },
   {
     id: 14,
@@ -104,7 +104,7 @@ export const footerNavItems: IFooterNavItems[] = [
       {
         id: 1,
         title: 'CV',
-        link: '/about?showCV=true',
+        link: 'https://static.kwwdev.com/documents/cv/Wong_Kai_Fung_CV.pdf',
         downloadable: true,
       },
     ],
