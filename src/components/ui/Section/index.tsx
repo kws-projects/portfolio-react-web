@@ -1,4 +1,5 @@
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useRef } from 'react'
+import { motion, useInView, useAnimation } from 'framer-motion'
 
 type SectionProps = {
   title?: string
@@ -6,6 +7,7 @@ type SectionProps = {
   className?: string
   style?: Object
   showBreakline?: boolean
+  disableAnimation?: boolean
   children?: ReactNode
 }
 
@@ -15,12 +17,35 @@ const Section = ({
   className,
   style,
   showBreakline = true,
+  disableAnimation = false,
   children,
 }: SectionProps) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+  const fadeInControl = useAnimation()
+
+  useEffect(() => {
+    if (isInView) {
+      fadeInControl.start('visible')
+    }
+  }, [fadeInControl, isInView])
+
   return (
-    <div
+    <motion.div
       className={`self-center flex flex-col justify-start items-center ${showBreakline && 'border-t border-gray-200'} pt-12 pb-24 mx-0 md:mx-14 lg:mx-28 max-w-screen-lg ${className}`}
       style={{ ...style, width: '-webkit-fill-available' }}
+      ref={ref}
+      variants={{
+        ...(!disableAnimation && {
+          hidden: { opacity: 0, y: 75 },
+          visible: { opacity: 1, y: 0 },
+        }),
+      }}
+      initial={!disableAnimation && 'hidden'}
+      animate={!disableAnimation && fadeInControl}
+      transition={{
+        ...(!disableAnimation && { duration: 0.4 }),
+      }}
     >
       {title ? (
         <p className={`text-2xl ${!description && 'pb-10'}`}>{title}</p>
@@ -29,7 +54,7 @@ const Section = ({
       {description ? <p className="pt-2 pb-10">{description}</p> : null}
 
       {children}
-    </div>
+    </motion.div>
   )
 }
 

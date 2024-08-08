@@ -34,6 +34,7 @@ const Works = () => {
       <Section
         style={{ marginTop: '-2rem' }}
         showBreakline={false}
+        disableAnimation={true}
       >
         <WorkShowcase
           defaultCategory={selectedCategory ? selectedCategory : undefined}

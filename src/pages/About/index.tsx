@@ -13,7 +13,7 @@ import { education } from '../../data/education'
 
 const About = () => {
   const { t } = useTranslation()
-  
+
   useScrollToTop()
   usePageTitle(t('about_document_title'))
 
@@ -25,7 +25,7 @@ const About = () => {
         <meta name="robots" content="index, follow" />
       </Helmet>
       <PageTitleSketch title={t('about_title')} />
-      <Section showBreakline={false}>
+      <Section showBreakline={false} disableAnimation={true}>
         <SelfIntro />
       </Section>
       <Section
