@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { footerNavItems } from '../../data/navItems'
 import ContactPortal from '../ContactPortal'
+import Version from './Version'
 
 const Footer = () => {
   const { t } = useTranslation()
@@ -38,34 +39,41 @@ const Footer = () => {
           <div className="hidden mt-4 md:flex">
             <ContactPortal />
           </div>
+
+          <div className="flex mt-6 md:hidden">
+            <Version />
+          </div>
         </section>
 
-        <ul className="hidden justify-center md:flex">
-          {footerNavItems.map(item => (
-            <li className="ml-12" key={item.id}>
-              <Link to={item.link}>{item.title}</Link>
+        <div className="hidden md:flex flex-col justify-between items-end h-full">
+          <ul className="flex justify-center">
+            {footerNavItems.map(item => (
+              <li className="ml-12" key={item.id}>
+                <Link to={item.link}>{item.title}</Link>
 
-              <ul className="mt-1">
-                {item.subItems?.map(item => (
-                  <li className="text-sm mt-1" key={item.id}>
-                    {item.downloadable ? (
-                      <a
-                        href={item.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        download
-                      >
-                        {item.title}
-                      </a>
-                    ) : (
-                      <Link to={item.link}>{item.title}</Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
+                <ul className="mt-1">
+                  {item.subItems?.map(item => (
+                    <li className="text-sm mt-1" key={item.id}>
+                      {item.downloadable ? (
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          download
+                        >
+                          {item.title}
+                        </a>
+                      ) : (
+                        <Link to={item.link}>{item.title}</Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+          <Version />
+        </div>
       </div>
     </footer>
   )
