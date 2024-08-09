@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import usePageTitle from '../../hooks/usePageTitle'
 
@@ -11,7 +11,10 @@ const NotFound = () => {
     <main>
       <Helmet>
         <title>{t('error_not_found_document_title')}</title>
-        <meta name="description" content={t('error_not_found_document_description')} />
+        <meta
+          name="description"
+          content={t('error_not_found_document_description')}
+        />
       </Helmet>
       NotFound
     </main>
