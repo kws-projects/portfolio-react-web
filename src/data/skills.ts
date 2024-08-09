@@ -37,7 +37,7 @@ export const skills: Skill[] = [
     image: 'https://static.kwwdev.com/images/skills/tailwind.webp',
   },
   {
-    id: 9,
+    id: 19,
     title: 'Docker',
     category: 'Backend',
     image: 'https://static.kwwdev.com/images/skills/docker.webp',
