@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { footerNavItems } from '../../data/navItems'
+import { menuMap } from './menuMap'
 import ContactPortal from '../ContactPortal'
 import Version from './Version'
 
@@ -47,16 +47,16 @@ const Footer = () => {
 
         <div className="hidden md:flex flex-col justify-between items-end h-full">
           <ul className="flex justify-center">
-            {footerNavItems.map(item => (
+            {menuMap.map(item => (
               <li className="ml-12" key={item.id}>
-                <Link to={item.link}>{item.title}</Link>
+                <Link to={item.path}>{item.title}</Link>
 
                 <ul className="mt-1">
                   {item.subItems?.map(item => (
                     <li className="text-sm mt-1" key={item.id}>
                       {item.downloadable ? (
                         <a
-                          href={item.link}
+                          href={item.path}
                           target="_blank"
                           rel="noreferrer"
                           download
@@ -64,7 +64,7 @@ const Footer = () => {
                           {item.title}
                         </a>
                       ) : (
-                        <Link to={item.link}>{item.title}</Link>
+                        <Link to={item.path}>{item.title}</Link>
                       )}
                     </li>
                   ))}
