@@ -1,28 +1,35 @@
 import { trackEvent } from '../../services/ga4'
-import { category } from '../../constant'
+import { GAEventCategory, GAEventAction } from '../../constant/gaEvent'
 import { FaLinkedin, FaSquareGithub, FaSquareEnvelope } from 'react-icons/fa6'
+import { ExternalUrl, getAriaLabel } from '../../constant/externalUrl'
 
 const ContactPortal = () => {
   return (
     <div className="flex justify-center items-center space-x-2">
       <a
-        href="https://www.linkedin.com/in/kai-fung-wong-50b7691b4/"
-        aria-label="Direct to LinkedIn page"
+        href={ExternalUrl.LINKEDIN}
+        aria-label={getAriaLabel()[ExternalUrl.LINKEDIN]}
         rel="noreferrer"
         target="_blank"
         onClick={() => {
-          trackEvent(category.navigation, 'Navigate to LinkedIn')
+          trackEvent(
+            GAEventCategory.NAVIGATION,
+            GAEventAction.NAVIGATE_TO_LINKEDIN
+          )
         }}
       >
         <FaLinkedin className="fill-gray-800" size={18} />
       </a>
       <a
-        href="https://github.com/kwwong1022"
-        aria-label="Direct to GitHub profile"
+        href={ExternalUrl.GITHUB}
+        aria-label={getAriaLabel()[ExternalUrl.GITHUB]}
         rel="noreferrer"
         target="_blank"
         onClick={() => {
-          trackEvent(category.navigation, 'Navigate to GitHub')
+          trackEvent(
+            GAEventCategory.NAVIGATION,
+            GAEventAction.NAVIGATE_TO_GITHUB
+          )
         }}
       >
         <FaSquareGithub className="fill-gray-800" size={18} />
@@ -32,7 +39,10 @@ const ContactPortal = () => {
         aria-label="Contact me"
         target="_blank"
         onClick={() => {
-          trackEvent(category.navigation, 'Navigate to contact')
+          trackEvent(
+            GAEventCategory.NAVIGATION,
+            GAEventAction.NAVIGATE_TO_CONTACT
+          )
         }}
       >
         <FaSquareEnvelope className="fill-gray-800" size={18} />

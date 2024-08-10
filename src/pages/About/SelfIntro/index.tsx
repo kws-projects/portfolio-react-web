@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { motion, useInView, useAnimation } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { envConfig } from '../../../config'
 import ContactPortal from '../../../components/ContactPortal'
 
 const SelfIntro = () => {
@@ -30,7 +31,7 @@ const SelfIntro = () => {
     >
       <img
         className="w-44 h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 rounded-lg"
-        src="https://static.kwwdev.com/images/profile-image.webp"
+        src={`${envConfig.STATIC_FILE_BASE_URL}/images/profile-image.webp`}
         alt="Profile"
       />
 

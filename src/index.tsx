@@ -7,14 +7,16 @@ import './index.css'
 import App from './App'
 import ReactGA from 'react-ga4'
 import * as Sentry from '@sentry/react'
+import { envConfig } from './config'
+import { AppEnv } from './constant/appEnv'
 
 const queryClient = new QueryClient({})
 
-if (process.env.REACT_APP_ENV === 'PROD') {
-  ReactGA.initialize(process.env.REACT_APP_GA_MEASUREMENT_ID!)
+if (envConfig.NODE_ENV === AppEnv.PROD) {
+  ReactGA.initialize(envConfig.GA4_ID!)
 
   Sentry.init({
-    dsn: process.env.REACT_APP_SENTRY_DSN,
+    dsn: envConfig.SENTRY_DSN,
     integrations: [
       Sentry.browserTracingIntegration(),
       Sentry.replayIntegration(),
