@@ -1,15 +1,28 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { motion, useInView, useAnimation } from 'framer-motion'
 import useWorkCategory from '../../hooks/useWorkCategory'
 import { WorkCategory, works } from '../../data/works'
 
 type WorkShowcaseProps = {
   defaultCategory?: WorkCategory
+  disableAnimation?: boolean
 }
 
 const WorkShowcase = ({
   defaultCategory = WorkCategory.ALL,
+  disableAnimation = false,
 }: WorkShowcaseProps) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+  const fadeInControl = useAnimation()
+
+  useEffect(() => {
+    if (isInView) {
+      fadeInControl.start('visible')
+    }
+  }, [fadeInControl, isInView])
+
   const workCategories = useWorkCategory()
 
   const [selectedCategories, setSelectedCategories] = useState<
@@ -86,7 +99,21 @@ const WorkShowcase = ({
         </ul>
       </nav>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 sm:mt-12 px-4 md:px-0">
+      <motion.div
+        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 sm:mt-12 px-4 md:px-0"
+        ref={ref}
+        variants={{
+          ...(!disableAnimation && {
+            hidden: { opacity: 0 },
+            visible: { opacity: 1 },
+          }),
+        }}
+        initial={!disableAnimation && 'hidden'}
+        animate={!disableAnimation && fadeInControl}
+        transition={{
+          ...(!disableAnimation && { duration: 0.5 }),
+        }}
+      >
         {works
           .filter(work =>
             selectedCategories?.includes(WorkCategory.ALL)
@@ -112,7 +139,7 @@ const WorkShowcase = ({
               </div>
             </Link>
           ))}
-      </div>
+      </motion.div>
     </section>
   )
 }

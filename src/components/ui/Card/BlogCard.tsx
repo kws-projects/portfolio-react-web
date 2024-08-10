@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { envConfig } from '../../../config'
 import { Blog } from '../../../types/blog'
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
@@ -40,7 +41,7 @@ export const BlogCard = ({ data }: BlogCardProps) => {
         <div
           className="h-1/2 bg-cover bg-center rounded-t-lg bg-gray-200"
           style={{
-            backgroundImage: `url(${process.env.REACT_APP_PORTFOLIO_API_URL}/v1/blogs/${data.id}/thumbnail)`,
+            backgroundImage: `url(${envConfig.PORTFOLIO_API_BASE_URL}/v1/blogs/${data.id}/thumbnail)`,
           }}
         />
         <div className="flex flex-col justify-between h-1/2 p-4 md:p-6">

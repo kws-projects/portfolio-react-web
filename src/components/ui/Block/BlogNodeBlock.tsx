@@ -27,26 +27,34 @@ export const BlogNodeBlock = ({ data }: BlogNodeBlockProps) => {
 
   return (
     <>
-      {!isLoadingNode && !isErrorNode ? (
-        <div className={`${data.type === BlogNodeType.MD ? 'md ' : ''}mt-12`}>
-          {data.type === BlogNodeType.MD ? (
-            <Markdown remarkPlugins={[remarkGfm]}>{node}</Markdown>
-          ) : null}
-
-          {data.type === BlogNodeType.HTML ? (
+      {!isErrorNode ? (
+        <>
+          {isLoadingNode ? (
+            <Skeleton />
+          ) : (
             <div
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(node) }}
-            />
-          ) : null}
+              className={`${data.type === BlogNodeType.MD ? 'md ' : ''}mt-12`}
+            >
+              {data.type === BlogNodeType.MD ? (
+                <Markdown remarkPlugins={[remarkGfm]}>{node}</Markdown>
+              ) : null}
 
-          {data.type === BlogNodeType.Image ? (
-            <img src={`data:image/jpeg;base64,${node}`} alt={'node'} />
-          ) : null}
+              {data.type === BlogNodeType.HTML ? (
+                <div
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(node) }}
+                />
+              ) : null}
 
-          {data.type === BlogNodeType.P5Sketch ? (
-            <div>This is a P5 sketch.</div>
-          ) : null}
-        </div>
+              {data.type === BlogNodeType.Image ? (
+                <img src={`data:image/jpeg;base64,${node}`} alt={'node'} />
+              ) : null}
+
+              {data.type === BlogNodeType.P5Sketch ? (
+                <div>This is a P5 sketch.</div>
+              ) : null}
+            </div>
+          )}
+        </>
       ) : null}
     </>
   )

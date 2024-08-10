@@ -7,24 +7,6 @@ type Skill = {
 
 export const skills: Skill[] = [
   {
-    id: 0,
-    title: 'HTML',
-    category: 'Frontend',
-    image: 'https://static.kwwdev.com/images/skills/html.webp',
-  },
-  {
-    id: 1,
-    title: 'CSS',
-    category: 'Frontend',
-    image: 'https://static.kwwdev.com/images/skills/css.webp',
-  },
-  {
-    id: 2,
-    title: 'JavaScript',
-    category: 'Backend',
-    image: 'https://static.kwwdev.com/images/skills/js.webp',
-  },
-  {
     id: 18,
     title: 'TypeScript',
     category: 'Backend',
@@ -43,28 +25,28 @@ export const skills: Skill[] = [
     image: 'https://static.kwwdev.com/images/skills/next.webp',
   },
   {
+    id: 23,
+    title: 'Prisma',
+    category: 'Backend',
+    image: 'https://static.kwwdev.com/images/skills/prisma.webp',
+  },
+  {
     id: 5,
     title: 'Tailwind',
     category: 'Frontend',
     image: 'https://static.kwwdev.com/images/skills/tailwind.webp',
   },
   {
-    id: 6,
-    title: 'Android Development',
-    category: 'Frontend',
-    image: 'https://static.kwwdev.com/images/skills/android.webp',
+    id: 19,
+    title: 'Docker',
+    category: 'Backend',
+    image: 'https://static.kwwdev.com/images/skills/docker.webp',
   },
   {
     id: 7,
     title: 'Kotlin',
     category: 'Backend',
     image: 'https://static.kwwdev.com/images/skills/kotlin.webp',
-  },
-  {
-    id: 8,
-    title: 'iOS Development',
-    category: 'Frontend',
-    image: 'https://static.kwwdev.com/images/skills/ios.webp',
   },
   {
     id: 9,
@@ -91,6 +73,18 @@ export const skills: Skill[] = [
     image: 'https://static.kwwdev.com/images/skills/express.webp',
   },
   {
+    id: 20,
+    title: 'Nestjs',
+    category: 'Backend',
+    image: 'https://static.kwwdev.com/images/skills/nestjs.webp',
+  },
+  {
+    id: 21,
+    title: 'Jest',
+    category: 'Backend',
+    image: 'https://static.kwwdev.com/images/skills/jest.webp',
+  },
+  {
     id: 13,
     title: 'AWS',
     category: 'Cloud',
@@ -107,6 +101,12 @@ export const skills: Skill[] = [
     title: 'Java',
     category: 'Backend',
     image: 'https://static.kwwdev.com/images/skills/java.webp',
+  },
+  {
+    id: 22,
+    title: 'MySQL',
+    category: 'Backend',
+    image: 'https://static.kwwdev.com/images/skills/mysql.webp',
   },
   {
     id: 16,

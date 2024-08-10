@@ -1,26 +1,18 @@
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@tanstack/react-query'
 import usePageTitle from '../../hooks/usePageTitle'
 import useScrollToTop from '../../hooks/useScrollToTop'
 import PageTitleSketch from '../../components/sketches/PageTitleSketch'
-import { BlogNodeBlock } from '../../components/ui/Block/BlogNodeBlock'
+import {
+  BlogNodeBlock,
+  Skeleton,
+} from '../../components/ui/Block/BlogNodeBlock'
 import { blogsAPI } from '../../services/portfolioSvc/blogsAPI'
 import { BlogNode } from '../../types/blog'
 import { FaCircleXmark } from 'react-icons/fa6'
 import Button from '../../components/ui/Button/Button'
-
-const Skeleton = () => (
-  <div className="flex flex-col mt-12 animate-pulse">
-    <div className="h-12 w-10/12 bg-gray-200 rounded-sm mb-2"></div>
-    <div className="md:flex h-4 w-10/12 bg-gray-200 rounded-sm text-base md:text-xl mb-6"></div>
-    <div className="md:flex h-4 w-10/12 bg-gray-200 rounded-sm text-base md:text-xl mb-2"></div>
-    <div className="md:flex h-4 w-10/12 bg-gray-200 rounded-sm text-base md:text-xl mb-2"></div>
-    <div className="md:flex h-4 w-10/12 bg-gray-200 rounded-sm text-base md:text-xl mb-2"></div>
-    <div className="md:flex h-4 w-10/12 bg-gray-200 rounded-sm text-base md:text-xl mb-2"></div>
-  </div>
-)
 
 const BlogPost = () => {
   const { t } = useTranslation()

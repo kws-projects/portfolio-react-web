@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import usePageTitle from '../../hooks/usePageTitle'
 import useScrollToTop from '../../hooks/useScrollToTop'
@@ -25,7 +25,7 @@ const Home = () => {
         description={t('home_featured_works_introduction')}
         className="mt-32 md:mt-64"
       >
-        <WorkShowcase />
+        <WorkShowcase disableAnimation={true} />
       </Section>
     </main>
   )
