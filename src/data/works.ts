@@ -33,7 +33,7 @@ export const works: IWork[] = [
     subTitle: 'Online web tools, AI, Cloud',
     image: ['https://static.kwwdev.com/images/works/work-kws-web-tools.webp'],
     category: [WorkCategory.WEBSITE],
-    url: '#',
+    url: 'https://github.com/kwwong1022/kws-web-tools',
     date: { year: 2023, month: 1 },
   },
   {
@@ -53,7 +53,7 @@ export const works: IWork[] = [
     subTitle: 'Extension, Data Portrait',
     image: ['https://static.kwwdev.com/images/works/work-web-portrait.webp'],
     category: [WorkCategory.CREATIVE_CODING],
-    url: 'https://www.youtube.com/watch?v=CrUcffePc_k',
+    url: 'https://observablehq.com/@kwwong1022/final-project',
     date: { year: 2022, month: 5 },
   },
   {
@@ -64,7 +64,7 @@ export const works: IWork[] = [
       'https://static.kwwdev.com/images/works/work-shooting-game-w-ml.webp',
     ],
     category: [WorkCategory.ARDUINO],
-    url: 'https://create.arduino.cc/projecthub/kwwong1022/immersive-shooting-game-w-ml-facial-recognition-bc8d5b',
+    url: 'https://projecthub.arduino.cc/kwwong1022/immersive-shooting-game-w-ml-facial-recognition-d368fb',
     date: { year: 2022, month: 4 },
   },
   {
@@ -84,7 +84,7 @@ export const works: IWork[] = [
     subTitle: 'Creative Coding, P5js',
     image: ['https://static.kwwdev.com/images/works/work-game-of-life.webp'],
     category: [WorkCategory.CREATIVE_CODING],
-    url: '/blogs/12',
+    url: 'https://observablehq.com/@kwwong1022/assignment-5',
     date: { year: 2022, month: 2 },
   },
   {
@@ -95,7 +95,7 @@ export const works: IWork[] = [
       'https://static.kwwdev.com/images/works/work-string-art-portrait.webp',
     ],
     category: [WorkCategory.CREATIVE_CODING],
-    url: '/blogs/11',
+    url: 'https://observablehq.com/@kwwong1022/assignment-4',
     date: { year: 2022, month: 2 },
   },
   {
@@ -104,7 +104,7 @@ export const works: IWork[] = [
     subTitle: 'Creative Coding, P5js',
     image: ['https://static.kwwdev.com/images/works/work-code-portrait.webp'],
     category: [WorkCategory.CREATIVE_CODING],
-    url: '/blogs/10',
+    url: 'https://observablehq.com/@kwwong1022/assignment-4',
     date: { year: 2022, month: 2 },
   },
   {
@@ -115,7 +115,7 @@ export const works: IWork[] = [
       'https://static.kwwdev.com/images/works/work-composition-w-red-blue-yellow-and-drunk.webp',
     ],
     category: [WorkCategory.CREATIVE_CODING],
-    url: '/blogs/9',
+    url: 'https://observablehq.com/@kwwong1022/assignment-3',
     date: { year: 2022, month: 2 },
   },
   {
@@ -126,7 +126,7 @@ export const works: IWork[] = [
       'https://static.kwwdev.com/images/works/work-tri-subdivision-portrait.webp',
     ],
     category: [WorkCategory.CREATIVE_CODING],
-    url: '/blogs/8',
+    url: 'https://observablehq.com/@kwwong1022/assignment-3',
     date: { year: 2022, month: 2 },
   },
   {
@@ -135,7 +135,7 @@ export const works: IWork[] = [
     subTitle: 'Creative Coding, P5js',
     image: ['https://static.kwwdev.com/images/works/work-fractal-tree.webp'],
     category: [WorkCategory.CREATIVE_CODING],
-    url: '/blogs/7',
+    url: 'https://observablehq.com/@kwwong1022/week-3',
     date: { year: 2022, month: 2 },
   },
   {
@@ -144,7 +144,7 @@ export const works: IWork[] = [
     subTitle: 'Creative Coding, P5js',
     image: ['https://static.kwwdev.com/images/works/work-cell-generation.webp'],
     category: [WorkCategory.CREATIVE_CODING],
-    url: '/blogs/6',
+    url: 'https://observablehq.com/@kwwong1022/assignment-2',
     date: { year: 2022, month: 2 },
   },
   {
