@@ -21,6 +21,7 @@ export const menuMap: IMenuMap[] = [
   {
     id: 2,
     title: 'Works',
+    path: '/works',
     subItems: [
       {
         id: 3,
