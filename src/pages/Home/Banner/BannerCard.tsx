@@ -59,7 +59,6 @@ const BannerCard = () => {
         tab={HomeBannerTab.FEATURED_WORKS}
         currentTab={currentTab}
         className="w-full"
-        style={{ height: '-webkit-fill-available' }}
       >
         <FeaturedWorks />
       </Tab>
