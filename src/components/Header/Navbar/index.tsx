@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { menuMap } from './menuMap'
@@ -17,7 +17,13 @@ const useNavbarToggle = () => {
 const Navbar = () => {
   const { t } = useTranslation()
 
+  const path = useLocation().pathname.toString()
+
   const { isNavbarExpended, handleNavbarToggle } = useNavbarToggle()
+
+  const getIndicatorStyle = (pathname: string) => {
+    return path === pathname ? 'border-b-gray-800' : null
+  }
 
   return (
     <nav className="flex items-center justify-between w-full h-14 max-w-screen-lg mx-0 border-b border-gray-200 text-sm md:mx-14 lg:mx-28">
@@ -53,7 +59,7 @@ const Navbar = () => {
               {item.path ? (
                 <Link
                   to={item.path}
-                  className="block pt-5 px-5 pb-3.5 w-full border-b border-transparent hover:bg-gray-100 bg-gray-50 md:bg-transparent md:hover:border-b-gray-800 md:hover:bg-transparent"
+                  className={`block pt-5 px-5 pb-3.5 w-full border-b border-transparent hover:bg-gray-100 bg-gray-50 group-hover/nav-2-lv:border-b-gray-800 md:bg-transparent md:hover:border-b-gray-800 md:hover:bg-transparent transition ease-in-out ${getIndicatorStyle(item.path)}`}
                   onClick={handleNavbarToggle}
                 >
                   {item.title}

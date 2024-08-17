@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { motion, useInView, useAnimation } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import HomeBackgroundSketch from '../../../components/sketches/HomeBackgroundSketch'
-import Card from './Card'
+import BannerCard from './BannerCard'
 
 const Banner = () => {
   const ref = useRef(null)
@@ -20,7 +20,6 @@ const Banner = () => {
   return (
     <>
       <HomeBackgroundSketch />
-
       <motion.section
         className="flex flex-col justify-start"
         ref={ref}
@@ -38,8 +37,7 @@ const Banner = () => {
         >
           {t('home_banner_greetings')}
         </p>
-
-        <Card />
+        <BannerCard />
       </motion.section>
     </>
   )
