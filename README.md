@@ -14,11 +14,7 @@ In case if you want to run this project on your local machine, follow the instru
 2. Clone this repository using git clone command:<br>
    ```git clone https://github.com/kwwong1022/portfolio-react-web.git```
    
-4. Open the project repository using any code editor you like.
-   From the project root directory, create environment variable files - **i) .env.development.local** **ii) .env.production.local**<br>
-   ```touch .env.development.local && touch .env.production.local```
-   
-5. Request development and production environment files from project owner
+5. Request development and production environment files from project owner, then paste it to the root directory
 
 6. Install the required packages from **package.json**:<br>
    ```npm install```
