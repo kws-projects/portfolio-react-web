@@ -156,9 +156,32 @@ p {
   margin-right: 0;
 }
 
+.md p {
+  line-height: 1.5rem;
+}
+
+.md ol {
+  margin-left: 1rem;
+  list-style: decimal;
+}
+
+.md ol li:first-of-type {
+  margin-top: 0;
+  white-space: initial;
+}
+
+.md ol li {
+  margin-top: 1rem;
+  white-space: initial;
+}
+
+.md ol li p:first-of-type {
+  margin-bottom: 1rem;
+}
+
 .md pre {
   padding: 1.5rem;
-  border-radius: .5rem;
-  overflow-x: scroll;
+  border-radius: 0.5rem;
+  overflow-x: auto;
   background-color: rgb(227, 227, 227);
 }
