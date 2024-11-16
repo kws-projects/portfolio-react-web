@@ -1,27 +1,31 @@
 import { useEffect, useRef } from 'react'
+import p5 from 'p5'
 
 const WalkerBackgroundSketch = () => {
-  const renderRef = useRef()
+  const renderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const p5 = require('p5')
-
-    let sRef
-    let requireInit = true
-
-    let amount
-    let walkers = []
+    let sRef: any
 
     new p5(s => {
       sRef = s
 
+      let requireInit = true
+      let amount
+
       class Walker {
-        constructor(x, y) {
+        x: number
+        y: number
+        tx: number
+        ty: number
+
+        constructor(x: number, y: number) {
           this.x = x
           this.y = y
           this.tx = x
           this.ty = y
         }
+
         show() {
           walkers.forEach(walker => {
             let dist = s.dist(this.x, this.y, walker.x, walker.y)
@@ -56,6 +60,8 @@ const WalkerBackgroundSketch = () => {
         }
       }
 
+      let walkers: Walker[] = []
+
       s.setup = () => {
         s.createCanvas(0, 0).parent(renderRef.current)
       }
@@ -71,14 +77,16 @@ const WalkerBackgroundSketch = () => {
       }
 
       s.windowResized = () => {
-        s.resizeCanvas(
-          renderRef.current.offsetWidth,
-          renderRef.current.offsetHeight
-        )
+        if (renderRef.current) {
+          s.resizeCanvas(
+            renderRef.current.offsetWidth,
+            renderRef.current.offsetHeight
+          )
+        }
       }
 
       const init = () => {
-        if (requireInit) {
+        if (requireInit && renderRef.current) {
           s.resizeCanvas(
             renderRef.current.offsetWidth,
             renderRef.current.offsetHeight

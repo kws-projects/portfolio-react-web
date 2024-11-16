@@ -1,20 +1,27 @@
 import { useEffect, useRef } from 'react'
+import p5 from 'p5'
 
 const HomeBackgroundSketch = () => {
-  const renderRef = useRef()
+  const renderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const p5 = require('p5')
-    let requireInit = true
-
-    let sRef
-    let center, start, end
-    let pms, ts
-    let cPos, cPath, cOffset, lsPos, lsPath, rsPos, rsPath
-    let amt = 0.03
+    let sRef: any
 
     new p5(s => {
       sRef = s
+
+      let requireInit = true
+
+      let center: number, start: number, end: number
+      let pms: number, ts: number
+      let cPos: number[][],
+        cPath: number[][],
+        cOffset: number[][],
+        lsPos: number[][],
+        lsPath: number[][],
+        rsPos: number[][],
+        rsPath: number[][]
+      let amt = 0.03
 
       s.setup = () => {
         s.createCanvas(0, 0).parent(renderRef.current)
@@ -84,15 +91,17 @@ const HomeBackgroundSketch = () => {
       }
 
       s.windowResized = () => {
-        s.resizeCanvas(renderRef.current.offsetWidth, 970)
-        center = s.width / 2
-        start = center - 525
-        end = center + 525
-        updatePath()
+        if (renderRef.current) {
+          s.resizeCanvas(renderRef.current.offsetWidth, 970)
+          center = s.width / 2
+          start = center - 525
+          end = center + 525
+          updatePath()
+        }
       }
 
       const init = () => {
-        if (requireInit) {
+        if (requireInit && renderRef.current) {
           s.resizeCanvas(renderRef.current.offsetWidth, 970)
           requireInit = false
 
