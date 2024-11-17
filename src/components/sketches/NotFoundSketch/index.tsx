@@ -13,8 +13,8 @@ const NotFoundSketch = () => {
     new p5(s => {
       sRef = s
 
-      const FRAMERATE = 30
-      const PIXEL_DENSITY = 6
+      const FRAMERATE = 20
+      const PIXEL_DENSITY = 9
       let rgbPixels: RGBPixel[] = []
       let notFoundTextHeight: number
       let frameCount: number
@@ -73,7 +73,7 @@ const NotFoundSketch = () => {
           bgGraphic.fill(230, 230, 230)
           bgGraphic.text(
             '💩 404 NOT FOUND 💩',
-            s.map(frameCount % 255, 160, 0, 0, 3300) - (3300 - s.width),
+            s.map(frameCount % 255, 160, 0, 0, 3800) - (3800 - s.width),
             notFoundTextHeight,
             3800,
             500
