@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import usePageTitle from 'hooks/usePageTitle'
+import NotFoundSketch from 'components/sketches/NotFoundSketch'
 
 const NotFound = () => {
   const { t } = useTranslation()
@@ -16,7 +17,7 @@ const NotFound = () => {
           content={t('error_not_found_document_description')}
         />
       </Helmet>
-      NotFound
+      <NotFoundSketch />
     </main>
   )
 }
