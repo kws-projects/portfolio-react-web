@@ -46,6 +46,10 @@ const PageTitleSketch = ({ title }: { title: string }) => {
         }
       }
 
+      const CHAR_WIDTH = 15.9
+      const CHAR_HEIGHT = 43
+      const NAV_HEIGHT = 50
+
       let requireInit = true
 
       let font: Font
@@ -76,7 +80,11 @@ const PageTitleSketch = ({ title }: { title: string }) => {
         s.textAlign(s.CENTER)
         s.textSize(36)
         s.textFont(font)
-        s.text(title, s.width / 2, currHeight - 50)
+        const displayRows = Math.ceil((title.length * CHAR_WIDTH) / s.width)
+        const screenHeight = s.height - NAV_HEIGHT
+        const yPos =
+          screenHeight / 2 + NAV_HEIGHT - (CHAR_HEIGHT / 2) * displayRows
+        s.text(title, 0, yPos, s.width, CHAR_HEIGHT * displayRows)
         currHeight = s.lerp(currHeight, targetHeight, 0.1)
       }
 
@@ -96,12 +104,13 @@ const PageTitleSketch = ({ title }: { title: string }) => {
             renderRef.current.offsetWidth,
             renderRef.current.offsetHeight
           )
-          requireInit = false
 
           targetHeight = s.height / 1.75 + 35
           s.noStroke()
 
           initCircles()
+
+          requireInit = false
         }
       }
 

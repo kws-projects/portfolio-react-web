@@ -103,7 +103,6 @@ const HomeBackgroundSketch = () => {
       const init = () => {
         if (requireInit && renderRef.current) {
           s.resizeCanvas(renderRef.current.offsetWidth, 970)
-          requireInit = false
 
           center = s.width / 2
           start = center - 525
@@ -113,6 +112,8 @@ const HomeBackgroundSketch = () => {
 
           updatePath()
           initPos()
+
+          requireInit = false
         }
       }
 

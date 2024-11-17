@@ -1,4 +1,4 @@
-import { ITimelineItem } from '../components/ui/Timeline'
+import { ITimelineItem } from 'components/ui/Timeline'
 
 export const education: ITimelineItem[] = [
   {

@@ -1,8 +1,8 @@
-import { BlogCard, Skeleton } from '../Card/BlogCard'
-import { Blog } from '../../../types/blog'
-import { FaCircleXmark } from 'react-icons/fa6'
-import Button from '../Button/Button'
 import { useTranslation } from 'react-i18next'
+import { Blog } from 'types/blog'
+import Button from 'components/ui/Button/Button'
+import { BlogCard, Skeleton } from 'components/ui/Card/BlogCard'
+import { FaCircleXmark } from 'react-icons/fa6'
 
 type BlogGridProps = {
   data: Blog[]

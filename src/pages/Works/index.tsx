@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
-import { WorkCategory } from '../../data/works'
-import usePageTitle from '../../hooks/usePageTitle'
-import useScrollToTop from '../../hooks/useScrollToTop'
-import Section from '../../components/ui/Section'
-import WorkShowcase from '../../components/WorkShowcase'
+import { WorkCategory } from 'data/works'
+import usePageTitle from 'hooks/usePageTitle'
+import useScrollToTop from 'hooks/useScrollToTop'
+import Section from 'components/ui/Section'
+import WorkShowcase from 'components/WorkShowcase'
 
 const Works = () => {
   const { t } = useTranslation()
