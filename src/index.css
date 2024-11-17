@@ -124,7 +124,6 @@ p {
   display: block;
   font-size: 2em;
   margin-top: 0.67em;
-  margin-bottom: 0.67em;
   margin-left: 0;
   margin-right: 0;
 }
@@ -133,7 +132,6 @@ p {
   display: block;
   font-size: 1.5em;
   margin-top: 0.83em;
-  margin-bottom: 0.83em;
   margin-left: 0;
   margin-right: 0;
 }
@@ -142,7 +140,6 @@ p {
   display: block;
   font-size: 1.17em;
   margin-top: 1em;
-  margin-bottom: 1em;
   margin-left: 0;
   margin-right: 0;
 }
@@ -151,7 +148,6 @@ p {
   display: block;
   font-size: 1em;
   margin-top: 1.33em;
-  margin-bottom: 1.33em;
   margin-left: 0;
   margin-right: 0;
 }
@@ -165,12 +161,14 @@ p {
   list-style: decimal;
 }
 
-.md ol li:first-of-type {
+.md ol li:first-of-type,
+.md ul li:first-of-type {
   margin-top: 0;
   white-space: initial;
 }
 
-.md ol li {
+.md ol li,
+.md ul li {
   margin-top: 1rem;
   white-space: initial;
 }
@@ -179,9 +177,24 @@ p {
   margin-bottom: 1rem;
 }
 
+.md ul {
+  margin: 0 0 1rem 1.65rem;
+  list-style: circle;
+}
+
+.md a {
+  color: rgb(49, 109, 199);
+  text-decoration: underline;
+}
+
 .md pre {
   padding: 1.5rem;
   border-radius: 0.5rem;
   overflow-x: auto;
-  background-color: rgb(227, 227, 227);
+  background-color: rgb(229 231 235);
+  margin: 1rem 0 1rem;
+}
+
+.md code {
+  color: rgb(78, 78, 78);
 }
