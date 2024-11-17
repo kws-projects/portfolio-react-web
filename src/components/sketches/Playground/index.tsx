@@ -1,12 +1,11 @@
 import { useEffect, useRef } from 'react'
+import p5 from 'p5'
 
 const Playground = () => {
-  const renderRef = useRef()
+  const renderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const p5 = require('p5')
-
-    let sRef
+    let sRef: any
     let requireInit = true
 
     new p5(s => {
@@ -22,16 +21,16 @@ const Playground = () => {
 
       s.windowResized = () => {
         s.resizeCanvas(
-          renderRef.current.offsetWidth,
-          renderRef.current.offsetHeight
+          renderRef.current?.offsetWidth,
+          renderRef.current?.offsetHeight
         )
       }
 
       const init = () => {
         if (requireInit) {
           s.resizeCanvas(
-            renderRef.current.offsetWidth,
-            renderRef.current.offsetHeight
+            renderRef.current?.offsetWidth,
+            renderRef.current?.offsetHeight
           )
           requireInit = false
         }

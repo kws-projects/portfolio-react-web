@@ -1,26 +1,24 @@
 import { useEffect, useRef } from 'react'
+import p5, { Font } from 'p5'
 
-const PageTitleSketch = ({ title }) => {
-  const renderRef = useRef()
+const PageTitleSketch = ({ title }: { title: string }) => {
+  const renderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const p5 = require('p5')
-
-    let sRef
-    let requireInit = true
-
-    let circles
-    let rows, cols
-    let size = 10
-    let font
-    let targetHeight,
-      currHeight = -50
+    let sRef: any
 
     new p5(s => {
       sRef = s
 
       class Circle {
-        constructor(x, y, r, c) {
+        x: number
+        y: number
+        r: number
+        c: number
+        or: number
+        tr: number
+
+        constructor(x: number, y: number, r: number, c: number) {
           this.x = x
           this.y = y
           this.r = r
@@ -48,6 +46,15 @@ const PageTitleSketch = ({ title }) => {
         }
       }
 
+      let requireInit = true
+
+      let font: Font
+      let circles: Circle[]
+      let rows, cols
+      let size = 10
+      let targetHeight = -50
+      let currHeight = -50
+
       s.preload = () => {
         font = s.loadFont('/assets/fonts/quicksand/Quicksand-Light.ttf')
       }
@@ -74,15 +81,17 @@ const PageTitleSketch = ({ title }) => {
       }
 
       s.windowResized = () => {
-        s.resizeCanvas(
-          renderRef.current.offsetWidth,
-          renderRef.current.offsetHeight
-        )
-        initCircles()
+        if (renderRef.current) {
+          s.resizeCanvas(
+            renderRef.current.offsetWidth,
+            renderRef.current.offsetHeight
+          )
+          initCircles()
+        }
       }
 
       const init = () => {
-        if (requireInit) {
+        if (requireInit && renderRef.current) {
           s.resizeCanvas(
             renderRef.current.offsetWidth,
             renderRef.current.offsetHeight
