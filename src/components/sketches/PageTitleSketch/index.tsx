@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import p5, { Font } from 'p5'
 
-const PageTitleSketch = ({ title }: { title: string }) => {
+const PageTitleSketch = ({ title = '' }: { title: string }) => {
   const renderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -80,7 +80,8 @@ const PageTitleSketch = ({ title }: { title: string }) => {
         s.textAlign(s.CENTER)
         s.textSize(36)
         s.textFont(font)
-        const displayRows = Math.ceil((title.length * CHAR_WIDTH) / s.width)
+        const displayRows =
+          Math.ceil((title?.length * CHAR_WIDTH) / s.width) || 1
         const screenHeight = s.height - NAV_HEIGHT
         const yPos =
           screenHeight / 2 + NAV_HEIGHT - (CHAR_HEIGHT / 2) * displayRows
