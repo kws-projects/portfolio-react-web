@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { WorkCategory, works } from '../data/works'
+import { WorkCategory, works } from 'data/works'
 
 const useWorkCategory = () => {
   const [workCategories, setWorkCategories] = useState<WorkCategory[] | null>(

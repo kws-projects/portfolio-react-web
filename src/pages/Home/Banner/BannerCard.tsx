@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { HomeBannerTab, getHomeBannerTabLabel } from '../../../constant/tab'
-import { TimelineList } from '../../../components/ui/Timeline'
-import { workExperiences } from '../../../data/workExperience'
-import AboutSelf from './tabs/AboutSelf'
-import SkillShowcase from '../../../components/SkillShowcase'
+import { HomeBannerTab, getHomeBannerTabLabel } from 'constant/tab'
+import SkillShowcase from 'components/SkillShowcase'
+import { TimelineList } from 'components/ui/Timeline'
+import { workExperiences } from 'data/workExperience'
 import Tab from './Tab'
+import AboutSelf from './tabs/AboutSelf'
 import FeaturedWorks from './tabs/FeaturedWorks'
 
 const BannerCard = () => {

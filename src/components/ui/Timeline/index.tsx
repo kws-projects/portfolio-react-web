@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { compareDate } from '../../../utils/common'
+import { compareDate } from 'utils/common'
 
 export const getDurationString = (fromDate: string, toDate?: string) => {
   const fromDateObj = new Date(fromDate)

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { envConfig } from '../../../../config'
-import ContactPortal from '../../../../components/ContactPortal'
+import { envConfig } from 'config'
+import ContactPortal from 'components/ContactPortal'
 
 const AboutSelf = () => {
   const { t } = useTranslation()

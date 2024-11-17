@@ -1,11 +1,11 @@
 import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
-import usePageTitle from '../../hooks/usePageTitle'
-import useScrollToTop from '../../hooks/useScrollToTop'
-import PageTitleSketch from '../../components/sketches/PageTitleSketch'
-import BlogGrid from '../../components/ui/Grid/BlogGrid'
 import { useQuery } from '@tanstack/react-query'
-import { blogsAPI } from '../../services/portfolioSvc/blogsAPI'
+import usePageTitle from 'hooks/usePageTitle'
+import useScrollToTop from 'hooks/useScrollToTop'
+import PageTitleSketch from 'components/sketches/PageTitleSketch'
+import BlogGrid from 'components/ui/Grid/BlogGrid'
+import { blogsAPI } from 'services/portfolioSvc/blogsAPI'
 
 const Blogs = () => {
   const { t } = useTranslation()

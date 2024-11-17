@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView, useAnimation } from 'framer-motion'
-import useWorkCategory from '../../hooks/useWorkCategory'
-import { WorkCategory, works } from '../../data/works'
+import useWorkCategory from 'hooks/useWorkCategory'
+import { WorkCategory, works } from 'data/works'
 
 type WorkShowcaseProps = {
   defaultCategory?: WorkCategory

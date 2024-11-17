@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { BlogNode, BlogNodeType } from '../../../types/blog'
-import { blogsAPI } from '../../../services/portfolioSvc/blogsAPI'
+import { BlogNode, BlogNodeType } from 'types/blog'
+import { blogsAPI } from 'services/portfolioSvc/blogsAPI'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import DOMPurify from 'dompurify'
