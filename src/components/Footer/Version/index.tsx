@@ -1,6 +1,6 @@
+import { envConfig } from 'config'
+import { getReleaseType } from 'constant/appEnv'
 import { IoIosGitBranch } from 'react-icons/io'
-import { envConfig } from '../../../config'
-import { getReleaseType } from '../../../constant/appEnv'
 
 const Version = () => {
   return (

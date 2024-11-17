@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { menuMap } from './menuMap'
-import ContactPortal from '../ContactPortal'
+import ContactPortal from 'components/ContactPortal'
 import Version from './Version'
+import { menuMap } from './menuMap'
 
 const Footer = () => {
   const { t } = useTranslation()

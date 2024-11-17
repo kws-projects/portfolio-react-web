@@ -1,4 +1,4 @@
-import { WorkCategory } from '../../data/works'
+import { WorkCategory } from 'data/works'
 
 interface IMenuMap {
   id: number
