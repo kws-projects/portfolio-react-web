@@ -104,12 +104,13 @@ const PageTitleSketch = ({ title }: { title: string }) => {
             renderRef.current.offsetWidth,
             renderRef.current.offsetHeight
           )
-          requireInit = false
 
           targetHeight = s.height / 1.75 + 35
           s.noStroke()
 
           initCircles()
+
+          requireInit = false
         }
       }
 

@@ -91,13 +91,14 @@ const WalkerBackgroundSketch = () => {
             renderRef.current.offsetWidth,
             renderRef.current.offsetHeight
           )
-          requireInit = false
 
           amount = s.width < 577 ? 10 : 40
 
           for (let i = 0; i < amount; i++) {
             walkers.push(new Walker(s.random(s.width), s.random(s.height)))
           }
+
+          requireInit = false
         }
       }
     })

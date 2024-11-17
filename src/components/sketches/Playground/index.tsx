@@ -32,6 +32,7 @@ const Playground = () => {
             renderRef.current?.offsetWidth,
             renderRef.current?.offsetHeight
           )
+
           requireInit = false
         }
       }
