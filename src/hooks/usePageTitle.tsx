@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
+import { useCallback } from 'react'
 import { trackPageview } from 'services/ga4'
 
 const usePageTitle = (title: string) => {
-  useEffect(() => {
+  useCallback(() => {
     trackPageview(title)
   }, [title])
 }
