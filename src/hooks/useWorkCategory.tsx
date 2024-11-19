@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
+import { EnumValues } from 'enum-values'
 import { WorkCategory, works } from 'data/works'
 
 const useWorkCategory = () => {
-  const [workCategories, setWorkCategories] = useState<WorkCategory[] | null>(
-    null
+  const [workCategories, setWorkCategories] = useState<WorkCategory[]>(
+    EnumValues.getValues(WorkCategory)
   )
 
-  useEffect(() => {
+  useCallback(() => {
     const filterUniqueCategories = () => {
       const uniqueCategories = works
         .map(work => work.category)
@@ -18,7 +19,7 @@ const useWorkCategory = () => {
     }
 
     filterUniqueCategories()
-  }, [])
+  }, [setWorkCategories])
 
   return workCategories
 }

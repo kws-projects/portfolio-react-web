@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView, useAnimation } from 'framer-motion'
 import useWorkCategory from 'hooks/useWorkCategory'
@@ -29,7 +29,7 @@ const WorkShowcase = ({
     WorkCategory[] | null
   >([defaultCategory])
 
-  useEffect(() => {
+  useCallback(() => {
     setSelectedCategories([defaultCategory])
   }, [defaultCategory])
 
