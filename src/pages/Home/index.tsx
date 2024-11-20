@@ -25,7 +25,7 @@ const Home = () => {
         description={t('home_featured_works_introduction')}
         className="mt-32 md:mt-64"
       >
-        <WorkShowcase disableAnimation={true} />
+        <WorkShowcase disableAnimation={true} disableFilter={true} />
       </Section>
     </main>
   )

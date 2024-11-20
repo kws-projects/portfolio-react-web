@@ -1,4 +1,4 @@
-import { WorkCategory } from 'data/works'
+import { WorkCategory } from 'constant/work'
 
 interface IMenuMap {
   id: number
@@ -26,17 +26,17 @@ export const menuMap: IMenuMap[] = [
       {
         id: 3,
         title: 'Mobile App',
-        path: `/works?work=${WorkCategory.MOBILE}`,
+        path: `/works?category[0]=${WorkCategory.MOBILE}`,
       },
       {
         id: 4,
         title: 'Website',
-        path: `/works?work=${WorkCategory.WEBSITE}`,
+        path: `/works?category[0]=${WorkCategory.WEBSITE}`,
       },
       {
         id: 5,
         title: 'Graphic',
-        path: `/works?work=${WorkCategory.GRAPHIC}`,
+        path: `/works?category[0]=${WorkCategory.GRAPHIC}`,
       },
       {
         id: 6,
@@ -45,34 +45,34 @@ export const menuMap: IMenuMap[] = [
           {
             id: 7,
             title: 'Creative Coding',
-            path: `/works?work=${WorkCategory.CREATIVE_CODING}`,
+            path: `/works?category[0]=${WorkCategory.CREATIVE_CODING}`,
           },
           {
             id: 8,
             title: '3D Modeling',
-            path: `/works?work=${WorkCategory.MODELLING}`,
+            path: `/works?category[0]=${WorkCategory.MODELLING}`,
           },
           {
             id: 9,
             title: 'Drawing',
-            path: `/works?work=${WorkCategory.DRAWING}`,
+            path: `/works?category[0]=${WorkCategory.DRAWING}`,
           },
           {
             id: 10,
             title: 'Arduino',
-            path: `/works?work=${WorkCategory.ARDUINO}`,
+            path: `/works?category[0]=${WorkCategory.ARDUINO}`,
           },
         ],
       },
       {
         id: 11,
         title: 'Tool',
-        path: `/works?work=${WorkCategory.TOOL}`,
+        path: `/works?category[0]=${WorkCategory.TOOL}`,
       },
       {
         id: 12,
         title: 'All',
-        path: `/works?work=${WorkCategory.ALL}`,
+        path: `/works?category[0]=${WorkCategory.ALL}`,
       },
     ],
   },

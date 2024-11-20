@@ -1,32 +1,6 @@
-export enum WorkCategory {
-  ALL = 'All',
-  MOBILE = 'Mobile App',
-  WEBSITE = 'Website',
-  GRAPHIC = 'Graphic',
-  CREATIVE_CODING = 'Creative Coding',
-  MODELLING = '3D Modelling',
-  DRAWING = 'Drawing',
-  ARDUINO = 'Arduino',
-  TOOL = 'Tool',
-}
+import { Work, WorkCategory } from 'constant/work'
 
-interface IWork {
-  id: number
-  title: string
-  subTitle: string
-  description?: string
-  image: string[]
-  category: WorkCategory[]
-  stacks?: string[]
-  featured?: boolean
-  url: string
-  date: {
-    year: number
-    month: number
-  }
-}
-
-export const works: IWork[] = [
+export const works: Work[] = [
   {
     id: 23,
     title: 'Kws WebTools',

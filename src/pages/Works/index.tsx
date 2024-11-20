@@ -1,8 +1,5 @@
-import { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
-import { useSearchParams } from 'react-router-dom'
-import { WorkCategory } from 'data/works'
 import usePageTitle from 'hooks/usePageTitle'
 import useScrollToTop from 'hooks/useScrollToTop'
 import Section from 'components/ui/Section'
@@ -13,15 +10,6 @@ const Works = () => {
 
   useScrollToTop()
   usePageTitle(t('works_document_title'))
-
-  const [searchParams] = useSearchParams()
-  const [selectedCategory, setSelectedCategories] =
-    useState<WorkCategory | null>(null)
-
-  useEffect(() => {
-    const query: unknown = searchParams.get('work')
-    if (query) setSelectedCategories(query as WorkCategory)
-  }, [searchParams])
 
   return (
     <main>
@@ -36,9 +24,7 @@ const Works = () => {
         showBreakline={false}
         disableAnimation={true}
       >
-        <WorkShowcase
-          defaultCategory={selectedCategory ? selectedCategory : undefined}
-        />
+        <WorkShowcase />
       </Section>
     </main>
   )
