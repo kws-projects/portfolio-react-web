@@ -1,13 +1,13 @@
 import { WorkCategory } from 'constant/work'
 
-interface IMenuMap {
+type MenuMap = {
   id: number
   title: string
   path?: string
-  subItems?: IMenuMap[]
+  subItems?: MenuMap[]
 }
 
-export const menuMap: IMenuMap[] = [
+export const menuMap: MenuMap[] = [
   {
     id: 0,
     title: 'Home',
