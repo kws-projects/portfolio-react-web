@@ -31,9 +31,10 @@ const WorkShowcase = ({
   const { search, pathname } = useLocation()
   const initialSearch = useMemo(() => {
     const queryCategory = parse(search, { ignoreQueryPrefix: true })
-      .category as WorkCategory[]
+      ?.category as WorkCategory[]
     const isValidCategory =
-      queryCategory?.filter(cat => workCategories.includes(cat)).length > 0
+      Array.isArray(queryCategory) &&
+      queryCategory.filter(cat => workCategories.includes(cat)).length > 0
     return isValidCategory ? queryCategory : [WorkCategory.ALL]
   }, [search, workCategories])
 
@@ -63,50 +64,43 @@ const WorkShowcase = ({
     (category: WorkCategory) => {
       const numOfSelectedCategories = selectedCategories
         ? selectedCategories.length + 1
-        : null
+        : undefined
       const numOfAvailableCategoryOptions = workCategories
         ? workCategories?.length - 1
-        : null
+        : undefined
 
-      switch (category) {
-        // case: user select all
-        case WorkCategory.ALL:
-          setSelectedCategories([category])
-          break
+      // select all
+      if (category === WorkCategory.ALL) setSelectedCategories([category])
 
-        default:
-          // deselect all when user select new category from all option
-          if (selectedCategories?.includes(WorkCategory.ALL)) {
-            setSelectedCategories(
-              prev =>
-                prev && prev.filter(workCat => workCat !== WorkCategory.ALL)
-            )
-          }
+      // deselect all when user select new category from all option
+      if (selectedCategories?.includes(WorkCategory.ALL)) {
+        setSelectedCategories(
+          prev => prev && prev.filter(workCat => workCat !== WorkCategory.ALL)
+        )
+      }
 
-          // deselect selected category
-          if (
-            selectedCategories?.includes(category) &&
-            numOfSelectedCategories &&
-            numOfSelectedCategories > 2
-          ) {
-            setSelectedCategories(
-              selectedCategories.filter(cat => cat !== category)
-            )
-            break
-          }
+      // deselect selected category
+      if (
+        selectedCategories?.includes(category) &&
+        numOfSelectedCategories &&
+        numOfSelectedCategories > 2
+      ) {
+        setSelectedCategories(
+          selectedCategories.filter(cat => cat !== category)
+        )
+      }
 
-          // select category
-          if (!selectedCategories?.includes(category)) {
-            setSelectedCategories(prev => (prev ? [...prev, category] : []))
-          }
+      // select category
+      if (!selectedCategories?.includes(category)) {
+        setSelectedCategories(prev => (prev ? [...prev, category] : []))
+      }
 
-          // select all when user selected all other categories
-          if (
-            numOfSelectedCategories &&
-            numOfSelectedCategories === numOfAvailableCategoryOptions
-          ) {
-            setSelectedCategories([WorkCategory.ALL])
-          }
+      // select all when user selected all other categories
+      if (
+        numOfSelectedCategories &&
+        numOfSelectedCategories === numOfAvailableCategoryOptions
+      ) {
+        setSelectedCategories([WorkCategory.ALL])
       }
     },
     [selectedCategories, workCategories]
