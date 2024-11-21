@@ -1,17 +1,19 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, useInView, useAnimation } from 'framer-motion'
-import useWorkCategory from 'hooks/useWorkCategory'
-import { WorkCategory, works } from 'data/works'
+import { EnumValues } from 'enum-values'
+import { parse, stringify } from 'qs'
+import { getWorkCategoryLabel, WorkCategory } from 'constant/work'
+import { works } from 'data/works'
 
 type WorkShowcaseProps = {
-  defaultCategory?: WorkCategory
   disableAnimation?: boolean
+  disableFilter?: boolean
 }
 
 const WorkShowcase = ({
-  defaultCategory = WorkCategory.ALL,
   disableAnimation = false,
+  disableFilter = false,
 }: WorkShowcaseProps) => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
@@ -23,64 +25,89 @@ const WorkShowcase = ({
     }
   }, [fadeInControl, isInView])
 
-  const workCategories = useWorkCategory()
+  const workCategories = EnumValues.getValues(WorkCategory) as WorkCategory[]
 
-  const [selectedCategories, setSelectedCategories] = useState<
-    WorkCategory[] | null
-  >([defaultCategory])
+  const navigate = useNavigate()
+  const { search, pathname } = useLocation()
+  const initialSearch = useMemo(() => {
+    const queryCategory = parse(search, { ignoreQueryPrefix: true })
+      ?.category as WorkCategory[]
+    const isValidCategory =
+      Array.isArray(queryCategory) &&
+      queryCategory.filter(cat => workCategories.includes(cat)).length > 0
+    return isValidCategory ? queryCategory : [WorkCategory.ALL]
+  }, [search, workCategories])
 
-  useCallback(() => {
-    setSelectedCategories([defaultCategory])
-  }, [defaultCategory])
+  const [selectedCategories, setSelectedCategories] =
+    useState<WorkCategory[]>(initialSearch)
+  const [filter, setFilter] = useState<WorkCategory[]>(initialSearch)
 
-  const handleSelectCategory = (category: WorkCategory) => {
-    const numOfSelectedCategories = selectedCategories
-      ? selectedCategories.length + 1
-      : null
-    const numOfAvailableCategoryOptions = workCategories
-      ? workCategories?.length - 1
-      : null
+  useEffect(() => {
+    if (!disableFilter) setFilter(selectedCategories)
+  }, [disableFilter, selectedCategories])
 
-    switch (category) {
-      // case: user select all
-      case WorkCategory.ALL:
-        setSelectedCategories([category])
-        break
-
-      default:
-        // deselect all when user select new category from all option
-        if (selectedCategories?.includes(WorkCategory.ALL)) {
-          setSelectedCategories(
-            prev => prev && prev.filter(workCat => workCat !== WorkCategory.ALL)
-          )
-        }
-
-        // deselect selected category
-        if (
-          selectedCategories?.includes(category) &&
-          numOfSelectedCategories &&
-          numOfSelectedCategories > 2
-        ) {
-          setSelectedCategories(
-            selectedCategories.filter(cat => cat !== category)
-          )
-          break
-        }
-
-        // select category
-        if (!selectedCategories?.includes(category)) {
-          setSelectedCategories(prev => (prev ? [...prev, category] : null))
-        }
-
-        // select all when user selected all other categories
-        if (
-          numOfSelectedCategories &&
-          numOfSelectedCategories === numOfAvailableCategoryOptions
-        ) {
-          setSelectedCategories([WorkCategory.ALL])
-        }
+  useEffect(() => {
+    if (!disableFilter) {
+      navigate(
+        {
+          pathname,
+          search: `?${stringify({
+            ...{ category: filter },
+          })}`,
+        },
+        { replace: true }
+      )
     }
-  }
+  }, [disableFilter, navigate, pathname, search, selectedCategories, filter])
+
+  const handleCategoryChange = useCallback(
+    (category: WorkCategory) => {
+      const numOfSelectedCategories = selectedCategories
+        ? selectedCategories.length + 1
+        : undefined
+      const numOfAvailableCategoryOptions = workCategories
+        ? workCategories?.length - 1
+        : undefined
+
+      // select all
+      if (category === WorkCategory.ALL) {
+        setSelectedCategories([category])
+        return
+      }
+
+      // deselect all when user select new category from all option
+      if (selectedCategories?.includes(WorkCategory.ALL)) {
+        setSelectedCategories(
+          prev => prev && prev.filter(workCat => workCat !== WorkCategory.ALL)
+        )
+      }
+
+      // deselect selected category
+      if (
+        selectedCategories?.includes(category) &&
+        numOfSelectedCategories &&
+        numOfSelectedCategories > 2
+      ) {
+        setSelectedCategories(
+          selectedCategories.filter(cat => cat !== category)
+        )
+      }
+
+      // select category
+      if (!selectedCategories?.includes(category)) {
+        setSelectedCategories(prev => (prev ? [...prev, category] : []))
+      }
+
+      // select all when user selected all other categories
+      if (
+        numOfSelectedCategories &&
+        numOfSelectedCategories === numOfAvailableCategoryOptions
+      ) {
+        setSelectedCategories([WorkCategory.ALL])
+      }
+    },
+    [selectedCategories, workCategories]
+  )
 
   return (
     <section className="w-full">
@@ -91,9 +118,9 @@ const WorkShowcase = ({
               key={workCategory}
               className={`px-4 py-1 rounded-md bg-gray-100 shadow-custom-sm text-sm cursor-pointer whitespace-nowrap 
                                 ${selectedCategories?.includes(workCategory) ? 'bg-gray-800 text-gray-100' : 'hover:bg-gray-200'}`}
-              onClick={() => handleSelectCategory(workCategory)}
+              onClick={() => handleCategoryChange(workCategory)}
             >
-              {workCategory}
+              {getWorkCategoryLabel()[workCategory]}
             </li>
           ))}
         </ul>
