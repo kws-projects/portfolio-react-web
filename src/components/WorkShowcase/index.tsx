@@ -70,7 +70,10 @@ const WorkShowcase = ({
         : undefined
 
       // select all
-      if (category === WorkCategory.ALL) setSelectedCategories([category])
+      if (category === WorkCategory.ALL) {
+        setSelectedCategories([category])
+        return
+      }
 
       // deselect all when user select new category from all option
       if (selectedCategories?.includes(WorkCategory.ALL)) {
