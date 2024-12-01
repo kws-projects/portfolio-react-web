@@ -1,4 +1,5 @@
-import { WorkCategory } from 'data/works'
+import { WorkCategory } from 'constant/work'
+import { envConfig } from 'config'
 
 interface IMenuMap {
   id: number
@@ -17,7 +18,7 @@ export const menuMap: IMenuMap[] = [
       {
         id: 1,
         title: 'CV',
-        path: 'https://static.kwwdev.com/documents/cv/Wong_Kai_Fung_CV.pdf',
+        path: `${envConfig.STATIC_FILE_BASE_URL}/documents/cv/Wong_Kai_Fung_CV.pdf`,
         downloadable: true,
       },
     ],
@@ -30,17 +31,17 @@ export const menuMap: IMenuMap[] = [
       {
         id: 3,
         title: 'Mobile',
-        path: `/works?work=${WorkCategory.MOBILE}`,
+        path: `/works?category[0]=${WorkCategory.MOBILE}`,
       },
       {
         id: 4,
         title: 'Website',
-        path: `/works?work=${WorkCategory.WEBSITE}`,
+        path: `/works?category[0]=${WorkCategory.WEBSITE}`,
       },
       {
         id: 6,
         title: 'All',
-        path: `/works?work=${WorkCategory.ALL}`,
+        path: `/works?category[0]=${WorkCategory.ALL}`,
       },
     ],
   },

@@ -30,7 +30,7 @@ const BannerCard = () => {
           {Object.values(HomeBannerTab).map(tab => (
             <li
               key={tab}
-              className={`border-b border-transparent pb-3 hover:border-b-gray-800 cursor-pointer transition ease-in-out ${getIndicatorStyle(tab)}`}
+              className={`border-b border-transparent pb-3 hover:border-b-gray-800 cursor-pointer select-none transition ease-in-out ${getIndicatorStyle(tab)}`}
               onClick={() => handleTabSwitch(tab)}
             >
               {getHomeBannerTabLabel()[tab]}

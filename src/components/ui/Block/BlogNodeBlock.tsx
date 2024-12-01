@@ -4,6 +4,8 @@ import { blogsAPI } from 'services/portfolioSvc/blogsAPI'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import DOMPurify from 'dompurify'
+import CodeEditor from 'components/ui/CodeEditor'
+import { useMemo } from 'react'
 
 type BlogNodeBlockProps = {
   data: BlogNode
@@ -25,33 +27,60 @@ export const BlogNodeBlock = ({ data }: BlogNodeBlockProps) => {
     queryFn: () => blogsAPI.getBlogNode(Number(data.blogId), Number(data.id)),
   })
 
+  const { language, editorHeight, code } = useMemo(() => {
+    let language = 'markdown'
+    let code = ''
+    let editorHeight = 0
+
+    if (data?.type === BlogNodeType.CODE) {
+      const lines = node?.split('\n')
+      language = lines ? lines[0] : language
+      editorHeight = lines ? lines[1] : editorHeight
+      code = lines ? lines.slice(2).join('\n') : code
+    }
+
+    return { language, editorHeight, code }
+  }, [data.type, node])
+
   return (
     <>
       {!isErrorNode ? (
         <>
-          {isLoadingNode ? (
-            <Skeleton />
-          ) : (
-            <div
-              className={`${data.type === BlogNodeType.MD ? 'md ' : ''}mt-12`}
-            >
+          {isLoadingNode && <Skeleton />}
+
+          {!isLoadingNode && data.type === BlogNodeType.MD && (
+            <div className={'md mt-12'}>
               {data.type === BlogNodeType.MD ? (
                 <Markdown remarkPlugins={[remarkGfm]}>{node}</Markdown>
               ) : null}
+            </div>
+          )}
 
-              {data.type === BlogNodeType.HTML ? (
-                <div
-                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(node) }}
-                />
-              ) : null}
+          {!isLoadingNode && data.type === BlogNodeType.HTML && (
+            <div className={'mt-12'}>
+              <div
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(node) }}
+              />
+            </div>
+          )}
 
-              {data.type === BlogNodeType.Image ? (
-                <img src={`data:image/jpeg;base64,${node}`} alt={'node'} />
-              ) : null}
+          {!isLoadingNode && data.type === BlogNodeType.CODE && (
+            <div className={'mt-12'}>
+              <div
+                className="py-3 px-1 border-2 rounded-md border-solid border-gray-300"
+                style={{
+                  backgroundColor: '#ededed',
+                  height: `${editorHeight}px`,
+                }}
+              >
+                <CodeEditor language={language} value={code} readOnly={true} />
+              </div>
+            </div>
+          )}
 
-              {data.type === BlogNodeType.P5Sketch ? (
-                <div>This is a P5 sketch.</div>
-              ) : null}
+          {!isLoadingNode && data.type === BlogNodeType.Image && (
+            <div className={'mt-12'}>
+              <img src={`data:image/jpeg;base64,${node}`} alt={'node'} />
             </div>
           )}
         </>

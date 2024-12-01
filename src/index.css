@@ -115,6 +115,12 @@ p {
   white-space: pre-line;
 }
 
+img {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .md {
   line-height: initial;
   white-space: pre-wrap;
@@ -191,7 +197,7 @@ p {
   padding: 1.5rem;
   border-radius: 0.5rem;
   overflow-x: auto;
-  background-color: rgb(229 231 235);
+  background-color: rgb(237, 237, 237);
   margin: 1rem 0 1rem;
 }
 

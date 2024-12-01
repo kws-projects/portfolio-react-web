@@ -48,11 +48,13 @@ const Section = ({
       }}
     >
       {title ? (
-        <p className={`text-2xl ${!description && 'pb-10'}`}>{title}</p>
+        <p className={`text-2xl select-none ${!description && 'pb-10'}`}>
+          {title}
+        </p>
       ) : null}
-
-      {description ? <p className="pt-2 pb-10">{description}</p> : null}
-
+      {description ? (
+        <p className="pt-2 pb-10 select-none">{description}</p>
+      ) : null}
       {children}
     </motion.div>
   )
