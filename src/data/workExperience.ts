@@ -1,10 +1,11 @@
 import { ITimelineItem } from 'components/ui/Timeline'
+import { envConfig } from 'config'
 
 export const workExperiences: ITimelineItem[] = [
   {
     id: 0,
     title: 'Deloitte Digital - Customer & Marketing - Consulting',
-    image: 'https://static.kwwdev.com/images/workExperience/deloitte.webp',
+    image: `${envConfig.STATIC_FILE_BASE_URL}/images/workExperience/deloitte.webp`,
     fromDate: '2022-06-01T00:00:00+08:00',
     toDate: '2024-02-01T00:00:00+08:00',
     subItems: [
@@ -25,7 +26,7 @@ export const workExperiences: ITimelineItem[] = [
   {
     id: 3,
     title: 'Lalamove',
-    image: 'https://static.kwwdev.com/images/workExperience/lalamove.webp',
+    image: `${envConfig.STATIC_FILE_BASE_URL}/images/workExperience/lalamove.webp`,
     fromDate: '2024-05-01T00:00:00+08:00',
     subItems: [
       {

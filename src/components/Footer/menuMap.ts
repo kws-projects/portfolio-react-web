@@ -1,4 +1,5 @@
 import { WorkCategory } from 'constant/work'
+import { envConfig } from 'config'
 
 interface IMenuMap {
   id: number
@@ -17,7 +18,7 @@ export const menuMap: IMenuMap[] = [
       {
         id: 1,
         title: 'CV',
-        path: 'https://static.kwwdev.com/documents/cv/Wong_Kai_Fung_CV.pdf',
+        path: `${envConfig.STATIC_FILE_BASE_URL}/documents/cv/Wong_Kai_Fung_CV.pdf`,
         downloadable: true,
       },
     ],
