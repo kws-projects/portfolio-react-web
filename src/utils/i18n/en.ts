@@ -70,8 +70,10 @@ const labelList = {
   contact_title: `Contact`,
   contact_document_title: `Contact | Kenneth Wong`,
   contact_document_description: `Get in touch with Kenneth for collaborations, inquiries, or to discuss enhancing your project's functionality and user experience.`,
-  contact_tel: `Tel: (+852) 9347 8968`,
-  contact_email: `Email: kaifwong1022@gmail.com`,
+  contact_tel_label: `Tel:`,
+  contact_email_label: `Email:`,
+  contact_tel: `(+852) 9347 8968`,
+  contact_email: `kaifwong1022@gmail.com`,
 
   // Terms
   terms_title_short: `Terms`,

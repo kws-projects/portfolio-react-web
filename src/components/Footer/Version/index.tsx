@@ -5,7 +5,7 @@ import { IoIosGitBranch } from 'react-icons/io'
 const Version = () => {
   return (
     <a
-      className="group/version flex items-center gap-x-1 text-xs px-3 py-1 bg-gray-200 group-hover/version:bg-gray-400 rounded-md cursor-pointer"
+      className="group/version flex items-center gap-x-1 text-xs px-3 py-1 bg-gray-200 group-hover/version:bg-gray-400 rounded-md cursor-pointer select-none"
       href={envConfig.GITHUB_RELEASE_URL}
       target="_blank"
       rel="noreferrer"

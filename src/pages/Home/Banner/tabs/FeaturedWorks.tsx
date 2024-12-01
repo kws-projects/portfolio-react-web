@@ -3,7 +3,7 @@ import { works } from 'data/works'
 
 const FeaturedWorks = () => {
   return (
-    <div className="flex flex-col justify-center md:justify-start md:flex-row w-full h-full space-x-0 md:space-x-6 space-y-4 md:space-y-0">
+    <div className="flex flex-col justify-center md:justify-start md:flex-row w-full h-full space-x-0 md:space-x-6 space-y-4 md:space-y-0 select-none">
       {works
         .filter(work => work.featured)
         .map(work => (

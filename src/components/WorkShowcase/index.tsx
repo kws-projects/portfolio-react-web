@@ -110,7 +110,7 @@ const WorkShowcase = ({
   )
 
   return (
-    <section className="w-full">
+    <section className="w-full select-none">
       <nav className="w-full">
         <ul className="flex overflow-x-scroll no-scrollbar space-x-4 px-6 md:px-1 py-1">
           {workCategories?.map(workCategory => (

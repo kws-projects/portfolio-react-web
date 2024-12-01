@@ -115,6 +115,12 @@ p {
   white-space: pre-line;
 }
 
+img {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .md {
   line-height: initial;
   white-space: pre-wrap;
