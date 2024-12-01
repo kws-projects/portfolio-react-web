@@ -49,7 +49,7 @@ export const BlogNodeBlock = ({ data }: BlogNodeBlockProps) => {
           {isLoadingNode && <Skeleton />}
 
           {!isLoadingNode && data.type === BlogNodeType.MD && (
-            <div className={'md mt-12'}>
+            <div className={'md'}>
               {data.type === BlogNodeType.MD ? (
                 <Markdown remarkPlugins={[remarkGfm]}>{node}</Markdown>
               ) : null}
@@ -57,31 +57,25 @@ export const BlogNodeBlock = ({ data }: BlogNodeBlockProps) => {
           )}
 
           {!isLoadingNode && data.type === BlogNodeType.HTML && (
-            <div className={'mt-12'}>
-              <div
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(node) }}
-              />
-            </div>
+            <div
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(node) }}
+            />
           )}
 
           {!isLoadingNode && data.type === BlogNodeType.CODE && (
-            <div className={'mt-12'}>
-              <div
-                className="py-3 px-1 border-2 rounded-md border-solid border-gray-300"
-                style={{
-                  backgroundColor: '#ededed',
-                  height: `${editorHeight}px`,
-                }}
-              >
-                <CodeEditor language={language} value={code} readOnly={true} />
-              </div>
+            <div
+              className="py-3 px-1 border-2 rounded-md border-solid border-gray-300"
+              style={{
+                backgroundColor: '#ededed',
+                height: `${editorHeight}px`,
+              }}
+            >
+              <CodeEditor language={language} value={code} readOnly={true} />
             </div>
           )}
 
           {!isLoadingNode && data.type === BlogNodeType.Image && (
-            <div className={'mt-12'}>
-              <img src={`data:image/jpeg;base64,${node}`} alt={'node'} />
-            </div>
+            <img src={`data:image/jpeg;base64,${node}`} alt={'node'} />
           )}
         </>
       ) : null}
