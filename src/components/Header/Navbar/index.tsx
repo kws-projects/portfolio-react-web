@@ -48,7 +48,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`${isNavbarExpended ? 'flex' : 'hidden'} absolute top-14 w-full md:relative md:top-0 md:flex md:w-fit`}
+        className={`${isNavbarExpended ? 'flex-col' : 'hidden'} absolute top-14 w-full md:relative md:top-0 md:flex md:w-fit`}
       >
         <ul className="w-full md:w-fit">
           {menuMap.map(item => (
@@ -120,6 +120,11 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+        <div
+          className={`flex md:hidden w-full md:w-0 h-screen md:h-0 backdrop-blur`}
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
+          onClick={handleNavbarToggle}
+        ></div>
       </div>
     </nav>
   )
