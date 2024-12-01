@@ -14,7 +14,7 @@ const Footer = () => {
           <div className="flex justify-start items-center space-x-4">
             <Link
               to="/"
-              className="text-lg pt-1 text-gray-800"
+              className="text-lg pt-1 text-gray-800 select-none"
               style={{ fontFamily: 'Jost' }}
             >
               {t('website_name')}
@@ -28,7 +28,7 @@ const Footer = () => {
             {t('website_attribution')}
           </p>
 
-          <div className="flex mt-2 space-x-2">
+          <div className="flex mt-2 space-x-2 select-none">
             <Link to="/contact">{t('contact_title')}</Link>
             <span>|</span>
             <Link to="/terms-and-conditions">{t('terms_title_short')}</Link>
@@ -45,7 +45,7 @@ const Footer = () => {
           </div>
         </section>
 
-        <div className="hidden md:flex flex-col justify-between items-end h-full">
+        <div className="hidden md:flex flex-col justify-between items-end h-full select-none">
           <ul className="flex justify-center">
             {menuMap.map(item => (
               <li className="ml-12" key={item.id}>

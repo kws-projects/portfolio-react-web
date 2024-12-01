@@ -26,10 +26,18 @@ const Contact = () => {
         showBreakline={false}
       >
         <div className="flex flex-col justify-between items-center w-full h-full mt-20 sm:mt-0 py-16 min-h-80 max-w-screen-md max-h-96 rounded-none sm:rounded-lg bg-white/80 shadow-custom">
-          <span className="text-3xl">{t('contact_title')}</span>
+          <span className="text-3xl select-none">{t('contact_title')}</span>
           <div className="flex flex-col justify-center items-center space-y-2">
-            <p>{t('contact_tel')}</p>
-            <p>{t('contact_email')}</p>
+            <div>
+              <span className="pr-1 select-none">{t('contact_tel_label')}</span>
+              <span>{t('contact_tel')}</span>
+            </div>
+            <div>
+              <span className="pr-1 select-none">
+                {t('contact_email_label')}
+              </span>
+              <span>{t('contact_email')}</span>
+            </div>
           </div>
           <ContactPortal />
         </div>
