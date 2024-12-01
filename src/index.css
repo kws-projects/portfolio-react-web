@@ -126,36 +126,30 @@ img {
   white-space: pre-wrap;
 }
 
-.md h1 {
+.md h1,
+.md h2,
+.md h3,
+.md h4 {
   display: block;
-  font-size: 2em;
-  margin-top: 0.67em;
+  margin-top: 0;
   margin-left: 0;
   margin-right: 0;
+}
+
+.md h1 {
+  font-size: 2em;
 }
 
 .md h2 {
-  display: block;
   font-size: 1.5em;
-  margin-top: 0.83em;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 .md h3 {
-  display: block;
   font-size: 1.17em;
-  margin-top: 1em;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 .md h4 {
-  display: block;
   font-size: 1em;
-  margin-top: 1.33em;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 .md p {
@@ -169,7 +163,6 @@ img {
 
 .md ol li:first-of-type,
 .md ul li:first-of-type {
-  margin-top: 0;
   white-space: initial;
 }
 
@@ -179,12 +172,8 @@ img {
   white-space: initial;
 }
 
-.md ol li p:first-of-type {
-  margin-bottom: 1rem;
-}
-
 .md ul {
-  margin: 0 0 1rem 1.65rem;
+  margin: 0 0 0 1.65rem;
   list-style: circle;
 }
 
