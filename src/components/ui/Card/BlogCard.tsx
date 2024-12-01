@@ -11,7 +11,7 @@ type BlogCardProps = {
 export const Skeleton = () => (
   <div
     className={
-      'aspect-square rounded-lg shadow-custom-neu bg-cover bg-no-repeat bg-center'
+      'aspect-square rounded-lg shadow-custom-neu-sm md:shadow-custom-neu bg-cover bg-no-repeat bg-center'
     }
   >
     <div className="h-full rounded-lg animate-pulse">
@@ -34,10 +34,10 @@ export const BlogCard = ({ data }: BlogCardProps) => {
     <Link
       to={`/blogs/${data.id}`}
       className={
-        'aspect-square rounded-lg shadow-custom-neu bg-cover bg-no-repeat bg-center'
+        'aspect-square rounded-lg shadow-custom-neu-sm md:shadow-custom-neu bg-cover bg-no-repeat bg-center'
       }
     >
-      <div className="h-full rounded-lg hover:bg-gray-50 hover:shadow-custom-neu-hover">
+      <div className="h-full rounded-lg hover:bg-gray-50 hover:shadow-custom-neu-sm-hover md:hover:shadow-custom-neu-hover">
         <div
           className="h-1/2 bg-cover bg-center rounded-t-lg bg-gray-200"
           style={{
