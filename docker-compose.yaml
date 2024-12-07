@@ -1,9 +1,11 @@
+name: portfolio
+
 services:
-  react-web:
-    image: ${DOCKER_REACT_WEB_REGISTRY}:${REACT_APP_BUILD_VERSION_NO}
-    container_name: ${DOCKER_REACT_WEB_CONTAINER_NAME}
+  portfolio-app:
+    container_name: portfolio-app
+    image: ${PORTFOLIO_IMAGE}:${REACT_APP_BUILD_VERSION_NO}
+    env_file:
+      - .env
     ports:
-      - ${DOCKER_REACT_WEB_PORT_BINDING}
-    stdin_open: true
+      - ${PORTFOLIO_PORT_BINDING}
     restart: always
-    tty: true
