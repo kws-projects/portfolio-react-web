@@ -9,5 +9,3 @@ services:
     ports:
       - ${PORTFOLIO_PORT_BINDING}
     restart: always
-    stdin_open: true
-    tty: true
