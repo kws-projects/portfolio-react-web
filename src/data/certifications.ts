@@ -1,5 +1,5 @@
-import { ITimelineItem } from 'components/ui/Timeline'
-import { envConfig } from 'config'
+import { ITimelineItem } from '@/components/ui/Timeline'
+import { envConfig } from '@/config'
 
 export const certifications: ITimelineItem[] = [
   {

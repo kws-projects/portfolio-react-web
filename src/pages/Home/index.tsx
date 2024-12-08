@@ -1,9 +1,9 @@
 import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
-import usePageTitle from 'hooks/usePageTitle'
-import useScrollToTop from 'hooks/useScrollToTop'
-import Section from 'components/ui/Section'
-import WorkShowcase from 'components/WorkShowcase'
+import usePageTitle from '@/hooks/usePageTitle'
+import useScrollToTop from '@/hooks/useScrollToTop'
+import Section from '@/components/ui/Section'
+import WorkShowcase from '@/components/WorkShowcase'
 import Banner from './Banner'
 
 const Home = () => {

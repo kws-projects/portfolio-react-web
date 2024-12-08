@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion, useInView, useAnimation } from 'framer-motion'
-import HomeBackgroundSketch from 'components/sketches/HomeBackgroundSketch'
+import HomeBackgroundSketch from '@/components/sketches/HomeBackgroundSketch'
 import BannerCard from './BannerCard'
 
 const Banner = () => {

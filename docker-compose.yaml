@@ -3,7 +3,7 @@ name: portfolio
 services:
   portfolio-app:
     container_name: portfolio-app
-    image: ${PORTFOLIO_IMAGE}:${REACT_APP_BUILD_VERSION_NO}
+    image: ${PORTFOLIO_IMAGE}:${BUILD_VERSION_NO}
     env_file:
       - .env
     ports:

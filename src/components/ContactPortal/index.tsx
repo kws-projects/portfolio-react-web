@@ -1,6 +1,6 @@
-import { trackEvent } from 'services/ga4'
-import { ExternalUrl, getAriaLabel } from 'constant/externalUrl'
-import { GAEventCategory, GAEventAction } from 'constant/gaEvent'
+import { trackEvent } from '@/services/ga4'
+import { ExternalUrl, getAriaLabel } from '@/constant/externalUrl'
+import { GAEventCategory, GAEventAction } from '@/constant/gaEvent'
 import { FaLinkedin, FaSquareGithub, FaSquareEnvelope } from 'react-icons/fa6'
 
 const ContactPortal = () => {

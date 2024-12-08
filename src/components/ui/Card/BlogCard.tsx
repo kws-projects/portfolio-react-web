@@ -1,8 +1,8 @@
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import { Link } from 'react-router-dom'
-import { envConfig } from 'config'
-import { Blog } from 'types/blog'
+import { envConfig } from '@/config'
+import { Blog } from '@/types/blog'
 
 type BlogCardProps = {
   data: Blog

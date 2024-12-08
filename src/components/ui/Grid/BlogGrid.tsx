@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next'
-import { Blog } from 'types/blog'
-import Button from 'components/ui/Button/Button'
-import { BlogCard, Skeleton } from 'components/ui/Card/BlogCard'
+import { Blog } from '@/types/blog'
+import Button from '@/components/ui/Button/Button'
+import { BlogCard, Skeleton } from '@/components/ui/Card/BlogCard'
 import { FaCircleXmark } from 'react-icons/fa6'
 
 type BlogGridProps = {
   data: Blog[]
   isLoading: boolean
   isError: boolean
-  refetch: any
+  refetch: () => void
 }
 
 const BlogGrid = ({ data, isLoading, isError, refetch }: BlogGridProps) => {

@@ -4,7 +4,7 @@ type TabProps = {
   tab: string
   currentTab: string
   className?: string
-  style?: Object
+  style?: object
   children?: ReactNode
 }
 

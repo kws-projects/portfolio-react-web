@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
-import { compareDate } from 'utils/common'
+import { compareDate } from '@/utils/common'
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const getDurationString = (fromDate: string, toDate?: string) => {
   const fromDateObj = new Date(fromDate)
 
