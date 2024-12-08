@@ -1,14 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import { HelmetProvider } from 'react-helmet-async'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import './index.css'
-import App from './App'
+import '@/index.css'
+import App from '@/App'
 import ReactGA from 'react-ga4'
 import * as Sentry from '@sentry/react'
-import { envConfig } from './config'
-import { AppEnv } from './constant/appEnv'
+import { envConfig } from '@/config'
+import { AppEnv } from '@/constant/appEnv'
 
 const queryClient = new QueryClient({})
 
@@ -28,23 +28,16 @@ if (envConfig.NODE_ENV === AppEnv.PROD) {
   })
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
-
-root.render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <Router
-          future={{
-            v7_startTransition: true,
-            v7_relativeSplatPath: true,
-          }}
-        >
+        <Router>
           <Routes>
             <Route path="/*" element={<App />} />
           </Routes>
         </Router>
       </QueryClientProvider>
     </HelmetProvider>
-  </React.StrictMode>
+  </StrictMode>
 )

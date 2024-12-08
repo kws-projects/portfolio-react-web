@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { motion, useInView, useAnimation } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import { envConfig } from 'config'
-import ContactPortal from 'components/ContactPortal'
+import { envConfig } from '@/config'
+import ContactPortal from '@/components/ContactPortal'
 
 const SelfIntro = () => {
   const ref = useRef(null)

@@ -1,9 +1,9 @@
 import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
-import usePageTitle from 'hooks/usePageTitle'
-import useScrollToTop from 'hooks/useScrollToTop'
-import PageTitleSketch from 'components/sketches/PageTitleSketch'
-import Section from 'components/ui/Section'
+import usePageTitle from '@/hooks/usePageTitle'
+import useScrollToTop from '@/hooks/useScrollToTop'
+import PageTitleSketch from '@/components/sketches/PageTitleSketch'
+import Section from '@/components/ui/Section'
 
 const Privacy = () => {
   const { t } = useTranslation()

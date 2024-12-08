@@ -1,4 +1,4 @@
-import { envConfig } from 'config'
+import { envConfig } from '@/config'
 
 type Skill = {
   id: number

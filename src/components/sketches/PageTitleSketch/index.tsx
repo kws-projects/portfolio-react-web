@@ -5,6 +5,7 @@ const PageTitleSketch = ({ title = '' }: { title: string }) => {
   const renderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let sRef: any
 
     new p5(s => {
@@ -31,7 +32,7 @@ const PageTitleSketch = ({ title = '' }: { title: string }) => {
           s.circle(s.width / 2 + this.x, s.height / 2 + this.y, this.r)
         }
         update() {
-          let dist = s.dist(
+          const dist = s.dist(
             s.mouseX,
             s.mouseY,
             s.width / 2 + this.x,
@@ -55,7 +56,7 @@ const PageTitleSketch = ({ title = '' }: { title: string }) => {
       let font: Font
       let circles: Circle[]
       let rows, cols
-      let size = 10
+      const size = 10
       let targetHeight = -50
       let currHeight = -50
 
@@ -116,15 +117,15 @@ const PageTitleSketch = ({ title = '' }: { title: string }) => {
       }
 
       const initCircles = () => {
-        let sizeOffset = 0.2
+        const sizeOffset = 0.2
         rows = (s.height / size) * sizeOffset
         cols = (s.width / size) * sizeOffset
 
         circles = []
         for (let y = 0; y < rows; y++) {
           for (let x = 0; x < cols; x++) {
-            let xPos = s.map(x, 0, cols, (s.width / 2) * -1, s.width / 2)
-            let yPos = s.map(y, 0, rows, (s.height / 2) * -1, s.height / 2)
+            const xPos = s.map(x, 0, cols, (s.width / 2) * -1, s.width / 2)
+            const yPos = s.map(y, 0, rows, (s.height / 2) * -1, s.height / 2)
             circles.push(
               new Circle(xPos + size, yPos + size, size, s.random(220, 255))
             )

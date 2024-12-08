@@ -1,8 +1,8 @@
-import { skills } from 'data/skills'
+import { skills } from '@/data/skills'
 
 type SkillShowcaseProps = {
   className?: string
-  style?: Object
+  style?: object
 }
 
 const SkillShowcase = ({ className, style }: SkillShowcaseProps) => {

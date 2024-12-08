@@ -1,5 +1,5 @@
-import { WorkCategory } from 'constant/work'
-import { envConfig } from 'config'
+import { WorkCategory } from '@/constant/work'
+import { envConfig } from '@/config'
 
 interface IMenuMap {
   id: number

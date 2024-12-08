@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import ContactPortal from 'components/ContactPortal'
+import ContactPortal from '@/components/ContactPortal'
 import Version from './Version'
 import { menuMap } from './menuMap'
 

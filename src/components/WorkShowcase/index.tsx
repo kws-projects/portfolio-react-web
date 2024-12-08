@@ -3,8 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, useInView, useAnimation } from 'framer-motion'
 import { EnumValues } from 'enum-values'
 import { parse, stringify } from 'qs'
-import { getWorkCategoryLabel, WorkCategory } from 'constant/work'
-import { works } from 'data/works'
+import { getWorkCategoryLabel, WorkCategory } from '@/constant/work'
+import { works } from '@/data/works'
 
 type WorkShowcaseProps = {
   disableAnimation?: boolean

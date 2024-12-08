@@ -1,4 +1,4 @@
-import { envConfig } from 'config'
+import { envConfig } from '@/config'
 
 export enum AppEnv {
   DEV = 'DEV',

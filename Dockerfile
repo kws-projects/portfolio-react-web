@@ -4,8 +4,8 @@ WORKDIR /app
 
 RUN npm i -g serve
 
-COPY build ./build
+COPY dist ./dist
 
 EXPOSE 3000
 
-CMD ["serve", "-n", "-s", "build", "-l", "3000"]
+CMD ["serve", "-n", "-s", "dist", "-l", "3000"]

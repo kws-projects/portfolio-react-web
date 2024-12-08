@@ -5,7 +5,7 @@ type SectionProps = {
   title?: string
   description?: string
   className?: string
-  style?: Object
+  style?: object
   showBreakline?: boolean
   disableAnimation?: boolean
   children?: ReactNode
