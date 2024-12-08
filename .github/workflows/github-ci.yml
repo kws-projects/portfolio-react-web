@@ -17,6 +17,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
     - name: Build stack
-      run: yarn ci
+      run: yarn install
     - name: Run test case
       run: tsc
