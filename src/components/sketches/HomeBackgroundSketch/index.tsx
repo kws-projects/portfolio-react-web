@@ -5,6 +5,7 @@ const HomeBackgroundSketch = () => {
   const renderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let sRef: any
 
     new p5(s => {
@@ -21,7 +22,7 @@ const HomeBackgroundSketch = () => {
         lsPath: number[][],
         rsPos: number[][],
         rsPath: number[][]
-      let amt = 0.03
+      const amt = 0.03
 
       s.setup = () => {
         s.createCanvas(0, 0).parent(renderRef.current)
@@ -39,7 +40,7 @@ const HomeBackgroundSketch = () => {
           ts++
 
           if (ts % 3 === 0) {
-            let temp = Math.floor(s.random(0, 6))
+            const temp = Math.floor(s.random(0, 6))
             cOffset[temp][0] = s.random(-100, 100)
             cOffset[temp][1] = s.random(-100, 100)
           }

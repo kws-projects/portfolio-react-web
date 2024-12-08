@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { works } from 'data/works'
+import { works } from '@/data/works'
 
 const FeaturedWorks = () => {
   return (

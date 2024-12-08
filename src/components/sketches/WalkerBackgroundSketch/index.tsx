@@ -5,6 +5,7 @@ const WalkerBackgroundSketch = () => {
   const renderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let sRef: any
 
     new p5(s => {
@@ -28,7 +29,7 @@ const WalkerBackgroundSketch = () => {
 
         show() {
           walkers.forEach(walker => {
-            let dist = s.dist(this.x, this.y, walker.x, walker.y)
+            const dist = s.dist(this.x, this.y, walker.x, walker.y)
             if (dist < 200) {
               s.strokeWeight(0.15)
               s.stroke(0, s.map(dist, 0, 200, 255, 100))
@@ -38,9 +39,9 @@ const WalkerBackgroundSketch = () => {
           })
         }
         update() {
-          let d = s.dist(this.x, this.y, s.mouseX, s.mouseY)
+          const d = s.dist(this.x, this.y, s.mouseX, s.mouseY)
           // update tx
-          let dist = 50
+          const dist = 50
           this.tx = this.tx + s.random(-dist, dist)
           this.ty = this.ty + s.random(-dist, dist)
           // lerp
@@ -60,7 +61,7 @@ const WalkerBackgroundSketch = () => {
         }
       }
 
-      let walkers: Walker[] = []
+      const walkers: Walker[] = []
 
       s.setup = () => {
         s.createCanvas(0, 0).parent(renderRef.current)

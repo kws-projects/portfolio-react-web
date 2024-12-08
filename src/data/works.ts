@@ -1,5 +1,5 @@
-import { Work, WorkCategory } from 'constant/work'
-import { envConfig } from 'config'
+import { Work, WorkCategory } from '@/constant/work'
+import { envConfig } from '@/config'
 
 export const works: Work[] = [
   {

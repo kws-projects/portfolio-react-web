@@ -5,6 +5,7 @@ const NotFoundSketch = () => {
   const renderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let sRef: any
     let requireInit = true
 
@@ -79,7 +80,7 @@ const NotFoundSketch = () => {
             500
           )
 
-          let graphicPixels = bgGraphic.get()
+          const graphicPixels = bgGraphic.get()
           let pixelCount = 0
           for (let x = 0; x < s.width; x += PIXEL_DENSITY * 3) {
             for (let y = 0; y < s.height; y += PIXEL_DENSITY * 3) {
