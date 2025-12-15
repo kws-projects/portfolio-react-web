@@ -1,3 +1,5 @@
+import { dayjs, Dayjs } from '@/utils/dayjs'
+
 export const compareDate = (
   dateA: string | undefined,
   dateB: string | undefined
@@ -8,4 +10,25 @@ export const compareDate = (
     return dateTimeB - dateTimeA
   }
   return 0
+}
+
+export const getDateTimeDifference = (
+  fromDateTime: Dayjs,
+  toDateTime: Dayjs | undefined = dayjs()
+) => {
+  const yearDiff = toDateTime.diff(fromDateTime, 'year')
+  const monthDiff = toDateTime.diff(fromDateTime, 'month') % 12
+
+  const yearLabel = yearDiff > 1 ? `${yearDiff} years` : `${yearDiff} year`
+
+  const monthLabel =
+    monthDiff > 1 ? `${monthDiff} months` : `${monthDiff} month`
+
+  let timeDiffLabel = `${yearLabel}, ${monthLabel}`
+
+  if (yearDiff < 1) {
+    timeDiffLabel = `${monthLabel}`
+  }
+
+  return timeDiffLabel
 }
