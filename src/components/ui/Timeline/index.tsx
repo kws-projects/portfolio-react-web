@@ -24,6 +24,7 @@ export interface ITimelineItem {
   fromDate?: string
   toDate?: string
   customDate?: string
+  showDateTimeDifference?: boolean
 }
 
 type TimelineListProps = {
@@ -82,10 +83,12 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
               <span className="text-gray-500 whitespace-nowrap">
                 {getDurationString(item.fromDate)}
               </span>
-              <span className="text-gray-500 whitespace-nowrap">
-                <span className="text-gray-500 pr-2">-</span>
-                {getDateTimeDifference(dayjs(item.fromDate), { t })}
-              </span>
+              {item?.showDateTimeDifference && (
+                <span className="text-gray-500 whitespace-nowrap">
+                  <span className="text-gray-500 pr-2">-</span>
+                  {getDateTimeDifference(dayjs(item.fromDate), { t })}
+                </span>
+              )}
             </p>
           )}
 
@@ -94,13 +97,15 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
               <span className="text-gray-500 whitespace-nowrap">
                 {getDurationString(item.fromDate, item.toDate)}
               </span>
-              <span className="text-gray-500 whitespace-nowrap">
-                <span className="text-gray-500 pr-2">-</span>
-                {getDateTimeDifference(dayjs(item.fromDate), {
-                  toDateTime: dayjs(item.toDate),
-                  t,
-                })}
-              </span>
+              {item?.showDateTimeDifference && (
+                <span className="text-gray-500 whitespace-nowrap">
+                  <span className="text-gray-500 pr-2">-</span>
+                  {getDateTimeDifference(dayjs(item.fromDate), {
+                    toDateTime: dayjs(item.toDate),
+                    t,
+                  })}
+                </span>
+              )}
             </p>
           )}
 
