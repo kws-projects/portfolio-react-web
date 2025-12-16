@@ -92,6 +92,12 @@ const labelList = {
   error_blogs_not_found_message: `Blogs not found`,
   error_blog_not_found_message: `Blog not found`,
 
+  // Date/Time
+  date_year: `{{count}} year`,
+  date_year_plural: `{{count}} years`,
+  date_month: `{{count}} month`,
+  date_month_plural: `{{count}} months`,
+
   // Component
   button_reload: `Reload`,
 }

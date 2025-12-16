@@ -12,21 +12,29 @@ export const compareDate = (
   return 0
 }
 
+type TranslateFn = (key: string, options?: Record<string, unknown>) => string
+
 export const getDateTimeDifference = (
   fromDateTime: Dayjs,
-  toDateTime: Dayjs | undefined = dayjs()
-) => {
-  const yearDiff = toDateTime.diff(fromDateTime, 'year')
-  const monthDiff = toDateTime.diff(fromDateTime, 'month') % 12
-
-  const yearLabel = yearDiff > 1 ? `${yearDiff} years` : `${yearDiff} year`
-
-  const monthLabel =
-    monthDiff > 1 ? `${monthDiff} months` : `${monthDiff} month`
-
-  if (yearDiff < 1) {
-    return `${monthLabel}`
+  {
+    toDateTime = dayjs(),
+    t,
+  }: {
+    toDateTime?: Dayjs
+    t: TranslateFn
   }
+) => {
+  const totalMonths = toDateTime.diff(fromDateTime, 'month')
+  const yearDiff = Math.floor(totalMonths / 12)
+  const monthDiff = totalMonths % 12
+
+  const formatUnit = (count: number, baseKey: string) =>
+    t(count === 1 ? baseKey : `${baseKey}_plural`, { count })
+
+  const yearLabel = formatUnit(yearDiff, 'date_year')
+  const monthLabel = formatUnit(monthDiff, 'date_month')
+
+  if (yearDiff < 1) return monthLabel
 
   return `${yearLabel}, ${monthLabel}`
 }
