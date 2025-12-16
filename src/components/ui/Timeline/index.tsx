@@ -75,20 +75,24 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
           {item.subTitle && <p className="font-medium">{item.subTitle}</p>}
 
           {item.fromDate && !item.toDate && (
-            <p className="text-gray-500">
-              {getDurationString(item.fromDate)}
-              <span className="text-gray-300 p-2">|</span>
-              <span className="text-gray-500">
+            <p className="text-gray-500 flex flex-wrap gap-x-2">
+              <span className="text-gray-500 whitespace-nowrap">
+                {getDurationString(item.fromDate)}
+              </span>
+              <span className="text-gray-500 whitespace-nowrap">
+                <span className="text-gray-500 pr-2">-</span>
                 {getDateTimeDifference(dayjs(item.fromDate))}
               </span>
             </p>
           )}
 
           {item.fromDate && item.toDate && (
-            <p className="text-gray-500">
-              {getDurationString(item.fromDate, item.toDate)}
-              <span className="text-gray-300 p-2">|</span>
-              <span className="text-gray-500">
+            <p className="text-gray-500 flex flex-wrap gap-x-2">
+              <span className="text-gray-500 whitespace-nowrap">
+                {getDurationString(item.fromDate, item.toDate)}
+              </span>
+              <span className="text-gray-500 whitespace-nowrap">
+                <span className="text-gray-500 pr-2">-</span>
                 {getDateTimeDifference(
                   dayjs(item.fromDate),
                   dayjs(item.toDate)

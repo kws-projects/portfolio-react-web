@@ -24,11 +24,9 @@ export const getDateTimeDifference = (
   const monthLabel =
     monthDiff > 1 ? `${monthDiff} months` : `${monthDiff} month`
 
-  let timeDiffLabel = `${yearLabel}, ${monthLabel}`
-
   if (yearDiff < 1) {
-    timeDiffLabel = `${monthLabel}`
+    return `${monthLabel}`
   }
 
-  return timeDiffLabel
+  return `${yearLabel}, ${monthLabel}`
 }
