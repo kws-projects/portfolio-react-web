@@ -22,6 +22,7 @@ export const workExperiences: ITimelineItem[] = [
         toDate: '2024-02-01T00:00:00+08:00',
       },
     ],
+    showDateTimeDifference: true,
   },
   {
     id: 3,
@@ -35,5 +36,6 @@ export const workExperiences: ITimelineItem[] = [
         fromDate: '2024-05-16T00:00:00+08:00',
       },
     ],
+    showDateTimeDifference: true,
   },
 ]
