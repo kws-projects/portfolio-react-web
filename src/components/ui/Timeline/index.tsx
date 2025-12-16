@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 import { dayjs } from '@/utils/dayjs'
 import { compareDate, getDateTimeDifference } from '@/utils/common'
 
@@ -62,6 +63,8 @@ type TimelineItemProps = {
 }
 
 export const TimelineItem = ({ item }: TimelineItemProps) => {
+  const { t } = useTranslation()
+
   return (
     <>
       <div className="flex items-center w-full space-x-8">
@@ -81,7 +84,7 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
               </span>
               <span className="text-gray-500 whitespace-nowrap">
                 <span className="text-gray-500 pr-2">-</span>
-                {getDateTimeDifference(dayjs(item.fromDate))}
+                {getDateTimeDifference(dayjs(item.fromDate), { t })}
               </span>
             </p>
           )}
@@ -93,10 +96,10 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
               </span>
               <span className="text-gray-500 whitespace-nowrap">
                 <span className="text-gray-500 pr-2">-</span>
-                {getDateTimeDifference(
-                  dayjs(item.fromDate),
-                  dayjs(item.toDate)
-                )}
+                {getDateTimeDifference(dayjs(item.fromDate), {
+                  toDateTime: dayjs(item.toDate),
+                  t,
+                })}
               </span>
             </p>
           )}
