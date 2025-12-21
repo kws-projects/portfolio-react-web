@@ -5,20 +5,26 @@ This is a web revamp project of my [Previous Portfolio](https://github.com/kwwon
 Website available on: [https://www.kwwdev.com/](https://vite.dev/)
 
 
-## Project Setup
+## How to setup
 
-In case if you want to run this project on your local machine, follow the instructions below:
-
-1. Make sure you have **node.js** and **nvm** installed on your machine, with **node version = 20.11.1**.
+1. Make sure you have **node.js** and **nvm** installed on your machine, with **node version = `v22.21.1`**.
    ```nvm use```
 
-2. Clone this repository using git clone command:<br>
-   ```git clone https://github.com/kwwong1022/portfolio-react-web.git```
+2. Clone this repository.
    
-5. Request development and production environment files from project owner, then paste it to the root directory
+3. Copy `.env.example`, rename to `.env` and put into the root directory.
 
-6. Install the required packages from **package.json**:<br>
+4. Install the required packages from **package.json**:<br>
    ```yarn```
 
-8. After installing all required packages, run command below to host website locally:<br>
+5. After installing all required packages, run command below to host website locally:<br>
    ```yarn dev```
+
+
+## Git Flow
+
+1. Branch out feature branch from `main` branch.
+
+2. Commit changes and create PR merge into `develop` branch.
+
+3. Merge `develop` branch into `main` branch for production release.
