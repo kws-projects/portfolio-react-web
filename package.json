@@ -21,7 +21,6 @@
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
     "@sentry/cli": "^3.0.1",
-    "monaco-editor": "^0.45.0",
     "@sentry/react": "^10.32.1",
     "@tanstack/react-query": "^5.62.3",
     "axios": "^1.7.9",
@@ -29,6 +28,7 @@
     "dompurify": "^3.2.2",
     "enum-values": "^1.2.1",
     "framer-motion": "^12.23.26",
+    "monaco-editor": "^0.55.1",
     "p5": "^1.11.2",
     "qs": "^6.13.1",
     "react": "^19.0.0",
