@@ -1,5 +1,7 @@
 import { ReactNode } from 'react'
-import { compareDate } from '@/utils/common'
+import { useTranslation } from 'react-i18next'
+import { dayjs } from '@/utils/dayjs'
+import { compareDate, getDateTimeDifference } from '@/utils/common'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const getDurationString = (fromDate: string, toDate?: string) => {
@@ -22,6 +24,7 @@ export interface ITimelineItem {
   fromDate?: string
   toDate?: string
   customDate?: string
+  showDateTimeDifference?: boolean
 }
 
 type TimelineListProps = {
@@ -61,6 +64,8 @@ type TimelineItemProps = {
 }
 
 export const TimelineItem = ({ item }: TimelineItemProps) => {
+  const { t } = useTranslation()
+
   return (
     <>
       <div className="flex items-center w-full space-x-8">
@@ -74,12 +79,33 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
           {item.subTitle && <p className="font-medium">{item.subTitle}</p>}
 
           {item.fromDate && !item.toDate && (
-            <p className="text-gray-500">{getDurationString(item.fromDate)}</p>
+            <p className="text-gray-500 flex flex-wrap gap-x-2">
+              <span className="text-gray-500 whitespace-nowrap">
+                {getDurationString(item.fromDate)}
+              </span>
+              {item?.showDateTimeDifference && (
+                <span className="text-gray-500 whitespace-nowrap">
+                  <span className="text-gray-500 pr-2">-</span>
+                  {getDateTimeDifference(dayjs(item.fromDate), { t })}
+                </span>
+              )}
+            </p>
           )}
 
           {item.fromDate && item.toDate && (
-            <p className="text-gray-500">
-              {getDurationString(item.fromDate, item.toDate)}
+            <p className="text-gray-500 flex flex-wrap gap-x-2">
+              <span className="text-gray-500 whitespace-nowrap">
+                {getDurationString(item.fromDate, item.toDate)}
+              </span>
+              {item?.showDateTimeDifference && (
+                <span className="text-gray-500 whitespace-nowrap">
+                  <span className="text-gray-500 pr-2">-</span>
+                  {getDateTimeDifference(dayjs(item.fromDate), {
+                    toDateTime: dayjs(item.toDate),
+                    t,
+                  })}
+                </span>
+              )}
             </p>
           )}
 
