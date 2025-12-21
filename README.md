@@ -5,7 +5,7 @@ This is a web revamp project of my [Previous Portfolio](https://github.com/kwwon
 Website available on: [https://www.kwwdev.com/](https://vite.dev/)
 
 
-## How to setup
+## How to Setup
 
 1. Make sure you have **node.js** and **nvm** installed on your machine, with **node version = `v22.21.1`**:<br>
    ```nvm use```
