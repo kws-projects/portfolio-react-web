@@ -18,7 +18,7 @@ export const menuMap: IMenuMap[] = [
       {
         id: 1,
         title: 'CV',
-        path: `${envConfig.STATIC_FILE_BASE_URL}/documents/cv/Wong_Kai_Fung_CV.pdf`,
+        path: `${envConfig.CV_URL}`,
         downloadable: true,
       },
     ],
