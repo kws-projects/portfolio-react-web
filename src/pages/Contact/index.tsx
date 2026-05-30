@@ -25,7 +25,7 @@ const Contact = () => {
           <p className="text-sm font-medium tracking-widest uppercase text-accent mb-2">
             {t('contact_get_in_touch')}
           </p>
-          <h1 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
+          <h1 className="text-3xl md:text-4xl font-display font-medium text-primary mb-4">
             {t('contact_title')}
           </h1>
           <p className="text-secondary mb-10 max-w-lg">

@@ -92,7 +92,7 @@ const Navbar = () => {
     <nav className="flex items-center justify-between w-full h-14 max-w-screen-lg mx-0 text-sm md:mx-14 lg:mx-28 select-none">
       <Link
         to="/"
-        className="text-lg ms-8 pt-1 font-display font-semibold text-primary md:ms-4 hover:text-accent transition-colors duration-200"
+        className="text-lg ms-8 pt-1 font-logo text-primary md:ms-4 hover:text-accent transition-colors duration-200"
       >
         {t('website_name')}
       </Link>

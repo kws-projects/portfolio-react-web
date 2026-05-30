@@ -30,7 +30,7 @@ const Works = () => {
       />
 
       <section className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 pt-16">
-        <h1 className="text-3xl md:text-4xl font-display font-bold text-primary mb-3">
+        <h1 className="text-3xl md:text-4xl font-display font-medium text-primary mb-3">
           {t('works_title')}
         </h1>
         <p className="text-secondary mb-10 max-w-lg">

@@ -27,7 +27,7 @@
     --color-surface: 18 18 22;
     --color-surface-raised: 28 28 34;
     --color-surface-code: 14 14 18;
-    --color-border: 255 255 255;
+    --color-border: 160 160 170;
     --color-text: 240 240 240;
     --color-text-secondary: 155 155 160;
     --color-text-tertiary: 95 95 100;
@@ -71,6 +71,19 @@
     font-weight: 700;
     src: url(/assets/fonts/quicksand/Quicksand-Bold.ttf), format('truetype');
   }
+
+  @font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/assets/fonts/jost/Jost-Regular.ttf), format('truetype');
+  }
+  @font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 500;
+    src: url(/assets/fonts/jost/Jost-Medium.ttf), format('truetype');
+  }
 }
 
 @layer utilities {
@@ -91,7 +104,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Quicksand', sans-serif;
   color: rgb(var(--color-text));
 }
 
@@ -99,6 +111,7 @@ html {
   height: 100%;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  font-family: 'Quicksand', sans-serif;
   background-color: rgb(var(--color-bg));
   transition: background-color 0.3s ease;
 }
@@ -205,33 +218,4 @@ img {
 .md code {
   color: rgb(var(--color-text));
   font-weight: 600;
-}
-
-/* Prose styling for raw HTML content */
-.prose-content h1,
-.prose-content h2,
-.prose-content h3,
-.prose-content h4 {
-  font-family: 'Quicksand', sans-serif;
-  color: rgb(var(--color-text));
-  margin-top: 0;
-}
-.prose-content p {
-  color: rgb(var(--color-text-secondary));
-  line-height: 1.75;
-  white-space: normal;
-}
-.prose-content ul,
-.prose-content ol {
-  color: rgb(var(--color-text-secondary));
-  margin-left: 1.5rem;
-}
-.prose-content li {
-  margin-top: 0.5rem;
-  color: rgb(var(--color-text-secondary));
-}
-.prose-content a {
-  color: rgb(var(--color-text));
-  text-decoration: underline;
-  text-underline-offset: 2px;
 }

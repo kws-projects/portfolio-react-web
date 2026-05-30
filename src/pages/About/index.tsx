@@ -9,16 +9,16 @@ import { TimelineList } from '@/components/ui/Timeline'
 import { getWorkExperiences } from '@/data/workExperience'
 import { getCertifications } from '@/data/certifications'
 import { getEducation } from '@/data/education'
-import { FiLayers, FiServer, FiCloud } from 'react-icons/fi'
+import { FiLayers, FiServer, FiTool } from 'react-icons/fi'
 
 const skillCategories = [
   { key: 'Frontend', icon: FiLayers, labelKey: 'about_label_frontend' },
   { key: 'Backend', icon: FiServer, labelKey: 'about_label_backend' },
-  { key: 'Cloud', icon: FiCloud, labelKey: 'about_label_cloud' },
+  { key: 'Others', icon: FiTool, labelKey: 'about_label_others' },
 ] as const
 
 const SectionHeading = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-2xl font-display font-bold text-primary mb-8">
+  <h2 className="text-2xl font-display font-medium text-primary mb-8">
     {children}
   </h2>
 )
@@ -58,7 +58,7 @@ const About = () => {
             <p className="text-sm font-medium tracking-widest uppercase text-accent">
               {t('home_bento_about_me')}
             </p>
-            <h1 className="text-3xl md:text-4xl font-display font-bold text-primary">
+            <h1 className="text-3xl md:text-4xl font-display font-medium text-primary">
               {t('about_self_intro_heading')}
             </h1>
             <p className="text-secondary leading-relaxed max-w-xl">
@@ -98,7 +98,7 @@ const About = () => {
                         src={skill.image}
                         alt={skill.title}
                         title={skill.title}
-                        className="w-full aspect-square rounded-xl bg-surface-raised p-1.5 border border-border/6 group-hover:border-accent/30 transition-colors"
+                        className="w-full aspect-square rounded-xl bg-white p-1.5 border border-border/6 group-hover:border-accent/30 transition-colors"
                       />
                     </div>
                   ))}

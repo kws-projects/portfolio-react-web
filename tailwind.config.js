@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         display: ['Quicksand', 'sans-serif'],
+        logo: ['Jost', 'sans-serif'],
       },
       colors: {
         bg: 'rgb(var(--color-bg) / <alpha-value>)',
