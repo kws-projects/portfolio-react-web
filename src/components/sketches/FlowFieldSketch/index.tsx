@@ -3,7 +3,7 @@ import p5 from 'p5'
 import { getThemeColor, isDarkTheme } from '@/utils/theme'
 
 const SCALE = 20
-const PARTICLE_COUNT = 200
+const PARTICLE_COUNT = 150
 
 const FlowFieldSketch = () => {
   const renderRef = useRef<HTMLDivElement>(null)
@@ -30,6 +30,7 @@ const FlowFieldSketch = () => {
         const parent = renderRef.current
         if (!parent) return
         s.createCanvas(parent.offsetWidth, parent.offsetHeight).parent(parent)
+        s.frameRate(30)
         cols = Math.floor(s.width / SCALE)
         rows = Math.floor(s.height / SCALE)
 
@@ -41,7 +42,7 @@ const FlowFieldSketch = () => {
             y: py,
             prevX: px,
             prevY: py,
-            speed: s.random(0.4, 1.5),
+            speed: s.random(0.5, 1.8),
             hueShift: s.random(1),
           })
         }
@@ -54,35 +55,38 @@ const FlowFieldSketch = () => {
         const bg = getThemeColor('--color-bg')
         const dark = isDarkTheme()
         s.noStroke()
-        s.fill(bg[0], bg[1], bg[2], dark ? 12 : 18)
+        s.fill(bg[0], bg[1], bg[2], dark ? 15 : 22)
         s.rect(0, 0, s.width, s.height)
 
         const accent = getThemeColor('--color-accent')
         const secondary = getThemeColor('--color-accent-secondary')
+        const mx = s.mouseX
+        const my = s.mouseY
 
         for (const p of particles) {
-          const col = Math.floor(p.x / SCALE)
-          const row = Math.floor(p.y / SCALE)
-
-          const safeCol = Math.max(0, Math.min(col, cols - 1))
-          const safeRow = Math.max(0, Math.min(row, rows - 1))
+          const safeCol = Math.max(
+            0,
+            Math.min(Math.floor(p.x / SCALE), cols - 1)
+          )
+          const safeRow = Math.max(
+            0,
+            Math.min(Math.floor(p.y / SCALE), rows - 1)
+          )
 
           let angle = s.noise(safeCol * 0.1, safeRow * 0.1, zOff) * s.TWO_PI * 2
 
-          const mouseDistX = p.x - s.mouseX
-          const mouseDistY = p.y - s.mouseY
-          const mouseDist = Math.sqrt(
-            mouseDistX * mouseDistX + mouseDistY * mouseDistY
-          )
-          if (mouseDist < 150) {
-            const force = s.map(mouseDist, 0, 150, 1.5, 0)
-            angle += Math.atan2(mouseDistY, mouseDistX) * force
+          const dx = p.x - mx
+          const dy = p.y - my
+          const distSq = dx * dx + dy * dy
+          if (distSq < 22500) {
+            const force = 1 - Math.sqrt(distSq) / 150
+            angle += Math.atan2(dy, dx) * force * 1.5
           }
 
           p.prevX = p.x
           p.prevY = p.y
-          p.x += s.cos(angle) * p.speed
-          p.y += s.sin(angle) * p.speed
+          p.x += Math.cos(angle) * p.speed
+          p.y += Math.sin(angle) * p.speed
 
           if (
             p.x < -10 ||
@@ -97,13 +101,12 @@ const FlowFieldSketch = () => {
           }
 
           const c = p.hueShift > 0.5 ? accent : secondary
-          const alpha = dark ? 50 : 35
-          s.stroke(c[0], c[1], c[2], alpha)
+          s.stroke(c[0], c[1], c[2], dark ? 50 : 35)
           s.strokeWeight(dark ? 1 : 0.8)
           s.line(p.prevX, p.prevY, p.x, p.y)
         }
 
-        zOff += 0.0008
+        zOff += 0.001
       }
 
       s.windowResized = () => {

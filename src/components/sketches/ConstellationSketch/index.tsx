@@ -2,16 +2,13 @@ import { useEffect, useRef } from 'react'
 import p5 from 'p5'
 import { getThemeColor, isDarkTheme } from '@/utils/theme'
 
-const NODE_COUNT = 50
-const CONNECT_DIST = 140
+const NODE_COUNT = 40
+const CONNECT_DIST = 130
+const CONNECT_DIST_SQ = CONNECT_DIST * CONNECT_DIST
 const MOUSE_RADIUS = 180
+const MOUSE_RADIUS_SQ = MOUSE_RADIUS * MOUSE_RADIUS
 
-type Node = {
-  x: number
-  y: number
-  vx: number
-  vy: number
-}
+type Node = { x: number; y: number; vx: number; vy: number }
 
 const ConstellationSketch = () => {
   const renderRef = useRef<HTMLDivElement>(null)
@@ -35,6 +32,7 @@ const ConstellationSketch = () => {
         const parent = renderRef.current
         if (!parent) return
         s.createCanvas(parent.offsetWidth, parent.offsetHeight).parent(parent)
+        s.frameRate(30)
 
         for (let i = 0; i < NODE_COUNT; i++) {
           nodes.push({
@@ -62,37 +60,47 @@ const ConstellationSketch = () => {
           if (node.x < 0 || node.x > s.width) node.vx *= -1
           if (node.y < 0 || node.y > s.height) node.vy *= -1
 
-          const dm = Math.sqrt((mx - node.x) ** 2 + (my - node.y) ** 2)
-          if (dm < MOUSE_RADIUS) {
-            const push = s.map(dm, 0, MOUSE_RADIUS, 0.5, 0)
-            node.x += (node.x - mx) * push * 0.02
-            node.y += (node.y - my) * push * 0.02
+          const dx = mx - node.x
+          const dy = my - node.y
+          const dmSq = dx * dx + dy * dy
+          if (dmSq < MOUSE_RADIUS_SQ) {
+            const t = 1 - Math.sqrt(dmSq) / MOUSE_RADIUS
+            node.x -= dx * t * 0.01
+            node.y -= dy * t * 0.01
           }
         }
 
+        s.strokeWeight(0.6)
         for (let i = 0; i < nodes.length; i++) {
+          const a = nodes[i]
           for (let j = i + 1; j < nodes.length; j++) {
-            const d = s.dist(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y)
-            if (d < CONNECT_DIST) {
-              const alpha = s.map(d, 0, CONNECT_DIST, dark ? 40 : 35, 0)
+            const b = nodes[j]
+            const dx = a.x - b.x
+            const dy = a.y - b.y
+            const dSq = dx * dx + dy * dy
+            if (dSq < CONNECT_DIST_SQ) {
+              const d = Math.sqrt(dSq)
+              const alpha = (1 - d / CONNECT_DIST) * (dark ? 40 : 35)
               s.stroke(c, c, c, alpha)
-              s.strokeWeight(0.6)
-              s.line(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y)
+              s.line(a.x, a.y, b.x, b.y)
             }
           }
         }
 
         s.noStroke()
+        const baseAlpha = dark ? 30 : 40
         for (const node of nodes) {
-          const dm = Math.sqrt((mx - node.x) ** 2 + (my - node.y) ** 2)
-          const size =
-            dm < MOUSE_RADIUS ? s.map(dm, 0, MOUSE_RADIUS, 4, 2.5) : 2.5
-          const alpha =
-            dm < MOUSE_RADIUS
-              ? s.map(dm, 0, MOUSE_RADIUS, dark ? 120 : 100, dark ? 30 : 40)
-              : dark
-                ? 30
-                : 40
+          const dx = mx - node.x
+          const dy = my - node.y
+          const dmSq = dx * dx + dy * dy
+          const near = dmSq < MOUSE_RADIUS_SQ
+          const size = near
+            ? 2.5 + (1 - Math.sqrt(dmSq) / MOUSE_RADIUS) * 1.5
+            : 2.5
+          const alpha = near
+            ? baseAlpha +
+              (1 - Math.sqrt(dmSq) / MOUSE_RADIUS) * (dark ? 90 : 60)
+            : baseAlpha
           s.fill(c, c, c, alpha)
           s.ellipse(node.x, node.y, size, size)
         }
@@ -100,9 +108,7 @@ const ConstellationSketch = () => {
 
       s.windowResized = () => {
         const parent = renderRef.current
-        if (parent) {
-          s.resizeCanvas(parent.offsetWidth, parent.offsetHeight)
-        }
+        if (parent) s.resizeCanvas(parent.offsetWidth, parent.offsetHeight)
       }
     })
 
