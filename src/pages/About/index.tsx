@@ -85,7 +85,7 @@ const About = () => {
             return (
               <div
                 key={cat.key}
-                className="rounded-2xl border-ui bg-surface p-6"
+                className="rounded-2xl border-ui bg-surface p-4 md:p-6"
               >
                 <div className="flex items-center gap-2 mb-5">
                   <Icon className="text-accent" size={16} />
@@ -93,14 +93,14 @@ const About = () => {
                     {t(cat.labelKey)}
                   </span>
                 </div>
-                <div className="grid grid-cols-4 gap-3">
+                <div className="grid grid-cols-5 gap-2 sm:grid-cols-6 md:grid-cols-4 md:gap-3">
                   {catSkills.map(skill => (
                     <div key={skill.id} className="group relative">
                       <img
                         src={skill.image}
                         alt={skill.title}
                         title={skill.title}
-                        className="w-full aspect-square rounded-xl bg-white p-1.5 border-ui group-hover:border-border/25 transition-colors"
+                        className="w-full aspect-square rounded-lg md:rounded-xl bg-white p-1 md:p-1.5 border-ui group-hover:border-border/25 transition-colors"
                       />
                     </div>
                   ))}
