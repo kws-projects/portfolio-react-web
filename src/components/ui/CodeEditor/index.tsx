@@ -41,9 +41,16 @@ const CodeEditor = ({
       options={{
         readOnly,
         wordWrap: 'on',
-        minimap: {
-          enabled: false,
+        minimap: { enabled: false },
+        scrollBeyondLastLine: false,
+        scrollbar: {
+          vertical: 'hidden',
+          horizontal: 'auto',
+          alwaysConsumeMouseWheel: false,
         },
+        overviewRulerLanes: 0,
+        hideCursorInOverviewRuler: true,
+        overviewRulerBorder: false,
       }}
       beforeMount={handleEditorDidMount}
     />

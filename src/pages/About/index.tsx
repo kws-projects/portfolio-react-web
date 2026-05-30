@@ -69,11 +69,13 @@ const About = () => {
         </div>
       </motion.section>
 
+      <hr className="border-t border-border/6" />
+
       {/* Skills section */}
       <motion.section
         ref={skillsRef}
         {...skillsProps}
-        className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 py-16 border-t border-border/8"
+        className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 py-16"
       >
         <SectionHeading>{t('about_skills_title')}</SectionHeading>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -109,31 +111,37 @@ const About = () => {
         </div>
       </motion.section>
 
+      <hr className="border-t border-border/6" />
+
       {/* Work Experience */}
       <motion.section
         ref={expRef}
         {...expProps}
-        className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 py-16 border-t border-border/8"
+        className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 py-16"
       >
         <SectionHeading>{t('about_cv_work_experience_title')}</SectionHeading>
         <TimelineList items={getWorkExperiences(i18n.language)} />
       </motion.section>
 
+      <hr className="border-t border-border/6" />
+
       {/* Certifications */}
       <motion.section
         ref={certRef}
         {...certProps}
-        className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 py-16 border-t border-border/8"
+        className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 py-16"
       >
         <SectionHeading>{t('about_cv_certifications_title')}</SectionHeading>
         <TimelineList items={getCertifications(i18n.language)} />
       </motion.section>
 
+      <hr className="border-t border-border/6" />
+
       {/* Education */}
       <motion.section
         ref={eduRef}
         {...eduProps}
-        className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 py-16 border-t border-border/8"
+        className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 py-16"
       >
         <SectionHeading>{t('about_cv_education_title')}</SectionHeading>
         <TimelineList items={getEducation(i18n.language)} />
