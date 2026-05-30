@@ -2,13 +2,16 @@ import { useEffect, useRef } from 'react'
 import p5 from 'p5'
 
 const COMMANDS = [
-  { cmd: 'whoami', output: 'Kenneth Wong — Fullstack Software Engineer' },
-  { cmd: 'cat location.txt', output: 'Hong Kong' },
-  { cmd: 'cat email.txt', output: 'kaifwong1022@gmail.com' },
-  { cmd: 'cat phone.txt', output: '(+852) 9347 8968' },
+  {
+    cmd: 'whoami',
+    output: ['Kenneth Wong', 'Fullstack Software Engineer'],
+  },
+  { cmd: 'cat location.txt', output: ['Hong Kong'] },
+  { cmd: 'cat email.txt', output: ['kaifwong1022@gmail.com'] },
+  { cmd: 'cat phone.txt', output: ['(+852) 9347 8968'] },
   {
     cmd: 'echo "Let\'s build something together"',
-    output: "Let's build something together",
+    output: ["Let's build something together"],
   },
 ]
 
@@ -47,7 +50,9 @@ const TerminalSketch = () => {
         lines = []
         const c = COMMANDS[commandIndex]
         lines.push({ text: `$ ${c.cmd}`, color: 'prompt', done: false })
-        lines.push({ text: c.output, color: 'text', done: false })
+        for (const line of c.output) {
+          lines.push({ text: line, color: 'text', done: false })
+        }
         lines.push({ text: '', color: 'prompt', done: false })
       }
 
@@ -91,15 +96,18 @@ const TerminalSketch = () => {
 
         // Terminal content starts below the bar
         let yOffset = BAR_HEIGHT + PADDING
-        const historyStart = Math.max(0, commandIndex - 4)
+        const historyStart = Math.max(0, commandIndex - 3)
         for (let h = historyStart; h < commandIndex; h++) {
           const cmd = COMMANDS[h]
           s.fill(dimColor())
           s.noStroke()
           s.text(`$ ${cmd.cmd}`, PADDING, yOffset)
           yOffset += LINE_HEIGHT
-          s.text(cmd.output, PADDING, yOffset)
-          yOffset += LINE_HEIGHT + 6
+          for (const line of cmd.output) {
+            s.text(line, PADDING, yOffset)
+            yOffset += LINE_HEIGHT
+          }
+          yOffset += 6
         }
 
         for (let i = 0; i <= currentLine && i < lines.length; i++) {

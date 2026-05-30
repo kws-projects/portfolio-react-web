@@ -42,10 +42,10 @@ const TerminalOverlay = () => {
 
   return (
     <>
-      {/* Floating trigger button */}
+      {/* Floating trigger button — hidden on mobile */}
       <motion.button
         onClick={open}
-        className="fixed bottom-6 end-6 z-40 flex items-center gap-2.5 px-4 py-2.5 rounded-xl border-ui-interactive bg-surface/90 backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer group"
+        className="fixed bottom-6 end-6 z-40 hidden md:flex items-center gap-2.5 px-4 py-2.5 rounded-xl border-ui-interactive bg-surface/90 backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer group"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 1 }}

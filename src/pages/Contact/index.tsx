@@ -40,7 +40,7 @@ const Contact = () => {
           transition={{ duration: 0.5, delay: 0.15 }}
         >
           {/* Terminal sketch */}
-          <div className="lg:col-span-3 h-72 sm:h-80 rounded-2xl border-ui overflow-hidden">
+          <div className="lg:col-span-3 h-80 sm:h-96 rounded-2xl border-ui overflow-hidden mb-1 sm:mb-0">
             <TerminalSketch />
           </div>
 
