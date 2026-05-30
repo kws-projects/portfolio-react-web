@@ -30,9 +30,7 @@ const Blogs = () => {
         <h1 className="text-3xl md:text-4xl font-display font-bold text-primary mb-3">
           {t('blog_title')}
         </h1>
-        <p className="text-secondary mb-10">
-          Thoughts on development, creative coding, and tech.
-        </p>
+        <p className="text-secondary mb-10">{t('blog_description')}</p>
 
         <BlogGrid
           data={blogs}

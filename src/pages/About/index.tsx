@@ -6,15 +6,15 @@ import { envConfig } from '@/config'
 import ContactPortal from '@/components/ContactPortal'
 import { skills } from '@/data/skills'
 import { TimelineList } from '@/components/ui/Timeline'
-import { workExperiences } from '@/data/workExperience'
-import { certifications } from '@/data/certifications'
-import { education } from '@/data/education'
+import { getWorkExperiences } from '@/data/workExperience'
+import { getCertifications } from '@/data/certifications'
+import { getEducation } from '@/data/education'
 import { FiLayers, FiServer, FiCloud } from 'react-icons/fi'
 
 const skillCategories = [
-  { key: 'Frontend', icon: FiLayers, label: 'Frontend' },
-  { key: 'Backend', icon: FiServer, label: 'Backend' },
-  { key: 'Cloud', icon: FiCloud, label: 'Cloud & Infra' },
+  { key: 'Frontend', icon: FiLayers, labelKey: 'about_label_frontend' },
+  { key: 'Backend', icon: FiServer, labelKey: 'about_label_backend' },
+  { key: 'Cloud', icon: FiCloud, labelKey: 'about_label_cloud' },
 ] as const
 
 const SectionHeading = ({ children }: { children: React.ReactNode }) => (
@@ -24,7 +24,7 @@ const SectionHeading = ({ children }: { children: React.ReactNode }) => (
 )
 
 const About = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { ref: introRef, motionProps: introProps } = useFadeInView({ y: 40 })
   const { ref: skillsRef, motionProps: skillsProps } = useFadeInView({ y: 40 })
   const { ref: expRef, motionProps: expProps } = useFadeInView({ y: 40 })
@@ -56,7 +56,7 @@ const About = () => {
 
           <div className="flex flex-col items-center md:items-start gap-5 text-center md:text-left">
             <p className="text-sm font-medium tracking-widest uppercase text-accent">
-              About Me
+              {t('home_bento_about_me')}
             </p>
             <h1 className="text-3xl md:text-4xl font-display font-bold text-primary">
               {t('about_self_intro_heading')}
@@ -88,7 +88,7 @@ const About = () => {
                 <div className="flex items-center gap-2 mb-5">
                   <Icon className="text-accent" size={16} />
                   <span className="text-sm font-medium text-accent tracking-wide uppercase">
-                    {cat.label}
+                    {t(cat.labelKey)}
                   </span>
                 </div>
                 <div className="grid grid-cols-4 gap-3">
@@ -116,7 +116,7 @@ const About = () => {
         className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 py-16 border-t border-border/8"
       >
         <SectionHeading>{t('about_cv_work_experience_title')}</SectionHeading>
-        <TimelineList items={workExperiences} />
+        <TimelineList items={getWorkExperiences(i18n.language)} />
       </motion.section>
 
       {/* Certifications */}
@@ -126,7 +126,7 @@ const About = () => {
         className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 py-16 border-t border-border/8"
       >
         <SectionHeading>{t('about_cv_certifications_title')}</SectionHeading>
-        <TimelineList items={certifications} />
+        <TimelineList items={getCertifications(i18n.language)} />
       </motion.section>
 
       {/* Education */}
@@ -136,7 +136,7 @@ const About = () => {
         className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 py-16 border-t border-border/8"
       >
         <SectionHeading>{t('about_cv_education_title')}</SectionHeading>
-        <TimelineList items={education} />
+        <TimelineList items={getEducation(i18n.language)} />
       </motion.section>
     </main>
   )

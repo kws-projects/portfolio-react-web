@@ -61,45 +61,53 @@ const Footer = () => {
 
         <div className="hidden md:flex flex-col justify-between items-end h-full select-none">
           <ul className="flex justify-center">
-            {menuMap.map(item => (
-              <li className="ml-12" key={item.id}>
-                {item.path && (
-                  <Link
-                    to={item.path}
-                    className="font-display font-medium text-primary hover:text-accent transition-colors duration-200"
-                  >
-                    {item.title}
-                  </Link>
-                )}
+            {menuMap.map(item => {
+              const itemLabel = item.titleKey ? t(item.titleKey) : item.title
+              return (
+                <li className="ml-12" key={item.id}>
+                  {item.path && (
+                    <Link
+                      to={item.path}
+                      className="font-display font-medium text-primary hover:text-accent transition-colors duration-200"
+                    >
+                      {itemLabel}
+                    </Link>
+                  )}
 
-                <ul className="mt-2">
-                  {item.subItems?.map(subItem => (
-                    <li className="text-sm mt-1.5" key={subItem.id}>
-                      {subItem.downloadable && subItem.path ? (
-                        <a
-                          href={subItem.path}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-secondary hover:text-accent transition-colors duration-200"
-                          download
-                        >
-                          {subItem.title}
-                        </a>
-                      ) : (
-                        subItem.path && (
-                          <Link
-                            to={subItem.path}
-                            className="text-secondary hover:text-accent transition-colors duration-200"
-                          >
-                            {subItem.title}
-                          </Link>
-                        )
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
+                  <ul className="mt-2">
+                    {item.subItems?.map(subItem => {
+                      const subLabel = subItem.titleKey
+                        ? t(subItem.titleKey)
+                        : subItem.title
+                      return (
+                        <li className="text-sm mt-1.5" key={subItem.id}>
+                          {subItem.downloadable && subItem.path ? (
+                            <a
+                              href={subItem.path}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-secondary hover:text-accent transition-colors duration-200"
+                              download
+                            >
+                              {subLabel}
+                            </a>
+                          ) : (
+                            subItem.path && (
+                              <Link
+                                to={subItem.path}
+                                className="text-secondary hover:text-accent transition-colors duration-200"
+                              >
+                                {subLabel}
+                              </Link>
+                            )
+                          )}
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </li>
+              )
+            })}
           </ul>
           <Version />
         </div>

@@ -5,7 +5,7 @@ import PageMeta from '@/components/PageMeta'
 import useFadeInView from '@/hooks/useFadeInView'
 import useWorkFilter from '@/hooks/useWorkFilter'
 import TiltCard from '@/components/ui/TiltCard'
-import { workCategoryLabels } from '@/constant/work'
+import { workCategoryLabelKeys } from '@/constant/work'
 import RandomBackgroundSketch from '@/components/sketches/RandomBackgroundSketch'
 import { FiArrowUpRight } from 'react-icons/fi'
 
@@ -34,8 +34,7 @@ const Works = () => {
           {t('works_title')}
         </h1>
         <p className="text-secondary mb-10 max-w-lg">
-          Projects spanning web development, creative coding, hardware, and
-          design.
+          {t('works_description')}
         </p>
 
         <nav className="mb-10">
@@ -47,7 +46,7 @@ const Works = () => {
                   ${selectedCategories.includes(cat) ? 'bg-accent/15 border-accent/40 text-primary font-medium' : 'bg-surface border-border/8 text-secondary hover:border-border/20 hover:text-primary'}`}
                 onClick={() => handleCategoryChange(cat)}
               >
-                {workCategoryLabels[cat]}
+                {t(workCategoryLabelKeys[cat])}
               </li>
             ))}
           </ul>

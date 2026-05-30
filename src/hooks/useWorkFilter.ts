@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { parse, stringify } from 'qs'
 import { WorkCategory } from '@/constant/work'
-import { works } from '@/data/works'
+import { getWorks } from '@/data/works'
 
 const workCategories = Object.values(WorkCategory) as WorkCategory[]
 
@@ -13,6 +14,7 @@ type UseWorkFilterOptions = {
 const useWorkFilter = ({
   disableFilter = false,
 }: UseWorkFilterOptions = {}) => {
+  const { i18n } = useTranslation()
   const navigate = useNavigate()
   const { search, pathname } = useLocation()
 
@@ -70,14 +72,16 @@ const useWorkFilter = ({
     })
   }, [])
 
+  const localizedWorks = useMemo(() => getWorks(i18n.language), [i18n.language])
+
   const filteredWorks = useMemo(
     () =>
-      works.filter(work =>
+      localizedWorks.filter(work =>
         selectedCategories.includes(WorkCategory.ALL)
           ? true
           : selectedCategories.includes(work.category[0])
       ),
-    [selectedCategories]
+    [selectedCategories, localizedWorks]
   )
 
   return {

@@ -52,12 +52,22 @@ export const getDateTimeDifference = (
   return `${yearLabel}, ${monthLabel}`
 }
 
-export const getDurationString = (fromDate: string, toDate?: string) => {
-  const fromDateObj = new Date(fromDate)
+export const getDurationString = (
+  fromDate: string,
+  toDate?: string,
+  options?: { locale?: string; t?: TranslateFn }
+) => {
+  const locale = options?.locale ?? 'en'
+  const fmt = new Intl.DateTimeFormat(locale, {
+    month: 'long',
+    year: 'numeric',
+  })
+  const from = fmt.format(new Date(fromDate))
 
-  if (!toDate)
-    return `${fromDateObj.toLocaleString('default', { month: 'long' })}, ${fromDateObj.getFullYear()} - Present`
+  if (!toDate) {
+    const present = options?.t?.('date_present') ?? 'Present'
+    return `${from} - ${present}`
+  }
 
-  const toDateObj = new Date(toDate)
-  return `${fromDateObj.toLocaleString('default', { month: 'long' })}, ${fromDateObj.getFullYear()} - ${toDateObj.toLocaleString('default', { month: 'long' })}, ${toDateObj.getFullYear()}`
+  return `${from} - ${fmt.format(new Date(toDate))}`
 }

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import TextReveal from '@/components/ui/TextReveal'
 import ContactPortal from '@/components/ContactPortal'
@@ -7,6 +8,8 @@ import { envConfig } from '@/config'
 import { FiArrowRight, FiChevronDown } from 'react-icons/fi'
 
 const Hero = () => {
+  const { t } = useTranslation()
+
   return (
     <section className="relative flex items-center min-h-[100dvh] overflow-hidden">
       <FlowFieldSketch />
@@ -20,7 +23,7 @@ const Hero = () => {
               transition={{ duration: 0.6 }}
             >
               <p className="text-sm font-medium tracking-widest uppercase text-accent mb-4">
-                Fullstack Software Engineer
+                {t('home_hero_role')}
               </p>
             </motion.div>
 
@@ -30,7 +33,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
-              <TextReveal text="Kenneth Wong" delay={400} speed={35} />
+              <TextReveal text={t('website_name')} delay={400} speed={35} />
             </motion.h1>
 
             <motion.p
@@ -39,9 +42,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Building elegant digital experiences with code and creativity.
-              Passionate about frontend engineering, creative coding, and
-              crafting products that people love.
+              {t('home_hero_description')}
             </motion.p>
 
             <motion.div
@@ -54,14 +55,14 @@ const Hero = () => {
                 to="/works"
                 className="group flex items-center gap-2 px-6 py-3 rounded-xl bg-accent font-medium hover:opacity-90 transition-opacity text-inverted"
               >
-                View my work
+                {t('home_hero_cta_works')}
                 <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/contact"
                 className="px-6 py-3 rounded-xl border border-border/15 text-primary font-medium hover:bg-surface/80 transition-colors"
               >
-                Get in touch
+                {t('home_hero_cta_contact')}
               </Link>
             </motion.div>
 

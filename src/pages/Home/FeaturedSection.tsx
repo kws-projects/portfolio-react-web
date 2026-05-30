@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import useFadeInView from '@/hooks/useFadeInView'
 import TiltCard from '@/components/ui/TiltCard'
-import { works } from '@/data/works'
+import { getWorks } from '@/data/works'
 import { FiArrowRight, FiArrowUpRight } from 'react-icons/fi'
 
-const featuredWorks = works.filter(w => w.featured).slice(0, 3)
-
 const FeaturedSection = () => {
+  const { t, i18n } = useTranslation()
+  const featuredWorks = getWorks(i18n.language)
+    .filter(w => w.featured)
+    .slice(0, 3)
   const { ref, motionProps } = useFadeInView({ y: 60 })
 
   return (
@@ -19,17 +22,15 @@ const FeaturedSection = () => {
       <div className="flex items-end justify-between mb-12">
         <div>
           <h2 className="text-3xl font-display font-bold text-primary mb-2">
-            Featured Works
+            {t('home_featured_works_title')}
           </h2>
-          <p className="text-secondary">
-            Selected projects across engineering, art, and creative coding.
-          </p>
+          <p className="text-secondary">{t('home_featured_subtitle')}</p>
         </div>
         <Link
           to="/works"
           className="group hidden md:flex items-center gap-2 text-sm text-accent font-medium hover:underline"
         >
-          View all
+          {t('home_featured_view_all')}
           <FiArrowRight className="text-accent group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
@@ -91,7 +92,7 @@ const FeaturedSection = () => {
           to="/works"
           className="group flex items-center gap-2 text-sm text-accent font-medium hover:underline"
         >
-          View all works
+          {t('home_featured_view_all_works')}
           <FiArrowRight className="text-accent group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>

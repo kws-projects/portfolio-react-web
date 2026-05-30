@@ -23,14 +23,13 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
         >
           <p className="text-sm font-medium tracking-widest uppercase text-accent mb-2">
-            Get in touch
+            {t('contact_get_in_touch')}
           </p>
           <h1 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
             {t('contact_title')}
           </h1>
           <p className="text-secondary mb-10 max-w-lg">
-            Have a project in mind or just want to chat? Reach out through any
-            of the channels below.
+            {t('contact_description')}
           </p>
         </motion.div>
 
@@ -52,7 +51,7 @@ const Contact = () => {
               className="flex flex-col gap-1 p-5 rounded-2xl border border-border/8 bg-surface hover:border-accent/20 transition-all"
             >
               <span className="text-xs font-medium tracking-widest uppercase text-accent">
-                Email
+                {t('contact_label_email')}
               </span>
               <span className="text-primary font-medium">
                 {t('contact_email')}
@@ -64,7 +63,7 @@ const Contact = () => {
               className="flex flex-col gap-1 p-5 rounded-2xl border border-border/8 bg-surface hover:border-accent/20 transition-all"
             >
               <span className="text-xs font-medium tracking-widest uppercase text-accent">
-                Phone
+                {t('contact_label_phone')}
               </span>
               <span className="text-primary font-medium">
                 {t('contact_tel')}
@@ -73,7 +72,7 @@ const Contact = () => {
 
             <div className="flex flex-col gap-2 p-5 rounded-2xl border border-border/8 bg-surface">
               <span className="text-xs font-medium tracking-widest uppercase text-accent mb-1">
-                Socials
+                {t('contact_label_socials')}
               </span>
               <ContactPortal />
             </div>
