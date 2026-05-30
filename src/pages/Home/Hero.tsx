@@ -60,7 +60,7 @@ const Hero = () => {
               </Link>
               <Link
                 to="/contact"
-                className="px-6 py-3 rounded-xl border border-border/15 text-primary font-medium hover:bg-surface/80 transition-colors"
+                className="px-6 py-3 rounded-xl border-ui text-primary font-medium hover:bg-surface/80 transition-colors"
               >
                 {t('home_hero_cta_contact')}
               </Link>

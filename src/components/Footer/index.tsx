@@ -8,7 +8,7 @@ const Footer = () => {
   const { t } = useTranslation()
 
   return (
-    <footer className="flex justify-center mt-auto border-t border-border/8 bg-surface/40">
+    <footer className="flex justify-center mt-auto border-t border-divider bg-surface/40">
       <div className="flex justify-center items-start w-full max-w-screen-lg mx-0 px-6 pt-8 pb-10 md:mx-14 lg:mx-28 md:justify-between">
         <section className="flex flex-col text-sm max-w-auto items-center md:items-start md:max-w-sm">
           <div className="flex justify-start items-center gap-4">

@@ -15,7 +15,7 @@ import {
 } from 'react-icons/fi'
 
 const cardBase =
-  'rounded-2xl border border-border/8 bg-surface p-6 overflow-hidden hover:border-accent/20 transition-all duration-300'
+  'rounded-2xl border-ui-interactive bg-surface p-6 overflow-hidden duration-300'
 
 const BentoSection = () => {
   const { t, i18n } = useTranslation()
@@ -104,7 +104,7 @@ const BentoSection = () => {
                 src={skill.image}
                 alt={skill.title}
                 title={skill.title}
-                className="w-full aspect-square rounded-lg bg-white p-1.5 border border-border/6 hover:border-accent/20 transition-colors"
+                className="w-full aspect-square rounded-lg bg-white p-1.5 border-ui-interactive"
               />
             ))}
           </div>

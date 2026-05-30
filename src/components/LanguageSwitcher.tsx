@@ -45,7 +45,7 @@ const LanguageSwitcher = () => {
       </button>
 
       {isOpen && (
-        <ul className="absolute end-0 top-full mt-1.5 w-44 rounded-xl border border-border/10 bg-surface shadow-card overflow-hidden z-50 py-1">
+        <ul className="absolute end-0 top-full mt-1.5 w-44 rounded-xl border-ui bg-surface shadow-card overflow-hidden z-50 py-1">
           {SUPPORTED_LANGUAGES.map(lang => {
             const isActive = i18n.language === lang.code
             return (

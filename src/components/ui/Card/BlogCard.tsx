@@ -9,7 +9,7 @@ type BlogCardProps = {
 }
 
 export const Skeleton = () => (
-  <div className="rounded-2xl border border-border/8 bg-surface overflow-hidden">
+  <div className="rounded-2xl border-ui bg-surface overflow-hidden">
     <div className="animate-pulse">
       <div className="aspect-[4/3] bg-skeleton" />
       <div className="p-5">
@@ -24,7 +24,7 @@ export const BlogCard = ({ data }: BlogCardProps) => {
   return (
     <Link
       to={`/blogs/${data.id}`}
-      className="group block rounded-2xl border border-border/8 bg-surface overflow-hidden hover:border-border/20 transition-all duration-300"
+      className="group block rounded-2xl border-ui-interactive bg-surface overflow-hidden duration-300"
     >
       <div className="aspect-[4/3] overflow-hidden bg-skeleton">
         <div

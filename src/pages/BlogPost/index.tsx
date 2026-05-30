@@ -144,7 +144,7 @@ const BlogHeader = ({
       )}
     </div>
 
-    <div className="mt-8 border-t border-border/10" />
+    <div className="mt-8 border-t border-divider" />
   </motion.header>
 )
 
@@ -158,7 +158,7 @@ const LoadingSkeleton = () => (
       <div className="h-4 w-28 bg-skeleton rounded" />
       <div className="h-4 w-20 bg-skeleton rounded" />
     </div>
-    <div className="border-t border-border/10 mb-10" />
+    <div className="border-t border-divider mb-10" />
     <Skeleton />
   </div>
 )

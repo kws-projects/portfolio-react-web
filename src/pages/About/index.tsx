@@ -69,7 +69,7 @@ const About = () => {
         </div>
       </motion.section>
 
-      <hr className="border-t border-border/6" />
+      <hr className="border-t border-divider" />
 
       {/* Skills section */}
       <motion.section
@@ -85,7 +85,7 @@ const About = () => {
             return (
               <div
                 key={cat.key}
-                className="rounded-2xl border border-border/8 bg-surface p-6"
+                className="rounded-2xl border-ui bg-surface p-6"
               >
                 <div className="flex items-center gap-2 mb-5">
                   <Icon className="text-accent" size={16} />
@@ -100,7 +100,7 @@ const About = () => {
                         src={skill.image}
                         alt={skill.title}
                         title={skill.title}
-                        className="w-full aspect-square rounded-xl bg-white p-1.5 border border-border/6 group-hover:border-accent/30 transition-colors"
+                        className="w-full aspect-square rounded-xl bg-white p-1.5 border-ui group-hover:border-border/25 transition-colors"
                       />
                     </div>
                   ))}
@@ -111,7 +111,7 @@ const About = () => {
         </div>
       </motion.section>
 
-      <hr className="border-t border-border/6" />
+      <hr className="border-t border-divider" />
 
       {/* Work Experience */}
       <motion.section
@@ -123,7 +123,7 @@ const About = () => {
         <TimelineList items={getWorkExperiences(i18n.language)} />
       </motion.section>
 
-      <hr className="border-t border-border/6" />
+      <hr className="border-t border-divider" />
 
       {/* Certifications */}
       <motion.section
@@ -135,7 +135,7 @@ const About = () => {
         <TimelineList items={getCertifications(i18n.language)} />
       </motion.section>
 
-      <hr className="border-t border-border/6" />
+      <hr className="border-t border-divider" />
 
       {/* Education */}
       <motion.section
