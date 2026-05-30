@@ -97,14 +97,14 @@ const BentoSection = () => {
               {t('home_bento_tech_stack')}
             </p>
           </div>
-          <div className="grid grid-cols-5 gap-2">
+          <div className="grid grid-cols-6 gap-1.5 md:grid-cols-5 md:gap-2">
             {skills.slice(0, 10).map(skill => (
               <img
                 key={skill.id}
                 src={skill.image}
                 alt={skill.title}
                 title={skill.title}
-                className="w-full aspect-square rounded-lg bg-white p-1.5 border-ui-interactive"
+                className="w-full aspect-square rounded-md md:rounded-lg bg-white p-1 md:p-1.5 border-ui-interactive"
               />
             ))}
           </div>
