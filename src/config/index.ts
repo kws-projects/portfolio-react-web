@@ -1,6 +1,6 @@
 export const envConfig = {
   NODE_ENV: process.env.MODE!,
-  VERSION_NO: process.env.BUILD_VERSION_NO,
+  VERSION_NO: __APP_VERSION__,
   PORTFOLIO_API_BASE_URL: process.env.PORTFOLIO_API_BASE_URL,
   STATIC_FILE_BASE_URL: process.env.STATIC_FILE_BASE_URL,
   CV_URL: process.env.CV_URL,

@@ -1,4 +1,5 @@
 import Editor, { Monaco } from '@monaco-editor/react'
+import { isDarkTheme } from '@/utils/theme'
 
 const CodeEditor = ({
   readOnly = true,
@@ -11,13 +12,22 @@ const CodeEditor = ({
   value: string
   height?: number | string
 }) => {
+  const dark = isDarkTheme()
+
   const handleEditorDidMount = (monaco: Monaco) => {
-    monaco.editor.defineTheme('my-theme', {
-      base: 'vs',
+    const root = getComputedStyle(document.documentElement)
+    const rgb = root.getPropertyValue('--color-surface-code').trim()
+    const hex = `#${rgb
+      .split(' ')
+      .map(v => Number(v).toString(16).padStart(2, '0'))
+      .join('')}`
+
+    monaco.editor.defineTheme('custom-theme', {
+      base: dark ? 'vs-dark' : 'vs',
       inherit: true,
       rules: [],
       colors: {
-        'editor.background': '#ededed',
+        'editor.background': hex,
       },
     })
   }
@@ -27,13 +37,20 @@ const CodeEditor = ({
       height={height || '100%'}
       defaultLanguage={language}
       defaultValue={value}
-      theme="my-theme"
+      theme="custom-theme"
       options={{
         readOnly,
         wordWrap: 'on',
-        minimap: {
-          enabled: false,
+        minimap: { enabled: false },
+        scrollBeyondLastLine: false,
+        scrollbar: {
+          vertical: 'hidden',
+          horizontal: 'auto',
+          alwaysConsumeMouseWheel: false,
         },
+        overviewRulerLanes: 0,
+        hideCursorInOverviewRuler: true,
+        overviewRulerBorder: false,
       }}
       beforeMount={handleEditorDidMount}
     />

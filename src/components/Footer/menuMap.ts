@@ -1,23 +1,16 @@
 import { WorkCategory } from '@/constant/work'
 import { envConfig } from '@/config'
+import { MenuItem } from '@/types/menu'
 
-interface IMenuMap {
-  id: number
-  title: string
-  path: string
-  downloadable?: boolean
-  subItems?: IMenuMap[]
-}
-
-export const menuMap: IMenuMap[] = [
+export const menuMap: MenuItem[] = [
   {
     id: 0,
-    title: 'About',
+    titleKey: 'nav_about',
     path: '/about',
     subItems: [
       {
         id: 1,
-        title: 'CV',
+        titleKey: 'footer_cv',
         path: `${envConfig.CV_URL}`,
         downloadable: true,
       },
@@ -25,34 +18,34 @@ export const menuMap: IMenuMap[] = [
   },
   {
     id: 2,
-    title: 'Works',
+    titleKey: 'nav_works',
     path: '/works',
     subItems: [
       {
         id: 3,
-        title: 'Mobile',
+        titleKey: 'footer_mobile',
         path: `/works?category[0]=${WorkCategory.MOBILE}`,
       },
       {
         id: 4,
-        title: 'Website',
+        titleKey: 'footer_website',
         path: `/works?category[0]=${WorkCategory.WEBSITE}`,
       },
       {
         id: 6,
-        title: 'All',
+        titleKey: 'footer_all',
         path: `/works?category[0]=${WorkCategory.ALL}`,
       },
     ],
   },
   {
     id: 7,
-    title: 'Contact',
+    titleKey: 'nav_contact',
     path: '/contact',
     subItems: [
       {
         id: 8,
-        title: 'Email',
+        titleKey: 'footer_email',
         path: '/contact',
       },
     ],

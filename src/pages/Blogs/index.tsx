@@ -1,17 +1,12 @@
-import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@tanstack/react-query'
-import usePageTitle from '@/hooks/usePageTitle'
-import useScrollToTop from '@/hooks/useScrollToTop'
-import PageTitleSketch from '@/components/sketches/PageTitleSketch'
+import PageMeta from '@/components/PageMeta'
 import BlogGrid from '@/components/ui/Grid/BlogGrid'
+import RandomBackgroundSketch from '@/components/sketches/RandomBackgroundSketch'
 import { blogsAPI } from '@/services/portfolioSvc/blogsAPI'
 
 const Blogs = () => {
   const { t } = useTranslation()
-
-  useScrollToTop()
-  usePageTitle(t('blog_document_title'))
 
   const {
     data: blogs,
@@ -24,19 +19,26 @@ const Blogs = () => {
   })
 
   return (
-    <main className="pb-32">
-      <Helmet>
-        <title>{t('blog_document_title')}</title>
-        <meta name="description" content={t('blog_document_description')} />
-        <meta name="robots" content="index, follow" />
-      </Helmet>
-      {!isErrorBlogs ? <PageTitleSketch title={t('blog_title')} /> : null}
-      <BlogGrid
-        data={blogs}
-        isLoading={isLoadingBlogs}
-        isError={isErrorBlogs}
-        refetch={refetchBlogs}
+    <main className="pb-24 relative">
+      <RandomBackgroundSketch />
+      <PageMeta
+        title={t('blog_document_title')}
+        description={t('blog_document_description')}
       />
+
+      <section className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 pt-16">
+        <h1 className="text-3xl md:text-4xl font-display font-medium text-primary mb-3">
+          {t('blog_title')}
+        </h1>
+        <p className="text-secondary mb-10">{t('blog_description')}</p>
+
+        <BlogGrid
+          data={blogs}
+          isLoading={isLoadingBlogs}
+          isError={isErrorBlogs}
+          refetch={refetchBlogs}
+        />
+      </section>
     </main>
   )
 }

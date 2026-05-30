@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navbar menuMap > matches snapshot 1`] = `
+[
+  {
+    "id": 0,
+    "path": "/",
+    "titleKey": "nav_home",
+  },
+  {
+    "id": 1,
+    "path": "/about",
+    "titleKey": "nav_about",
+  },
+  {
+    "id": 2,
+    "path": "/works",
+    "titleKey": "nav_works",
+  },
+  {
+    "id": 13,
+    "path": "/blogs",
+    "titleKey": "nav_blogs",
+  },
+  {
+    "id": 14,
+    "path": "/contact",
+    "titleKey": "nav_contact",
+  },
+]
+`;
