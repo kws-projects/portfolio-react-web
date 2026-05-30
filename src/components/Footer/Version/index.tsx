@@ -5,16 +5,16 @@ import { IoIosGitBranch } from 'react-icons/io'
 const Version = () => {
   return (
     <a
-      className="group/version flex items-center gap-x-1 text-xs px-3 py-1 bg-gray-200 group-hover/version:bg-gray-400 rounded-md cursor-pointer select-none"
+      className="group flex items-center gap-x-1.5 text-xs px-3 py-1.5 bg-surface-raised border border-border/6 rounded-lg cursor-pointer select-none hover:border-accent/30 transition-all duration-200"
       href={envConfig.GITHUB_RELEASE_URL}
       target="_blank"
       rel="noreferrer"
     >
-      <IoIosGitBranch className="fill-gray-500 group-hover/version:fill-gray-800" />
-      <span className="text-gray-500 group-hover/version:text-gray-800">
+      <IoIosGitBranch className="fill-tertiary group-hover:fill-accent transition-colors duration-200" />
+      <span className="text-tertiary group-hover:text-accent transition-colors duration-200">
         {getReleaseType()}
       </span>
-      <span className="text-gray-500 group-hover/version:text-gray-800">
+      <span className="text-tertiary group-hover:text-accent transition-colors duration-200">
         {`v${envConfig.VERSION_NO}`}
       </span>
     </a>

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import p5 from 'p5'
+import { getThemeColor } from '@/utils/theme'
 
 const WalkerBackgroundSketch = () => {
   const renderRef = useRef<HTMLDivElement>(null)
@@ -28,23 +29,30 @@ const WalkerBackgroundSketch = () => {
         }
 
         show() {
+          const accent = getThemeColor('--color-accent')
+          const teal = getThemeColor('--color-accent-secondary')
+
           walkers.forEach(walker => {
             const dist = s.dist(this.x, this.y, walker.x, walker.y)
             if (dist < 200) {
               s.strokeWeight(0.15)
-              s.stroke(0, s.map(dist, 0, 200, 255, 100))
+              s.stroke(
+                accent[0],
+                accent[1],
+                accent[2],
+                s.map(dist, 0, 200, 200, 30)
+              )
               s.line(this.x, this.y, walker.x, walker.y)
-              s.circle(this.x, this.y, 5)
+              s.fill(teal[0], teal[1], teal[2], 120)
+              s.circle(this.x, this.y, 4)
             }
           })
         }
         update() {
           const d = s.dist(this.x, this.y, s.mouseX, s.mouseY)
-          // update tx
           const dist = 50
           this.tx = this.tx + s.random(-dist, dist)
           this.ty = this.ty + s.random(-dist, dist)
-          // lerp
           this.x =
             d > 100
               ? s.lerp(this.x, this.tx, 0.001)
@@ -53,7 +61,6 @@ const WalkerBackgroundSketch = () => {
             d > 100
               ? s.lerp(this.y, this.ty, 0.001)
               : s.lerp(this.y, this.ty, 0.01)
-          // out of canvas
           if (this.x < 0) this.tx = this.x + s.random(20, 50)
           if (this.y < 50) this.ty = this.y + s.random(20, 50)
           if (this.x > s.width) this.tx = this.x - s.random(20, 50)

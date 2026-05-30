@@ -47,6 +47,7 @@ export const getDateTimeDifference = (
   const monthLabel = formatUnit(monthDiff, 'date_month')
 
   if (yearDiff < 1) return monthLabel
+  if (monthDiff === 0) return yearLabel
 
   return `${yearLabel}, ${monthLabel}`
 }

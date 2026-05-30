@@ -3,18 +3,41 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-page-bg: 249 250 251;
-    --color-text-primary: 68 68 68;
-    --color-text-secondary: 107 114 128;
-    --color-text-code: 78 78 78;
-    --color-link: 49 109 199;
-    --color-surface: 249 250 251;
-    --color-surface-code: 237 237 237;
-    --color-accent: 31 41 55;
-    --color-border: 229 231 235;
-    --color-shadow-blue: 10 99 169;
+  :root,
+  [data-theme='light'] {
+    --color-bg: 252 252 250;
+    --color-surface: 255 255 255;
+    --color-surface-raised: 245 245 243;
+    --color-surface-code: 245 245 243;
+    --color-border: 0 0 0;
+    --color-text: 20 20 20;
+    --color-text-secondary: 100 100 100;
+    --color-text-tertiary: 160 160 160;
+    --color-accent: 20 20 20;
+    --color-accent-secondary: 80 80 80;
+    --color-link: 20 20 20;
+    --color-shadow: 0 0 0;
     --color-overlay: 0 0 0;
+    --color-error: 200 60 60;
+    --color-skeleton: 235 235 232;
+  }
+
+  [data-theme='dark'] {
+    --color-bg: 10 10 12;
+    --color-surface: 18 18 22;
+    --color-surface-raised: 28 28 34;
+    --color-surface-code: 14 14 18;
+    --color-border: 255 255 255;
+    --color-text: 240 240 240;
+    --color-text-secondary: 155 155 160;
+    --color-text-tertiary: 95 95 100;
+    --color-accent: 240 240 240;
+    --color-accent-secondary: 180 180 185;
+    --color-link: 240 240 240;
+    --color-shadow: 255 255 255;
+    --color-overlay: 0 0 0;
+    --color-error: 248 113 113;
+    --color-skeleton: 28 28 34;
   }
 
   @font-face {
@@ -48,48 +71,19 @@
     font-weight: 700;
     src: url(/assets/fonts/quicksand/Quicksand-Bold.ttf), format('truetype');
   }
-
-  @font-face {
-    font-family: 'Jost';
-    font-style: normal;
-    font-weight: 300;
-    src: url(/assets/fonts/jost/Jost-Thin.ttf), format('truetype');
-  }
-  @font-face {
-    font-family: 'Jost';
-    font-style: normal;
-    font-weight: 400;
-    src: url(/assets/fonts/jost/Jost-Light.ttf), format('truetype');
-  }
-  @font-face {
-    font-family: 'Jost';
-    font-style: normal;
-    font-weight: 500;
-    src: url(/assets/fonts/jost/Jost-Regular.ttf), format('truetype');
-  }
-  @font-face {
-    font-family: 'Jost';
-    font-style: normal;
-    font-weight: 600;
-    src: url(/assets/fonts/jost/Jost-Medium.ttf), format('truetype');
-  }
-  @font-face {
-    font-family: 'Jost';
-    font-style: normal;
-    font-weight: 700;
-    src: url(/assets/fonts/jost/Jost-SemiBold.ttf), format('truetype');
-  }
 }
 
 @layer utilities {
-  /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
-  /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .text-inverted,
+  .text-inverted * {
+    color: rgb(var(--color-bg));
   }
 }
 
@@ -98,14 +92,15 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
-  color: rgb(var(--color-text-primary));
+  color: rgb(var(--color-text));
 }
 
 html {
   height: 100%;
   scroll-behavior: smooth;
   overflow-x: hidden;
-  background-color: rgb(var(--color-page-bg));
+  background-color: rgb(var(--color-bg));
+  transition: background-color 0.3s ease;
 }
 
 body {
@@ -131,75 +126,112 @@ img {
   user-select: none;
 }
 
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Markdown content */
 .md {
   line-height: initial;
   white-space: pre-wrap;
 }
-
 .md h1,
 .md h2,
 .md h3,
 .md h4 {
   display: block;
   margin-top: 0;
-  margin-left: 0;
-  margin-right: 0;
+  font-family: 'Quicksand', sans-serif;
+  color: rgb(var(--color-text));
 }
-
 .md h1 {
   font-size: 2em;
 }
-
 .md h2 {
   font-size: 1.5em;
 }
-
 .md h3 {
   font-size: 1.17em;
 }
-
 .md h4 {
   font-size: 1em;
 }
-
 .md p {
-  line-height: 1.5rem;
+  line-height: 1.75rem;
+  color: rgb(var(--color-text-secondary));
 }
-
 .md ol {
   margin-left: 1rem;
   list-style: decimal;
 }
-
 .md ol li:first-of-type,
 .md ul li:first-of-type {
   white-space: initial;
 }
-
 .md ol li,
 .md ul li {
   margin-top: 1rem;
   white-space: initial;
+  color: rgb(var(--color-text-secondary));
 }
-
 .md ul {
   margin: 0 0 0 1.65rem;
   list-style: circle;
 }
-
 .md a {
-  color: rgb(var(--color-link));
+  color: rgb(var(--color-text));
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
-
 .md pre {
   padding: 1.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   overflow-x: auto;
   background-color: rgb(var(--color-surface-code));
-  margin: 1rem 0 1rem;
+  border: 1px solid rgba(var(--color-border), 0.08);
+  margin: 1rem 0;
+}
+.md code {
+  color: rgb(var(--color-text));
+  font-weight: 600;
 }
 
-.md code {
-  color: rgb(var(--color-text-code));
+/* Prose styling for raw HTML content */
+.prose-content h1,
+.prose-content h2,
+.prose-content h3,
+.prose-content h4 {
+  font-family: 'Quicksand', sans-serif;
+  color: rgb(var(--color-text));
+  margin-top: 0;
+}
+.prose-content p {
+  color: rgb(var(--color-text-secondary));
+  line-height: 1.75;
+  white-space: normal;
+}
+.prose-content ul,
+.prose-content ol {
+  color: rgb(var(--color-text-secondary));
+  margin-left: 1.5rem;
+}
+.prose-content li {
+  margin-top: 0.5rem;
+  color: rgb(var(--color-text-secondary));
+}
+.prose-content a {
+  color: rgb(var(--color-text));
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }

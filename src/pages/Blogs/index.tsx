@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@tanstack/react-query'
 import PageMeta from '@/components/PageMeta'
-import PageTitleSketch from '@/components/sketches/PageTitleSketch'
 import BlogGrid from '@/components/ui/Grid/BlogGrid'
+import RandomBackgroundSketch from '@/components/sketches/RandomBackgroundSketch'
 import { blogsAPI } from '@/services/portfolioSvc/blogsAPI'
 
 const Blogs = () => {
@@ -19,18 +19,28 @@ const Blogs = () => {
   })
 
   return (
-    <main className="pb-32">
+    <main className="pb-24 relative">
+      <RandomBackgroundSketch />
       <PageMeta
         title={t('blog_document_title')}
         description={t('blog_document_description')}
       />
-      {!isErrorBlogs ? <PageTitleSketch title={t('blog_title')} /> : null}
-      <BlogGrid
-        data={blogs}
-        isLoading={isLoadingBlogs}
-        isError={isErrorBlogs}
-        refetch={refetchBlogs}
-      />
+
+      <section className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 pt-16">
+        <h1 className="text-3xl md:text-4xl font-display font-bold text-primary mb-3">
+          {t('blog_title')}
+        </h1>
+        <p className="text-secondary mb-10">
+          Thoughts on development, creative coding, and tech.
+        </p>
+
+        <BlogGrid
+          data={blogs}
+          isLoading={isLoadingBlogs}
+          isError={isErrorBlogs}
+          refetch={refetchBlogs}
+        />
+      </section>
     </main>
   )
 }

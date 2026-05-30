@@ -14,7 +14,7 @@ const Privacy = () => {
       />
       <PageTitleSketch title={t('privacy_title')} />
       <Section className="px-8 md:px-0 pt-4 md:pt-12" showBreakline={false}>
-        <div>
+        <div className="prose-content">
           <h1>
             <strong>Privacy Policy for Kenneth Wong</strong>
           </h1>

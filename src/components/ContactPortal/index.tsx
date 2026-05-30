@@ -4,7 +4,7 @@ import { socialLinks } from '@/data/socialLinks'
 
 const ContactPortal = () => {
   return (
-    <div className="flex justify-center items-center space-x-2">
+    <div className="flex justify-center items-center space-x-3">
       {socialLinks.map(link => {
         const Icon = link.icon
         return (
@@ -14,11 +14,12 @@ const ContactPortal = () => {
             aria-label={link.ariaLabel}
             rel="noreferrer"
             target={link.external ? '_blank' : undefined}
+            className="p-2 rounded-lg text-secondary hover:text-accent hover:bg-accent/10 transition-all duration-200"
             onClick={() => {
               trackEvent(GAEventCategory.NAVIGATION, link.gaAction)
             }}
           >
-            <Icon className="fill-gray-800" size={18} />
+            <Icon size={18} />
           </a>
         )
       })}
