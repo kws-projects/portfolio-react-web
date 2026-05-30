@@ -5,6 +5,7 @@ import { getThemeColor, isDarkTheme } from '@/utils/theme'
 const SPACING = 32
 const DOT_BASE = 2
 const MOUSE_RADIUS = 120
+const MOUSE_RADIUS_SQ = MOUSE_RADIUS * MOUSE_RADIUS
 
 const DotGridSketch = () => {
   const renderRef = useRef<HTMLDivElement>(null)
@@ -26,6 +27,7 @@ const DotGridSketch = () => {
         const parent = renderRef.current
         if (!parent) return
         s.createCanvas(parent.offsetWidth, parent.offsetHeight).parent(parent)
+        s.frameRate(30)
         s.noStroke()
       }
 
@@ -42,11 +44,15 @@ const DotGridSketch = () => {
 
         for (let x = SPACING; x < s.width; x += SPACING) {
           for (let y = SPACING; y < s.height; y += SPACING) {
-            const d = Math.sqrt((mx - x) ** 2 + (my - y) ** 2)
+            const dx = mx - x
+            const dy = my - y
+            const dSq = dx * dx + dy * dy
 
-            if (d < MOUSE_RADIUS) {
-              const scale = s.map(d, 0, MOUSE_RADIUS, 3.5, 0)
-              const alpha = s.map(d, 0, MOUSE_RADIUS, hoverAlpha, dotAlpha)
+            if (dSq < MOUSE_RADIUS_SQ) {
+              const d = Math.sqrt(dSq)
+              const t = d / MOUSE_RADIUS
+              const scale = (1 - t) * 3.5
+              const alpha = hoverAlpha - t * (hoverAlpha - dotAlpha)
               s.fill(c, c, c, alpha)
               s.ellipse(x, y, DOT_BASE + scale, DOT_BASE + scale)
             } else {
@@ -59,9 +65,7 @@ const DotGridSketch = () => {
 
       s.windowResized = () => {
         const parent = renderRef.current
-        if (parent) {
-          s.resizeCanvas(parent.offsetWidth, parent.offsetHeight)
-        }
+        if (parent) s.resizeCanvas(parent.offsetWidth, parent.offsetHeight)
       }
     })
 

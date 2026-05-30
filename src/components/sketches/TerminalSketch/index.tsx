@@ -55,6 +55,7 @@ const TerminalSketch = () => {
         const parent = renderRef.current
         if (!parent) return
         s.createCanvas(parent.offsetWidth, parent.offsetHeight).parent(parent)
+        s.frameRate(30)
         s.textFont('monospace')
         s.textSize(13)
         buildLines()
