@@ -113,7 +113,7 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <div className="flex items-center gap-1 md:hidden px-5 py-3 bg-bg border-b border-divider">
+          <div className="relative z-10 flex items-center gap-1 md:hidden px-5 py-3 bg-bg border-b border-divider">
             <LanguageSwitcher />
             <ThemeToggle />
           </div>

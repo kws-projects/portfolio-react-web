@@ -46,21 +46,21 @@ const Hero = () => {
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row items-center gap-4 mt-8 justify-center md:justify-start"
+              className="grid grid-cols-1 sm:flex sm:flex-row items-center gap-4 mt-8 w-full sm:w-auto sm:justify-center md:justify-start"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45 }}
             >
               <Link
                 to="/works"
-                className="group flex items-center gap-2 px-6 py-3 rounded-xl bg-accent font-medium hover:opacity-90 transition-opacity text-inverted"
+                className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent font-medium hover:opacity-90 transition-opacity text-inverted"
               >
                 {t('home_hero_cta_works')}
                 <FiArrowRight className="group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/contact"
-                className="px-6 py-3 rounded-xl border-ui text-primary font-medium hover:bg-surface/80 transition-colors"
+                className="px-6 py-3 rounded-xl border-ui text-primary font-medium hover:bg-surface/80 transition-colors text-center"
               >
                 {t('home_hero_cta_contact')}
               </Link>
@@ -95,7 +95,7 @@ const Hero = () => {
       </div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 inset-x-0 flex justify-center"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
