@@ -16,7 +16,7 @@ const Hero = () => {
 
       <div className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 py-20">
         <div className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16">
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex-1 text-center md:text-start">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ const Hero = () => {
                 className="group flex items-center gap-2 px-6 py-3 rounded-xl bg-accent font-medium hover:opacity-90 transition-opacity text-inverted"
               >
                 {t('home_hero_cta_works')}
-                <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+                <FiArrowRight className="group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/contact"

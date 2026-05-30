@@ -32,15 +32,15 @@ const NavMenuItem = ({
     0: {
       link: `block pt-5 px-5 pb-3.5 w-full border-b-2 border-transparent bg-bg md:bg-transparent hover:text-primary transition-colors duration-200 ${isActive ? 'text-primary md:border-b-accent' : 'text-secondary'}`,
       submenu:
-        'hidden relative left-0 group-hover/nav-2-lv:block w-full bg-surface border border-border/10 md:absolute md:w-48 md:rounded-xl md:mt-1 md:shadow-card',
+        'hidden relative start-0 group-hover/nav-2-lv:block w-full bg-surface border border-border/10 md:absolute md:w-48 md:rounded-xl md:mt-1 md:shadow-card',
     },
     1: {
-      link: `block pt-4 pr-5 pl-10 pb-3.5 text-secondary hover:text-primary hover:bg-surface-raised/50 transition-colors duration-200 ${isLastItem ? 'md:rounded-b-xl' : ''} ${isFirstItem ? 'md:rounded-t-xl' : ''} md:pl-5`,
+      link: `block pt-4 pe-5 ps-10 pb-3.5 text-secondary hover:text-primary hover:bg-surface-raised/50 transition-colors duration-200 ${isLastItem ? 'md:rounded-b-xl' : ''} ${isFirstItem ? 'md:rounded-t-xl' : ''} md:ps-5`,
       submenu:
-        'hidden relative top-0 left-0 group-hover/nav-3-lv:block w-full bg-surface border border-border/10 md:absolute md:left-48 md:w-48 md:rounded-xl md:shadow-card',
+        'hidden relative top-0 start-0 group-hover/nav-3-lv:block w-full bg-surface border border-border/10 md:absolute md:start-48 md:w-48 md:rounded-xl md:shadow-card',
     },
     2: {
-      link: `block pt-4 pr-5 pl-16 pb-3.5 text-secondary hover:text-primary hover:bg-surface-raised/50 transition-colors duration-200 ${isFirstItem ? 'md:rounded-t-xl' : ''} ${isLastItem ? 'md:rounded-b-xl' : ''} md:pl-5`,
+      link: `block pt-4 pe-5 ps-16 pb-3.5 text-secondary hover:text-primary hover:bg-surface-raised/50 transition-colors duration-200 ${isFirstItem ? 'md:rounded-t-xl' : ''} ${isLastItem ? 'md:rounded-b-xl' : ''} md:ps-5`,
       submenu: '',
     },
   }
@@ -48,7 +48,7 @@ const NavMenuItem = ({
   const styles = depthStyles[depth] ?? depthStyles[2]
   const groupClass =
     depth === 0
-      ? 'group/nav-2-lv relative float-left w-full md:w-fit'
+      ? 'group/nav-2-lv relative float-start w-full md:w-fit'
       : depth === 1
         ? 'group/nav-3-lv relative'
         : 'relative w-full'
@@ -92,14 +92,14 @@ const Navbar = () => {
     <nav className="flex items-center justify-between w-full h-14 max-w-screen-lg mx-0 text-sm md:mx-14 lg:mx-28 select-none">
       <Link
         to="/"
-        className="text-lg ml-8 pt-1 font-display font-semibold text-primary md:ml-4 hover:text-accent transition-colors duration-200"
+        className="text-lg ms-8 pt-1 font-display font-semibold text-primary md:ms-4 hover:text-accent transition-colors duration-200"
       >
         {t('website_name')}
       </Link>
 
       <div className="flex items-center h-full">
         <div
-          className={`${isExpanded ? 'flex-col' : 'hidden'} absolute top-14 right-0 w-full md:relative md:top-0 md:flex md:w-fit md:items-center`}
+          className={`${isExpanded ? 'flex-col' : 'hidden'} absolute top-14 end-0 w-full md:relative md:top-0 md:flex md:w-fit md:items-center`}
         >
           <ul className="w-full md:w-fit">
             {menuMap.map(item => (
@@ -124,7 +124,7 @@ const Navbar = () => {
           />
         </div>
 
-        <div className="hidden md:flex items-center flex-shrink-0 h-full pt-1 ml-1">
+        <div className="hidden md:flex items-center flex-shrink-0 h-full pt-1 ms-1">
           <div className="w-px h-4 bg-border/15 mx-1.5" />
           <LanguageSwitcher />
           <ThemeToggle />

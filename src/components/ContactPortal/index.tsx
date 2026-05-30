@@ -4,7 +4,7 @@ import { socialLinks } from '@/data/socialLinks'
 
 const ContactPortal = () => {
   return (
-    <div className="flex justify-center items-center space-x-3">
+    <div className="flex justify-center items-center gap-3">
       {socialLinks.map(link => {
         const Icon = link.icon
         return (

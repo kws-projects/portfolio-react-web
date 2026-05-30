@@ -54,7 +54,7 @@ const About = () => {
             />
           </div>
 
-          <div className="flex flex-col items-center md:items-start gap-5 text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start gap-5 text-center md:text-start">
             <p className="text-sm font-medium tracking-widest uppercase text-accent">
               {t('home_bento_about_me')}
             </p>

@@ -23,6 +23,17 @@ import { AppEnv } from '@/constant/appEnv'
   }
 })()
 
+// Apply direction before first paint to avoid layout shift
+;(() => {
+  const RTL_LANGUAGES = ['ar', 'he', 'fa', 'ur']
+  const storedLang = localStorage.getItem('i18n-language')
+  if (storedLang) {
+    const dir = RTL_LANGUAGES.includes(storedLang) ? 'rtl' : 'ltr'
+    document.documentElement.dir = dir
+    document.documentElement.lang = storedLang
+  }
+})()
+
 const queryClient = new QueryClient({})
 
 if (envConfig.NODE_ENV === AppEnv.PROD) {

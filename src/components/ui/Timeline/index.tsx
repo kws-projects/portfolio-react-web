@@ -126,14 +126,14 @@ const TimelineItemRow = ({ item, isLast }: TimelineItemRowProps) => {
                 className="overflow-hidden"
               >
                 {item.description && (
-                  <p className="text-secondary text-sm leading-relaxed mt-4 pl-0 sm:pl-16">
+                  <p className="text-secondary text-sm leading-relaxed mt-4 ps-0 sm:ps-16">
                     {item.description}
                   </p>
                 )}
 
                 {item.subItems &&
                   sortByDate(item.subItems).map(sub => (
-                    <div key={sub.id} className="mt-5 pl-0 sm:pl-16">
+                    <div key={sub.id} className="mt-5 ps-0 sm:ps-16">
                       <p className="font-display font-medium text-primary">
                         {sub.title}
                       </p>

@@ -31,7 +31,7 @@ const FeaturedSection = () => {
           className="group hidden md:flex items-center gap-2 text-sm text-accent font-medium hover:underline"
         >
           {t('home_featured_view_all')}
-          <FiArrowRight className="text-accent group-hover:translate-x-1 transition-transform" />
+          <FiArrowRight className="text-accent group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1 transition-transform" />
         </Link>
       </div>
 
@@ -93,7 +93,7 @@ const FeaturedSection = () => {
           className="group flex items-center gap-2 text-sm text-accent font-medium hover:underline"
         >
           {t('home_featured_view_all_works')}
-          <FiArrowRight className="text-accent group-hover:translate-x-1 transition-transform" />
+          <FiArrowRight className="text-accent group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1 transition-transform" />
         </Link>
       </div>
     </motion.section>

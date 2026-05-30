@@ -278,7 +278,7 @@ const InteractiveTerminal = ({ onClose }: InteractiveTerminalProps) => {
         ))}
 
         <div className="flex items-center text-sm">
-          <span className="mr-2 select-none" style={{ color: '#e0e0e0' }}>
+          <span className="me-2 select-none" style={{ color: '#e0e0e0' }}>
             $
           </span>
           <input
