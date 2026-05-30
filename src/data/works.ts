@@ -33,6 +33,7 @@ const items: {
         title: 'Kws WebTools',
         subTitle: 'オンラインWebツール、AI、クラウド',
       },
+      ar: { title: 'Kws WebTools', subTitle: 'أدوات ويب، ذكاء اصطناعي، سحابة' },
     },
   },
   {
@@ -51,6 +52,10 @@ const items: {
         title: 'GPX ビジュアライゼーション',
         subTitle: 'GPXファイルからZwiftインフォカード動画へ',
       },
+      ar: {
+        title: 'GPX Visualization',
+        subTitle: 'ملف GPX إلى فيديو بطاقة Zwift',
+      },
     },
   },
   {
@@ -63,6 +68,7 @@ const items: {
       en: { title: 'Web Portrait', subTitle: 'Extension, Data Portrait' },
       'zh-TW': { title: 'Web Portrait', subTitle: '瀏覽器擴充、數據肖像' },
       ja: { title: 'Web Portrait', subTitle: '拡張機能、データポートレート' },
+      ar: { title: 'Web Portrait', subTitle: 'إضافة، صورة بيانات' },
     },
   },
   {
@@ -84,6 +90,10 @@ const items: {
         title: 'シューティングゲーム w/ ML顔認識',
         subTitle: 'Arduino、ゲーム、機械学習',
       },
+      ar: {
+        title: 'لعبة تصويب مع التعرف على الوجه بالتعلم الآلي',
+        subTitle: 'Arduino، لعبة، تعلم آلي',
+      },
     },
   },
   {
@@ -99,6 +109,7 @@ const items: {
         title: 'デジタルドローイング',
         subTitle: 'デジタルドローイング、Procreate',
       },
+      ar: { title: 'رسم رقمي', subTitle: 'رسم رقمي، Procreate' },
     },
   },
   {
@@ -114,6 +125,7 @@ const items: {
         title: 'Game of Life',
         subTitle: 'クリエイティブコーディング、P5js',
       },
+      ar: { title: 'Game of Life', subTitle: 'برمجة إبداعية، P5js' },
     },
   },
   {
@@ -129,6 +141,7 @@ const items: {
         title: 'ストリングアートポートレート',
         subTitle: 'クリエイティブコーディング、P5js',
       },
+      ar: { title: 'صورة فن الخيوط', subTitle: 'برمجة إبداعية، P5js' },
     },
   },
   {
@@ -144,6 +157,7 @@ const items: {
         title: 'コードポートレート',
         subTitle: 'クリエイティブコーディング、P5js',
       },
+      ar: { title: 'صورة برمجية', subTitle: 'برمجة إبداعية، P5js' },
     },
   },
   {
@@ -161,6 +175,10 @@ const items: {
       ja: {
         title: '赤、青、黄、そして酔いの構図',
         subTitle: 'クリエイティブコーディング、P5js',
+      },
+      ar: {
+        title: 'تكوين بالأحمر والأزرق والأصفر والسكران',
+        subTitle: 'برمجة إبداعية، P5js',
       },
     },
   },
@@ -180,6 +198,7 @@ const items: {
         title: '三角分割ポートレート',
         subTitle: 'クリエイティブコーディング、P5js',
       },
+      ar: { title: 'صورة التقسيم الثلاثي', subTitle: 'برمجة إبداعية، P5js' },
     },
   },
   {
@@ -195,6 +214,7 @@ const items: {
         title: 'フラクタルツリー',
         subTitle: 'クリエイティブコーディング、P5js',
       },
+      ar: { title: 'شجرة فراكتال', subTitle: 'برمجة إبداعية، P5js' },
     },
   },
   {
@@ -213,6 +233,7 @@ const items: {
         title: 'セル生成スケッチ',
         subTitle: 'クリエイティブコーディング、P5js',
       },
+      ar: { title: 'رسم توليد الخلايا', subTitle: 'برمجة إبداعية، P5js' },
     },
   },
   {
@@ -228,6 +249,7 @@ const items: {
       },
       'zh-TW': { title: '炭筆素描', subTitle: '繪畫、素描、炭筆' },
       ja: { title: '木炭スケッチ', subTitle: 'ドローイング、スケッチ、木炭' },
+      ar: { title: 'رسم بالفحم', subTitle: 'رسم، تخطيط، فحم' },
     },
   },
   {
@@ -243,6 +265,7 @@ const items: {
         title: 'ヘルスアシスタントデバイス',
         subTitle: 'ロボット、Arduino',
       },
+      ar: { title: 'جهاز المساعد الصحي', subTitle: 'روبوت، Arduino' },
     },
   },
   {
@@ -257,6 +280,7 @@ const items: {
       en: { title: 'Velo Race', subTitle: 'Mobile, Android Studio' },
       'zh-TW': { title: 'Velo Race', subTitle: '行動應用、Android Studio' },
       ja: { title: 'Velo Race', subTitle: 'モバイル、Android Studio' },
+      ar: { title: 'Velo Race', subTitle: 'جوال، Android Studio' },
     },
   },
   {
@@ -271,6 +295,7 @@ const items: {
       en: { title: 'Post Note', subTitle: 'Mobile, Android Studio' },
       'zh-TW': { title: 'Post Note', subTitle: '行動應用、Android Studio' },
       ja: { title: 'Post Note', subTitle: 'モバイル、Android Studio' },
+      ar: { title: 'Post Note', subTitle: 'جوال، Android Studio' },
     },
   },
   {
@@ -283,6 +308,7 @@ const items: {
       en: { title: 'Zwift Plan', subTitle: 'Website, Application' },
       'zh-TW': { title: 'Zwift Plan', subTitle: '網站、應用程式' },
       ja: { title: 'Zwift Plan', subTitle: 'ウェブサイト、アプリケーション' },
+      ar: { title: 'Zwift Plan', subTitle: 'موقع ويب، تطبيق' },
     },
   },
   {
@@ -306,6 +332,10 @@ const items: {
         title: 'Discover the Undiscovered',
         subTitle: 'ゲーム、Unity、Global Game Jam',
       },
+      ar: {
+        title: 'اكتشف غير المكتشف',
+        subTitle: 'لعبة، Unity، Global Game Jam',
+      },
     },
   },
   {
@@ -327,6 +357,10 @@ const items: {
         title: 'ボロノイプレートモデル',
         subTitle: '素材、3Dモデリング、Rhino 7',
       },
+      ar: {
+        title: 'نموذج لوحة فورونوي',
+        subTitle: 'مواد، نمذجة ثلاثية الأبعاد، Rhino 7',
+      },
     },
   },
   {
@@ -344,6 +378,10 @@ const items: {
       ja: {
         title: 'ダークフォレストカードゲーム',
         subTitle: 'ゲーム、コンセプトアート、ドローイング',
+      },
+      ar: {
+        title: 'لعبة بطاقات الغابة المظلمة',
+        subTitle: 'لعبة، فن مفاهيمي، رسم',
       },
     },
   },

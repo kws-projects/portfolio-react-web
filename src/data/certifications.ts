@@ -33,6 +33,11 @@ const items: {
         subTitle: 'Amazon Web Services (AWS)',
         customDate: '取得：2024年4月 - 有効期限：2027年4月',
       },
+      ar: {
+        title: 'شهادة AWS Cloud Practitioner',
+        subTitle: 'Amazon Web Services (AWS)',
+        customDate: 'صدرت في أبريل 2024 - تنتهي في أبريل 2027',
+      },
     },
   },
 ]

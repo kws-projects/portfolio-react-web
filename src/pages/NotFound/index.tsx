@@ -33,7 +33,7 @@ const NotFound = () => {
           to="/"
           className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent font-medium hover:opacity-90 transition-opacity text-inverted"
         >
-          <FiArrowLeft className="group-hover:-translate-x-1 transition-transform" />
+          <FiArrowLeft className="group-hover:-translate-x-1 rtl:rotate-180 rtl:group-hover:translate-x-1 transition-transform" />
           {t('error_back_home')}
         </Link>
       </div>

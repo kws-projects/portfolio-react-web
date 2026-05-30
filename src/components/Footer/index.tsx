@@ -11,7 +11,7 @@ const Footer = () => {
     <footer className="flex justify-center mt-auto border-t border-border/8 bg-surface/40">
       <div className="flex justify-center items-start w-full max-w-screen-lg mx-0 px-6 pt-8 pb-10 md:mx-14 lg:mx-28 md:justify-between">
         <section className="flex flex-col text-sm max-w-auto items-center md:items-start md:max-w-sm">
-          <div className="flex justify-start items-center space-x-4">
+          <div className="flex justify-start items-center gap-4">
             <Link
               to="/"
               className="text-lg font-display font-semibold text-primary select-none hover:text-accent transition-colors duration-200"
@@ -23,11 +23,11 @@ const Footer = () => {
             </div>
           </div>
 
-          <p className="mt-3 text-secondary text-center md:text-left text-sm leading-relaxed">
+          <p className="mt-3 text-secondary text-center md:text-start text-sm leading-relaxed">
             {t('website_attribution')}
           </p>
 
-          <div className="flex mt-3 space-x-2 select-none text-sm">
+          <div className="flex mt-3 gap-2 select-none text-sm">
             <Link
               to="/contact"
               className="text-secondary hover:text-primary transition-colors duration-200"
@@ -59,12 +59,12 @@ const Footer = () => {
           </div>
         </section>
 
-        <div className="hidden md:flex flex-col justify-between items-end h-full select-none">
+        <div className="hidden md:flex flex-col justify-between items-end h-full select-none text-end">
           <ul className="flex justify-center">
             {menuMap.map(item => {
               const itemLabel = item.titleKey ? t(item.titleKey) : item.title
               return (
-                <li className="ml-12" key={item.id}>
+                <li className="ms-12" key={item.id}>
                   {item.path && (
                     <Link
                       to={item.path}

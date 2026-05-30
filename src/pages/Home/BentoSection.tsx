@@ -58,7 +58,7 @@ const BentoSection = () => {
             className="group inline-flex items-center gap-1 mt-4 text-sm text-accent font-medium hover:underline"
           >
             {t('home_bento_learn_more')}
-            <FiArrowUpRight className="text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <FiArrowUpRight className="text-accent group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </TiltCard>
 
@@ -113,7 +113,7 @@ const BentoSection = () => {
             className="group inline-flex items-center gap-1 mt-4 text-sm text-accent font-medium hover:underline"
           >
             {t('home_bento_all_skills')}
-            <FiArrowUpRight className="text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <FiArrowUpRight className="text-accent group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </TiltCard>
 
@@ -136,7 +136,7 @@ const BentoSection = () => {
             className="group inline-flex items-center gap-1 mt-4 text-sm text-accent font-medium hover:underline"
           >
             {t('home_bento_browse_works')}
-            <FiArrowUpRight className="text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <FiArrowUpRight className="text-accent group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </TiltCard>
       </div>

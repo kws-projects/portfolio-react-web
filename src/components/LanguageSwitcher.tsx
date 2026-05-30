@@ -45,14 +45,14 @@ const LanguageSwitcher = () => {
       </button>
 
       {isOpen && (
-        <ul className="absolute right-0 top-full mt-1.5 w-44 rounded-xl border border-border/10 bg-surface shadow-card overflow-hidden z-50 py-1">
+        <ul className="absolute end-0 top-full mt-1.5 w-44 rounded-xl border border-border/10 bg-surface shadow-card overflow-hidden z-50 py-1">
           {SUPPORTED_LANGUAGES.map(lang => {
             const isActive = i18n.language === lang.code
             return (
               <li key={lang.code}>
                 <button
                   onClick={() => handleChange(lang.code)}
-                  className={`w-full text-left px-4 py-2.5 text-sm flex items-center justify-between transition-colors duration-150
+                  className={`w-full text-start px-4 py-2.5 text-sm flex items-center justify-between transition-colors duration-150
                     ${isActive ? 'text-primary font-medium' : 'text-secondary hover:bg-surface-raised hover:text-primary'}`}
                 >
                   <span>{lang.nativeLabel}</span>
