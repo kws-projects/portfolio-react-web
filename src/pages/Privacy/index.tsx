@@ -1,23 +1,17 @@
-import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
-import usePageTitle from '@/hooks/usePageTitle'
-import useScrollToTop from '@/hooks/useScrollToTop'
+import PageMeta from '@/components/PageMeta'
 import PageTitleSketch from '@/components/sketches/PageTitleSketch'
 import Section from '@/components/ui/Section'
 
 const Privacy = () => {
   const { t } = useTranslation()
 
-  useScrollToTop()
-  usePageTitle(t('privacy_document_title'))
-
   return (
     <main>
-      <Helmet>
-        <title>{t('privacy_document_title')}</title>
-        <meta name="description" content={t('privacy_document_description')} />
-        <meta name="robots" content="index, follow" />
-      </Helmet>
+      <PageMeta
+        title={t('privacy_document_title')}
+        description={t('privacy_document_description')}
+      />
       <PageTitleSketch title={t('privacy_title')} />
       <Section className="px-8 md:px-0 pt-4 md:pt-12" showBreakline={false}>
         <div>

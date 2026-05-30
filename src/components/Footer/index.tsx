@@ -14,8 +14,7 @@ const Footer = () => {
           <div className="flex justify-start items-center space-x-4">
             <Link
               to="/"
-              className="text-lg pt-1 text-gray-800 select-none"
-              style={{ fontFamily: 'Jost' }}
+              className="text-lg pt-1 text-gray-800 font-jost select-none"
             >
               {t('website_name')}
             </Link>
@@ -49,22 +48,24 @@ const Footer = () => {
           <ul className="flex justify-center">
             {menuMap.map(item => (
               <li className="ml-12" key={item.id}>
-                <Link to={item.path}>{item.title}</Link>
+                {item.path && <Link to={item.path}>{item.title}</Link>}
 
                 <ul className="mt-1">
-                  {item.subItems?.map(item => (
-                    <li className="text-sm mt-1" key={item.id}>
-                      {item.downloadable ? (
+                  {item.subItems?.map(subItem => (
+                    <li className="text-sm mt-1" key={subItem.id}>
+                      {subItem.downloadable && subItem.path ? (
                         <a
-                          href={item.path}
+                          href={subItem.path}
                           target="_blank"
                           rel="noreferrer"
                           download
                         >
-                          {item.title}
+                          {subItem.title}
                         </a>
                       ) : (
-                        <Link to={item.path}>{item.title}</Link>
+                        subItem.path && (
+                          <Link to={subItem.path}>{subItem.title}</Link>
+                        )
                       )}
                     </li>
                   ))}

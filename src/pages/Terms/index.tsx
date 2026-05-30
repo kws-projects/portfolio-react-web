@@ -1,23 +1,17 @@
-import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
-import usePageTitle from '@/hooks/usePageTitle'
-import useScrollToTop from '@/hooks/useScrollToTop'
+import PageMeta from '@/components/PageMeta'
 import PageTitleSketch from '@/components/sketches/PageTitleSketch'
 import Section from '@/components/ui/Section'
 
 const Terms = () => {
   const { t } = useTranslation()
 
-  useScrollToTop()
-  usePageTitle(t('terms_document_title'))
-
   return (
     <main>
-      <Helmet>
-        <title>{t('terms_document_title')}</title>
-        <meta name="description" content={t('terms_document_description')} />
-        <meta name="robots" content="index, follow" />
-      </Helmet>
+      <PageMeta
+        title={t('terms_document_title')}
+        description={t('terms_document_description')}
+      />
       <PageTitleSketch title={t('terms_title_full')} />
       <Section className="px-8 md:px-0 pt-4 md:pt-12" showBreakline={false}>
         <div>
@@ -57,7 +51,8 @@ const Terms = () => {
           </h3>
           <p>
             We employ the use of cookies. By accessing Kenneth Wong, you agreed
-            to use cookies in agreement with the Kenneth Wong's Privacy Policy.{' '}
+            to use cookies in agreement with the Kenneth Wong's Privacy
+            Policy.{' '}
           </p>
           <p>
             Most interactive websites use cookies to let us retrieve the user’s

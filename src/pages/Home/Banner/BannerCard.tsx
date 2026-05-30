@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { HomeBannerTab, getHomeBannerTabLabel } from '@/constant/tab'
+import { HomeBannerTab, homeBannerTabLabels } from '@/constant/tab'
 import SkillShowcase from '@/components/SkillShowcase'
 import { TimelineList } from '@/components/ui/Timeline'
 import { workExperiences } from '@/data/workExperience'
@@ -9,13 +9,6 @@ import FeaturedWorks from './tabs/FeaturedWorks'
 
 const BannerCard = () => {
   const [currentTab, setCurrentTab] = useState(HomeBannerTab.ABOUT)
-
-  const handleTabSwitch = (tab: HomeBannerTab) => {
-    setCurrentTab(tab)
-  }
-
-  const getIndicatorStyle = (tab: HomeBannerTab) =>
-    currentTab === tab ? 'border-b-gray-800' : null
 
   return (
     <div
@@ -30,10 +23,10 @@ const BannerCard = () => {
           {Object.values(HomeBannerTab).map(tab => (
             <li
               key={tab}
-              className={`border-b border-transparent pb-3 hover:border-b-gray-800 cursor-pointer select-none transition ease-in-out ${getIndicatorStyle(tab)}`}
-              onClick={() => handleTabSwitch(tab)}
+              className={`border-b border-transparent pb-3 hover:border-b-gray-800 cursor-pointer select-none transition ease-in-out ${currentTab === tab ? 'border-b-gray-800' : ''}`}
+              onClick={() => setCurrentTab(tab)}
             >
-              {getHomeBannerTabLabel()[tab]}
+              {homeBannerTabLabels[tab]}
             </li>
           ))}
         </ul>

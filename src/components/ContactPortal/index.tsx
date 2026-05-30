@@ -1,52 +1,27 @@
 import { trackEvent } from '@/services/ga4'
-import { ExternalUrl, getAriaLabel } from '@/constant/externalUrl'
-import { GAEventCategory, GAEventAction } from '@/constant/gaEvent'
-import { FaLinkedin, FaSquareGithub, FaSquareEnvelope } from 'react-icons/fa6'
+import { GAEventCategory } from '@/constant/gaEvent'
+import { socialLinks } from '@/data/socialLinks'
 
 const ContactPortal = () => {
   return (
     <div className="flex justify-center items-center space-x-2">
-      <a
-        href={ExternalUrl.LINKEDIN}
-        aria-label={getAriaLabel()[ExternalUrl.LINKEDIN]}
-        rel="noreferrer"
-        target="_blank"
-        onClick={() => {
-          trackEvent(
-            GAEventCategory.NAVIGATION,
-            GAEventAction.NAVIGATE_TO_LINKEDIN
-          )
-        }}
-      >
-        <FaLinkedin className="fill-gray-800" size={18} />
-      </a>
-      <a
-        href={ExternalUrl.GITHUB}
-        aria-label={getAriaLabel()[ExternalUrl.GITHUB]}
-        rel="noreferrer"
-        target="_blank"
-        onClick={() => {
-          trackEvent(
-            GAEventCategory.NAVIGATION,
-            GAEventAction.NAVIGATE_TO_GITHUB
-          )
-        }}
-      >
-        <FaSquareGithub className="fill-gray-800" size={18} />
-      </a>
-      <a
-        href="/contact"
-        aria-label="Contact me"
-        target="_blank"
-        onClick={() => {
-          trackEvent(
-            GAEventCategory.NAVIGATION,
-            GAEventAction.NAVIGATE_TO_CONTACT
-          )
-        }}
-      >
-        <FaSquareEnvelope className="fill-gray-800" size={18} />
-      </a>
+      {socialLinks.map(link => {
+        const Icon = link.icon
+        return (
+          <a
+            key={link.id}
+            href={link.url}
+            aria-label={link.ariaLabel}
+            rel="noreferrer"
+            target={link.external ? '_blank' : undefined}
+            onClick={() => {
+              trackEvent(GAEventCategory.NAVIGATION, link.gaAction)
+            }}
+          >
+            <Icon className="fill-gray-800" size={18} />
+          </a>
+        )
+      })}
     </div>
   )
 }

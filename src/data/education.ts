@@ -1,7 +1,7 @@
-import { ITimelineItem } from '@/components/ui/Timeline'
+import { TimelineItem } from '@/types/timeline'
 import { envConfig } from '@/config'
 
-export const education: ITimelineItem[] = [
+export const education: TimelineItem[] = [
   {
     id: 0,
     title: 'City University of Hong Kong',

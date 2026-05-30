@@ -7,15 +7,15 @@ type ButtonProps = {
   disabled?: boolean
 }
 
-const Button = (props: ButtonProps) => {
+const Button = ({ children, onClick, styles, disabled }: ButtonProps) => {
   return (
     <button
       className="self-center px-5 py-2 rounded-md text-gray-200 font-medium bg-gray-800"
-      style={props.styles}
-      onClick={props.onClick}
-      disabled={props.disabled}
+      style={styles}
+      onClick={onClick}
+      disabled={disabled}
     >
-      {props.children}
+      {children}
     </button>
   )
 }

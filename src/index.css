@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-page-bg: 249 250 251;
+    --color-text-primary: 68 68 68;
+    --color-text-secondary: 107 114 128;
+    --color-text-code: 78 78 78;
+    --color-link: 49 109 199;
+    --color-surface: 249 250 251;
+    --color-surface-code: 237 237 237;
+    --color-accent: 31 41 55;
+    --color-border: 229 231 235;
+    --color-shadow-blue: 10 99 169;
+    --color-overlay: 0 0 0;
+  }
+
   @font-face {
     font-family: 'Quicksand';
     font-style: normal;
@@ -25,7 +39,8 @@
     font-family: 'Quicksand';
     font-style: normal;
     font-weight: 600;
-    src: url(/assets/fonts/quicksand/Quicksand-SemiBold.ttf), format('truetype');
+    src:
+      url(/assets/fonts/quicksand/Quicksand-SemiBold.ttf), format('truetype');
   }
   @font-face {
     font-family: 'Quicksand';
@@ -83,14 +98,14 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
-  color: rgb(68, 68, 68);
+  color: rgb(var(--color-text-primary));
 }
 
 html {
   height: 100%;
   scroll-behavior: smooth;
   overflow-x: hidden;
-  background-color: rgb(249, 250, 252);
+  background-color: rgb(var(--color-page-bg));
 }
 
 body {
@@ -173,7 +188,7 @@ img {
 }
 
 .md a {
-  color: rgb(49, 109, 199);
+  color: rgb(var(--color-link));
   text-decoration: underline;
 }
 
@@ -181,10 +196,10 @@ img {
   padding: 1.5rem;
   border-radius: 0.5rem;
   overflow-x: auto;
-  background-color: rgb(237, 237, 237);
+  background-color: rgb(var(--color-surface-code));
   margin: 1rem 0 1rem;
 }
 
 .md code {
-  color: rgb(78, 78, 78);
+  color: rgb(var(--color-text-code));
 }

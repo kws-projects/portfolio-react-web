@@ -1,7 +1,7 @@
-import { ITimelineItem } from '@/components/ui/Timeline'
+import { TimelineItem } from '@/types/timeline'
 import { envConfig } from '@/config'
 
-export const workExperiences: ITimelineItem[] = [
+export const workExperiences: TimelineItem[] = [
   {
     id: 0,
     title: 'Deloitte Digital - Customer & Marketing - Consulting',

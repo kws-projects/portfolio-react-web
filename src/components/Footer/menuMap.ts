@@ -1,15 +1,8 @@
 import { WorkCategory } from '@/constant/work'
 import { envConfig } from '@/config'
+import { MenuItem } from '@/types/menu'
 
-interface IMenuMap {
-  id: number
-  title: string
-  path: string
-  downloadable?: boolean
-  subItems?: IMenuMap[]
-}
-
-export const menuMap: IMenuMap[] = [
+export const menuMap: MenuItem[] = [
   {
     id: 0,
     title: 'About',
