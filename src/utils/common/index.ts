@@ -12,6 +12,18 @@ export const compareDate = (
   return 0
 }
 
+export const sortByDate = <
+  T extends { fromDate?: string; customDate?: string },
+>(
+  items: T[]
+): T[] =>
+  [...items].sort((a, b) => {
+    if (a.fromDate && b.fromDate) return compareDate(a.fromDate, b.fromDate)
+    if (a.customDate && b.customDate)
+      return compareDate(a.customDate, b.customDate)
+    return 0
+  })
+
 type TranslateFn = (key: string, options?: Record<string, unknown>) => string
 
 export const getDateTimeDifference = (
@@ -35,6 +47,27 @@ export const getDateTimeDifference = (
   const monthLabel = formatUnit(monthDiff, 'date_month')
 
   if (yearDiff < 1) return monthLabel
+  if (monthDiff === 0) return yearLabel
 
   return `${yearLabel}, ${monthLabel}`
+}
+
+export const getDurationString = (
+  fromDate: string,
+  toDate?: string,
+  options?: { locale?: string; t?: TranslateFn }
+) => {
+  const locale = options?.locale ?? 'en'
+  const fmt = new Intl.DateTimeFormat(locale, {
+    month: 'long',
+    year: 'numeric',
+  })
+  const from = fmt.format(new Date(fromDate))
+
+  if (!toDate) {
+    const present = options?.t?.('date_present') ?? 'Present'
+    return `${from} - ${present}`
+  }
+
+  return `${from} - ${fmt.format(new Date(toDate))}`
 }

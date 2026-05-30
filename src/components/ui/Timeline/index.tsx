@@ -1,34 +1,19 @@
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { motion, AnimatePresence } from 'framer-motion'
 import { dayjs } from '@/utils/dayjs'
-import { compareDate, getDateTimeDifference } from '@/utils/common'
+import {
+  sortByDate,
+  getDateTimeDifference,
+  getDurationString,
+} from '@/utils/common'
+import { TimelineItem } from '@/types/timeline'
+import { FiChevronDown } from 'react-icons/fi'
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const getDurationString = (fromDate: string, toDate?: string) => {
-  const fromDateObj = new Date(fromDate)
-
-  if (!toDate)
-    return `${fromDateObj.toLocaleString('default', { month: 'long' })}, ${fromDateObj.getFullYear()} - Present`
-
-  const toDateObj = new Date(toDate)
-  return `${fromDateObj.toLocaleString('default', { month: 'long' })}, ${fromDateObj.getFullYear()} - ${toDateObj.toLocaleString('default', { month: 'long' })}, ${toDateObj.getFullYear()}`
-}
-
-export interface ITimelineItem {
-  id: number
-  image?: string
-  title: string
-  subTitle?: string
-  description?: string | ReactNode
-  subItems?: ITimelineItem[]
-  fromDate?: string
-  toDate?: string
-  customDate?: string
-  showDateTimeDifference?: boolean
-}
+export type { TimelineItem }
 
 type TimelineListProps = {
-  items: ITimelineItem[]
+  items: TimelineItem[]
   className?: string
   children?: ReactNode
 }
@@ -39,142 +24,157 @@ export const TimelineList = ({
   children,
 }: TimelineListProps) => {
   return (
-    <div className={`flex flex-col justify-start w-full ${className}`}>
-      {items
-        .sort((a, b) => {
-          // if from date exists
-          if (a.fromDate && b.fromDate)
-            return compareDate(a.fromDate, b.fromDate)
-          // is custom date is used
-          if (a.customDate && b.customDate)
-            return compareDate(a.customDate, b.customDate)
-          // if from date not exists
-          return 0
-        })
-        .map(experience => (
-          <TimelineItem key={experience.id} item={experience} />
-        ))}
+    <div className={`flex flex-col w-full max-w-2xl ${className}`}>
+      {sortByDate(items).map((item, i) => (
+        <TimelineItemRow
+          key={item.id}
+          item={item}
+          isLast={i === items.length - 1}
+        />
+      ))}
       {children}
     </div>
   )
 }
 
-type TimelineItemProps = {
-  item: ITimelineItem
+type TimelineItemRowProps = {
+  item: TimelineItem
+  isLast: boolean
 }
 
-export const TimelineItem = ({ item }: TimelineItemProps) => {
-  const { t } = useTranslation()
+const TimelineItemRow = ({ item, isLast }: TimelineItemRowProps) => {
+  const { t, i18n } = useTranslation()
+  const [isExpanded, setIsExpanded] = useState(false)
+  const hasDetails =
+    item.description || (item.subItems && item.subItems.length > 0)
 
   return (
-    <>
-      <div className="flex items-center w-full space-x-8">
-        {item.image && (
-          <img className="w-12 sm:w-20" src={item.image} alt="Company" />
-        )}
-
-        <div>
-          <p className="text-lg font-medium">{item.title}</p>
-
-          {item.subTitle && <p className="font-medium">{item.subTitle}</p>}
-
-          {item.fromDate && !item.toDate && (
-            <p className="text-gray-500 flex flex-wrap gap-x-2">
-              <span className="text-gray-500 whitespace-nowrap">
-                {getDurationString(item.fromDate)}
-              </span>
-              {item?.showDateTimeDifference && (
-                <span className="text-gray-500 whitespace-nowrap">
-                  <span className="text-gray-500 pr-2">-</span>
-                  {getDateTimeDifference(dayjs(item.fromDate), { t })}
-                </span>
-              )}
-            </p>
-          )}
-
-          {item.fromDate && item.toDate && (
-            <p className="text-gray-500 flex flex-wrap gap-x-2">
-              <span className="text-gray-500 whitespace-nowrap">
-                {getDurationString(item.fromDate, item.toDate)}
-              </span>
-              {item?.showDateTimeDifference && (
-                <span className="text-gray-500 whitespace-nowrap">
-                  <span className="text-gray-500 pr-2">-</span>
-                  {getDateTimeDifference(dayjs(item.fromDate), {
-                    toDateTime: dayjs(item.toDate),
-                    t,
-                  })}
-                </span>
-              )}
-            </p>
-          )}
-
-          {item.customDate && (
-            <p className="text-gray-500">{item.customDate}</p>
-          )}
-
-          {item.description && (
-            <p className="text-gray-500 pt-2">{item.description}</p>
-          )}
-        </div>
+    <div className="flex gap-5">
+      {/* Vertical line and dot */}
+      <div className="flex flex-col items-center pt-1.5">
+        <div className="w-3 h-3 rounded-full bg-accent border-2 border-bg flex-shrink-0 ring-2 ring-accent/30" />
+        {!isLast && <div className="w-px flex-1 bg-border/10 mt-1" />}
       </div>
 
-      {item.subItems ? (
-        item.subItems
-          .sort((a, b) => {
-            // if from date exists
-            if (a.fromDate && b.fromDate)
-              return compareDate(a.fromDate, b.fromDate)
-            // is custom date is used
-            if (a.customDate && b.customDate)
-              return compareDate(a.customDate, b.customDate)
-            // if from date not exists
-            return 0
-          })
-          .map(experience => (
-            <div
-              className="flex items-center w-full space-x-8 mt-4 mb-4 pl-0 sm:pl-28"
-              key={experience.id}
-            >
-              <div className="flex flex-col justify-start items-center w-12 sm:w-6 h-full pt-2">
-                <div
-                  className="flex rounded-full bg-gray-300"
-                  style={{ width: '5px', height: '5px' }}
-                />
-                <div
-                  className="bg-gray-300 h-full min-h-12"
-                  style={{ width: '1px' }}
-                />
+      {/* Content */}
+      <div className={`flex-1 ${isLast ? 'pb-0' : 'pb-8'}`}>
+        <div
+          className={`rounded-xl border-ui-interactive bg-surface p-5 ${hasDetails ? 'cursor-pointer' : ''}`}
+          onClick={() => hasDetails && setIsExpanded(!isExpanded)}
+        >
+          <div className="flex items-start gap-4">
+            {item.image && (
+              <img
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white p-1 flex-shrink-0"
+                src={item.image}
+                alt={item.title}
+              />
+            )}
+
+            <div className="flex-1 min-w-0">
+              <div className="flex items-start justify-between gap-2">
+                <h3 className="font-display font-semibold text-primary text-base">
+                  {item.title}
+                </h3>
+                {hasDetails && (
+                  <motion.div
+                    animate={{ rotate: isExpanded ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="flex-shrink-0 mt-1"
+                  >
+                    <FiChevronDown className="text-tertiary" size={16} />
+                  </motion.div>
+                )}
               </div>
 
-              <div className="pb-2">
-                <p className="text-lg font-medium">{experience.title}</p>
+              {item.subTitle && (
+                <p className="text-secondary text-sm mt-0.5">{item.subTitle}</p>
+              )}
 
-                {experience.subTitle && (
-                  <p className="font-medium">{experience.subTitle}</p>
+              <div className="flex flex-wrap items-center gap-x-2 mt-1.5 text-sm">
+                {item.fromDate && (
+                  <span className="text-tertiary">
+                    {getDurationString(item.fromDate, item.toDate, {
+                      locale: i18n.language,
+                      t,
+                    })}
+                  </span>
                 )}
-
-                {experience.fromDate && !experience.toDate && (
-                  <p className="text-gray-500">
-                    {getDurationString(experience.fromDate)}
-                  </p>
+                {item.customDate && (
+                  <span className="text-tertiary">{item.customDate}</span>
                 )}
-
-                {experience.fromDate && experience.toDate && (
-                  <p className="text-gray-500">
-                    {getDurationString(experience.fromDate, experience.toDate)}
-                  </p>
-                )}
-
-                {experience.customDate && (
-                  <p className="text-gray-500">{experience.customDate}</p>
+                {item.fromDate && item.showDateTimeDifference && (
+                  <span className="text-accent text-xs font-medium px-2 py-0.5 rounded-full bg-accent/10">
+                    {getDateTimeDifference(dayjs(item.fromDate), {
+                      toDateTime: item.toDate ? dayjs(item.toDate) : undefined,
+                      t,
+                    })}
+                  </span>
                 )}
               </div>
             </div>
-          ))
-      ) : (
-        <br />
-      )}
-    </>
+          </div>
+
+          {/* Expandable details */}
+          <AnimatePresence>
+            {isExpanded && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="overflow-hidden"
+              >
+                {item.description && (
+                  <p className="text-secondary text-sm leading-relaxed mt-4 ps-0 sm:ps-16">
+                    {item.description}
+                  </p>
+                )}
+
+                {item.subItems &&
+                  sortByDate(item.subItems).map(sub => (
+                    <div key={sub.id} className="mt-5 ps-0 sm:ps-16">
+                      <p className="font-display font-medium text-primary">
+                        {sub.title}
+                      </p>
+                      {sub.fromDate && (
+                        <p className="text-tertiary text-sm mt-0.5">
+                          {getDurationString(sub.fromDate, sub.toDate, {
+                            locale: i18n.language,
+                            t,
+                          })}
+                        </p>
+                      )}
+                      {sub.customDate && (
+                        <p className="text-tertiary text-sm mt-0.5">
+                          {sub.customDate}
+                        </p>
+                      )}
+                      {sub.description && (
+                        <p className="text-secondary text-sm leading-relaxed mt-2">
+                          {sub.description}
+                        </p>
+                      )}
+                      {sub.tasks && sub.tasks.length > 0 && (
+                        <ul className="mt-2 space-y-1.5">
+                          {sub.tasks.map((task, idx) => (
+                            <li
+                              key={idx}
+                              className="flex items-start gap-2 text-sm text-secondary leading-relaxed"
+                            >
+                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent/40 flex-shrink-0" />
+                              {task}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+    </div>
   )
 }

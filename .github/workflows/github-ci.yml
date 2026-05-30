@@ -18,5 +18,9 @@ jobs:
         cache: 'yarn'
     - name: Build stack
       run: yarn install
-    - name: Run test case
+    - name: Lint
+      run: yarn lint
+    - name: Type check
       run: tsc
+    - name: Run tests
+      run: yarn test:run
