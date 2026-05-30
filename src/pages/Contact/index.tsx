@@ -40,7 +40,7 @@ const Contact = () => {
           transition={{ duration: 0.5, delay: 0.15 }}
         >
           {/* Terminal sketch */}
-          <div className="lg:col-span-3 h-72 sm:h-80 rounded-2xl border border-border/8 overflow-hidden">
+          <div className="lg:col-span-3 h-72 sm:h-80 rounded-2xl border-ui overflow-hidden">
             <TerminalSketch />
           </div>
 
@@ -48,7 +48,7 @@ const Contact = () => {
           <div className="lg:col-span-2 flex flex-col gap-4">
             <a
               href={`mailto:${t('contact_email')}`}
-              className="flex flex-col gap-1 p-5 rounded-2xl border border-border/8 bg-surface hover:border-accent/20 transition-all"
+              className="flex flex-col gap-1 p-5 rounded-2xl border-ui-interactive bg-surface"
             >
               <span className="text-xs font-medium tracking-widest uppercase text-accent">
                 {t('contact_label_email')}
@@ -60,7 +60,7 @@ const Contact = () => {
 
             <a
               href={`tel:${t('contact_tel')}`}
-              className="flex flex-col gap-1 p-5 rounded-2xl border border-border/8 bg-surface hover:border-accent/20 transition-all"
+              className="flex flex-col gap-1 p-5 rounded-2xl border-ui-interactive bg-surface"
             >
               <span className="text-xs font-medium tracking-widest uppercase text-accent">
                 {t('contact_label_phone')}
@@ -70,7 +70,7 @@ const Contact = () => {
               </span>
             </a>
 
-            <div className="flex flex-col gap-2 p-5 rounded-2xl border border-border/8 bg-surface">
+            <div className="flex flex-col gap-2 p-5 rounded-2xl border-ui bg-surface">
               <span className="text-xs font-medium tracking-widest uppercase text-accent mb-1">
                 {t('contact_label_socials')}
               </span>

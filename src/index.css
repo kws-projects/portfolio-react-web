@@ -10,6 +10,7 @@
     --color-surface-raised: 245 245 243;
     --color-surface-code: 245 245 243;
     --color-border: 0 0 0;
+    --border-divider: rgba(0, 0, 0, 0.1);
     --color-text: 20 20 20;
     --color-text-secondary: 100 100 100;
     --color-text-tertiary: 160 160 160;
@@ -27,7 +28,8 @@
     --color-surface: 18 18 22;
     --color-surface-raised: 28 28 34;
     --color-surface-code: 14 14 18;
-    --color-border: 100 100 110;
+    --color-border: 200 200 210;
+    --border-divider: rgb(52, 52, 60);
     --color-text: 240 240 240;
     --color-text-secondary: 155 155 160;
     --color-text-tertiary: 95 95 100;
@@ -38,6 +40,12 @@
     --color-overlay: 0 0 0;
     --color-error: 248 113 113;
     --color-skeleton: 28 28 34;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border-divider);
+    margin: 0;
   }
 
   @font-face {
@@ -253,7 +261,7 @@ img {
 }
 .blog-content .md hr {
   border: none;
-  border-top: 1px solid rgba(var(--color-border), 0.1);
+  border-top: 1px solid var(--border-divider);
   margin: 2rem 0;
 }
 .blog-content .md img {
@@ -282,4 +290,20 @@ img {
 .blog-content .md strong {
   color: rgb(var(--color-text));
   font-weight: 600;
+}
+
+@layer components {
+  .border-ui {
+    @apply border border-border/15;
+  }
+
+  .border-ui-interactive {
+    @apply border border-border/15 transition-all duration-200 hover:border-border/25;
+  }
+}
+
+@layer utilities {
+  .border-divider {
+    border-color: var(--border-divider);
+  }
 }

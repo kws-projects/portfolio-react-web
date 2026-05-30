@@ -32,8 +32,8 @@ const FencedCodeBlock = ({
   const editorHeight = Math.max(lineCount * 20 + 16, 60)
 
   return (
-    <div className="rounded-xl border border-border/10 bg-surface-code overflow-hidden my-4">
-      <div className="flex items-center px-4 py-2 border-b border-border/6 bg-surface-code">
+    <div className="rounded-xl border-ui bg-surface-code overflow-hidden my-4">
+      <div className="flex items-center px-4 py-2 border-b border-border/15 bg-surface-code">
         <span className="text-xs text-tertiary font-mono">{language}</span>
       </div>
       <div style={{ height: `${editorHeight}px` }}>

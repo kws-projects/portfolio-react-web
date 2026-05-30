@@ -43,7 +43,7 @@ const Works = () => {
               <li
                 key={cat}
                 className={`px-4 py-2 rounded-xl text-sm cursor-pointer border transition-all duration-200
-                  ${selectedCategories.includes(cat) ? 'bg-accent/15 border-accent/40 text-primary font-medium' : 'bg-surface border-border/8 text-secondary hover:border-border/20 hover:text-primary'}`}
+                  ${selectedCategories.includes(cat) ? 'bg-accent/15 border-accent/40 text-primary font-medium' : 'bg-surface border-ui text-secondary hover:border-border/25 hover:text-primary'}`}
                 onClick={() => handleCategoryChange(cat)}
               >
                 {t(workCategoryLabelKeys[cat])}
@@ -71,7 +71,7 @@ const Works = () => {
               <TiltCard tiltDeg={4} className="flex w-full">
                 <Link
                   to={work.url}
-                  className="group flex flex-col rounded-2xl overflow-hidden border border-border/8 bg-surface hover:border-accent/20 transition-all duration-300 w-full"
+                  className="group flex flex-col rounded-2xl overflow-hidden border-ui-interactive bg-surface duration-300 w-full"
                 >
                   <div className="aspect-[4/3] overflow-hidden bg-skeleton">
                     <img

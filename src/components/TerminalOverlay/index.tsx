@@ -45,7 +45,7 @@ const TerminalOverlay = () => {
       {/* Floating trigger button */}
       <motion.button
         onClick={open}
-        className="fixed bottom-6 end-6 z-40 flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-border/10 bg-surface/90 backdrop-blur-md shadow-lg hover:shadow-xl hover:border-border/20 transition-all duration-200 cursor-pointer group"
+        className="fixed bottom-6 end-6 z-40 flex items-center gap-2.5 px-4 py-2.5 rounded-xl border-ui-interactive bg-surface/90 backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer group"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 1 }}
@@ -53,7 +53,7 @@ const TerminalOverlay = () => {
       >
         <FiTerminal className="text-primary" size={16} />
         <kbd
-          className="text-xs text-tertiary font-mono px-1.5 py-0.5 rounded border border-border/10 bg-surface-raised group-hover:text-secondary transition-colors"
+          className="text-xs text-tertiary font-mono px-1.5 py-0.5 rounded border-ui bg-surface-raised group-hover:text-secondary transition-colors"
           style={{ fontSize: '10px' }}
         >
           {isMac ? '⌘' : 'Ctrl'} K

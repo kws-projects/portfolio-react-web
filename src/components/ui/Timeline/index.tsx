@@ -59,7 +59,7 @@ const TimelineItemRow = ({ item, isLast }: TimelineItemRowProps) => {
       {/* Content */}
       <div className={`flex-1 ${isLast ? 'pb-0' : 'pb-8'}`}>
         <div
-          className={`rounded-xl border border-border/8 bg-surface p-5 transition-all duration-200 ${hasDetails ? 'cursor-pointer hover:border-accent/20' : ''}`}
+          className={`rounded-xl border-ui-interactive bg-surface p-5 ${hasDetails ? 'cursor-pointer' : ''}`}
           onClick={() => hasDetails && setIsExpanded(!isExpanded)}
         >
           <div className="flex items-start gap-4">

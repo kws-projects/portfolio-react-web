@@ -32,12 +32,12 @@ const NavMenuItem = ({
     0: {
       link: `block pt-5 px-5 pb-3.5 w-full border-b-2 border-transparent bg-bg md:bg-transparent hover:text-primary transition-colors duration-200 ${isActive ? 'text-primary md:border-b-accent' : 'text-secondary'}`,
       submenu:
-        'hidden relative start-0 group-hover/nav-2-lv:block w-full bg-surface border border-border/10 md:absolute md:w-48 md:rounded-xl md:mt-1 md:shadow-card',
+        'hidden relative start-0 group-hover/nav-2-lv:block w-full bg-surface border-ui md:absolute md:w-48 md:rounded-xl md:mt-1 md:shadow-card',
     },
     1: {
       link: `block pt-4 pe-5 ps-10 pb-3.5 text-secondary hover:text-primary hover:bg-surface-raised/50 transition-colors duration-200 ${isLastItem ? 'md:rounded-b-xl' : ''} ${isFirstItem ? 'md:rounded-t-xl' : ''} md:ps-5`,
       submenu:
-        'hidden relative top-0 start-0 group-hover/nav-3-lv:block w-full bg-surface border border-border/10 md:absolute md:start-48 md:w-48 md:rounded-xl md:shadow-card',
+        'hidden relative top-0 start-0 group-hover/nav-3-lv:block w-full bg-surface border-ui md:absolute md:start-48 md:w-48 md:rounded-xl md:shadow-card',
     },
     2: {
       link: `block pt-4 pe-5 ps-16 pb-3.5 text-secondary hover:text-primary hover:bg-surface-raised/50 transition-colors duration-200 ${isFirstItem ? 'md:rounded-t-xl' : ''} ${isLastItem ? 'md:rounded-b-xl' : ''} md:ps-5`,
@@ -113,7 +113,7 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <div className="flex items-center gap-1 md:hidden px-5 py-3 bg-bg border-b border-border/6">
+          <div className="flex items-center gap-1 md:hidden px-5 py-3 bg-bg border-b border-divider">
             <LanguageSwitcher />
             <ThemeToggle />
           </div>

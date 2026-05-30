@@ -48,7 +48,7 @@ const FeaturedSection = () => {
             <TiltCard className="h-full">
               <Link
                 to={work.url}
-                className="group flex flex-col rounded-2xl overflow-hidden border border-border/8 bg-surface hover:border-accent/20 transition-all duration-300 h-full"
+                className="group flex flex-col rounded-2xl overflow-hidden border-ui-interactive bg-surface duration-300 h-full"
               >
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
@@ -74,7 +74,7 @@ const FeaturedSection = () => {
                       {work.stacks.map((stack, j) => (
                         <span
                           key={j}
-                          className="text-xs px-2.5 py-1 rounded-lg bg-surface-raised text-secondary border border-border/6"
+                          className="text-xs px-2.5 py-1 rounded-lg bg-surface-raised text-secondary border-ui"
                         >
                           {stack}
                         </span>
