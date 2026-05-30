@@ -12,12 +12,19 @@ const CodeEditor = ({
   height?: number | string
 }) => {
   const handleEditorDidMount = (monaco: Monaco) => {
+    const root = getComputedStyle(document.documentElement)
+    const rgb = root.getPropertyValue('--color-surface-code').trim()
+    const hex = `#${rgb
+      .split(' ')
+      .map(v => Number(v).toString(16).padStart(2, '0'))
+      .join('')}`
+
     monaco.editor.defineTheme('my-theme', {
       base: 'vs',
       inherit: true,
       rules: [],
       colors: {
-        'editor.background': '#ededed',
+        'editor.background': hex,
       },
     })
   }

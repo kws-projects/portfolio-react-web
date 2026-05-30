@@ -1,7 +1,7 @@
-import { ITimelineItem } from '@/components/ui/Timeline'
+import { TimelineItem } from '@/types/timeline'
 import { envConfig } from '@/config'
 
-export const certifications: ITimelineItem[] = [
+export const certifications: TimelineItem[] = [
   {
     id: 0,
     title: 'AWS Certified Cloud Practitioner',

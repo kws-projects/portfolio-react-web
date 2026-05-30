@@ -5,11 +5,9 @@ export enum HomeBannerTab {
   EXPERIENCE = 'EXPERIENCE',
 }
 
-export const getHomeBannerTabLabel = (): {
-  [key: string]: string
-} => ({
+export const homeBannerTabLabels: Record<HomeBannerTab, string> = {
   [HomeBannerTab.ABOUT]: 'About',
   [HomeBannerTab.SKILLS]: 'Skills',
   [HomeBannerTab.FEATURED_WORKS]: 'Featured Works',
   [HomeBannerTab.EXPERIENCE]: 'Experience',
-})
+}

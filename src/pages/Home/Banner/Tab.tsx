@@ -9,14 +9,12 @@ type TabProps = {
 }
 
 const Tab = ({ tab, currentTab, className, style, children }: TabProps) => {
+  if (tab !== currentTab) return null
+
   return (
-    <>
-      {tab === currentTab ? (
-        <div className={`pt-10 px-8 sm:px-20 pb-16 ${className}`} style={style}>
-          {children}
-        </div>
-      ) : null}
-    </>
+    <div className={`pt-10 px-8 sm:px-20 pb-16 ${className}`} style={style}>
+      {children}
+    </div>
   )
 }
 

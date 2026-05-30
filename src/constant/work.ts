@@ -10,9 +10,7 @@ export enum WorkCategory {
   TOOL = 'TOOL',
 }
 
-export const getWorkCategoryLabel = (): {
-  [key: string]: string
-} => ({
+export const workCategoryLabels: Record<WorkCategory, string> = {
   [WorkCategory.ALL]: 'All',
   [WorkCategory.MOBILE]: 'Mobile App',
   [WorkCategory.WEBSITE]: 'Website',
@@ -22,7 +20,7 @@ export const getWorkCategoryLabel = (): {
   [WorkCategory.DRAWING]: 'Drawing',
   [WorkCategory.ARDUINO]: 'Arduino',
   [WorkCategory.TOOL]: 'Tool',
-})
+}
 
 export type Work = {
   id: number

@@ -71,7 +71,7 @@ const PageTitleSketch = ({ title = '' }: { title: string }) => {
       s.draw = () => {
         init()
 
-        s.background(249, 250, 252)
+        s.background(249, 250, 251)
 
         circles.forEach(c => {
           c.render()

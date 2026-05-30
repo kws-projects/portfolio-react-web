@@ -1,5 +1,6 @@
-import { ReactNode, useEffect, useRef } from 'react'
-import { motion, useInView, useAnimation } from 'framer-motion'
+import { ReactNode } from 'react'
+import { motion } from 'framer-motion'
+import useFadeInView from '@/hooks/useFadeInView'
 
 type SectionProps = {
   title?: string
@@ -20,32 +21,18 @@ const Section = ({
   disableAnimation = false,
   children,
 }: SectionProps) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-  const fadeInControl = useAnimation()
-
-  useEffect(() => {
-    if (isInView) {
-      fadeInControl.start('visible')
-    }
-  }, [fadeInControl, isInView])
+  const { ref, motionProps } = useFadeInView({
+    disabled: disableAnimation,
+    y: 75,
+    duration: 0.4,
+  })
 
   return (
     <motion.div
       className={`self-center flex flex-col justify-start items-center ${showBreakline && 'border-t border-gray-200'} pt-12 pb-24 mx-0 md:mx-14 lg:mx-28 max-w-screen-lg ${className}`}
       style={{ ...style, width: '-webkit-fill-available' }}
       ref={ref}
-      variants={{
-        ...(!disableAnimation && {
-          hidden: { opacity: 0, y: 75 },
-          visible: { opacity: 1, y: 0 },
-        }),
-      }}
-      initial={!disableAnimation && 'hidden'}
-      animate={!disableAnimation && fadeInControl}
-      transition={{
-        ...(!disableAnimation && { duration: 0.4 }),
-      }}
+      {...motionProps}
     >
       {title ? (
         <p className={`text-2xl select-none ${!description && 'pb-10'}`}>

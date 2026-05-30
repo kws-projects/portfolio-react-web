@@ -24,8 +24,7 @@ const FeaturedWorks = () => {
                 {work.stacks?.map((stack, i) => (
                   <span
                     key={i}
-                    className="inline-block rounded-full text-sm mx-1 px-3 bg-gray-100 shadow-custom-sm"
-                    style={{ paddingTop: '2px', paddingBottom: '1px' }}
+                    className="inline-block rounded-full text-sm mx-1 px-3 pt-px pb-px bg-gray-100 shadow-custom-sm"
                   >
                     {stack}
                   </span>

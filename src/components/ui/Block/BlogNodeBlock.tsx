@@ -1,11 +1,9 @@
-import { useQuery } from '@tanstack/react-query'
 import { BlogNode, BlogNodeType } from '@/types/blog'
-import { blogsAPI } from '@/services/portfolioSvc/blogsAPI'
+import useBlogNode from '@/hooks/useBlogNode'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import DOMPurify from 'dompurify'
 import CodeEditor from '@/components/ui/CodeEditor'
-import { useMemo } from 'react'
 
 type BlogNodeBlockProps = {
   data: BlogNode
@@ -18,67 +16,42 @@ export const Skeleton = () => (
 )
 
 export const BlogNodeBlock = ({ data }: BlogNodeBlockProps) => {
-  const {
-    data: node,
-    isLoading: isLoadingNode,
-    isError: isErrorNode,
-  } = useQuery({
-    queryKey: ['blog-node', data.blogId, data.id],
-    queryFn: () => blogsAPI.getBlogNode(Number(data.blogId), Number(data.id)),
-  })
+  const { node, isLoading, isError, codeBlock } = useBlogNode(data)
 
-  const { language, editorHeight, code } = useMemo(() => {
-    let language = 'markdown'
-    let code = ''
-    let editorHeight = 0
+  if (isError) return null
+  if (isLoading) return <Skeleton />
 
-    if (data?.type === BlogNodeType.CODE) {
-      const lines = node?.split('\n')
-      language = lines ? lines[0] : language
-      editorHeight = lines ? lines[1] : editorHeight
-      code = lines ? lines.slice(2).join('\n') : code
-    }
+  switch (data.type) {
+    case BlogNodeType.MD:
+      return (
+        <div className="md">
+          <Markdown remarkPlugins={[remarkGfm]}>{node}</Markdown>
+        </div>
+      )
 
-    return { language, editorHeight, code }
-  }, [data.type, node])
+    case BlogNodeType.HTML:
+      return (
+        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(node) }} />
+      )
 
-  return (
-    <>
-      {!isErrorNode ? (
-        <>
-          {isLoadingNode && <Skeleton />}
+    case BlogNodeType.CODE:
+      return (
+        <div
+          className="py-3 px-1 border-2 rounded-md border-solid border-gray-300 bg-surface-code"
+          style={{ height: `${codeBlock?.editorHeight}px` }}
+        >
+          <CodeEditor
+            language={codeBlock?.language ?? 'markdown'}
+            value={codeBlock?.code ?? ''}
+            readOnly={true}
+          />
+        </div>
+      )
 
-          {!isLoadingNode && data.type === BlogNodeType.MD && (
-            <div className={'md'}>
-              {data.type === BlogNodeType.MD ? (
-                <Markdown remarkPlugins={[remarkGfm]}>{node}</Markdown>
-              ) : null}
-            </div>
-          )}
+    case BlogNodeType.Image:
+      return <img src={`data:image/jpeg;base64,${node}`} alt="node" />
 
-          {!isLoadingNode && data.type === BlogNodeType.HTML && (
-            <div
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(node) }}
-            />
-          )}
-
-          {!isLoadingNode && data.type === BlogNodeType.CODE && (
-            <div
-              className="py-3 px-1 border-2 rounded-md border-solid border-gray-300"
-              style={{
-                backgroundColor: '#ededed',
-                height: `${editorHeight}px`,
-              }}
-            >
-              <CodeEditor language={language} value={code} readOnly={true} />
-            </div>
-          )}
-
-          {!isLoadingNode && data.type === BlogNodeType.Image && (
-            <img src={`data:image/jpeg;base64,${node}`} alt={'node'} />
-          )}
-        </>
-      ) : null}
-    </>
-  )
+    default:
+      return null
+  }
 }

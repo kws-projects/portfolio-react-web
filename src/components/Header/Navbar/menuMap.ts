@@ -1,11 +1,6 @@
-type MenuMap = {
-  id: number
-  title: string
-  path?: string
-  subItems?: MenuMap[]
-}
+import { MenuItem } from '@/types/menu'
 
-export const menuMap: MenuMap[] = [
+export const menuMap: MenuItem[] = [
   {
     id: 0,
     title: 'Home',

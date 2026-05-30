@@ -34,7 +34,7 @@ const HomeBackgroundSketch = () => {
       s.draw = () => {
         init()
 
-        s.background(249, 250, 252)
+        s.background(249, 250, 251)
 
         if (s.millis() - pms > 1000) {
           ts++

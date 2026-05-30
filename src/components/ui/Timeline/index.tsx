@@ -1,34 +1,17 @@
 import { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { dayjs } from '@/utils/dayjs'
-import { compareDate, getDateTimeDifference } from '@/utils/common'
+import {
+  sortByDate,
+  getDateTimeDifference,
+  getDurationString,
+} from '@/utils/common'
+import { TimelineItem } from '@/types/timeline'
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const getDurationString = (fromDate: string, toDate?: string) => {
-  const fromDateObj = new Date(fromDate)
-
-  if (!toDate)
-    return `${fromDateObj.toLocaleString('default', { month: 'long' })}, ${fromDateObj.getFullYear()} - Present`
-
-  const toDateObj = new Date(toDate)
-  return `${fromDateObj.toLocaleString('default', { month: 'long' })}, ${fromDateObj.getFullYear()} - ${toDateObj.toLocaleString('default', { month: 'long' })}, ${toDateObj.getFullYear()}`
-}
-
-export interface ITimelineItem {
-  id: number
-  image?: string
-  title: string
-  subTitle?: string
-  description?: string | ReactNode
-  subItems?: ITimelineItem[]
-  fromDate?: string
-  toDate?: string
-  customDate?: string
-  showDateTimeDifference?: boolean
-}
+export type { TimelineItem }
 
 type TimelineListProps = {
-  items: ITimelineItem[]
+  items: TimelineItem[]
   className?: string
   children?: ReactNode
 }
@@ -40,30 +23,19 @@ export const TimelineList = ({
 }: TimelineListProps) => {
   return (
     <div className={`flex flex-col justify-start w-full ${className}`}>
-      {items
-        .sort((a, b) => {
-          // if from date exists
-          if (a.fromDate && b.fromDate)
-            return compareDate(a.fromDate, b.fromDate)
-          // is custom date is used
-          if (a.customDate && b.customDate)
-            return compareDate(a.customDate, b.customDate)
-          // if from date not exists
-          return 0
-        })
-        .map(experience => (
-          <TimelineItem key={experience.id} item={experience} />
-        ))}
+      {sortByDate(items).map(item => (
+        <TimelineItemRow key={item.id} item={item} />
+      ))}
       {children}
     </div>
   )
 }
 
-type TimelineItemProps = {
-  item: ITimelineItem
+type TimelineItemRowProps = {
+  item: TimelineItem
 }
 
-export const TimelineItem = ({ item }: TimelineItemProps) => {
+const TimelineItemRow = ({ item }: TimelineItemRowProps) => {
   const { t } = useTranslation()
 
   return (
@@ -120,58 +92,47 @@ export const TimelineItem = ({ item }: TimelineItemProps) => {
       </div>
 
       {item.subItems ? (
-        item.subItems
-          .sort((a, b) => {
-            // if from date exists
-            if (a.fromDate && b.fromDate)
-              return compareDate(a.fromDate, b.fromDate)
-            // is custom date is used
-            if (a.customDate && b.customDate)
-              return compareDate(a.customDate, b.customDate)
-            // if from date not exists
-            return 0
-          })
-          .map(experience => (
-            <div
-              className="flex items-center w-full space-x-8 mt-4 mb-4 pl-0 sm:pl-28"
-              key={experience.id}
-            >
-              <div className="flex flex-col justify-start items-center w-12 sm:w-6 h-full pt-2">
-                <div
-                  className="flex rounded-full bg-gray-300"
-                  style={{ width: '5px', height: '5px' }}
-                />
-                <div
-                  className="bg-gray-300 h-full min-h-12"
-                  style={{ width: '1px' }}
-                />
-              </div>
-
-              <div className="pb-2">
-                <p className="text-lg font-medium">{experience.title}</p>
-
-                {experience.subTitle && (
-                  <p className="font-medium">{experience.subTitle}</p>
-                )}
-
-                {experience.fromDate && !experience.toDate && (
-                  <p className="text-gray-500">
-                    {getDurationString(experience.fromDate)}
-                  </p>
-                )}
-
-                {experience.fromDate && experience.toDate && (
-                  <p className="text-gray-500">
-                    {getDurationString(experience.fromDate, experience.toDate)}
-                  </p>
-                )}
-
-                {experience.customDate && (
-                  <p className="text-gray-500">{experience.customDate}</p>
-                )}
-              </div>
+        sortByDate(item.subItems).map(subItem => (
+          <div
+            className="flex items-center w-full space-x-8 mt-4 mb-4 pl-0 sm:pl-28"
+            key={subItem.id}
+          >
+            <div className="flex flex-col justify-start items-center w-12 sm:w-6 h-full pt-2">
+              <div
+                className="flex rounded-full bg-gray-300"
+                style={{ width: '5px', height: '5px' }}
+              />
+              <div
+                className="bg-gray-300 h-full min-h-12"
+                style={{ width: '1px' }}
+              />
             </div>
-          ))
+
+            <div className="pb-2">
+              <p className="text-lg font-medium">{subItem.title}</p>
+
+              {subItem.subTitle && (
+                <p className="font-medium">{subItem.subTitle}</p>
+              )}
+
+              {subItem.fromDate && !subItem.toDate && (
+                <p className="text-gray-500">
+                  {getDurationString(subItem.fromDate)}
+                </p>
+              )}
+
+              {subItem.fromDate && subItem.toDate && (
+                <p className="text-gray-500">
+                  {getDurationString(subItem.fromDate, subItem.toDate)}
+                </p>
+              )}
+
+              {subItem.customDate && (
+                <p className="text-gray-500">{subItem.customDate}</p>
+              )}
+            </div>
+          </div>
+        ))
       ) : (
         <br />
       )}

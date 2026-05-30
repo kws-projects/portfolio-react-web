@@ -1,7 +1,5 @@
-import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
-import usePageTitle from '@/hooks/usePageTitle'
-import useScrollToTop from '@/hooks/useScrollToTop'
+import PageMeta from '@/components/PageMeta'
 import PageTitleSketch from '@/components/sketches/PageTitleSketch'
 import Section from '@/components/ui/Section'
 import SkillShowcase from '@/components/SkillShowcase'
@@ -14,16 +12,12 @@ import SelfIntro from './SelfIntro'
 const About = () => {
   const { t } = useTranslation()
 
-  useScrollToTop()
-  usePageTitle(t('about_document_title'))
-
   return (
     <main>
-      <Helmet>
-        <title>{t('about_document_title')}</title>
-        <meta name="description" content={t('about_document_description')} />
-        <meta name="robots" content="index, follow" />
-      </Helmet>
+      <PageMeta
+        title={t('about_document_title')}
+        description={t('about_document_description')}
+      />
       <PageTitleSketch title={t('about_title')} />
       <Section showBreakline={false} disableAnimation={true}>
         <SelfIntro />
