@@ -21,7 +21,7 @@ const FeaturedSection = () => {
     >
       <div className="flex items-end justify-between mb-12">
         <div>
-          <h2 className="text-3xl font-display font-bold text-primary mb-2">
+          <h2 className="text-3xl font-display font-medium text-primary mb-2">
             {t('home_featured_works_title')}
           </h2>
           <p className="text-secondary">{t('home_featured_subtitle')}</p>
@@ -39,15 +39,16 @@ const FeaturedSection = () => {
         {featuredWorks.map((work, i) => (
           <motion.div
             key={work.id}
+            className="h-full"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
           >
-            <TiltCard>
+            <TiltCard className="h-full">
               <Link
                 to={work.url}
-                className="group block rounded-2xl overflow-hidden border border-border/8 bg-surface hover:border-accent/20 transition-all duration-300"
+                className="group flex flex-col rounded-2xl overflow-hidden border border-border/8 bg-surface hover:border-accent/20 transition-all duration-300 h-full"
               >
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
@@ -56,20 +57,20 @@ const FeaturedSection = () => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="p-5">
+                <div className="p-5 flex flex-col flex-1">
                   <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="text-lg font-semibold text-primary group-hover:text-accent transition-colors">
+                    <div className="min-w-0">
+                      <h3 className="text-lg font-semibold text-primary group-hover:text-accent transition-colors truncate">
                         {work.title}
                       </h3>
-                      <p className="text-sm text-secondary mt-1">
+                      <p className="text-sm text-secondary mt-1 line-clamp-2">
                         {work.subTitle}
                       </p>
                     </div>
                     <FiArrowUpRight className="text-tertiary group-hover:text-accent transition-colors flex-shrink-0 mt-1" />
                   </div>
                   {work.stacks && (
-                    <div className="flex flex-wrap gap-2 mt-3">
+                    <div className="flex flex-wrap gap-2 mt-auto pt-3">
                       {work.stacks.map((stack, j) => (
                         <span
                           key={j}

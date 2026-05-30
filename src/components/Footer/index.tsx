@@ -14,7 +14,7 @@ const Footer = () => {
           <div className="flex justify-start items-center gap-4">
             <Link
               to="/"
-              className="text-lg font-display font-semibold text-primary select-none hover:text-accent transition-colors duration-200"
+              className="text-lg font-logo text-primary select-none hover:text-accent transition-colors duration-200"
             >
               {t('website_name')}
             </Link>

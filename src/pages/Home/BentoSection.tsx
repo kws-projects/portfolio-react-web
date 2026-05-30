@@ -35,7 +35,7 @@ const BentoSection = () => {
       {...motionProps}
       className="w-full max-w-screen-lg mx-auto px-6 md:px-14 lg:px-28 py-20"
     >
-      <h2 className="text-3xl font-display font-bold text-primary mb-4">
+      <h2 className="text-3xl font-display font-medium text-primary mb-4">
         {t('home_bento_title')}
       </h2>
       <p className="text-secondary mb-12 max-w-lg">
@@ -104,7 +104,7 @@ const BentoSection = () => {
                 src={skill.image}
                 alt={skill.title}
                 title={skill.title}
-                className="w-full aspect-square rounded-lg bg-surface-raised p-1.5 border border-border/6 hover:border-accent/20 transition-colors"
+                className="w-full aspect-square rounded-lg bg-white p-1.5 border border-border/6 hover:border-accent/20 transition-colors"
               />
             ))}
           </div>

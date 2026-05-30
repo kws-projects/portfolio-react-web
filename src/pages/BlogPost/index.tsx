@@ -52,7 +52,7 @@ const BlogPost = () => {
             </>
           ) : (
             <>
-              <h1 className="text-2xl md:text-3xl font-display font-bold text-primary mb-10">
+              <h1 className="text-2xl md:text-3xl font-display font-medium text-primary mb-10">
                 {blog?.blog?.titleEn}
               </h1>
               {blog.nodes.map((node: BlogNode) => (

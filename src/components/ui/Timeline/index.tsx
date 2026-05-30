@@ -65,7 +65,7 @@ const TimelineItemRow = ({ item, isLast }: TimelineItemRowProps) => {
           <div className="flex items-start gap-4">
             {item.image && (
               <img
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-surface-raised p-1 flex-shrink-0"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white p-1 flex-shrink-0"
                 src={item.image}
                 alt={item.title}
               />

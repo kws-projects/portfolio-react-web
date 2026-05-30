@@ -23,7 +23,7 @@ const NotFound = () => {
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-        <h1 className="text-6xl md:text-8xl font-display font-bold text-primary mb-4">
+        <h1 className="text-6xl md:text-8xl font-display font-medium text-primary mb-4">
           404
         </h1>
         <p className="text-lg text-secondary mb-8 max-w-md">
