@@ -10,16 +10,16 @@ export enum WorkCategory {
   TOOL = 'TOOL',
 }
 
-export const workCategoryLabels: Record<WorkCategory, string> = {
-  [WorkCategory.ALL]: 'All',
-  [WorkCategory.MOBILE]: 'Mobile App',
-  [WorkCategory.WEBSITE]: 'Website',
-  [WorkCategory.GRAPHIC]: 'Graphic',
-  [WorkCategory.CREATIVE_CODING]: 'Creative Coding',
-  [WorkCategory.MODELLING]: '3D Modelling',
-  [WorkCategory.DRAWING]: 'Drawing',
-  [WorkCategory.ARDUINO]: 'Arduino',
-  [WorkCategory.TOOL]: 'Tool',
+export const workCategoryLabelKeys: Record<WorkCategory, string> = {
+  [WorkCategory.ALL]: 'works_cat_all',
+  [WorkCategory.MOBILE]: 'works_cat_mobile',
+  [WorkCategory.WEBSITE]: 'works_cat_website',
+  [WorkCategory.GRAPHIC]: 'works_cat_graphic',
+  [WorkCategory.CREATIVE_CODING]: 'works_cat_creative_coding',
+  [WorkCategory.MODELLING]: 'works_cat_modelling',
+  [WorkCategory.DRAWING]: 'works_cat_drawing',
+  [WorkCategory.ARDUINO]: 'works_cat_arduino',
+  [WorkCategory.TOOL]: 'works_cat_tool',
 }
 
 export type Work = {

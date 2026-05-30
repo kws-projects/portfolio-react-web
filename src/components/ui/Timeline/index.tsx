@@ -43,7 +43,7 @@ type TimelineItemRowProps = {
 }
 
 const TimelineItemRow = ({ item, isLast }: TimelineItemRowProps) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [isExpanded, setIsExpanded] = useState(false)
   const hasDetails =
     item.description || (item.subItems && item.subItems.length > 0)
@@ -94,7 +94,10 @@ const TimelineItemRow = ({ item, isLast }: TimelineItemRowProps) => {
               <div className="flex flex-wrap items-center gap-x-2 mt-1.5 text-sm">
                 {item.fromDate && (
                   <span className="text-tertiary">
-                    {getDurationString(item.fromDate, item.toDate)}
+                    {getDurationString(item.fromDate, item.toDate, {
+                      locale: i18n.language,
+                      t,
+                    })}
                   </span>
                 )}
                 {item.customDate && (
@@ -136,7 +139,10 @@ const TimelineItemRow = ({ item, isLast }: TimelineItemRowProps) => {
                       </p>
                       {sub.fromDate && (
                         <p className="text-tertiary text-sm mt-0.5">
-                          {getDurationString(sub.fromDate, sub.toDate)}
+                          {getDurationString(sub.fromDate, sub.toDate, {
+                            locale: i18n.language,
+                            t,
+                          })}
                         </p>
                       )}
                       {sub.customDate && (

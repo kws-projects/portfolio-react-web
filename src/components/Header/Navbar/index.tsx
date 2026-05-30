@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import useNavbarToggle from '@/hooks/useNavbarToggle'
 import ThemeToggle from '@/components/ThemeToggle'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { MenuItem } from '@/types/menu'
 import { menuMap } from './menuMap'
 
@@ -23,7 +24,9 @@ const NavMenuItem = ({
   isLastItem = false,
   isFirstItem = false,
 }: NavMenuItemProps) => {
+  const { t } = useTranslation()
   const isActive = item.path === currentPath
+  const label = item.titleKey ? t(item.titleKey) : item.title
 
   const depthStyles: Record<number, { link: string; submenu: string }> = {
     0: {
@@ -52,10 +55,10 @@ const NavMenuItem = ({
 
   const content = item.path ? (
     <Link to={item.path} className={styles.link} onClick={onNavigate}>
-      {item.title}
+      {label}
     </Link>
   ) : (
-    <div className={`${styles.link} cursor-pointer`}>{item.title}</div>
+    <div className={`${styles.link} cursor-pointer`}>{label}</div>
   )
 
   return (
@@ -94,7 +97,7 @@ const Navbar = () => {
         {t('website_name')}
       </Link>
 
-      <div className="flex items-center">
+      <div className="flex items-center h-full">
         <div
           className={`${isExpanded ? 'flex-col' : 'hidden'} absolute top-14 right-0 w-full md:relative md:top-0 md:flex md:w-fit md:items-center`}
         >
@@ -110,7 +113,8 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <div className="flex md:hidden px-5 py-3 bg-bg border-b border-border/6">
+          <div className="flex items-center gap-1 md:hidden px-5 py-3 bg-bg border-b border-border/6">
+            <LanguageSwitcher />
             <ThemeToggle />
           </div>
 
@@ -120,7 +124,9 @@ const Navbar = () => {
           />
         </div>
 
-        <div className="hidden md:flex ml-2">
+        <div className="hidden md:flex items-center flex-shrink-0 h-full pt-1 ml-1">
+          <div className="w-px h-4 bg-border/15 mx-1.5" />
+          <LanguageSwitcher />
           <ThemeToggle />
         </div>
 

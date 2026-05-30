@@ -1,5 +1,7 @@
 import { ReactNode } from 'react'
 
+export type Localized<T> = Record<string, T>
+
 export type TimelineItem = {
   id: number
   image?: string
