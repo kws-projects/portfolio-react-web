@@ -13,9 +13,9 @@ const ErrorState = ({
   retryLabel = 'Reload',
 }: ErrorStateProps) => {
   return (
-    <div className="flex flex-col self-center m-12 gap-y-6">
-      <FaCircleXmark className="self-center fill-gray-800" size={50} />
-      <h1 className="text-2xl text-center">{message}</h1>
+    <div className="flex flex-col items-center self-center m-12 gap-y-6">
+      <FaCircleXmark className="fill-red-400" size={50} />
+      <h1 className="text-2xl text-center text-primary">{message}</h1>
       {onRetry && <Button onClick={onRetry}>{retryLabel}</Button>}
     </div>
   )

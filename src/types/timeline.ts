@@ -6,6 +6,7 @@ export type TimelineItem = {
   title: string
   subTitle?: string
   description?: string | ReactNode
+  tasks?: string[]
   subItems?: TimelineItem[]
   fromDate?: string
   toDate?: string

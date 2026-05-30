@@ -10,6 +10,19 @@ import * as Sentry from '@sentry/react'
 import { envConfig } from '@/config'
 import { AppEnv } from '@/constant/appEnv'
 
+// Apply theme before first paint to avoid flash
+;(() => {
+  const stored = localStorage.getItem('theme-preference')
+  if (stored === 'dark' || stored === 'light') {
+    document.documentElement.setAttribute('data-theme', stored)
+  } else {
+    const system = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light'
+    document.documentElement.setAttribute('data-theme', system)
+  }
+})()
+
 const queryClient = new QueryClient({})
 
 if (envConfig.NODE_ENV === AppEnv.PROD) {

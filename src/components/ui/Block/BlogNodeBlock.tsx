@@ -11,7 +11,7 @@ type BlogNodeBlockProps = {
 
 export const Skeleton = () => (
   <div className="flex flex-col mt-12 animate-pulse">
-    <div className="h-44 w-full bg-gray-200 rounded-sm"></div>
+    <div className="h-44 w-full bg-skeleton rounded-xl" />
   </div>
 )
 
@@ -37,7 +37,7 @@ export const BlogNodeBlock = ({ data }: BlogNodeBlockProps) => {
     case BlogNodeType.CODE:
       return (
         <div
-          className="py-3 px-1 border-2 rounded-md border-solid border-gray-300 bg-surface-code"
+          className="py-3 px-1 border border-border/10 rounded-xl bg-surface-code"
           style={{ height: `${codeBlock?.editorHeight}px` }}
         >
           <CodeEditor
@@ -49,7 +49,13 @@ export const BlogNodeBlock = ({ data }: BlogNodeBlockProps) => {
       )
 
     case BlogNodeType.Image:
-      return <img src={`data:image/jpeg;base64,${node}`} alt="node" />
+      return (
+        <img
+          src={`data:image/jpeg;base64,${node}`}
+          alt="node"
+          className="rounded-xl"
+        />
+      )
 
     default:
       return null

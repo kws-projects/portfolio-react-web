@@ -52,6 +52,7 @@ const labelList = {
   about_cv_languages_title: `Languages`,
 
   // Works
+  works_title: `Works`,
   works_document_title: `Works | Kenneth Wong`,
   works_document_description: `Explore Kenneth's projects showcasing his skills and expertise.`,
 

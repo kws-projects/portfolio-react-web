@@ -23,25 +23,27 @@ const Section = ({
 }: SectionProps) => {
   const { ref, motionProps } = useFadeInView({
     disabled: disableAnimation,
-    y: 75,
-    duration: 0.4,
+    y: 40,
+    duration: 0.5,
   })
 
   return (
     <motion.div
-      className={`self-center flex flex-col justify-start items-center ${showBreakline && 'border-t border-gray-200'} pt-12 pb-24 mx-0 md:mx-14 lg:mx-28 max-w-screen-lg ${className}`}
+      className={`self-center flex flex-col justify-start items-center ${showBreakline ? 'border-t border-border/6' : ''} pt-16 pb-24 mx-0 md:mx-14 lg:mx-28 max-w-screen-lg ${className}`}
       style={{ ...style, width: '-webkit-fill-available' }}
       ref={ref}
       {...motionProps}
     >
-      {title ? (
-        <p className={`text-2xl select-none ${!description && 'pb-10'}`}>
+      {title && (
+        <p
+          className={`text-2xl font-display font-semibold text-primary select-none ${!description ? 'pb-10' : ''}`}
+        >
           {title}
         </p>
-      ) : null}
-      {description ? (
-        <p className="pt-2 pb-10 select-none">{description}</p>
-      ) : null}
+      )}
+      {description && (
+        <p className="pt-2 pb-10 text-secondary select-none">{description}</p>
+      )}
       {children}
     </motion.div>
   )

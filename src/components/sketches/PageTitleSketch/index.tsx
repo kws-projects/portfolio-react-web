@@ -1,5 +1,10 @@
 import { useEffect, useRef } from 'react'
 import p5, { Font } from 'p5'
+import { getThemeColor, isDarkTheme } from '@/utils/theme'
+
+const DOT_SIZE = 5
+const SPACING = 7
+const MOUSE_RADIUS = 80
 
 const PageTitleSketch = ({ title = '' }: { title: string }) => {
   const renderRef = useRef<HTMLDivElement>(null)
@@ -11,131 +16,108 @@ const PageTitleSketch = ({ title = '' }: { title: string }) => {
     new p5(s => {
       sRef = s
 
-      class Circle {
-        x: number
-        y: number
-        r: number
-        c: number
-        or: number
-        tr: number
-
-        constructor(x: number, y: number, r: number, c: number) {
-          this.x = x
-          this.y = y
-          this.r = r
-          this.or = r
-          this.tr = r
-          this.c = c
-        }
-        render() {
-          s.fill(this.c)
-          s.circle(s.width / 2 + this.x, s.height / 2 + this.y, this.r)
-        }
-        update() {
-          const dist = s.dist(
-            s.mouseX,
-            s.mouseY,
-            s.width / 2 + this.x,
-            s.height / 2 + this.y
-          )
-          if (dist < 80) {
-            this.tr = s.map(dist, 0, 80, this.or * 3, this.or)
-            this.r = s.lerp(this.r, this.tr, 0.1)
-          } else {
-            this.r = s.lerp(this.r, this.or, 0.02)
-          }
-        }
-      }
-
-      const CHAR_WIDTH = 15.9
-      const CHAR_HEIGHT = 43
-      const NAV_HEIGHT = 50
-
-      let requireInit = true
-
       let font: Font
-      let circles: Circle[]
-      let rows, cols
-      const size = 10
-      let targetHeight = -50
-      let currHeight = -50
+      let points: { x: number; y: number; homeX: number; homeY: number }[] = []
+      let ready = false
 
       s.preload = () => {
-        font = s.loadFont('/assets/fonts/quicksand/Quicksand-Light.ttf')
+        font = s.loadFont('/assets/fonts/quicksand/Quicksand-Medium.ttf')
       }
 
       s.setup = () => {
-        s.createCanvas(0, 0).parent(renderRef.current)
+        const parent = renderRef.current
+        if (!parent) return
+        s.createCanvas(parent.offsetWidth, parent.offsetHeight).parent(parent)
+        buildPoints()
+      }
+
+      const buildPoints = () => {
+        if (!title) return
+        const fontSize = s.width < 600 ? 28 : 44
+        const rawPoints = font.textToPoints(title, 0, 0, fontSize, {
+          sampleFactor: 0.15,
+        })
+
+        const bounds = font.textBounds(title, 0, 0, fontSize) as {
+          x: number
+          y: number
+          w: number
+          h: number
+        }
+
+        const offsetX = (s.width - bounds.w) / 2 - bounds.x
+        const offsetY = (s.height - bounds.h) / 2 - bounds.y
+
+        points = rawPoints.map(pt => ({
+          x: pt.x + offsetX + s.random(-200, 200),
+          y: pt.y + offsetY + s.random(-200, 200),
+          homeX: pt.x + offsetX,
+          homeY: pt.y + offsetY,
+        }))
+
+        ready = true
       }
 
       s.draw = () => {
-        init()
+        if (!ready) return
 
-        s.background(249, 250, 251)
+        const bg = getThemeColor('--color-bg')
+        const accent = getThemeColor('--color-accent')
+        const secondary = getThemeColor('--color-accent-secondary')
+        const dark = isDarkTheme()
 
-        circles.forEach(c => {
-          c.render()
-          c.update()
-        })
-        s.fill(50)
-        s.textAlign(s.CENTER)
-        s.textSize(36)
-        s.textFont(font)
-        const displayRows =
-          Math.ceil((title?.length * CHAR_WIDTH) / s.width) || 1
-        const screenHeight = s.height - NAV_HEIGHT
-        const yPos =
-          screenHeight / 2 + NAV_HEIGHT - (CHAR_HEIGHT / 2) * displayRows
-        s.text(title, 0, yPos, s.width, CHAR_HEIGHT * displayRows)
-        currHeight = s.lerp(currHeight, targetHeight, 0.1)
+        s.background(bg[0], bg[1], bg[2])
+        s.noStroke()
+
+        for (const pt of points) {
+          const dx = s.mouseX - pt.x
+          const dy = s.mouseY - pt.y
+          const dist = Math.sqrt(dx * dx + dy * dy)
+
+          if (dist < MOUSE_RADIUS) {
+            const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS
+            pt.x -= (dx / dist) * force * 8
+            pt.y -= (dy / dist) * force * 8
+          }
+
+          pt.x += (pt.homeX - pt.x) * 0.08
+          pt.y += (pt.homeY - pt.y) * 0.08
+
+          const distFromHome = Math.sqrt(
+            (pt.x - pt.homeX) ** 2 + (pt.y - pt.homeY) ** 2
+          )
+          const isDisplaced = distFromHome > 3
+
+          const c = isDisplaced ? secondary : accent
+          const alpha = dark ? 200 : 180
+          s.fill(c[0], c[1], c[2], alpha)
+          s.ellipse(pt.x, pt.y, DOT_SIZE, DOT_SIZE)
+        }
+
+        for (let i = 0; i < points.length; i++) {
+          for (let j = i + 1; j < points.length; j++) {
+            const d = s.dist(points[i].x, points[i].y, points[j].x, points[j].y)
+            if (d < SPACING * 2.5) {
+              s.stroke(accent[0], accent[1], accent[2], dark ? 20 : 12)
+              s.strokeWeight(0.5)
+              s.line(points[i].x, points[i].y, points[j].x, points[j].y)
+              s.noStroke()
+            }
+          }
+        }
       }
 
       s.windowResized = () => {
-        if (renderRef.current) {
-          s.resizeCanvas(
-            renderRef.current.offsetWidth,
-            renderRef.current.offsetHeight
-          )
-          initCircles()
-        }
-      }
-
-      const init = () => {
-        if (requireInit && renderRef.current) {
-          s.resizeCanvas(
-            renderRef.current.offsetWidth,
-            renderRef.current.offsetHeight
-          )
-
-          targetHeight = s.height / 1.75 + 35
-          s.noStroke()
-
-          initCircles()
-
-          requireInit = false
-        }
-      }
-
-      const initCircles = () => {
-        const sizeOffset = 0.2
-        rows = (s.height / size) * sizeOffset
-        cols = (s.width / size) * sizeOffset
-
-        circles = []
-        for (let y = 0; y < rows; y++) {
-          for (let x = 0; x < cols; x++) {
-            const xPos = s.map(x, 0, cols, (s.width / 2) * -1, s.width / 2)
-            const yPos = s.map(y, 0, rows, (s.height / 2) * -1, s.height / 2)
-            circles.push(
-              new Circle(xPos + size, yPos + size, size, s.random(220, 255))
-            )
-          }
+        const parent = renderRef.current
+        if (parent) {
+          s.resizeCanvas(parent.offsetWidth, parent.offsetHeight)
+          buildPoints()
         }
       }
     })
 
     return () => {
-      sRef.remove()
+      sRef?.remove()
     }
   }, [title])
 

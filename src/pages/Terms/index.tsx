@@ -14,7 +14,7 @@ const Terms = () => {
       />
       <PageTitleSketch title={t('terms_title_full')} />
       <Section className="px-8 md:px-0 pt-4 md:pt-12" showBreakline={false}>
-        <div>
+        <div className="prose-content">
           <h2>
             <strong>Welcome to Kenneth Wong!</strong>
           </h2>
