@@ -5,8 +5,9 @@ export enum AppEnv {
   PROD = 'PROD',
 }
 
-export const getReleaseType = () =>
-  ({
-    [AppEnv.DEV]: 'Develop',
-    [AppEnv.PROD]: 'Release',
-  })[envConfig.NODE_ENV]
+const releaseTypeMap: Record<string, string> = {
+  [AppEnv.DEV]: 'Develop',
+  [AppEnv.PROD]: 'Release',
+}
+
+export const getReleaseType = () => releaseTypeMap[envConfig.NODE_ENV]

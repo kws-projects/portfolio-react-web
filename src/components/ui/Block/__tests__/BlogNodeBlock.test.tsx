@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { BlogNodeBlock, Skeleton } from '../BlogNodeBlock'
-import { BlogNodeType } from '@/types/blog'
+import { BlogNode, BlogNodeType } from '@/types/blog'
 
 vi.mock('@/hooks/useBlogNode', () => ({
   default: (data: { type: string }) => {
@@ -44,25 +44,50 @@ vi.mock('@/components/ui/CodeEditor', () => ({
   ),
 }))
 
+const createMockNode = (overrides: Partial<BlogNode>): BlogNode => ({
+  id: 1,
+  blogId: 1,
+  order: 1,
+  type: BlogNodeType.MD,
+  fileName: 'test.md',
+  createdAt: new Date('2024-01-01'),
+  createdBy: 'tester',
+  updatedAt: new Date('2024-01-01'),
+  updatedBy: 'tester',
+  ...overrides,
+})
+
 describe('BlogNodeBlock', () => {
   it('renders markdown content', () => {
-    render(<BlogNodeBlock data={{ id: '1', type: BlogNodeType.MD }} />)
+    render(
+      <BlogNodeBlock data={createMockNode({ id: 1, type: BlogNodeType.MD })} />
+    )
     expect(screen.getByText('Bold text')).toBeInTheDocument()
   })
 
   it('renders HTML content', () => {
-    render(<BlogNodeBlock data={{ id: '2', type: BlogNodeType.HTML }} />)
+    render(
+      <BlogNodeBlock
+        data={createMockNode({ id: 2, type: BlogNodeType.HTML })}
+      />
+    )
     expect(screen.getByText('HTML content')).toBeInTheDocument()
   })
 
   it('renders code block', () => {
-    render(<BlogNodeBlock data={{ id: '3', type: BlogNodeType.CODE }} />)
+    render(
+      <BlogNodeBlock
+        data={createMockNode({ id: 3, type: BlogNodeType.CODE })}
+      />
+    )
     expect(screen.getByTestId('code-editor')).toBeInTheDocument()
   })
 
   it('returns null on error', () => {
     const { container } = render(
-      <BlogNodeBlock data={{ id: '4', type: 'ERROR' as BlogNodeType }} />
+      <BlogNodeBlock
+        data={createMockNode({ id: 4, type: 'ERROR' as BlogNodeType })}
+      />
     )
     expect(container.firstChild).toBeNull()
   })

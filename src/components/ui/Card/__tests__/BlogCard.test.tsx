@@ -1,13 +1,19 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { BlogCard, Skeleton } from '../BlogCard'
-import { Blog } from '@/types/blog'
+import { Blog, BlogStatus } from '@/types/blog'
 
 const mockBlog: Blog = {
-  id: 'test-blog-1',
+  id: 1,
+  status: BlogStatus.Published,
+  author: 'Test Author',
+  category: 'Tech',
   titleEn: 'Test Blog Title',
   descriptionEn: 'A test description for the blog.',
-  createdAt: '2024-06-15T00:00:00Z',
+  createdAt: new Date('2024-06-15T00:00:00Z'),
+  createdBy: 'tester',
+  updatedAt: new Date('2024-06-15T00:00:00Z'),
+  updatedBy: 'tester',
 }
 
 describe('BlogCard', () => {
@@ -38,7 +44,7 @@ describe('BlogCard', () => {
       </MemoryRouter>
     )
     const link = screen.getByRole('link')
-    expect(link).toHaveAttribute('href', '/blogs/test-blog-1')
+    expect(link).toHaveAttribute('href', '/blogs/1')
   })
 })
 
