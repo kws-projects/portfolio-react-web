@@ -74,8 +74,6 @@ const labelList = {
   contact_title: `تواصل`,
   contact_document_title: `تواصل | Kenneth Wong`,
   contact_document_description: `تواصل مع Kenneth للتعاون أو الاستفسارات أو لمناقشة تحسين وظائف مشروعك وتجربة المستخدم.`,
-  contact_tel: `(+852) 9347 8968`,
-  contact_email: `kaifwong1022@gmail.com`,
   contact_get_in_touch: `تواصل معنا`,
   contact_description: `لديك فكرة مشروع أو تريد التحدث فقط؟ لا تتردد في التواصل عبر أي من القنوات أدناه.`,
   contact_label_email: `البريد الإلكتروني`,

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import PageMeta from '@/components/PageMeta'
+import PageMeta from '@/components/ui/PageMeta'
 import useFadeInView from '@/hooks/useFadeInView'
 import useWorkFilter from '@/hooks/useWorkFilter'
 import TiltCard from '@/components/ui/TiltCard'

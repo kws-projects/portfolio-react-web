@@ -1,10 +1,10 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
-import english from './en'
-import traditionalChinese from './zh-TW'
-import japanese from './ja'
-import arabic from './ar'
+import english from './locales/en'
+import traditionalChinese from './locales/zh-TW'
+import japanese from './locales/ja'
+import arabic from './locales/ar'
 
 export const SUPPORTED_LANGUAGES = [
   { code: 'en', label: 'English', nativeLabel: 'English', dir: 'ltr' as const },
