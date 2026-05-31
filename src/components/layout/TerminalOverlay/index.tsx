@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FiTerminal } from 'react-icons/fi'
-import InteractiveTerminal from '@/components/InteractiveTerminal'
+import InteractiveTerminal from './InteractiveTerminal'
 
 const isMac =
   typeof navigator !== 'undefined' && /Mac/i.test(navigator.userAgent)

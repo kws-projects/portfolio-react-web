@@ -74,8 +74,6 @@ const labelList = {
   contact_title: `お問い合わせ`,
   contact_document_title: `お問い合わせ | Kenneth Wong`,
   contact_document_description: `コラボレーション、お問い合わせ、プロジェクトの機能向上に関するご相談はこちらから。`,
-  contact_tel: `(+852) 9347 8968`,
-  contact_email: `kaifwong1022@gmail.com`,
   contact_get_in_touch: `連絡先`,
   contact_description: `プロジェクトのアイデアやご相談がありましたら、お気軽にご連絡ください。`,
   contact_label_email: `メール`,

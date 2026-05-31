@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@tanstack/react-query'
-import PageMeta from '@/components/PageMeta'
+import PageMeta from '@/components/ui/PageMeta'
 import BlogGrid from '@/components/ui/Grid/BlogGrid'
 import RandomBackgroundSketch from '@/components/sketches/RandomBackgroundSketch'
 import { blogsAPI } from '@/services/portfolioSvc/blogsAPI'

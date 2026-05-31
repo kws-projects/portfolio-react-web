@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import PageMeta from '@/components/PageMeta'
+import PageMeta from '@/components/ui/PageMeta'
 import Hero from './Hero'
 import BentoSection from './BentoSection'
 import FeaturedSection from './FeaturedSection'

@@ -1,0 +1,8 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`contactInfo > matches expected values 1`] = `
+{
+  "email": "kaifwong1022@gmail.com",
+  "tel": "(+852) 9347 8968",
+}
+`;
