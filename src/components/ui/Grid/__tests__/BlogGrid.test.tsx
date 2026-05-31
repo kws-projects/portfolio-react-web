@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import BlogGrid from '../BlogGrid'
-import { Blog } from '@/types/blog'
+import { Blog, BlogStatus } from '@/types/blog'
 
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
@@ -12,16 +12,28 @@ vi.mock('react-i18next', () => ({
 
 const mockBlogs: Blog[] = [
   {
-    id: 'blog-1',
+    id: 1,
+    status: BlogStatus.Published,
+    author: 'Author',
+    category: 'Tech',
     titleEn: 'First Blog',
     descriptionEn: 'Description 1',
-    createdAt: '2024-01-01T00:00:00Z',
+    createdAt: new Date('2024-01-01T00:00:00Z'),
+    createdBy: 'tester',
+    updatedAt: new Date('2024-01-01T00:00:00Z'),
+    updatedBy: 'tester',
   },
   {
-    id: 'blog-2',
+    id: 2,
+    status: BlogStatus.Published,
+    author: 'Author',
+    category: 'Tech',
     titleEn: 'Second Blog',
     descriptionEn: 'Description 2',
-    createdAt: '2024-02-01T00:00:00Z',
+    createdAt: new Date('2024-02-01T00:00:00Z'),
+    createdBy: 'tester',
+    updatedAt: new Date('2024-02-01T00:00:00Z'),
+    updatedBy: 'tester',
   },
 ]
 
