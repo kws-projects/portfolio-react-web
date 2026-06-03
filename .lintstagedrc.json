@@ -1,5 +1,10 @@
 {
   "*.css": ["prettier --write"],
-  "*.{ts,tsx,js}": ["prettier --write", "eslint --fix"],
-  "*.json": ["prettier --write"]
+  "*.{ts,tsx,js,jsx}": [
+    "import-sort --write",
+    "prettier --write",
+    "eslint --fix",
+    "vitest related --run --passWithNoTests"
+  ],
+  "*.{json,md}": ["prettier --write"]
 }

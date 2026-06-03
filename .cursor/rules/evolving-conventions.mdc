@@ -1,0 +1,33 @@
+---
+description: Keep project conventions documented as they evolve
+alwaysApply: true
+---
+
+# Evolving Conventions
+
+When a new project-wide convention, requirement, or recurring pattern is
+introduced or changed (e.g. file layout, naming, testing, tooling, integration
+patterns), update the documentation in the same change - do not leave it implicit
+in code only.
+
+## What to update
+
+- `.cursor/rules/` - update the relevant rule so future agents follow it.
+- `.cursor/skills/` - update the relevant skill, or add a new one when a workflow
+  is involved (multi-step, repeatable, or with gotchas).
+- `README.md` - update if the change affects how a human sets up, runs, or
+  maintains the project.
+
+## When to create a new rule or skill
+
+Prefer editing an existing rule/skill. Create a new one only when it clearly
+improves readability or management - i.e. the topic is self-contained and would
+bloat or muddy an existing file. Keep each rule focused and concise; keep skills
+action-oriented with clear steps.
+
+## Consistency
+
+- Apply the new convention to existing code where reasonable, not just new code.
+- Keep rules, skills, and README in agreement; if they conflict, fix all of them.
+- Avoid duplicating the same guidance across files - state it once and reference
+  it (e.g. point to a skill from a rule).

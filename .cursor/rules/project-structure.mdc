@@ -1,0 +1,44 @@
+---
+description: Project structure, conventions, and where things live
+alwaysApply: true
+---
+
+# Project Structure
+
+This is a React + Vite + TypeScript portfolio app. Use the `@/` alias for
+imports from `src` (e.g. `@/components/ui/Button`). Never use long relative
+paths like `../../../`.
+
+## Folders (`src/`)
+
+- `components/` - shared, reusable components used across pages.
+  - `components/layout/` - layout components (Header, Footer, Layout with
+    `<Outlet />`). `usePageTracking()` lives here for automatic page views.
+  - `components/ui/` - reusable UI primitives (Button, Card, Timeline, etc.).
+  - `components/sketches/` - p5.js visual sketches for page backgrounds.
+- `pages/` - page-level components mapped to routes (Home, About, Works,
+  Blogs, BlogPost, Contact, Terms, Privacy, NotFound).
+- `lib/` - cross-cutting utilities and third-party integration adapters
+  (`analytics.ts`, `monitoring.ts`). Wrap external SDKs behind a thin
+  interface here so call sites stay decoupled. Never import `@sentry/react`
+  or call `window.gtag` outside of the adapters in `lib/`.
+- `config/` - typed configuration. `env.ts` is the single source of truth for
+  environment variables; do not read `import.meta.env` directly elsewhere.
+- `hooks/` - shared hooks (useAnalytics, useMonitoring, usePageTracking,
+  useTheme, useDirection, useNavbarToggle, etc.).
+- `services/` - API clients and service integrations (portfolioSvc).
+- `data/` - static data files (work experience, certifications, skills, etc.).
+- `constant/` - app constants and enums.
+- `types/` - shared TypeScript types (analytics events, monitoring types,
+  blog, menu, timeline).
+- `utils/` - general utilities (i18n, dayjs, common helpers).
+- `test/` - global Vitest setup and shared helpers.
+
+## Conventions
+
+- Component files use PascalCase matching the exported component name.
+  Non-component files (configs, utilities, hooks) use camelCase.
+- Tests live in a `__tests__/` folder at the same level as the code under test.
+- New env vars: add to `src/config/env.ts`, `.env.example`, and
+  `src/vite-env.d.ts`.
+- User-facing strings go through i18n (`useTranslation`), never hardcoded.

@@ -1,9 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
+
 import ContactPortal from '../index'
 
-vi.mock('@/services/ga4', () => ({
-  trackEvent: vi.fn(),
+vi.mock('@/lib/analytics', () => ({
+  analytics: { track: vi.fn() },
 }))
 
 describe('ContactPortal', () => {

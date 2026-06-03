@@ -1,0 +1,23 @@
+---
+description: Git branching and PR workflow
+alwaysApply: true
+---
+
+# Git Workflow
+
+- `main` = production, `develop` = development.
+- Branch new work out from `main` (e.g. `feat/...`, `fix/...`).
+- Open a PR against the target branch (normally `develop`); merge only after
+  review and passing CI.
+- Never commit directly to `main` or `develop`. The single exception is the
+  automated version-bump commit on `main` (handled by
+  `.github/workflows/release.yml`).
+- Use Conventional Commits (enforced by commitlint). These prefixes directly
+  control the automated version bump on merge to `main`:
+  - `BREAKING CHANGE` or `!:` → major bump
+  - `feat:` → minor bump
+  - `fix:`, `chore:`, `docs:`, etc. → patch bump
+
+When asked to "commit" or "push" work, create or use a feature branch and prefer
+opening a PR; do not push straight to `main`/`develop`. See `CONTRIBUTING.md` for
+the full process.

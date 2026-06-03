@@ -1,42 +1,61 @@
-/// <reference types="vitest/config" />
-import { defineConfig, loadEnv } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import pkg from './package.json' with { type: 'json' }
 
-const EXPOSED_ENV_KEYS = [
-  'MODE',
-  'PORTFOLIO_API_BASE_URL',
-  'STATIC_FILE_BASE_URL',
-  'CV_URL',
-  'GITHUB_RELEASE_URL',
-  'GA_MEASUREMENT_ID',
-  'SENTRY_DSN',
-] as const
+import { sentryVitePlugin } from '@sentry/vite-plugin'
+import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from 'vitest/config'
 
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '')
+const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'))
+const release = `portfolio@${pkg.version}`
 
-  const processEnv = Object.fromEntries(
-    EXPOSED_ENV_KEYS.map(key => [key, env[key] ?? ''])
-  )
+const useSentrySourceMaps =
+  process.env.SENTRY_AUTH_TOKEN &&
+  process.env.SENTRY_ORG &&
+  process.env.SENTRY_PROJECT
 
-  return {
-    define: {
-      'process.env': JSON.stringify(processEnv),
-      __APP_VERSION__: JSON.stringify(pkg.version),
+export default defineConfig({
+  plugins: [
+    react(),
+    ...(useSentrySourceMaps
+      ? [
+          sentryVitePlugin({
+            org: process.env.SENTRY_ORG!,
+            project: process.env.SENTRY_PROJECT!,
+            authToken: process.env.SENTRY_AUTH_TOKEN!,
+            release: { name: release },
+          }),
+        ]
+      : []),
+  ],
+  define: {
+    ...Object.fromEntries(
+      Object.entries(process.env)
+        .filter(([key]) => key.startsWith('VITE_'))
+        .map(([key, val]) => [`import.meta.env.${key}`, JSON.stringify(val)])
+    ),
+    'import.meta.env.VITE_APP_VERSION': JSON.stringify(pkg.version),
+    'import.meta.env.VITE_SENTRY_RELEASE': JSON.stringify(release),
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
     },
-    plugins: [react()],
-    resolve: {
-      alias: {
-        '@': resolve(__dirname, './src'),
-      },
+  },
+  build: {
+    sourcemap: useSentrySourceMaps ? 'hidden' : false,
+  },
+  server: {
+    port: 3001,
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/test/setup.ts'],
+    css: true,
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html'],
+      exclude: ['**/*.config.*', '**/test/**', 'src/main.tsx'],
     },
-    test: {
-      globals: true,
-      environment: 'jsdom',
-      setupFiles: './src/test/setup.ts',
-      css: true,
-    },
-  }
+  },
 })

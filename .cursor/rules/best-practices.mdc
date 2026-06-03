@@ -1,0 +1,51 @@
+---
+description: Engineering best practices for this codebase
+alwaysApply: true
+---
+
+# Best Practices
+
+Follow framework and language best practices. Write clean, readable, and
+maintainable code. Avoid hacky workarounds.
+
+## General
+
+- Match the existing code style and project structure. Read neighbouring files
+  before adding new ones.
+- Prefer clarity over cleverness. Keep functions small and focused.
+- Do not add `// @ts-ignore`, `any`, or eslint-disable to silence problems
+  without a justified reason. Fix the root cause.
+- No dead code, leftover debug logs, or commented-out blocks.
+
+## React / TypeScript
+
+- Use strict, explicit types. Avoid `any`; prefer precise types and generics.
+- Keep components pure; isolate side effects in `useEffect`, providers, or
+  `lib/` adapters.
+- Data fetching goes through React Query, not ad-hoc `useEffect` fetches.
+- Access env only via `@/config/env`; access external SDKs only via `@/lib`
+  adapters. Never import `@sentry/react` or call `window.gtag` outside of
+  `src/lib/monitoring.ts` and `src/lib/analytics.ts` respectively.
+- Track analytics events via `analytics.track(...)` or `useAnalytics()`. Define
+  new event shapes in `src/types/analytics.ts`.
+- Capture errors via `monitoring.captureException(...)` or `useMonitoring()`.
+  Add context with `tags`, `extras`, and `breadcrumbs` for debuggability.
+- All user-facing text uses i18n; support both LTR and RTL layouts (use logical
+  CSS properties / Tailwind `start`/`end` utilities, not hardcoded left/right).
+
+## Responsive design
+
+- **Mobile-first**: write the base/mobile layout first, then layer on
+  breakpoints (`sm:`, `md:`, `lg:`, `xl:`).
+- **Use Tailwind breakpoints** — do not write custom `@media` queries or
+  inline `window.innerWidth` checks.
+- **Content widths**: constrain page content with `max-w-*` + `mx-auto` +
+  horizontal padding (`px-4`). Avoid fixed-pixel widths.
+- **Touch targets**: interactive elements should be at least `h-9` / `44px`
+  on mobile.
+
+## Quality gates
+
+- Code must pass `yarn typecheck`, `yarn lint`, and `yarn test` before commit.
+- Add or update tests when changing behaviour.
+- Do not bypass Husky hooks (no `--no-verify`).
