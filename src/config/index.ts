@@ -1,10 +1,14 @@
+import { env } from './env'
+
 export const envConfig = {
-  NODE_ENV: process.env.MODE!,
-  VERSION_NO: __APP_VERSION__,
-  PORTFOLIO_API_BASE_URL: process.env.PORTFOLIO_API_BASE_URL,
-  STATIC_FILE_BASE_URL: process.env.STATIC_FILE_BASE_URL,
-  CV_URL: process.env.CV_URL,
-  GITHUB_RELEASE_URL: process.env.GITHUB_RELEASE_URL,
-  GA4_ID: process.env.GA_MEASUREMENT_ID,
-  SENTRY_DSN: process.env.SENTRY_DSN,
+  NODE_ENV: env.isProduction ? 'PROD' : 'DEV',
+  VERSION_NO: env.appVersion,
+  PORTFOLIO_API_BASE_URL: env.portfolioApiBaseUrl,
+  STATIC_FILE_BASE_URL: env.staticFileBaseUrl,
+  CV_URL: env.cvUrl,
+  GITHUB_RELEASE_URL: env.githubReleaseUrl,
+  GA4_ID: env.analytics.gaMeasurementId,
+  SENTRY_DSN: env.monitoring.sentryDsn,
 }
+
+export { env }

@@ -1,3 +1,9 @@
+vi.mock('@/config', () => ({
+  envConfig: {
+    CV_URL: 'https://example.com/cv',
+  },
+}))
+
 import { menuMap } from '../menuMap'
 
 describe('Footer menuMap', () => {

@@ -1,6 +1,5 @@
-import { trackEvent } from '@/services/ga4'
-import { GAEventCategory } from '@/constant/gaEvent'
 import { socialLinks } from '@/data/socialLinks'
+import { analytics } from '@/lib/analytics'
 
 const ContactPortal = () => {
   return (
@@ -16,7 +15,10 @@ const ContactPortal = () => {
             target={link.external ? '_blank' : undefined}
             className="p-2 rounded-lg text-secondary hover:text-accent hover:bg-accent/10 transition-all duration-200"
             onClick={() => {
-              trackEvent(GAEventCategory.NAVIGATION, link.gaAction)
+              analytics.track({
+                name: 'external_link_click',
+                params: { url: link.url, link_text: link.id },
+              })
             }}
           >
             <Icon size={18} />

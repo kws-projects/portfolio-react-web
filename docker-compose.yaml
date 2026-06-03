@@ -3,9 +3,7 @@ name: portfolio
 services:
   portfolio-app:
     container_name: portfolio-app
-    image: ${PORTFOLIO_IMAGE}:${BUILD_VERSION_NO}
-    env_file:
-      - .env
+    image: ${PORTFOLIO_IMAGE}:${VERSION}
     ports:
       - ${PORTFOLIO_PORT_BINDING}
     restart: always

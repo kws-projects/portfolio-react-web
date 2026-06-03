@@ -1,6 +1,5 @@
-# Ignore artifacts:
-build
+dist
 coverage
-docker-compose.yaml
-README.md
-public/index.html
+node_modules
+yarn.lock
+*.md

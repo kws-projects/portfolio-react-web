@@ -9,7 +9,7 @@ exports[`Footer menuMap > matches snapshot 1`] = `
       {
         "downloadable": true,
         "id": 1,
-        "path": "undefined",
+        "path": "https://example.com/cv",
         "titleKey": "footer_cv",
       },
     ],
