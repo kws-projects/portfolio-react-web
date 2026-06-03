@@ -49,9 +49,13 @@ jobs:
           npm version ${{ steps.level.outputs.bump }} --no-git-tag-version
           echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
 
+      - name: Sync VERSION in .env.deploy
+        run: |
+          sed -i "s/^VERSION=.*/VERSION=${{ steps.bump.outputs.version }}/" .env.deploy
+
       - name: Commit and push bump to main
         run: |
-          git add package.json
+          git add package.json .env.deploy
           git commit -m "chore(release): v${{ steps.bump.outputs.version }} [skip ci]"
           git push origin HEAD:main
 
