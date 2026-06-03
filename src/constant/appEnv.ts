@@ -1,12 +1,3 @@
-import { envConfig } from '@/config'
+import { env } from '@/config/env'
 
-export enum AppEnv {
-  DEV = 'DEV',
-  PROD = 'PROD',
-}
-
-export const getReleaseType = () =>
-  ({
-    [AppEnv.DEV]: 'Develop',
-    [AppEnv.PROD]: 'Release',
-  })[envConfig.NODE_ENV]
+export const getReleaseType = () => (env.isProduction ? 'Release' : 'Develop')

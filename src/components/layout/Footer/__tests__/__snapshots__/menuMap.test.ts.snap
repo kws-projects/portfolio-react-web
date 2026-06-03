@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Footer menuMap > matches snapshot 1`] = `
+[
+  {
+    "id": 0,
+    "path": "/about",
+    "subItems": [
+      {
+        "downloadable": true,
+        "id": 1,
+        "path": "https://example.com/cv",
+        "titleKey": "footer_cv",
+      },
+    ],
+    "titleKey": "nav_about",
+  },
+  {
+    "id": 2,
+    "path": "/works",
+    "subItems": [
+      {
+        "id": 3,
+        "path": "/works?category[0]=MOBILE_APP",
+        "titleKey": "footer_mobile",
+      },
+      {
+        "id": 4,
+        "path": "/works?category[0]=WEBSITE",
+        "titleKey": "footer_website",
+      },
+      {
+        "id": 6,
+        "path": "/works?category[0]=All",
+        "titleKey": "footer_all",
+      },
+    ],
+    "titleKey": "nav_works",
+  },
+  {
+    "id": 7,
+    "path": "/contact",
+    "subItems": [
+      {
+        "id": 8,
+        "path": "/contact",
+        "titleKey": "footer_email",
+      },
+    ],
+    "titleKey": "nav_contact",
+  },
+]
+`;

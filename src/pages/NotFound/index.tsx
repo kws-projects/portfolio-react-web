@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import PageMeta from '@/components/PageMeta'
+import PageMeta from '@/components/ui/PageMeta'
 import NotFoundSketch from '@/components/sketches/NotFoundSketch'
 import { FiArrowLeft } from 'react-icons/fi'
 

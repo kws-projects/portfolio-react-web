@@ -1,15 +1,8 @@
-import { AppEnv, getReleaseType } from '../appEnv'
-
-describe('AppEnv', () => {
-  it('has DEV and PROD values', () => {
-    expect(AppEnv.DEV).toBe('DEV')
-    expect(AppEnv.PROD).toBe('PROD')
-  })
-})
+import { getReleaseType } from '../appEnv'
 
 describe('getReleaseType', () => {
-  it('returns "Develop" or "Release" based on NODE_ENV', () => {
+  it('returns "Develop" or "Release"', () => {
     const result = getReleaseType()
-    expect(['Develop', 'Release', undefined]).toContain(result)
+    expect(['Develop', 'Release']).toContain(result)
   })
 })

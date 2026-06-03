@@ -1,9 +1,10 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
-import PageMeta from '@/components/PageMeta'
+import PageMeta from '@/components/ui/PageMeta'
 import TerminalSketch from '@/components/sketches/TerminalSketch'
 import RandomBackgroundSketch from '@/components/sketches/RandomBackgroundSketch'
-import ContactPortal from '@/components/ContactPortal'
+import ContactPortal from '@/components/ui/ContactPortal'
+import { contactInfo } from '@/data/contact'
 
 const Contact = () => {
   const { t } = useTranslation()
@@ -47,26 +48,26 @@ const Contact = () => {
           {/* Contact info sidebar */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             <a
-              href={`mailto:${t('contact_email')}`}
+              href={`mailto:${contactInfo.email}`}
               className="flex flex-col gap-1 p-5 rounded-2xl border-ui-interactive bg-surface"
             >
               <span className="text-xs font-medium tracking-widest uppercase text-accent">
                 {t('contact_label_email')}
               </span>
               <span className="text-primary font-medium">
-                {t('contact_email')}
+                {contactInfo.email}
               </span>
             </a>
 
             <a
-              href={`tel:${t('contact_tel')}`}
+              href={`tel:${contactInfo.tel}`}
               className="flex flex-col gap-1 p-5 rounded-2xl border-ui-interactive bg-surface"
             >
               <span className="text-xs font-medium tracking-widest uppercase text-accent">
                 {t('contact_label_phone')}
               </span>
               <span className="text-primary font-medium">
-                {t('contact_tel')}
+                {contactInfo.tel}
               </span>
             </a>
 
