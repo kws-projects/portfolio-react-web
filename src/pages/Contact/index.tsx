@@ -1,13 +1,16 @@
-import { useTranslation } from 'react-i18next'
-import { motion } from 'framer-motion'
-import PageMeta from '@/components/ui/PageMeta'
-import TerminalSketch from '@/components/sketches/TerminalSketch'
 import RandomBackgroundSketch from '@/components/sketches/RandomBackgroundSketch'
+import TerminalSketch from '@/components/sketches/TerminalSketch'
 import ContactPortal from '@/components/ui/ContactPortal'
-import { contactInfo } from '@/data/contact'
+import PageMeta from '@/components/ui/PageMeta'
+import { useContact } from '@/hooks/usePortfolioData'
+import { mapContact } from '@/services/api/mappers'
+import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 const Contact = () => {
   const { t } = useTranslation()
+  const { data: contactEntities } = useContact()
+  const contactInfo = contactEntities ? mapContact(contactEntities) : null
 
   return (
     <main className="flex-1 pb-24 relative">
@@ -47,29 +50,33 @@ const Contact = () => {
 
           {/* Contact info sidebar */}
           <div className="lg:col-span-2 flex flex-col gap-4">
-            <a
-              href={`mailto:${contactInfo.email}`}
-              className="flex flex-col gap-1 p-5 rounded-2xl border-ui-interactive bg-surface"
-            >
-              <span className="text-xs font-medium tracking-widest uppercase text-accent">
-                {t('contact_label_email')}
-              </span>
-              <span className="text-primary font-medium">
-                {contactInfo.email}
-              </span>
-            </a>
+            {contactInfo?.email && (
+              <a
+                href={`mailto:${contactInfo.email}`}
+                className="flex flex-col gap-1 p-5 rounded-2xl border-ui-interactive bg-surface"
+              >
+                <span className="text-xs font-medium tracking-widest uppercase text-accent">
+                  {t('contact_label_email')}
+                </span>
+                <span className="text-primary font-medium">
+                  {contactInfo.email}
+                </span>
+              </a>
+            )}
 
-            <a
-              href={`tel:${contactInfo.tel}`}
-              className="flex flex-col gap-1 p-5 rounded-2xl border-ui-interactive bg-surface"
-            >
-              <span className="text-xs font-medium tracking-widest uppercase text-accent">
-                {t('contact_label_phone')}
-              </span>
-              <span className="text-primary font-medium">
-                {contactInfo.tel}
-              </span>
-            </a>
+            {contactInfo?.tel && (
+              <a
+                href={`tel:${contactInfo.tel}`}
+                className="flex flex-col gap-1 p-5 rounded-2xl border-ui-interactive bg-surface"
+              >
+                <span className="text-xs font-medium tracking-widest uppercase text-accent">
+                  {t('contact_label_phone')}
+                </span>
+                <span className="text-primary font-medium">
+                  {contactInfo.tel}
+                </span>
+              </a>
+            )}
 
             <div className="flex flex-col gap-2 p-5 rounded-2xl border-ui bg-surface">
               <span className="text-xs font-medium tracking-widest uppercase text-accent mb-1">

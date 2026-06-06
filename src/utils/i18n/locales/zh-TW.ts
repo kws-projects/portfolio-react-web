@@ -66,9 +66,22 @@ const labelList = {
   blog_document_title: `網誌 | Kenneth Wong`,
   blog_document_description: `閱讀 Kenneth 在開發領域的見解和經驗。`,
   blog_description: `關於開發、創意編程和技術的想法。`,
+  blog_cat_all: `全部`,
+  blog_sort_newest: `最新優先`,
+  blog_sort_oldest: `最舊優先`,
+  blog_sort_label: `排序`,
+  blog_no_posts: `找不到部落格文章`,
+  blog_no_posts_description: `請調整篩選條件或稍後再試。`,
+  blog_page_prev: `上一頁`,
+  blog_page_next: `下一頁`,
+  blog_page_info: `第 {{page}} 頁，共 {{total}} 頁`,
+  blog_reading_time: `{{count}} 分鐘閱讀`,
 
   // Blog Post
   blog_post_not_found_title: `找不到文章 | Kenneth Wong`,
+  blog_post_toc: `目錄`,
+  blog_post_author: `作者`,
+  blog_post_min_read: `{{count}} 分鐘閱讀`,
 
   // Contact
   contact_title: `聯繫`,
@@ -96,6 +109,8 @@ const labelList = {
   error_not_found_document_description: `404 找不到頁面`,
   error_blogs_not_found_message: `找不到網誌`,
   error_blog_not_found_message: `找不到文章`,
+  error_loading_data: `目前無法載入內容`,
+  error_loading_data_subtitle: `請檢查你的連線並重試。`,
   error_back_home: `返回首頁`,
 
   // Date/Time
