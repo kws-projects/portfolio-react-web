@@ -19,7 +19,6 @@ const BlogGrid = ({ data, isLoading, isError, refetch }: BlogGridProps) => {
       <ErrorState
         message={t('error_blogs_not_found_message')}
         onRetry={refetch}
-        retryLabel={t('button_reload')}
       />
     )
   }

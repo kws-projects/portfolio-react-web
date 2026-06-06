@@ -17,7 +17,7 @@ export function MermaidCodeBlockView({ node }: NodeViewProps) {
 
   return (
     <NodeViewWrapper as="pre" className={`language-${language ?? ''}`}>
-      <NodeViewContent as="code" />
+      <NodeViewContent />
     </NodeViewWrapper>
   )
 }

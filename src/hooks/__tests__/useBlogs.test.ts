@@ -38,7 +38,10 @@ describe('useBlogs', () => {
   it('provides a select function', () => {
     useBlogs()
 
-    const options = mockUseQuery.mock.calls[0][0] as Record<string, unknown>
+    const options = mockUseQuery.mock.calls[0][0] as unknown as Record<
+      string,
+      unknown
+    >
     expect(options.select).toBeTypeOf('function')
   })
 })
