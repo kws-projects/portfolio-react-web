@@ -1,10 +1,10 @@
 import { BlogCard, Skeleton } from '@/components/ui/Card/BlogCard'
 import ErrorState from '@/components/ui/ErrorState'
-import { Blog } from '@/types/blog'
+import type { BlogEntity } from '@/types/blog'
 import { useTranslation } from 'react-i18next'
 
 type BlogGridProps = {
-  data: Blog[] | undefined
+  data: BlogEntity[] | undefined
   isLoading: boolean
   isError: boolean
   refetch: () => void

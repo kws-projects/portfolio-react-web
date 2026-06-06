@@ -1,14 +1,16 @@
-import { Link } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
-import { motion } from 'framer-motion'
-import TextReveal from '@/components/ui/TextReveal'
-import ContactPortal from '@/components/ui/ContactPortal'
 import FlowFieldSketch from '@/components/sketches/FlowFieldSketch'
-import { envConfig } from '@/config'
+import ContactPortal from '@/components/ui/ContactPortal'
+import TextReveal from '@/components/ui/TextReveal'
+import { useSiteConfig } from '@/hooks/usePortfolioData'
+import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { FiArrowRight, FiChevronDown } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
   const { t } = useTranslation()
+  const { data: siteConfig } = useSiteConfig()
+  const profileImage = siteConfig?.profileImage as string | undefined
 
   return (
     <section className="relative flex items-center min-h-[100dvh] overflow-hidden">
@@ -85,7 +87,7 @@ const Hero = () => {
             <div className="relative">
               <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-accent/15 to-accent-secondary/15 blur-2xl" />
               <img
-                src={`${envConfig.STATIC_FILE_BASE_URL}/images/profile-image.webp`}
+                src={profileImage}
                 alt="Kenneth Wong"
                 className="relative w-40 h-40 md:w-56 md:h-56 rounded-full object-cover ring-2 ring-border/10"
               />

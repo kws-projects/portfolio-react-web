@@ -1,11 +1,10 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
-import { parse, stringify } from 'qs'
 import { WorkCategory } from '@/constant/work'
-import { getWorks } from '@/data/works'
-
-const workCategories = Object.values(WorkCategory) as WorkCategory[]
+import { useWorks } from '@/hooks/usePortfolioData'
+import { mapWorks } from '@/services/api/mappers'
+import { parse, stringify } from 'qs'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 type UseWorkFilterOptions = {
   disableFilter?: boolean
@@ -18,6 +17,30 @@ const useWorkFilter = ({
   const navigate = useNavigate()
   const { search, pathname } = useLocation()
 
+  const { data: workEntities, isLoading, isError, refetch } = useWorks()
+
+  const localizedWorks = useMemo(
+    () => (workEntities ? mapWorks(workEntities, i18n.language) : []),
+    [workEntities, i18n.language]
+  )
+
+  const availableCategories = useMemo(() => {
+    if (!localizedWorks.length) return [WorkCategory.ALL]
+
+    const seen = new Set<WorkCategory>()
+    for (const work of localizedWorks) {
+      for (const cat of work.category) {
+        seen.add(cat)
+      }
+    }
+
+    const ordered = Object.values(WorkCategory).filter(
+      cat => cat !== WorkCategory.ALL && seen.has(cat)
+    ) as WorkCategory[]
+
+    return [WorkCategory.ALL, ...ordered]
+  }, [localizedWorks])
+
   const initialCategories = useMemo(() => {
     if (disableFilter) return [WorkCategory.ALL]
 
@@ -25,9 +48,9 @@ const useWorkFilter = ({
       ?.category as WorkCategory[]
     const isValidCategory =
       Array.isArray(queryCategory) &&
-      queryCategory.some(cat => workCategories.includes(cat))
+      queryCategory.some(cat => availableCategories.includes(cat))
     return isValidCategory ? queryCategory : [WorkCategory.ALL]
-  }, [search, disableFilter])
+  }, [search, disableFilter, availableCategories])
 
   const [selectedCategories, setSelectedCategories] =
     useState<WorkCategory[]>(initialCategories)
@@ -61,18 +84,9 @@ const useWorkFilter = ({
         next = [...next, category]
       }
 
-      const nonAllCategories = workCategories.filter(
-        c => c !== WorkCategory.ALL
-      )
-      if (next.length === nonAllCategories.length) {
-        return [WorkCategory.ALL]
-      }
-
       return next
     })
   }, [])
-
-  const localizedWorks = useMemo(() => getWorks(i18n.language), [i18n.language])
 
   const filteredWorks = useMemo(
     () =>
@@ -87,8 +101,11 @@ const useWorkFilter = ({
   return {
     selectedCategories,
     filteredWorks,
-    workCategories,
+    workCategories: availableCategories,
     handleCategoryChange,
+    isLoading,
+    isError,
+    refetch,
   }
 }
 

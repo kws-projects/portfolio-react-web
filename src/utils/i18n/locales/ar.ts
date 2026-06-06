@@ -66,9 +66,22 @@ const labelList = {
   blog_document_title: `المدونة | Kenneth Wong`,
   blog_document_description: `اقرأ رؤى Kenneth وتجاربه في التطوير ومساهماته في المشاريع.`,
   blog_description: `أفكار حول التطوير والبرمجة الإبداعية والتكنولوجيا.`,
+  blog_cat_all: `الكل`,
+  blog_sort_newest: `الأحدث أولاً`,
+  blog_sort_oldest: `الأقدم أولاً`,
+  blog_sort_label: `ترتيب`,
+  blog_no_posts: `لم يتم العثور على مقالات`,
+  blog_no_posts_description: `حاول تعديل المرشحات أو تحقق لاحقاً.`,
+  blog_page_prev: `السابق`,
+  blog_page_next: `التالي`,
+  blog_page_info: `صفحة {{page}} من {{total}}`,
+  blog_reading_time: `{{count}} دقيقة للقراءة`,
 
   // Blog Post
   blog_post_not_found_title: `المقال غير موجود | Kenneth Wong`,
+  blog_post_toc: `جدول المحتويات`,
+  blog_post_author: `الكاتب`,
+  blog_post_min_read: `{{count}} دقيقة للقراءة`,
 
   // Contact
   contact_title: `تواصل`,
@@ -96,6 +109,8 @@ const labelList = {
   error_not_found_document_description: `404 الصفحة غير موجودة`,
   error_blogs_not_found_message: `المدونة غير موجودة`,
   error_blog_not_found_message: `المقال غير موجود`,
+  error_loading_data: `تعذّر تحميل المحتوى حاليًا`,
+  error_loading_data_subtitle: `يرجى التحقق من اتصالك والمحاولة مرة أخرى.`,
   error_back_home: `العودة للرئيسية`,
 
   // Date/Time

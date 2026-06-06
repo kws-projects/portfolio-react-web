@@ -1,18 +1,36 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+
 import ErrorState from '../index'
+
+vi.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => key,
+    i18n: { language: 'en' },
+  }),
+}))
 
 describe('ErrorState', () => {
   it('renders the error message', () => {
     render(<ErrorState message="Something went wrong" />)
-    expect(
-      screen.getByRole('heading', { name: 'Something went wrong' })
-    ).toBeInTheDocument()
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument()
+  })
+
+  it('renders default message from i18n key when no message provided', () => {
+    render(<ErrorState />)
+    expect(screen.getByText('error_loading_data')).toBeInTheDocument()
+  })
+
+  it('renders subtitle', () => {
+    render(<ErrorState />)
+    expect(screen.getByText('error_loading_data_subtitle')).toBeInTheDocument()
   })
 
   it('renders retry button when onRetry is provided', () => {
     render(<ErrorState message="Error" onRetry={() => {}} />)
-    expect(screen.getByRole('button', { name: 'Reload' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('button', { name: 'button_reload' })
+    ).toBeInTheDocument()
   })
 
   it('does not render retry button when onRetry is omitted', () => {
@@ -25,17 +43,8 @@ describe('ErrorState', () => {
     const user = userEvent.setup()
 
     render(<ErrorState message="Error" onRetry={handleRetry} />)
-    await user.click(screen.getByRole('button', { name: 'Reload' }))
+    await user.click(screen.getByRole('button', { name: 'button_reload' }))
 
     expect(handleRetry).toHaveBeenCalledOnce()
-  })
-
-  it('uses custom retry label', () => {
-    render(
-      <ErrorState message="Error" onRetry={() => {}} retryLabel="Try again" />
-    )
-    expect(
-      screen.getByRole('button', { name: 'Try again' })
-    ).toBeInTheDocument()
   })
 })

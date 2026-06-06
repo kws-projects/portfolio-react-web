@@ -1,17 +1,21 @@
-import { Link } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
-import { motion } from 'framer-motion'
-import useFadeInView from '@/hooks/useFadeInView'
 import TiltCard from '@/components/ui/TiltCard'
-import { getWorks } from '@/data/works'
+import useFadeInView from '@/hooks/useFadeInView'
+import { useWorks } from '@/hooks/usePortfolioData'
+import { mapWorks } from '@/services/api/mappers'
+import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { FiArrowRight, FiArrowUpRight } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
 const FeaturedSection = () => {
   const { t, i18n } = useTranslation()
-  const featuredWorks = getWorks(i18n.language)
-    .filter(w => w.featured)
-    .slice(0, 3)
+  const { data: workEntities } = useWorks()
+
+  const works = workEntities ? mapWorks(workEntities, i18n.language) : []
+  const featuredWorks = works.filter(w => w.featured).slice(0, 3)
   const { ref, motionProps } = useFadeInView({ y: 60 })
+
+  if (!featuredWorks.length && !workEntities) return null
 
   return (
     <motion.section

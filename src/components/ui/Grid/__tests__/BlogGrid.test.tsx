@@ -1,7 +1,8 @@
+import type { BlogEntity } from '@/types/blog'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
+
 import BlogGrid from '../BlogGrid'
-import { Blog, BlogStatus } from '@/types/blog'
 
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
@@ -10,30 +11,42 @@ vi.mock('react-i18next', () => ({
   }),
 }))
 
-const mockBlogs: Blog[] = [
+const mockBlogs: BlogEntity[] = [
   {
-    id: 1,
-    status: BlogStatus.Published,
-    author: 'Author',
-    category: 'Tech',
-    titleEn: 'First Blog',
-    descriptionEn: 'Description 1',
-    createdAt: new Date('2024-01-01T00:00:00Z'),
-    createdBy: 'tester',
-    updatedAt: new Date('2024-01-01T00:00:00Z'),
-    updatedBy: 'tester',
+    id: 'uuid-1',
+    slug: 'first-blog',
+    status: 'PUBLISHED',
+    sortOrder: 0,
+    properties: {
+      title: { en: 'First Blog' },
+      description: { en: 'Description 1' },
+      author: 'Author',
+      category: 'Tech',
+      tags: [],
+      coverImage: 'https://example.com/cover1.webp',
+      readingTime: 3,
+    },
+    publishedAt: '2024-01-01T00:00:00Z',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
   },
   {
-    id: 2,
-    status: BlogStatus.Published,
-    author: 'Author',
-    category: 'Tech',
-    titleEn: 'Second Blog',
-    descriptionEn: 'Description 2',
-    createdAt: new Date('2024-02-01T00:00:00Z'),
-    createdBy: 'tester',
-    updatedAt: new Date('2024-02-01T00:00:00Z'),
-    updatedBy: 'tester',
+    id: 'uuid-2',
+    slug: 'second-blog',
+    status: 'PUBLISHED',
+    sortOrder: 1,
+    properties: {
+      title: { en: 'Second Blog' },
+      description: { en: 'Description 2' },
+      author: 'Author',
+      category: 'Tech',
+      tags: [],
+      coverImage: 'https://example.com/cover2.webp',
+      readingTime: 5,
+    },
+    publishedAt: '2024-02-01T00:00:00Z',
+    createdAt: '2024-02-01T00:00:00Z',
+    updatedAt: '2024-02-01T00:00:00Z',
   },
 ]
 
@@ -81,7 +94,7 @@ describe('BlogGrid', () => {
       </MemoryRouter>
     )
     expect(
-      screen.getByRole('heading', { name: 'error_blogs_not_found_message' })
+      screen.getByText('error_blogs_not_found_message')
     ).toBeInTheDocument()
   })
 

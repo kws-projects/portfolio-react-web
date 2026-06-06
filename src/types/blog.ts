@@ -1,38 +1,27 @@
-export enum BlogStatus {
-  Draft = 'DRAFT',
-  Published = 'PUBLISHED',
-}
-
-export type Blog = {
-  id: number
-  status: BlogStatus
+export interface BlogProperties {
+  title: Record<string, string>
+  description: Record<string, string>
   author: string
   category: string
-  titleEn: string
-  descriptionEn: string
-  createdAt: Date
-  createdBy: string
-  updatedAt: Date
-  updatedBy: string
+  tags: string[]
+  coverImage: string
+  readingTime: number
 }
 
-export enum BlogNodeType {
-  MD = 'MD',
-  HTML = 'HTML',
-  CODE = 'CODE',
-  Image = 'IMAGE',
-  Video = 'VIDEO',
-  P5Sketch = 'P5_SKETCH',
+export interface BlogContent {
+  id: string
+  locale: string
+  content: Record<string, unknown>
 }
 
-export type BlogNode = {
-  id: number
-  blogId: number
-  order: number
-  type: BlogNodeType
-  fileName: string
-  createdAt: Date
-  createdBy: string
-  updatedAt: Date
-  updatedBy: string
+export interface BlogEntity {
+  id: string
+  slug: string
+  status: string
+  sortOrder: number
+  properties: BlogProperties
+  publishedAt: string | null
+  createdAt: string
+  updatedAt: string
+  contents?: BlogContent[]
 }

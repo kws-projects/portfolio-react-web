@@ -7,6 +7,45 @@ vi.mock('@/lib/analytics', () => ({
   analytics: { track: vi.fn() },
 }))
 
+vi.mock('@/hooks/usePortfolioData', () => ({
+  useSocialLinks: () => ({
+    data: [
+      {
+        id: 'link-1',
+        slug: 'linkedin',
+        status: 'PUBLISHED',
+        sortOrder: 0,
+        properties: {
+          label: 'LinkedIn',
+          url: 'https://linkedin.com/in/test',
+          icon: 'linkedin',
+          isInternal: false,
+        },
+        publishedAt: '2024-01-01',
+        createdAt: '2024-01-01',
+        updatedAt: '2024-01-01',
+      },
+      {
+        id: 'link-2',
+        slug: 'github',
+        status: 'PUBLISHED',
+        sortOrder: 1,
+        properties: {
+          label: 'GitHub',
+          url: 'https://github.com/test',
+          icon: 'github',
+          isInternal: false,
+        },
+        publishedAt: '2024-01-01',
+        createdAt: '2024-01-01',
+        updatedAt: '2024-01-01',
+      },
+    ],
+    isLoading: false,
+    isError: false,
+  }),
+}))
+
 describe('ContactPortal', () => {
   const renderComponent = () =>
     render(
