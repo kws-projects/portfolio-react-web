@@ -1,6 +1,7 @@
+import type { LegalDocument } from '@/services/api/mappers'
 import { render, screen } from '@testing-library/react'
+
 import LegalContent from '../index'
-import type { LegalDocument } from '@/data/legal'
 
 vi.mock('@/hooks/useFadeInView', () => ({
   default: () => ({

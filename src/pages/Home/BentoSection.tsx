@@ -1,18 +1,18 @@
-import { Link } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
-import { motion } from 'framer-motion'
-import useFadeInView from '@/hooks/useFadeInView'
 import TiltCard from '@/components/ui/TiltCard'
-import { skills } from '@/data/skills'
-import { getWorkExperiences } from '@/data/workExperience'
+import useFadeInView from '@/hooks/useFadeInView'
+import { useExperiences, useSkills } from '@/hooks/usePortfolioData'
+import { mapExperiences, mapSkills } from '@/services/api/mappers'
 import { getDurationString } from '@/utils/common'
+import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import {
   FiArrowUpRight,
-  FiCode,
   FiBriefcase,
+  FiCode,
   FiCpu,
   FiPenTool,
 } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
 const cardBase =
   'rounded-2xl border-ui-interactive bg-surface p-6 overflow-hidden duration-300'
@@ -21,13 +21,22 @@ const BentoSection = () => {
   const { t, i18n } = useTranslation()
   const { ref, motionProps } = useFadeInView({ y: 60 })
 
-  const experiences = getWorkExperiences(i18n.language)
-  const latestExperience = experiences.reduce((latest, exp) => {
-    if (!latest.fromDate) return exp
-    return new Date(exp.fromDate ?? 0) > new Date(latest.fromDate ?? 0)
-      ? exp
-      : latest
-  }, experiences[0])
+  const { data: skillEntities } = useSkills()
+  const { data: expEntities } = useExperiences()
+
+  const skills = skillEntities ? mapSkills(skillEntities) : []
+  const experiences = expEntities
+    ? mapExperiences(expEntities, i18n.language)
+    : []
+
+  const latestExperience = experiences.length
+    ? experiences.reduce((latest, exp) => {
+        if (!latest.fromDate) return exp
+        return new Date(exp.fromDate ?? 0) > new Date(latest.fromDate ?? 0)
+          ? exp
+          : latest
+      }, experiences[0])
+    : null
 
   return (
     <motion.section

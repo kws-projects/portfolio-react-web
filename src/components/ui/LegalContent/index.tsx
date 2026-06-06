@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
 import useFadeInView from '@/hooks/useFadeInView'
-import type { LegalDocument } from '@/data/legal'
+import type { LegalDocument } from '@/services/api/mappers'
+import { motion } from 'framer-motion'
 
 type LegalContentProps = {
   document: LegalDocument

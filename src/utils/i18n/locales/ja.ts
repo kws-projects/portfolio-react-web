@@ -66,9 +66,22 @@ const labelList = {
   blog_document_title: `ブログ | Kenneth Wong`,
   blog_document_description: `開発とプロジェクトへの貢献における Kenneth の洞察と経験。`,
   blog_description: `開発、クリエイティブコーディング、テクノロジーに関する考察。`,
+  blog_cat_all: `すべて`,
+  blog_sort_newest: `新しい順`,
+  blog_sort_oldest: `古い順`,
+  blog_sort_label: `並び替え`,
+  blog_no_posts: `ブログ記事が見つかりません`,
+  blog_no_posts_description: `フィルターを調整するか、後でもう一度お試しください。`,
+  blog_page_prev: `前へ`,
+  blog_page_next: `次へ`,
+  blog_page_info: `{{total}} ページ中 {{page}} ページ`,
+  blog_reading_time: `{{count}} 分で読了`,
 
   // Blog Post
   blog_post_not_found_title: `記事が見つかりません | Kenneth Wong`,
+  blog_post_toc: `目次`,
+  blog_post_author: `著者`,
+  blog_post_min_read: `{{count}} 分で読了`,
 
   // Contact
   contact_title: `お問い合わせ`,
@@ -96,6 +109,8 @@ const labelList = {
   error_not_found_document_description: `404 ページが見つかりません`,
   error_blogs_not_found_message: `ブログが見つかりません`,
   error_blog_not_found_message: `記事が見つかりません`,
+  error_loading_data: `現在コンテンツを読み込めません`,
+  error_loading_data_subtitle: `接続を確認して再試行してください。`,
   error_back_home: `ホームに戻る`,
 
   // Date/Time

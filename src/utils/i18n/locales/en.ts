@@ -66,9 +66,22 @@ const labelList = {
   blog_document_title: `Blogs | Kenneth Wong`,
   blog_document_description: `Read Kenneth's insights and experiences in development and his contributions to projects.`,
   blog_description: `Thoughts on development, creative coding, and technology.`,
+  blog_cat_all: `All`,
+  blog_sort_newest: `Newest first`,
+  blog_sort_oldest: `Oldest first`,
+  blog_sort_label: `Sort`,
+  blog_no_posts: `No blog posts found`,
+  blog_no_posts_description: `Try adjusting your filters or check back later.`,
+  blog_page_prev: `Previous`,
+  blog_page_next: `Next`,
+  blog_page_info: `Page {{page}} of {{total}}`,
+  blog_reading_time: `{{count}} min read`,
 
   // Blog Post
   blog_post_not_found_title: `Blog Post Not Found | Kenneth Wong`,
+  blog_post_toc: `Table of Contents`,
+  blog_post_author: `Author`,
+  blog_post_min_read: `{{count}} min read`,
 
   // Contact
   contact_title: `Contact`,
@@ -96,6 +109,8 @@ const labelList = {
   error_not_found_document_description: `404 Page Not Found`,
   error_blogs_not_found_message: `Blogs not found`,
   error_blog_not_found_message: `Blog not found`,
+  error_loading_data: `Unable to load content right now`,
+  error_loading_data_subtitle: `Please check your connection and try again.`,
   error_back_home: `Back to home`,
 
   // Date/Time

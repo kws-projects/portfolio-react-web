@@ -38,7 +38,15 @@ import { BrowserRouter as Router } from 'react-router-dom'
 monitoring.init()
 analytics.init()
 
-const queryClient = new QueryClient({})
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 2 * 60 * 1000,
+      refetchOnWindowFocus: false,
+      retry: 1,
+    },
+  },
+})
 
 const rootElement = document.getElementById('root')
 if (!rootElement) {
