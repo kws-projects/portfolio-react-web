@@ -104,6 +104,12 @@ const labelList = {
   privacy_document_title: `プライバシーポリシー | Kenneth Wong`,
   privacy_document_description: `Kenneth Wong が収集・記録する情報の種類と使用方法に関するプライバシーポリシー。`,
 
+  // Legal
+  legal_last_updated: `最終更新`,
+
+  // Works
+  works_no_works: `現在、表示できる作品はありません。`,
+
   // Error
   error_not_found_document_title: `ページが見つかりません | Kenneth Wong`,
   error_not_found_document_description: `404 ページが見つかりません`,

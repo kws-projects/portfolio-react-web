@@ -104,6 +104,12 @@ const labelList = {
   privacy_document_title: `私隱政策 | Kenneth Wong`,
   privacy_document_description: `私隱政策文件包含 Kenneth Wong 收集和使用的資訊類型。`,
 
+  // Legal
+  legal_last_updated: `最後更新`,
+
+  // Works
+  works_no_works: `目前沒有作品可展示。`,
+
   // Error
   error_not_found_document_title: `找不到頁面 | Kenneth Wong`,
   error_not_found_document_description: `404 找不到頁面`,

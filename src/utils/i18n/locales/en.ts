@@ -104,6 +104,12 @@ const labelList = {
   privacy_document_title: `Privacy Policy | Kenneth Wong`,
   privacy_document_description: `Privacy Policy document contains types of information that is collected and recorded by Kenneth Wong and how we use it.`,
 
+  // Legal
+  legal_last_updated: `Last updated`,
+
+  // Works
+  works_no_works: `No works available at the moment.`,
+
   // Error
   error_not_found_document_title: `Page Not Found | Kenneth Wong`,
   error_not_found_document_description: `404 Page Not Found`,
