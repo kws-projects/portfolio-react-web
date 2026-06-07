@@ -436,6 +436,7 @@ describe('mapLegal', () => {
     const result = mapLegal(entity, 'en')
 
     expect(result.sections).toEqual([])
+    expect(result.tiptapContent).toBeUndefined()
   })
 
   it('falls back title to en when requested language is missing', () => {
@@ -446,5 +447,49 @@ describe('mapLegal', () => {
     const result = mapLegal(entity, 'ja')
 
     expect(result.title).toBe('EN Title')
+  })
+
+  it('detects TipTap content and returns it as tiptapContent', () => {
+    const tiptapDoc = {
+      type: 'doc',
+      content: [
+        {
+          type: 'heading',
+          attrs: { level: 2 },
+          content: [{ type: 'text', text: 'Section Title' }],
+        },
+        {
+          type: 'paragraph',
+          content: [{ type: 'text', text: 'Body text here' }],
+        },
+      ],
+    }
+    const entity = makeEntity({
+      properties: {
+        title: { en: 'Privacy Policy' },
+        lastUpdated: '2024-06-01',
+      },
+      contents: [{ id: 'c1', locale: 'en', content: tiptapDoc }],
+    })
+
+    const result = mapLegal(entity, 'en')
+
+    expect(result.sections).toEqual([])
+    expect(result.tiptapContent).toEqual(tiptapDoc)
+  })
+
+  it('does not return tiptapContent for structured sections format', () => {
+    const entity = makeEntity({
+      properties: {
+        title: { en: 'Terms' },
+        lastUpdated: '2024-01-01',
+      },
+      contents: [{ id: 'c1', locale: 'en', content: { sections } }],
+    })
+
+    const result = mapLegal(entity, 'en')
+
+    expect(result.sections).toEqual(sections)
+    expect(result.tiptapContent).toBeUndefined()
   })
 })

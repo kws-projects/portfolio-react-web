@@ -160,6 +160,7 @@ export type LegalDocument = {
   title: string
   lastUpdated: string
   sections: LegalSection[]
+  tiptapContent?: Record<string, unknown>
 }
 
 function resolveI18n(value: unknown, lang: string): string {
@@ -178,6 +179,10 @@ function resolveI18n(value: unknown, lang: string): string {
   return String(value ?? '')
 }
 
+function isTiptapContent(content: Record<string, unknown>): boolean {
+  return content?.type === 'doc' && Array.isArray(content?.content)
+}
+
 export function mapLegal(entity: CmsEntity, lang: string): LegalDocument {
   const props = entity.properties as unknown as LegalProperties
   const content =
@@ -185,11 +190,16 @@ export function mapLegal(entity: CmsEntity, lang: string): LegalDocument {
     entity.contents?.find(c => c.locale === 'en') ??
     entity.contents?.[0]
 
-  const sections = (content?.content?.sections as LegalSection[]) ?? []
+  const rawContent = content?.content
+  const isTiptap = rawContent && isTiptapContent(rawContent)
+  const sections = isTiptap
+    ? []
+    : ((rawContent?.sections as LegalSection[]) ?? [])
 
   return {
     title: resolveI18n(props.title, lang),
     lastUpdated: props.lastUpdated,
     sections,
+    ...(isTiptap && { tiptapContent: rawContent }),
   }
 }

@@ -122,6 +122,7 @@ const Blogs = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.05 }}
+                  className="h-full"
                 >
                   <BlogCard data={blog} />
                 </motion.div>
