@@ -61,8 +61,7 @@ src/
   lib/                 # Third-party adapters (analytics.ts, monitoring.ts)
   config/              # Typed env access (env.ts)
   hooks/               # Shared hooks (useAnalytics, useMonitoring, usePageTracking, etc.)
-  services/            # API clients (portfolioSvc)
-  data/                # Static data files
+  services/            # API clients (portfolio BFF API via TanStack Query)
   constant/            # App constants and enums
   types/               # Shared types (analytics events, monitoring, blog, etc.)
   utils/               # General utilities (i18n, dayjs, common)

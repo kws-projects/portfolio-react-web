@@ -1,6 +1,8 @@
+import { TiptapRenderer } from '@/components/blog/TiptapRenderer'
 import useFadeInView from '@/hooks/useFadeInView'
 import type { LegalDocument } from '@/services/api/mappers'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 type LegalContentProps = {
   document: LegalDocument
@@ -8,6 +10,7 @@ type LegalContentProps = {
 
 const LegalContent = ({ document }: LegalContentProps) => {
   const { ref, motionProps } = useFadeInView({ y: 40 })
+  const { t } = useTranslation()
 
   return (
     <motion.div
@@ -19,58 +22,62 @@ const LegalContent = ({ document }: LegalContentProps) => {
         {document.title}
       </h1>
       <p className="text-sm text-tertiary mb-12">
-        Last updated: {document.lastUpdated}
+        {t('legal_last_updated')}: {document.lastUpdated}
       </p>
 
-      <div className="space-y-10">
-        {document.sections.map((section, i) => (
-          <section key={i}>
-            <h2 className="text-xl font-display font-medium text-primary mb-4">
-              {section.heading}
-            </h2>
-            <div className="space-y-3">
-              {section.blocks.map((block, j) => {
-                if (block.type === 'text') {
-                  return (
-                    <p key={j} className="text-secondary leading-relaxed">
-                      {block.content}
-                    </p>
-                  )
-                }
-                if (block.type === 'list') {
-                  return (
-                    <ul key={j} className="space-y-2 ps-5">
-                      {block.items.map((item, k) => (
-                        <li
-                          key={k}
-                          className="text-secondary leading-relaxed list-disc"
+      {document.tiptapContent ? (
+        <TiptapRenderer content={document.tiptapContent} />
+      ) : (
+        <div className="space-y-10">
+          {document.sections.map((section, i) => (
+            <section key={i}>
+              <h2 className="text-xl font-display font-medium text-primary mb-4">
+                {section.heading}
+              </h2>
+              <div className="space-y-3">
+                {section.blocks.map((block, j) => {
+                  if (block.type === 'text') {
+                    return (
+                      <p key={j} className="text-secondary leading-relaxed">
+                        {block.content}
+                      </p>
+                    )
+                  }
+                  if (block.type === 'list') {
+                    return (
+                      <ul key={j} className="space-y-2 ps-5">
+                        {block.items.map((item, k) => (
+                          <li
+                            key={k}
+                            className="text-secondary leading-relaxed list-disc"
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    )
+                  }
+                  if (block.type === 'link') {
+                    return (
+                      <p key={j}>
+                        <a
+                          href={block.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-accent underline underline-offset-2 hover:opacity-80 transition-opacity"
                         >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  )
-                }
-                if (block.type === 'link') {
-                  return (
-                    <p key={j}>
-                      <a
-                        href={block.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-accent underline underline-offset-2 hover:opacity-80 transition-opacity"
-                      >
-                        {block.text}
-                      </a>
-                    </p>
-                  )
-                }
-                return null
-              })}
-            </div>
-          </section>
-        ))}
-      </div>
+                          {block.text}
+                        </a>
+                      </p>
+                    )
+                  }
+                  return null
+                })}
+              </div>
+            </section>
+          ))}
+        </div>
+      )}
     </motion.div>
   )
 }

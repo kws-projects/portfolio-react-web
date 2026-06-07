@@ -26,8 +26,7 @@ paths like `../../../`.
   environment variables; do not read `import.meta.env` directly elsewhere.
 - `hooks/` - shared hooks (useAnalytics, useMonitoring, usePageTracking,
   useTheme, useDirection, useNavbarToggle, etc.).
-- `services/` - API clients and service integrations (portfolioSvc).
-- `data/` - static data files (work experience, certifications, skills, etc.).
+- `services/` - API clients (portfolio BFF API via TanStack Query + mappers).
 - `constant/` - app constants and enums.
 - `types/` - shared TypeScript types (analytics events, monitoring types,
   blog, menu, timeline).

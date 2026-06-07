@@ -104,6 +104,12 @@ const labelList = {
   privacy_document_title: `سياسة الخصوصية | Kenneth Wong`,
   privacy_document_description: `وثيقة سياسة الخصوصية تحتوي على أنواع المعلومات التي يجمعها Kenneth Wong وكيفية استخدامها.`,
 
+  // Legal
+  legal_last_updated: `آخر تحديث`,
+
+  // Works
+  works_no_works: `لا توجد أعمال متاحة حاليًا.`,
+
   // Error
   error_not_found_document_title: `الصفحة غير موجودة | Kenneth Wong`,
   error_not_found_document_description: `404 الصفحة غير موجودة`,

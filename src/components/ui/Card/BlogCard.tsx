@@ -36,7 +36,7 @@ export const BlogCard = ({ data }: BlogCardProps) => {
   return (
     <Link
       to={`/blogs/${data.slug}`}
-      className="group block rounded-2xl border-ui-interactive bg-surface overflow-hidden duration-300"
+      className="group flex flex-col h-full rounded-2xl border-ui-interactive bg-surface overflow-hidden duration-300"
     >
       <div className="aspect-[16/9] overflow-hidden bg-skeleton">
         {data.properties.coverImage && (
@@ -47,13 +47,13 @@ export const BlogCard = ({ data }: BlogCardProps) => {
           />
         )}
       </div>
-      <div className="p-5">
+      <div className="flex flex-col flex-1 p-5">
         {data.properties.category && (
-          <span className="inline-block text-xs font-medium text-accent bg-accent/10 rounded-full px-2.5 py-0.5 mb-3">
+          <span className="inline-block self-start text-xs font-medium text-accent bg-accent/10 rounded-full px-2.5 py-0.5 mb-3">
             {data.properties.category}
           </span>
         )}
-        <div className="flex items-start justify-between gap-2">
+        <div className="flex items-start justify-between gap-2 flex-1">
           <div>
             <h3 className="font-display font-semibold text-primary group-hover:text-accent transition-colors line-clamp-2">
               {title}
