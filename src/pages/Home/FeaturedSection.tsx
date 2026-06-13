@@ -15,8 +15,6 @@ const FeaturedSection = () => {
   const featuredWorks = works.filter(w => w.featured).slice(0, 3)
   const { ref, motionProps } = useFadeInView({ y: 60 })
 
-  if (!featuredWorks.length) return null
-
   return (
     <motion.section
       ref={ref}
