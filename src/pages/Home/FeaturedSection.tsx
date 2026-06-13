@@ -15,8 +15,6 @@ const FeaturedSection = () => {
   const featuredWorks = works.filter(w => w.featured).slice(0, 3)
   const { ref, motionProps } = useFadeInView({ y: 60 })
 
-  if (!featuredWorks.length) return null
-
   return (
     <motion.section
       ref={ref}
@@ -50,8 +48,10 @@ const FeaturedSection = () => {
             transition={{ duration: 0.5, delay: i * 0.1 }}
           >
             <TiltCard className="h-full">
-              <Link
-                to={work.url}
+              <a
+                href={work.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex flex-col rounded-2xl overflow-hidden border-ui-interactive bg-surface duration-300 h-full"
               >
                 <div className="aspect-[4/3] overflow-hidden">
@@ -86,7 +86,7 @@ const FeaturedSection = () => {
                     </div>
                   )}
                 </div>
-              </Link>
+              </a>
             </TiltCard>
           </motion.div>
         ))}
