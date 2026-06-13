@@ -8,7 +8,6 @@ import useWorkFilter from '@/hooks/useWorkFilter'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { FiArrowUpRight } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
 
 const WorksSkeleton = () => (
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -99,8 +98,10 @@ const Works = () => {
                 className="flex"
               >
                 <TiltCard tiltDeg={4} className="flex w-full">
-                  <Link
-                    to={work.url}
+                  <a
+                    href={work.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group flex flex-col rounded-2xl overflow-hidden border-ui-interactive bg-surface duration-300 w-full"
                   >
                     <div className="aspect-[4/3] overflow-hidden bg-skeleton">
@@ -123,7 +124,7 @@ const Works = () => {
                         <FiArrowUpRight className="text-tertiary group-hover:text-accent transition-colors flex-shrink-0 mt-0.5" />
                       </div>
                     </div>
-                  </Link>
+                  </a>
                 </TiltCard>
               </motion.div>
             ))}
