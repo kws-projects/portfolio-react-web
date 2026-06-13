@@ -1,6 +1,22 @@
-import { isDarkTheme } from '@/utils/theme'
 import mermaid from 'mermaid'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
+
+function subscribeToTheme(cb: () => void) {
+  const observer = new MutationObserver(cb)
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme', 'class'],
+  })
+  return () => observer.disconnect()
+}
+
+function getThemeSnapshot() {
+  return document.documentElement.getAttribute('data-theme') ?? 'light'
+}
+
+function useCurrentTheme() {
+  return useSyncExternalStore(subscribeToTheme, getThemeSnapshot)
+}
 
 interface MermaidDiagramProps {
   code: string
@@ -11,17 +27,17 @@ export function MermaidDiagram({ code, className }: MermaidDiagramProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [svg, setSvg] = useState<string>('')
   const [error, setError] = useState<string>('')
+  const theme = useCurrentTheme()
 
   useEffect(() => {
-    const dark = isDarkTheme()
     mermaid.initialize({
       startOnLoad: false,
-      theme: dark ? 'dark' : 'default',
+      theme: theme === 'dark' ? 'dark' : 'default',
       securityLevel: 'loose',
       fontFamily: 'inherit',
     })
 
-    const id = `mermaid-${crypto.randomUUID().slice(0, 8)}`
+    const id = `mermaid-${typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function' ? crypto.randomUUID().slice(0, 8) : Math.random().toString(36).slice(2, 10)}`
 
     mermaid
       .render(id, code.trim())
@@ -33,7 +49,7 @@ export function MermaidDiagram({ code, className }: MermaidDiagramProps) {
         setError(err.message || 'Failed to render diagram')
         setSvg('')
       })
-  }, [code])
+  }, [code, theme])
 
   if (error) {
     return (
