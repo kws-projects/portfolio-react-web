@@ -51,7 +51,11 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
-    css: true,
+    // Don't process imported CSS in tests. jsdom's parser can't handle some of
+    // our/third-party CSS and floods the output with "Could not parse CSS
+    // stylesheet" jsdomErrors. No test relies on parsed stylesheet styles
+    // (only inline element styles), so leaving CSS unprocessed is safe.
+    css: false,
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html'],

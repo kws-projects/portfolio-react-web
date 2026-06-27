@@ -44,6 +44,15 @@ maintainable code. Avoid hacky workarounds.
 - **Touch targets**: interactive elements should be at least `h-9` / `44px`
   on mobile.
 
+## Testing
+
+- Stub missing jsdom APIs once in `src/test/setup.ts` (e.g. `scrollTo`,
+  `matchMedia`) rather than mocking them per-test. Don't blanket-override
+  `console.error` to hide jsdom noise.
+- Keep Vitest's `css: false` (the default). Only enable `css: true` if a test
+  must assert styles from a parsed stylesheet (inline element styles work
+  either way).
+
 ## Quality gates
 
 - Code must pass `yarn typecheck`, `yarn lint`, and `yarn test` before commit.
