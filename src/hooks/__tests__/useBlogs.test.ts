@@ -35,14 +35,49 @@ describe('useBlogs', () => {
     )
   })
 
-  it('provides a select function', () => {
+  it('select normalises paginated API shape', () => {
     useBlogs()
+    const options = mockUseQuery.mock.calls[0][0] as {
+      select: (data: unknown) => unknown
+    }
 
-    const options = mockUseQuery.mock.calls[0][0] as unknown as Record<
-      string,
-      unknown
-    >
-    expect(options.select).toBeTypeOf('function')
+    const paginated = options.select({
+      data: [{ id: '1' }],
+      pagination: {
+        page: 2,
+        pageSize: 9,
+        totalItems: 10,
+        totalPages: 2,
+      },
+    })
+
+    expect(paginated).toEqual({
+      items: [{ id: '1' }],
+      pagination: {
+        page: 2,
+        pageSize: 9,
+        totalItems: 10,
+        totalPages: 2,
+      },
+    })
+  })
+
+  it('select falls back for legacy array responses', () => {
+    useBlogs()
+    const options = mockUseQuery.mock.calls[0][0] as {
+      select: (data: unknown) => unknown
+    }
+
+    const legacy = options.select([{ id: 'a' }, { id: 'b' }])
+    expect(legacy).toEqual({
+      items: [{ id: 'a' }, { id: 'b' }],
+      pagination: {
+        page: 1,
+        pageSize: 2,
+        totalItems: 2,
+        totalPages: 1,
+      },
+    })
   })
 })
 
