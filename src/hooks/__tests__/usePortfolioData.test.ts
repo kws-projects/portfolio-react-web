@@ -7,6 +7,7 @@ import {
   useExperiences,
   useLegal,
   usePreview,
+  useSiteConfig,
   useSkills,
   useSocialLinks,
   useWorks,
@@ -31,6 +32,7 @@ vi.mock('@/services/api', () => ({
     getSocialLinks: vi.fn(),
     getLegal: vi.fn(),
     getPreview: vi.fn(),
+    getSiteConfig: vi.fn(),
   },
 }))
 
@@ -133,6 +135,32 @@ describe('useLegal', () => {
         staleTime: 10 * 60 * 1000,
       })
     )
+  })
+})
+
+describe('useSiteConfig', () => {
+  it('passes correct queryKey and staleTime', () => {
+    useSiteConfig()
+    expect(mockUseQuery).toHaveBeenCalledWith(
+      expect.objectContaining({
+        queryKey: ['site-config'],
+        staleTime: 10 * 60 * 1000,
+      })
+    )
+  })
+
+  it('select returns first entity properties or null', () => {
+    useSiteConfig()
+    const options = mockUseQuery.mock.calls.at(-1)![0] as {
+      select: (data: { properties: Record<string, unknown> }[]) => unknown
+    }
+
+    expect(options.select([])).toBeNull()
+    expect(
+      options.select([{ properties: { profileImage: '/a.png' } }])
+    ).toEqual({
+      profileImage: '/a.png',
+    })
   })
 })
 
